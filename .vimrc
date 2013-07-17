@@ -6,7 +6,7 @@ filetype plugin indent on
 
 " Appearance
 set background=light
-colorscheme zenburn
+colorscheme solarized
 set guifont=Ubuntu\ Mono\ 11
 "set guifont=Bitstream\ Vera\ Sans\ Mono\ 9 " Font of Bitbucket
 
@@ -19,6 +19,7 @@ set switchbuf=useopen,usetab,split " Want better buffer handling in quickfix mod
 set tabpagemax=9 " At most 9 tabs open
 
 " Visual aids
+set list
 set listchars=tab:▸\ ,eol:¬ " Use the same symbols as TextMate for tabstops and EOLs
 set mousehide    " Hide mouse when typing
 set number       " Show line number
