@@ -26,7 +26,7 @@ set guifont=Ubuntu\ Mono\ 11
 
 " General
 "set autochdir   " Replaced by 'lcd %:p:h', which is purported to be better
-set autowrite    " Automatically write buffer before special actions
+"set autowrite    " Automatically write buffer before special actions
 set completeopt=menu,longest " Always show the menu, insert longest match
 set gdefault     " Make substitution flag 'g' is default on
 set guioptions=
