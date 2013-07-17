@@ -25,7 +25,7 @@ set guifont=Ubuntu\ Mono\ 11
 "set guifont=Bitstream\ Vera\ Sans\ Mono\ 9 " Font of Bitbucket
 
 " General
-set autochdir
+"set autochdir   " Replaced by 'lcd %:p:h', which is purported to be better
 set autowrite    " Automatically write buffer before special actions
 set completeopt=menu,longest " Always show the menu, insert longest match
 set gdefault     " Make substitution flag 'g' is default on
@@ -142,14 +142,14 @@ endfunction
 imap <Tab> <C-r>=SmartTab()<CR>
 
 " Open a NERDTree automatically when Vim starts up if no files were specified
-au VimEnter * if !argc() | NERDTree | endif
+" Also change current directory to Dev
+au VimEnter * if (argc() == 0) | :NERDTree ~/Dropbox/Dev | endif
 
 " Close Vim if the only window left open is a NERDTree
 au BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-" Change directories automatically
-" Disabled because we've already got 'autochdir'
-"au BufEnter * lcd %:p:h
+" Change directories automatically and print the directory after changing
+au BufEnter * :lchdir %:p:h
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
