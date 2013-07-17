@@ -2,27 +2,20 @@
 
 cd ~/Dropbox/Dev/dotfiles
 
-# dotfiles for Vim
-cp .vimrc ~
-cp -r .vim ~
-
-# dotfiles for OCaml
-cp .ocamlinit ~
+cp .vimrc ~     # dotfiles for Vim
+cp .ocamlinit ~ # dotfiles for OCaml
+cp .hgrc ~      # dotfiles for hg
 
 # dotfiles for ocp-indent
 # We don't remove the old directory, because it may contain other good things.
 cp -r .ocp ~
 
-# dotfiles for hg
-cp .hgrc ~
-
 # Remove bash configuration
-#rm -rf ~/.gconf/apps/gnome-terminal
+rm -rf ~/.gconf/apps/gnome-terminal
 
 # Ammendments to .bashrc
 
 cp /etc/skel/.bashrc ~
-
 echo -e "\nbind \"set completion-ignore-case on\"\n" >> ~/.bashrc
 
 # Set OPAM's environment variables upon each startup of bash
