@@ -1,16 +1,31 @@
 " .vimrc
 
 set nocompatible " I want Vim, not Vi
-syntax on
+
+" Required by Vundle
+filetype off
+set runtimepath+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+Bundle 'The-NERD-tree'
+Bundle 'The-NERD-Commenter'
+Bundle 'Solarized'
+Bundle 'Zenburn'
+
+" Required by Vundle
 filetype plugin indent on
 
 " Appearance
+syntax on
 set background=light
 colorscheme solarized
 set guifont=Ubuntu\ Mono\ 11
 "set guifont=Bitstream\ Vera\ Sans\ Mono\ 9 " Font of Bitbucket
 
 " General
+set autochdir
 set autowrite    " Automatically write buffer before special actions
 set completeopt=menu,longest " Always show the menu, insert longest match
 set gdefault     " Make substitution flag 'g' is default on
@@ -19,7 +34,6 @@ set switchbuf=useopen,usetab,split " Want better buffer handling in quickfix mod
 set tabpagemax=9 " At most 9 tabs open
 
 " Visual aids
-set list
 set listchars=tab:▸\ ,eol:¬ " Use the same symbols as TextMate for tabstops and EOLs
 set mousehide    " Hide mouse when typing
 set number       " Show line number
@@ -32,7 +46,7 @@ set showmode
 " Edit area
 set textwidth=80
 set colorcolumn=81
-set columns=180
+set columns=120
 set lines=40
 
 " Tab and indentation
@@ -61,12 +75,13 @@ endfunction
 
 " Leader shortcuts
 let mapleader = ","
-map <Leader>h :nohlsearch<CR>
-map <leader>l :set list!<CR>
-map <Leader>o :browse oldfiles<CR>
-map <Leader>r :! rm -rf *~ *.swp *.hi *.o *.exe *.native *.byte<CR>
-map <Leader>p :! git push origin master
-map <Leader>c :! git add . && git commit -m '
+map <Leader>h  :nohlsearch<CR>
+map <Leader>l  :set list!<CR>
+map <Leader>n  :NERDTreeToggle<CR>
+map <Leader>o  :browse oldfiles<CR>
+map <Leader>r  :! rm -rf *~ *.swp *.hi *.o *.exe *.native *.byte<CR>
+map <Leader>gp :! git push origin master
+map <Leader>gc :! git add . && git commit -m '
 
 " Function shortcuts
 call Map('<F1>', ':help<Space>')
@@ -126,8 +141,15 @@ endfunction
 
 imap <Tab> <C-r>=SmartTab()<CR>
 
+" Open a NERDTree automatically when Vim starts up if no files were specified
+au VimEnter * if !argc() | NERDTree | endif
+
+" Close Vim if the only window left open is a NERDTree
+au BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 " Change directories automatically
-au BufEnter * lcd %:p:h
+" Disabled because we've already got 'autochdir'
+"au BufEnter * lcd %:p:h
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
