@@ -85,9 +85,9 @@ map <Leader>gc :! git add . && git commit -m '
 
 " Function shortcuts
 call Map('<F1>', ':help<Space>')
-call Map('<F4>', ':tabedit ~/Dropbox/Dev/dotfiles/.vimrc<CR>')
-call Map('<F5>', ':source  ~/Dropbox/Dev/dotfiles/.vimrc<CR>')
-call Map('<F6>', ':! sudo  ~/Dropbox/Dev/dotfiles/setup.sh<CR>')
+call Map('<F4>', ':tabedit ~/Dropbox/Dev/repos/dotfiles/.vimrc<CR>')
+call Map('<F5>', ':source  ~/Dropbox/Dev/repos/dotfiles/.vimrc<CR>')
+call Map('<F6>', ':! sudo  ~/Dropbox/Dev/repos/dotfiles/setup.sh<CR>')
 call Map('<F9>', ':w<CR>:make<CR>')
 au FileType ocaml   set makeprg=ocamlbuild\ -use-ocamlfind\ -cflags\ '-warn-error\ A'\ '%<.native'
 au FileType haskell set makeprg=ghc\ -Wall\ '%'\ -o\ '%<.exe'
