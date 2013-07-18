@@ -23,7 +23,8 @@ echo -e "bind \"set completion-ignore-case on\"\n" >> ~/.bashrc
 echo -e "eval \`opam config -env\`\n" >> ~/.bashrc
 
 # Re-definitions
+echo 'alias vim=gvim'     >> ~/.bashrc
+echo 'alias ack=ack-grep' >> ~/.bashrc
 echo 'function gvim () { (/usr/bin/gvim -f "$@" &) }'      >> ~/.bashrc
 echo 'function vim  () { (/usr/bin/gvim -f "$@" &) }'      >> ~/.bashrc
 echo 'function gitg () { (/usr/bin/gitg 2> /dev/null &) }' >> ~/.bashrc
-echo 'alias ack=ack-grep' >> ~/.bashrc
