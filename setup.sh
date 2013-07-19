@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ~/Dropbox/Dev/repos/dotfiles
+cd ~/Dropbox/Dev/dotfiles
 
 cp .vimrc ~     # dotfiles for Vim
 cp .ocamlinit ~ # dotfiles for OCaml
