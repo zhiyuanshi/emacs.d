@@ -19,14 +19,14 @@ filetype plugin indent on
 
 " Appearance
 syntax on
-set background=light
-colorscheme solarized
+set background=dark
+colorscheme zenburn
 set guifont=Ubuntu\ Mono\ 11
 "set guifont=Bitstream\ Vera\ Sans\ Mono\ 9 " Font of Bitbucket
 
 " General
 "set autochdir   " Replaced by 'lcd %:p:h', which is purported to be better
-"set autowrite    " Automatically write buffer before special actions
+"set autowrite   " Automatically write buffer before special actions
 set completeopt=menu,longest " Always show the menu, insert longest match
 set gdefault     " Make substitution flag 'g' is default on
 set guioptions=
@@ -46,7 +46,7 @@ set showmode
 " Edit area
 set textwidth=80
 set colorcolumn=81
-set columns=120
+set columns=100
 set lines=40
 
 " Tab and indentation
@@ -143,7 +143,7 @@ imap <Tab> <C-r>=SmartTab()<CR>
 
 " Open a NERDTree automatically when Vim starts up if no files were specified
 " Also change current directory to Dev
-au VimEnter * if (argc() == 0) | :NERDTree ~/Dropbox/Dev | endif
+au VimEnter * if (argc() == 0) | :NERDTree %:p:h | endif
 
 " Close Vim if the only window left open is a NERDTree
 au BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
