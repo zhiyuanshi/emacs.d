@@ -19,8 +19,8 @@ filetype plugin indent on
 
 " Appearance
 syntax on
-set background=dark
-colorscheme zenburn
+set background=light
+colorscheme solarized
 set guifont=Ubuntu\ Mono\ 11
 "set guifont=Bitstream\ Vera\ Sans\ Mono\ 9 " Font of Bitbucket
 
@@ -47,7 +47,7 @@ set showmode
 set textwidth=80
 set colorcolumn=81
 set columns=100
-set lines=40
+set lines=31
 
 " Tab and indentation
 set expandtab    " Tabs are evil
@@ -75,6 +75,7 @@ endfunction
 
 " Leader shortcuts
 let mapleader = ","
+au FileType ocaml map <Leader>a Iassert (<Esc>A);
 map <Leader>h  :nohlsearch<CR>
 map <Leader>l  :set list!<CR>
 map <Leader>n  :NERDTreeToggle<CR>
