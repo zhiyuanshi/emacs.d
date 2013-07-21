@@ -75,7 +75,7 @@ endfunction
 
 " Leader shortcuts
 let mapleader = ","
-au FileType ocaml map <Leader>a Iassert (<Esc>A);
+au FileType ocaml map <Leader>a Iassert (<Esc>A);<Esc>
 map <Leader>h  :nohlsearch<CR>
 map <Leader>l  :set list!<CR>
 map <Leader>n  :NERDTreeToggle<CR>
