@@ -33,6 +33,12 @@ set guioptions=
 set switchbuf=useopen,usetab,split " Want better buffer handling in quickfix mode
 set tabpagemax=9 " At most 9 tabs open
 
+" Edit area
+set textwidth=80
+set colorcolumn=81
+set columns=100
+set lines=31
+
 " Visual aids
 set listchars=tab:▸\ ,eol:¬ " Use the same symbols as TextMate for tabstops and EOLs
 set mousehide    " Hide mouse when typing
@@ -42,12 +48,6 @@ set scrolloff=3  " Maintain some more context around the cursor
 set showcmd      " Show (partial) command in the bottom
 set showmatch    " Show matching braces
 set showmode
-
-" Edit area
-set textwidth=80
-set colorcolumn=81
-set columns=100
-set lines=31
 
 " Tab and indentation
 set expandtab    " Tabs are evil
