@@ -1,3 +1,9 @@
-_tags
 *~
+_build/
+*.byte
+*.exe
+*.hi
+*.native
+*.o
+*.out
 *.swp
