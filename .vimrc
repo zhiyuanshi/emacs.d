@@ -55,6 +55,7 @@ set smarttab     " We want fancy tab handling
 set shiftwidth=2
 set autoindent
 set smartindent
+au FileType c,cpp set cindent
 
 " Search
 set hlsearch     " Highlight matches
@@ -74,15 +75,18 @@ function! Map(lhs, rhs)
 endfunction
 
 " Leader shortcuts
+" , is a more convenient leader than \
 let mapleader = ","
+let maplocalleader = ",,"
 au FileType ocaml map <Leader>a Iassert (<Esc>A);<Esc>
 map <Leader>h  :nohlsearch<CR>
 map <Leader>l  :set list!<CR>
 map <Leader>n  :NERDTreeToggle<CR>
 map <Leader>o  :browse oldfiles<CR>
-map <Leader>r  :! rm -rf *~ *.swp *.hi *.o *.exe *.native *.byte<CR>
-map <Leader>gp :! git push origin master
+map <Leader>r  :! rm -rf *~ *.swp *.hi *.o *.exe *.native *.byte *.out<CR>
 map <Leader>gc :! git add . && git commit -m '
+map <Leader>gb :! git push bitbucket master
+map <Leader>gg :! git push github master
 
 " Function shortcuts
 call Map('<F1>', ':help<Space>')
@@ -92,13 +96,16 @@ call Map('<F6>', ':! sudo  ~/Dropbox/Dev/dotfiles/setup.sh<CR>')
 call Map('<F9>', ':w<CR>:make<CR>')
 au FileType ocaml   set makeprg=ocamlbuild\ -use-ocamlfind\ -cflags\ '-warn-error\ A'\ '%<.native'
 au FileType haskell set makeprg=ghc\ -Wall\ '%'\ -o\ '%<.exe'
+au FileType c       set makeprg=gcc\ '%'\ -o\ '%<.out'
+au FileType cpp     set makeprg=g++\ '%'\ -o\ '%<.out'
 au FileType ocaml   call Map('<F10>', ':! ''./%<.native''<Space>')
 au FileType haskell call Map('<F10>', ':! ''./%<.exe''<Space>')
+au FileType c,cpp   call Map('<F10>', ':! ''./%<.out''<Space>')
 
 " Ctrl shortcuts
 call Map('<C-o>'  , ':e<Space><Tab>')
 call Map('<C-s>'  , ':w<CR>')
-call Map('<C-q>'  , ':q<CR>')
+call Map('<C-q>'  , ':q<CR>')           " Leave editor quickly (when saved)
 call Map('<C-a>'  , 'ggvG$')
 call Map('<C-t>'  , ':tabnew<CR>')
 call Map('<C-Tab>', ':tabnext<CR>')
@@ -168,4 +175,4 @@ au FileType sh set iskeyword=~,@,48-57,_,192-255,-
 au FileType text set textwidth=0 nonumber nocursorline
 
 " ocp-indent
-au FileType ocaml source /home/zshi/.opam/4.01.0dev+trunk/share/typerex/ocp-indent/ocp-indent.vim
+au FileType ocaml source ~/.opam/4.01.0dev+trunk/share/typerex/ocp-indent/ocp-indent.vim
