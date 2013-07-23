@@ -9,18 +9,6 @@ cp .hgrc ~      # dotfiles for hg
 cp -r .ocp ~    # We don't remove the old directory, because it may contain other good things.
 rm -rf ~/.gconf/apps/gnome-terminal # Remove bash configuration
 
-# Repos
-for dir in $(ls ..)
-do
-  if [ "$dir" != "dotfiles" ] && [ -d "../$dir" ]; then
-    cp .gitignore "../$dir"
-    if [ $(ack-grep -f "../$dir" -G '\.ml$' -1 | wc -l) -ne "0" ]; then
-      echo "OCaml: $dir"
-      cp _tags "../$dir"
-    fi
-  fi
-done
-
 # .bashrc
 
 cp /etc/skel/.bashrc ~
