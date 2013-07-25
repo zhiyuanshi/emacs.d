@@ -103,6 +103,7 @@ au FileType ocaml   call Map('<F10>', ':! ''./%<.native''<Space>')
 au FileType haskell call Map('<F10>', ':! ''./%<.exe''<Space>')
 au FileType python  call Map('<F10>', ':! python ''%''<Space>')
 au FileType c,cpp   call Map('<F10>', ':! ''./%<.out''<Space>')
+au FileType sh      call Map('<F10>', ':! chmod +x ''%'' && ''./%''<Space>')
 au FileType vim     call Map('<F10>', ':source %<CR>')
 
 " Ctrl shortcuts
