@@ -172,8 +172,8 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
 au BufWritePre * :%s/\s\+$//e
 
-" Source the vimrc file after saving it
-au BufWritePost .vimrc source $MYVIMRC
+" Copy the vimrc file to home after saving it
+au BufWritePost .vimrc :! cp '%' ~
 
 " Our shell code looks like a scheme programmer made up all the names
 au FileType sh set iskeyword=~,@,48-57,_,192-255,-
