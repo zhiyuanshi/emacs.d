@@ -1,0 +1,12 @@
+
+cd ~/Dropbox/Dev
+bind 'set completion-ignore-case on'
+
+eval `opam config -env`
+
+alias ack='ack-grep'
+alias vpn='~/Dropbox/anyconnect-3.1.04059/vpn/vpn'
+alias setup='sudo ~/Dropbox/Dev/zhiyuanshi/scripts/setup.sh'
+function gvim () { (/usr/bin/gvim "$@" 2> /dev/null &) }
+function vim  () { (/usr/bin/gvim "$@" 2> /dev/null &) }
+function gitg () { (/usr/bin/gitg "$@" 2> /dev/null &) }
