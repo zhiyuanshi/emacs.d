@@ -53,7 +53,7 @@ au FileType text set textwidth=0 nonumber nocursorline
 set expandtab    " Tabs are evil
 set smarttab     " We want fancy tab handling
 set shiftwidth=4
-au FileType ocaml,haskell set shiftwidth=2
+au FileType ocaml,haskell,sh,vim set shiftwidth=2
 set autoindent
 set smartindent
 au FileType c,cpp set cindent
