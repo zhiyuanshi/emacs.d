@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ~/Dropbox/Dev/dotfiles
+cd ~/Dropbox/Dev/zhiyuanshi/dotfiles
 
 # Home directory
 cp .vimrc ~     # dotfiles for Vim
