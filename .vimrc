@@ -93,7 +93,6 @@ map <Leader>v :tabedit ~/Dropbox/Dev/zhiyuanshi/dotfiles/.vimrc<CR>')
 
 " Function shortcuts
 call Map('<F1>', ':help<Space>')
-call Map('<F6>', ':! sudo  ~/Dropbox/Dev/zhiyuanshi/dotfiles/setup.sh<CR>')
 call Map('<F9>', ':w<CR>:make<CR>')
 au FileType ocaml   set makeprg=ocamlbuild\ -use-ocamlfind\ -cflags\ '-warn-error\ A'\ '%<.native'
 au FileType haskell set makeprg=ghc\ -Wall\ '%'\ -o\ '%<.exe'
