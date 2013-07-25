@@ -20,6 +20,7 @@ echo -e "bind 'set completion-ignore-case on'\n" >> ~/.bashrc
 echo -e "eval \`opam config -env\`\n" >> ~/.bashrc
 
 echo "alias ack='ack-grep'" >> ~/.bashrc
+echo "alias vpn='~/Dropbox/anyconnect-3.1.04059/vpn/vpn'" >> ~/.bashrc
 echo 'function gvim () { (/usr/bin/gvim "$@" 2> /dev/null &) }' >> ~/.bashrc
 echo 'function vim  () { (/usr/bin/gvim "$@" 2> /dev/null &) }' >> ~/.bashrc
 echo 'function gitg () { (/usr/bin/gitg "$@" 2> /dev/null &) }' >> ~/.bashrc
