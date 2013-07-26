@@ -10,7 +10,6 @@ Bundle 'gmarik/vundle'
 
 " My Bundles here:
 Bundle 'The-NERD-tree'
-Bundle 'The-NERD-Commenter'
 Bundle 'Solarized'
 Bundle 'Zenburn'
 
@@ -85,8 +84,8 @@ map <Leader>h :nohlsearch<CR>
 map <Leader>l :set list!<CR>
 map <Leader>n :NERDTreeToggle<CR>
 map <Leader>o :browse oldfiles<CR>
-map <Leader>r :! rm -rf *~ *.swp *.hi *.o *.exe *.native *.byte *.out<CR>
-map <Leader>v :tabedit ~/Dropbox/Dev/zhiyuanshi/dotfiles/.vimrc<CR>')
+map <Leader>c :! ~/Dropbox/Dev/zhiyuanshi/scripts/cleanup.sh<CR>
+map <Leader>v :tabedit ~/Dropbox/Dev/zhiyuanshi/dotfiles/.vimrc<CR>
 "map <Leader>gc :! git add . && git commit -m '
 "map <Leader>gb :! git push bitbucket master
 "map <Leader>gg :! git push github master
