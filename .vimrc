@@ -8,10 +8,11 @@ set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
 
-" My Bundles here:
+" My Bundles
 Bundle 'The-NERD-tree'
 Bundle 'Solarized'
 Bundle 'Zenburn'
+Bundle 'indenthaskell.vim'
 
 " Required by Vundle
 filetype plugin indent on
@@ -19,7 +20,7 @@ filetype plugin indent on
 " Appearance
 syntax on
 set background=dark
-colorscheme solarized
+colorscheme zenburn
 set guifont=Ubuntu\ Mono\ 12
 "set guifont=Bitstream\ Vera\ Sans\ Mono\ 10 " Font of Bitbucket
 
@@ -51,8 +52,8 @@ au FileType text set textwidth=0 nonumber nocursorline
 " Tab and indentation
 set expandtab    " Tabs are evil
 set smarttab     " We want fancy tab handling
-set shiftwidth=4
-au FileType ocaml,haskell,sh,vim set shiftwidth=2
+set shiftwidth=2
+au FileType c,cpp,python set shiftwidth=4
 set autoindent
 set smartindent
 au FileType c,cpp set cindent
