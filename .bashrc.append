@@ -1,5 +1,5 @@
 
-cd ~/Dropbox/Dev
+cd ~/Dropbox/Dev/zhiyuanshi
 bind 'set completion-ignore-case on'
 
 eval `opam config -env`
