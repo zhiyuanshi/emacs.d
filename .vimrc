@@ -10,15 +10,16 @@ Bundle 'gmarik/vundle'
 
 " My Bundles
 Bundle 'The-NERD-tree'
+Bundle 'indenthaskell.vim'
 Bundle 'Solarized'
 Bundle 'Zenburn'
-Bundle 'indenthaskell.vim'
 
 " Required by Vundle
 filetype plugin indent on
 
 " Appearance
 syntax on
+set t_Co=256
 set background=dark
 colorscheme zenburn
 set guifont=Ubuntu\ Mono\ 12
@@ -35,7 +36,7 @@ set tabpagemax=9 " At most 9 tabs open
 " Edit area
 set textwidth=80
 set colorcolumn=+1 " Highlight column after 'textwidth'
-set columns=120
+set columns=100
 set lines=31
 
 " Visual aids
@@ -101,6 +102,7 @@ au FileType cpp     set makeprg=g++\ '%'\ -o\ '%<.out'
 au FileType ocaml   call Map('<F10>', ':! ''./%<.native''<Space>')
 au FileType haskell call Map('<F10>', ':! ''./%<.exe''<Space>')
 au FileType python  call Map('<F10>', ':! python ''%''<Space>')
+au FileType ruby    call Map('<F10>', ':! ruby ''%''<Space>')
 au FileType c,cpp   call Map('<F10>', ':! ''./%<.out''<Space>')
 au FileType sh      call Map('<F10>', ':! chmod +x ''%'' && ''./%''<Space>')
 au FileType vim     call Map('<F10>', ':source %<CR>')
@@ -154,7 +156,7 @@ imap <Tab> <C-r>=SmartTab()<CR>
 
 " Open a NERDTree automatically when Vim starts up if no files were specified
 " Also change current directory to Dev
-au VimEnter * if (argc() == 0) | :NERDTree %:p:h | endif
+"au VimEnter * if (argc() == 0) | :NERDTree %:p:h | endif
 let NERDTreeIgnore=['^_build$', '^_tags$']
 
 " Close Vim if the only window left open is a NERDTree
