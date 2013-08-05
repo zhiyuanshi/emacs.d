@@ -20,10 +20,9 @@ filetype plugin indent on
 " Appearance
 syntax on
 set t_Co=256
-set background=dark
-colorscheme zenburn
+set background=light
+colorscheme solarized
 set guifont=Ubuntu\ Mono\ 12
-"set guifont=Bitstream\ Vera\ Sans\ Mono\ 10 " Font of Bitbucket
 
 " General
 "set autochdir   " Replaced by 'lcd %:p:h', which is purported to be better
@@ -37,7 +36,7 @@ set tabpagemax=9 " At most 9 tabs open
 set textwidth=80
 set colorcolumn=+1 " Highlight column after 'textwidth'
 set columns=100
-set lines=31
+set lines=35
 
 " Visual aids
 set listchars=tab:▸\ ,eol:¬ " Use the same symbols as TextMate for tabstops and EOLs
@@ -51,12 +50,14 @@ set showmode
 au FileType text set textwidth=0 nonumber nocursorline
 
 " Tab and indentation
+set tabstop=8    "A tab is 8 spaces
 set expandtab    " Tabs are evil
-set smarttab     " We want fancy tab handling
+set smarttab     "Indent instead of tab at start of line
 set shiftwidth=2
-au FileType c,cpp,python set shiftwidth=4
 set autoindent
 set smartindent
+set nojoinspaces "Don't convert spaces to tabs
+au FileType c,cpp,python set shiftwidth=4
 au FileType c,cpp set cindent
 
 " Search and substitution
@@ -86,25 +87,25 @@ map <Leader>h :nohlsearch<CR>
 map <Leader>l :set list!<CR>
 map <Leader>n :NERDTreeToggle<CR>
 map <Leader>o :browse oldfiles<CR>
-map <Leader>c :! ~/Dropbox/Dev/zhiyuanshi/scripts/cleanup.sh<CR>
+map <Leader>c :!~/Dropbox/Dev/zhiyuanshi/scripts/cleanup.sh<CR>
 map <Leader>v :tabedit ~/Dropbox/Dev/zhiyuanshi/dotfiles/.vimrc<CR>
-"map <Leader>gc :! git add . && git commit -m '
-"map <Leader>gb :! git push bitbucket master
-"map <Leader>gg :! git push github master
+"map <Leader>gc :!git add . && git commit -m '
+"map <Leader>gb :!git push bitbucket master
+"map <Leader>gg :!git push github master
 
 " Function shortcuts
 call Map('<F1>', ':help<Space>')
 call Map('<F9>', ':w<CR>:make<CR>')
 au FileType ocaml   set makeprg=ocamlbuild\ -use-ocamlfind\ -cflags\ '-warn-error\ A'\ '%<.native'
-au FileType haskell set makeprg=ghc\ -Wall\ '%'\ -o\ '%<.exe'
+au FileType haskell set makeprg=ghc\ --make\ -Wall\ '%'\ -o\ '%<.exe'
 au FileType c       set makeprg=gcc\ '%'\ -o\ '%<.out'
 au FileType cpp     set makeprg=g++\ '%'\ -o\ '%<.out'
-au FileType ocaml   call Map('<F10>', ':! ''./%<.native''<Space>')
-au FileType haskell call Map('<F10>', ':! ''./%<.exe''<Space>')
-au FileType python  call Map('<F10>', ':! python ''%''<Space>')
-au FileType ruby    call Map('<F10>', ':! ruby ''%''<Space>')
-au FileType c,cpp   call Map('<F10>', ':! ''./%<.out''<Space>')
-au FileType sh      call Map('<F10>', ':! chmod +x ''%'' && ''./%''<Space>')
+au FileType ocaml   call Map('<F10>', ':!''./%<.native''<Space>')
+au FileType haskell call Map('<F10>', ':!''./%<.exe''<Space>')
+au FileType python  call Map('<F10>', ':!python ''%''<Space>')
+au FileType ruby    call Map('<F10>', ':!ruby ''%''<Space>')
+au FileType c,cpp   call Map('<F10>', ':!''./%<.out''<Space>')
+au FileType sh      call Map('<F10>', ':!chmod +x ''%'' && ''./%''<Space>')
 au FileType vim     call Map('<F10>', ':source %<CR>')
 
 " Ctrl shortcuts
@@ -157,7 +158,7 @@ imap <Tab> <C-r>=SmartTab()<CR>
 " Open a NERDTree automatically when Vim starts up if no files were specified
 " Also change current directory to Dev
 "au VimEnter * if (argc() == 0) | :NERDTree %:p:h | endif
-let NERDTreeIgnore=['^_build$', '^_tags$']
+let NERDTreeIgnore=['^_build$', '^_tags$', '\.native$', '\.exe$']
 
 " Close Vim if the only window left open is a NERDTree
 au BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -175,7 +176,7 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`
 au BufWritePre * :%s/\s\+$//e
 
 " Copy the vimrc file to home after saving it
-au BufWritePost .vimrc :! cp '%' ~
+au BufWritePost .vimrc :!cp '%' ~
 
 " Our shell code looks like a scheme programmer made up all the names
 au FileType sh set iskeyword=~,@,48-57,_,192-255,-
