@@ -3,27 +3,32 @@ cd ~/Dropbox/Dev/zhiyuanshi
 PS1="\n\W\$ "
 bind 'set completion-ignore-case on'
 
-alias ~='cd ~'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ack='ack-grep'
-alias c='cd'
-alias cl='~/Dropbox/Dev/zhiyuanshi/scripts/cleanup.sh'
+alias @?='pwd'
+alias @='cd'
+alias @~='cd ~'
+alias @..='cd ..'
+alias @...='cd ../..'
+alias @D='cd ~/Dropbox/Dev'
+alias @z='cd ~/Dropbox/Dev/zhiyuanshi'
+alias @d='cd ~/Dropbox/Dev/zhiyuanshi/dotfiles'
+alias @s='cd ~/Dropbox/Dev/zhiyuanshi/scripts'
+
 alias cr='clear'
-alias D='cd ~/Dropbox/Dev'
-alias d='cd ~/Dropbox/Dev/zhiyuanshi/dotfiles'
-alias g='gitg'
-alias p='pwd'
+alias cn='~/Dropbox/Dev/zhiyuanshi/scripts/cleanup.sh'
+
+alias sa='sudo ~/Dropbox/Dev/zhiyuanshi/scripts/setup-all.sh'
+alias sb='sudo ~/Dropbox/Dev/zhiyuanshi/scripts/setup-bashrc.sh'
+alias sg='sudo ~/Dropbox/Dev/zhiyuanshi/scripts/setup-git.sh'
+alias st='sudo ~/Dropbox/Dev/zhiyuanshi/scripts/setup-tags.sh'
+alias sv='sudo ~/Dropbox/Dev/zhiyuanshi/scripts/setup-vimrc.sh'
+
 alias push='~/Dropbox/Dev/zhiyuanshi/scripts/push.sh'
 alias pull='~/Dropbox/Dev/zhiyuanshi/scripts/pull.sh'
-alias s='cd ~/Dropbox/Dev/zhiyuanshi/scripts'
-alias setup='sudo ~/Dropbox/Dev/zhiyuanshi/scripts/setup.sh'
-alias vpn='~/Dropbox/anyconnect-3.1.04059/vpn/vpn'
-alias z='cd ~/Dropbox/Dev/zhiyuanshi'
 
-function v    () { (/usr/bin/gvim "$@" 2> /dev/null &) }
-function gvim () { (/usr/bin/gvim "$@" 2> /dev/null &) }
-function gitg () { (/usr/bin/gitg "$@" 2> /dev/null &) }
+alias ack='ack-grep'
+alias gitg='gitg &'
+alias vim='sudo gvim &> /dev/null'
+alias vpn='~/Dropbox/anyconnect-3.1.04059/vpn/vpn'
 
 # OPAM configuration
 # The line below is required by OPAM 1.0.0 only
