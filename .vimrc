@@ -9,10 +9,9 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " My Bundles
-Bundle 'The-NERD-tree'
-Bundle 'indenthaskell.vim'
 Bundle 'Solarized'
-Bundle 'Zenburn'
+Bundle 'The-NERD-tree'
+Bundle 'mru.vim'
 
 " Required by Vundle
 filetype plugin indent on
@@ -36,7 +35,7 @@ set tabpagemax=9 " At most 9 tabs open
 set textwidth=80
 set colorcolumn=+1 " Highlight column after 'textwidth'
 set columns=100
-set lines=35
+set lines=37
 
 " Visual aids
 set listchars=tab:▸\ ,eol:¬ " Use the same symbols as TextMate for tabstops and EOLs
@@ -85,6 +84,7 @@ let maplocalleader = ",,"
 au FileType ocaml map <Leader>a Iassert (<Esc>A);<Esc>
 map <Leader>h :nohlsearch<CR>
 map <Leader>l :set list!<CR>
+map <Leader>m :MRU<CR>
 map <Leader>n :NERDTreeToggle<CR>
 map <Leader>o :browse oldfiles<CR>
 map <Leader>c :!~/Dropbox/Dev/zhiyuanshi/scripts/cleanup.sh<CR>
@@ -176,7 +176,8 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`
 au BufWritePre * :%s/\s\+$//e
 
 " Copy the vimrc file to home after saving it
-au BufWritePost .vimrc :!cp '%' ~
+au BufWritePost .vimrc         :!~/Dropbox/Dev/zhiyuanshi/scripts/setup-vimrc.sh
+au BufWritePost .bashrc.append :!~/Dropbox/Dev/zhiyuanshi/scripts/setup-bashrc.sh
 
 " Our shell code looks like a scheme programmer made up all the names
 au FileType sh set iskeyword=~,@,48-57,_,192-255,-
