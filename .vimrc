@@ -10,6 +10,7 @@ Bundle 'gmarik/vundle'
 
 " My Bundles
 Bundle 'Solarized'
+Bundle 'Zenburn'
 Bundle 'The-NERD-tree'
 Bundle 'mru.vim'
 
@@ -19,7 +20,7 @@ filetype plugin indent on
 " Appearance
 syntax on
 set t_Co=256
-set background=light
+set background=dark
 colorscheme solarized
 set guifont=Ubuntu\ Mono\ 12
 
@@ -38,6 +39,7 @@ set columns=100
 set lines=37
 
 " Visual aids
+"set list
 set listchars=tab:▸\ ,eol:¬ " Use the same symbols as TextMate for tabstops and EOLs
 set mousehide    " Hide mouse when typing
 set number       " Show line number
@@ -81,14 +83,20 @@ endfunction
 " , is a more convenient leader than \
 let mapleader = ","
 let maplocalleader = ",,"
-au FileType ocaml map <Leader>a Iassert (<Esc>A);<Esc>
+au FileType ocaml map <LocalLeader>a Iassert (<Esc>A);<Esc>
+
+map <Leader>a ggvG$
+map <Leader>c :!~/Dropbox/Dev/zhiyuan-shi/scripts/cleanup.sh<CR>
+map <Leader>e :e<Space><Tab>
 map <Leader>h :nohlsearch<CR>
 map <Leader>l :set list!<CR>
 map <Leader>m :MRU<CR>
 map <Leader>n :NERDTreeToggle<CR>
-map <Leader>o :browse oldfiles<CR>
-map <Leader>c :!~/Dropbox/Dev/zhiyuanshi/scripts/cleanup.sh<CR>
-map <Leader>v :tabedit ~/Dropbox/Dev/zhiyuanshi/dotfiles/.vimrc<CR>
+" Leave editor quickly (when saved)
+map <Leader>q :q<CR>
+map <Leader>v :tabedit ~/Dropbox/Dev/zhiyuan-shi/dotfiles/.vimrc<CR>
+map <Leader>w :w<CR>
+
 "map <Leader>gc :!git add . && git commit -m '
 "map <Leader>gb :!git push bitbucket master
 "map <Leader>gg :!git push github master
@@ -109,10 +117,6 @@ au FileType sh      call Map('<F10>', ':!chmod +x ''%'' && ''./%''<Space>')
 au FileType vim     call Map('<F10>', ':source %<CR>')
 
 " Ctrl shortcuts
-call Map('<C-o>'  , ':e<Space><Tab>')
-call Map('<C-s>'  , ':w<CR>')
-call Map('<C-q>'  , ':q<CR>')           " Leave editor quickly (when saved)
-call Map('<C-a>'  , 'ggvG$')
 call Map('<C-t>'  , ':tabnew<CR>')
 call Map('<C-Tab>', ':tabnext<CR>')
 call Map('<C-F4>' , ':tabclose<CR>')
@@ -176,8 +180,8 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`
 au BufWritePre * :%s/\s\+$//e
 
 " Copy the vimrc file to home after saving it
-au BufWritePost .vimrc         :!~/Dropbox/Dev/zhiyuanshi/scripts/setup-vimrc.sh
-au BufWritePost .bashrc.append :!~/Dropbox/Dev/zhiyuanshi/scripts/setup-bashrc.sh
+au BufWritePost .vimrc         :!~/Dropbox/Dev/zhiyuan-shi/scripts/setup-vimrc.sh
+au BufWritePost .bashrc.append :!~/Dropbox/Dev/zhiyuan-shi/scripts/setup-bashrc.sh
 
 " Our shell code looks like a scheme programmer made up all the names
 au FileType sh set iskeyword=~,@,48-57,_,192-255,-

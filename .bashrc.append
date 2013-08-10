@@ -1,36 +1,70 @@
 
-cd ~/Dropbox/Dev/zhiyuanshi
+cd ~/Dropbox
 PS1="\n\W\$ "
 bind 'set completion-ignore-case on'
 
-alias @?='pwd'
-alias @='cd'
-alias @~='cd ~'
-alias @..='cd ..'
-alias @...='cd ../..'
-alias @D='cd ~/Dropbox/Dev'
-alias @z='cd ~/Dropbox/Dev/zhiyuanshi'
-alias @d='cd ~/Dropbox/Dev/zhiyuanshi/dotfiles'
-alias @s='cd ~/Dropbox/Dev/zhiyuanshi/scripts'
+# directories
+alias d..='cd ..'
+alias d...='cd ../..'
+alias dD='cd ~/Dropbox'
+alias dz='cd ~/Dropbox/Dev/zhiyuan-shi'
+alias dd='cd ~/Dropbox/Dev/zhiyuan-shi/dotfiles'
+alias dg='cd ~/Dropbox/Dev/zhiyuan-shi/grep'
+alias ds='cd ~/Dropbox/Dev/zhiyuan-shi/scripts'
+alias dt='cd ~/Dropbox/Dev/zhiyuan-shi/tb'
 
+# clean and clear
 alias cr='clear'
-alias cn='~/Dropbox/Dev/zhiyuanshi/scripts/cleanup.sh'
+alias cn='~/Dropbox/Dev/zhiyuan-shi/scripts/cleanup.sh'
 
-alias sa='sudo ~/Dropbox/Dev/zhiyuanshi/scripts/setup-all.sh'
-alias sb='sudo ~/Dropbox/Dev/zhiyuanshi/scripts/setup-bashrc.sh'
-alias sg='sudo ~/Dropbox/Dev/zhiyuanshi/scripts/setup-git.sh'
-alias st='sudo ~/Dropbox/Dev/zhiyuanshi/scripts/setup-tags.sh'
-alias sv='sudo ~/Dropbox/Dev/zhiyuanshi/scripts/setup-vimrc.sh'
+# vim
+alias v='sudo gvim &> /dev/null'
+alias vv='v ~/Dropbox/Dev/zhiyuan-shi/dotfiles/.vimrc'
+alias vb='v ~/Dropbox/Dev/zhiyuan-shi/dotfiles/.bashrc.append'
 
-alias push='~/Dropbox/Dev/zhiyuanshi/scripts/push.sh'
-alias pull='~/Dropbox/Dev/zhiyuanshi/scripts/pull.sh'
+# scripts
+alias sa='sudo ~/Dropbox/Dev/zhiyuan-shi/scripts/setup-all.sh'
+alias sb='sudo ~/Dropbox/Dev/zhiyuan-shi/scripts/setup-bashrc.sh'
+alias sd='sudo ~/Dropbox/Dev/zhiyuan-shi/scripts/setup-dotfiles.sh'
+alias sg='sudo ~/Dropbox/Dev/zhiyuan-shi/scripts/setup-git.sh'
+alias st='sudo ~/Dropbox/Dev/zhiyuan-shi/scripts/setup-tags.sh'
+alias sv='sudo ~/Dropbox/Dev/zhiyuan-shi/scripts/setup-vimrc.sh'
 
+# t
+alias tu='t update'
+alias tt='t timeline'
+alias ttz='t timeline @zhiyuan_shi'
+alias ts='t search'
+alias tst='t search timeline'
+alias tstz='t search timeline @zhiyuan_shi'
+# backup my tweet history
+alias tb="tstz '.*' | sed 's/^\s\+//' | tee ~/Dropbox/tweets.txt"
+
+# git
+alias gg='gitg &'
+alias gi='git init'
+alias ga='git add'
+alias gaa='git add .'
+alias gc='git commit -m'
+alias gps='git push origin master'
+alias gpsa='~/Dropbox/Dev/zhiyuan-shi/scripts/git-push-all.sh'
+alias gpl='git pull'
+alias gpla='~/Dropbox/Dev/zhiyuan-shi/scripts/git-pull-all.sh'
+alias gs='git status'
+alias gl='git log'
+alias gr='git remote'
+alias grs='git remote show'
+alias grsu='git remote set-url'
+
+# other programs
 alias ack='ack-grep'
-alias gitg='gitg &'
-alias vim='sudo gvim &> /dev/null'
+alias n='nc localhost'
 alias vpn='~/Dropbox/anyconnect-3.1.04059/vpn/vpn'
 
+# save my Tweets history
+#t search timeline zhiyuan_shi '.*' | sed 's/^\s\+//' > ~/Dropbox/tweets.txt
+
 # OPAM configuration
-# The line below is required by OPAM 1.0.0 only
+# the line below is required by OPAM 1.0.0 only
 . /home/zshi/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 eval `opam config -env`
