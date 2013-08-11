@@ -94,6 +94,7 @@ map <Leader>h :nohlsearch<CR>
 map <Leader>l :set list!<CR>
 map <Leader>m :MRU<CR>
 map <Leader>n :NERDTreeToggle<CR>
+map <Leader>o :tabedit ~/Dropbox/org.org<CR>
 " Leave editor quickly (when saved)
 map <Leader>q :q<CR>
 map <Leader>v :tabedit ~/Dropbox/Dev/zhiyuanshi/dotfiles/.vimrc<CR>
@@ -160,8 +161,6 @@ function! SmartTab()
 endfunction
 
 imap <Tab> <C-r>=SmartTab()<CR>
-
-au VimEnter * :tabnew ~/Dropbox/org.txt
 
 " Open a NERDTree automatically when Vim starts up if no files were specified
 " Also change current directory to Dev
