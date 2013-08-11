@@ -37,25 +37,6 @@ alias tstz='t search timeline @zhiyuan_shi'
 # backup my tweet history
 alias tb="tstz '.*' | sed 's/^\s\+//' | tee ~/Dropbox/tweets.txt"
 
-# git
-alias gg='gitg &'
-alias gi='git init'
-alias ga='git add'
-alias gaa='git add .'
-alias gcm='git commit -m'
-alias gca='git commit --amend'
-alias gch='git checkout --'
-alias gps='git push origin master'
-alias gpsa='~/Dropbox/Dev/zhiyuanshi/scripts/git-push-all.sh'
-alias gpl='git pull'
-alias gpla='~/Dropbox/Dev/zhiyuanshi/scripts/git-pull-all.sh'
-alias grh='git reset HEAD'
-alias gs='git status'
-alias gl='git log'
-alias gr='git remote'
-alias grs='git remote show'
-alias grsu='git remote set-url'
-
 # other programs
 alias ack='ack-grep'
 alias n='nc localhost'
