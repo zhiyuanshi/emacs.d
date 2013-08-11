@@ -20,9 +20,9 @@ filetype plugin indent on
 " Appearance
 syntax on
 set t_Co=256
-set background=dark
+set background=light
 colorscheme solarized
-set guifont=Ubuntu\ Mono\ 12
+set guifont=Ubuntu\ Mono\ 13
 
 " General
 "set autochdir   " Replaced by 'lcd %:p:h', which is purported to be better
@@ -36,9 +36,10 @@ set tabpagemax=9 " At most 9 tabs open
 set textwidth=80
 set colorcolumn=+1 " Highlight column after 'textwidth'
 set columns=100
-set lines=37
+set lines=40
 
 " Visual aids
+set cursorline
 "set list
 set listchars=tab:▸\ ,eol:¬ " Use the same symbols as TextMate for tabstops and EOLs
 set mousehide    " Hide mouse when typing
@@ -86,7 +87,8 @@ let maplocalleader = ",,"
 au FileType ocaml map <LocalLeader>a Iassert (<Esc>A);<Esc>
 
 map <Leader>a ggvG$
-map <Leader>c :!~/Dropbox/Dev/zhiyuan-shi/scripts/cleanup.sh<CR>
+map <Leader>b :tabedit ~/Dropbox/Dev/zhiyuanshi/dotfiles/.bashrc.append<CR>
+map <Leader>c :!~/Dropbox/Dev/zhiyuanshi/scripts/cleanup.sh<CR>
 map <Leader>e :e<Space><Tab>
 map <Leader>h :nohlsearch<CR>
 map <Leader>l :set list!<CR>
@@ -94,7 +96,7 @@ map <Leader>m :MRU<CR>
 map <Leader>n :NERDTreeToggle<CR>
 " Leave editor quickly (when saved)
 map <Leader>q :q<CR>
-map <Leader>v :tabedit ~/Dropbox/Dev/zhiyuan-shi/dotfiles/.vimrc<CR>
+map <Leader>v :tabedit ~/Dropbox/Dev/zhiyuanshi/dotfiles/.vimrc<CR>
 map <Leader>w :w<CR>
 
 "map <Leader>gc :!git add . && git commit -m '
@@ -116,7 +118,7 @@ au FileType c,cpp   call Map('<F10>', ':!''./%<.out''<Space>')
 au FileType sh      call Map('<F10>', ':!chmod +x ''%'' && ''./%''<Space>')
 au FileType vim     call Map('<F10>', ':source %<CR>')
 
-" Ctrl shortcuts
+" Ctrl shortcuts are for tabs
 call Map('<C-t>'  , ':tabnew<CR>')
 call Map('<C-Tab>', ':tabnext<CR>')
 call Map('<C-F4>' , ':tabclose<CR>')
@@ -159,6 +161,8 @@ endfunction
 
 imap <Tab> <C-r>=SmartTab()<CR>
 
+au VimEnter * :tabnew ~/Dropbox/org.txt
+
 " Open a NERDTree automatically when Vim starts up if no files were specified
 " Also change current directory to Dev
 "au VimEnter * if (argc() == 0) | :NERDTree %:p:h | endif
@@ -180,8 +184,8 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`
 au BufWritePre * :%s/\s\+$//e
 
 " Copy the vimrc file to home after saving it
-au BufWritePost .vimrc         :!~/Dropbox/Dev/zhiyuan-shi/scripts/setup-vimrc.sh
-au BufWritePost .bashrc.append :!~/Dropbox/Dev/zhiyuan-shi/scripts/setup-bashrc.sh
+au BufWritePost .vimrc         :!~/Dropbox/Dev/zhiyuanshi/scripts/setup.sh d
+au BufWritePost .bashrc.append :!~/Dropbox/Dev/zhiyuanshi/scripts/setup.sh d
 
 " Our shell code looks like a scheme programmer made up all the names
 au FileType sh set iskeyword=~,@,48-57,_,192-255,-

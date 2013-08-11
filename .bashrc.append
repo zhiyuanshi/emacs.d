@@ -4,31 +4,28 @@ PS1="\n\W\$ "
 bind 'set completion-ignore-case on'
 
 # directories
+alias c='cd'
 alias d..='cd ..'
 alias d...='cd ../..'
-alias dD='cd ~/Dropbox'
-alias dz='cd ~/Dropbox/Dev/zhiyuan-shi'
-alias dd='cd ~/Dropbox/Dev/zhiyuan-shi/dotfiles'
-alias dg='cd ~/Dropbox/Dev/zhiyuan-shi/grep'
-alias ds='cd ~/Dropbox/Dev/zhiyuan-shi/scripts'
-alias dt='cd ~/Dropbox/Dev/zhiyuan-shi/tb'
+alias dD='cd ~/Dropbox/Dev'
+alias dz='cd ~/Dropbox/Dev/zhiyuanshi'
+alias dd='cd ~/Dropbox/Dev/zhiyuanshi/dotfiles'
+alias dg='cd ~/Dropbox/Dev/zhiyuanshi/grep'
+alias ds='cd ~/Dropbox/Dev/zhiyuanshi/scripts'
+alias dt='cd ~/Dropbox/Dev/zhiyuanshi/tb'
 
 # clean and clear
 alias cr='clear'
-alias cn='~/Dropbox/Dev/zhiyuan-shi/scripts/cleanup.sh'
+alias cn='~/Dropbox/Dev/zhiyuanshi/scripts/cleanup.sh'
 
 # vim
 alias v='sudo gvim &> /dev/null'
-alias vv='v ~/Dropbox/Dev/zhiyuan-shi/dotfiles/.vimrc'
-alias vb='v ~/Dropbox/Dev/zhiyuan-shi/dotfiles/.bashrc.append'
+alias vv='v ~/Dropbox/Dev/zhiyuanshi/dotfiles/.vimrc'
+alias vb='v ~/Dropbox/Dev/zhiyuanshi/dotfiles/.bashrc.append'
+alias vt='v ~/Dropbox/tweets.txt'
 
 # scripts
-alias sa='sudo ~/Dropbox/Dev/zhiyuan-shi/scripts/setup-all.sh'
-alias sb='sudo ~/Dropbox/Dev/zhiyuan-shi/scripts/setup-bashrc.sh'
-alias sd='sudo ~/Dropbox/Dev/zhiyuan-shi/scripts/setup-dotfiles.sh'
-alias sg='sudo ~/Dropbox/Dev/zhiyuan-shi/scripts/setup-git.sh'
-alias st='sudo ~/Dropbox/Dev/zhiyuan-shi/scripts/setup-tags.sh'
-alias sv='sudo ~/Dropbox/Dev/zhiyuan-shi/scripts/setup-vimrc.sh'
+alias s='sudo ~/Dropbox/Dev/zhiyuanshi/scripts/setup.sh'
 
 # t
 alias tu='t update'
@@ -45,11 +42,14 @@ alias gg='gitg &'
 alias gi='git init'
 alias ga='git add'
 alias gaa='git add .'
-alias gc='git commit -m'
+alias gcm='git commit -m'
+alias gca='git commit --amend'
+alias gch='git checkout --'
 alias gps='git push origin master'
-alias gpsa='~/Dropbox/Dev/zhiyuan-shi/scripts/git-push-all.sh'
+alias gpsa='~/Dropbox/Dev/zhiyuanshi/scripts/git-push-all.sh'
 alias gpl='git pull'
-alias gpla='~/Dropbox/Dev/zhiyuan-shi/scripts/git-pull-all.sh'
+alias gpla='~/Dropbox/Dev/zhiyuanshi/scripts/git-pull-all.sh'
+alias grh='git reset HEAD'
 alias gs='git status'
 alias gl='git log'
 alias gr='git remote'
@@ -60,9 +60,6 @@ alias grsu='git remote set-url'
 alias ack='ack-grep'
 alias n='nc localhost'
 alias vpn='~/Dropbox/anyconnect-3.1.04059/vpn/vpn'
-
-# save my Tweets history
-#t search timeline zhiyuan_shi '.*' | sed 's/^\s\+//' > ~/Dropbox/tweets.txt
 
 # OPAM configuration
 # the line below is required by OPAM 1.0.0 only
