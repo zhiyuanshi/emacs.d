@@ -36,7 +36,6 @@ alias tb="tstz '.*' | sed 's/^\s\+//' | tee ~/Dropbox/tweets.txt"
 
 # other programs
 alias ack='ack-grep'
-alias n='nc localhost'
 alias vpn='~/Dropbox/anyconnect-3.1.04059/vpn/vpn'
 
 # OPAM configuration

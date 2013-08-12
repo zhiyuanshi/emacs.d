@@ -40,7 +40,7 @@ set lines=40
 
 " Visual aids
 set cursorline
-"set list
+set list
 set listchars=tab:▸\ ,eol:¬ " Use the same symbols as TextMate for tabstops and EOLs
 set mousehide    " Hide mouse when typing
 set number       " Show line number
@@ -97,8 +97,10 @@ map <Leader>n :NERDTreeToggle<CR>
 map <Leader>o :tabedit ~/Dropbox/org.org<CR>
 " Leave editor quickly (when saved)
 map <Leader>q :q<CR>
-map <Leader>tt :UserTwitter<CR>
-map <Leader>tu :CPosttoTwitter<CR>
+"map <Leader>t :e ~/Dropbox/tweets.txt<CR>
+map <Leader>tu :UserTwitter<CR>
+map <Leader>tf :FriendsTwitter<CR>
+map <Leader>tp :CPosttoTwitter<CR>
 map <Leader>v :e ~/Dropbox/Dev/zhiyuanshi/dotfiles/.vimrc<CR>
 map <Leader>w :w<CR>
 
