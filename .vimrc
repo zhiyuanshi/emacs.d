@@ -13,6 +13,7 @@ Bundle 'Solarized'
 Bundle 'Zenburn'
 Bundle 'The-NERD-tree'
 Bundle 'mru.vim'
+Bundle 'TwitVim'
 
 " Required by Vundle
 filetype plugin indent on
@@ -30,7 +31,6 @@ set guifont=Ubuntu\ Mono\ 13
 set completeopt=menu,longest " Always show the menu, insert longest match
 set guioptions=
 set switchbuf=useopen,usetab,split " Want better buffer handling in quickfix mode
-set tabpagemax=9 " At most 9 tabs open
 
 " Edit area
 set textwidth=80
@@ -97,7 +97,9 @@ map <Leader>n :NERDTreeToggle<CR>
 map <Leader>o :tabedit ~/Dropbox/org.org<CR>
 " Leave editor quickly (when saved)
 map <Leader>q :q<CR>
-map <Leader>v :tabedit ~/Dropbox/Dev/zhiyuanshi/dotfiles/.vimrc<CR>
+map <Leader>tt :UserTwitter<CR>
+map <Leader>tu :CPosttoTwitter<CR>
+map <Leader>v :e ~/Dropbox/Dev/zhiyuanshi/dotfiles/.vimrc<CR>
 map <Leader>w :w<CR>
 
 "map <Leader>gc :!git add . && git commit -m '
@@ -119,27 +121,21 @@ au FileType c,cpp   call Map('<F10>', ':!''./%<.out''<Space>')
 au FileType sh      call Map('<F10>', ':!chmod +x ''%'' && ''./%''<Space>')
 au FileType vim     call Map('<F10>', ':source %<CR>')
 
-" Ctrl shortcuts are for tabs
-call Map('<C-t>'  , ':tabnew<CR>')
+" Buffers
+"set hidden
+"call Map('<C-Tab>', ':bnext<CR>')
+
+" Tabs
+set tabpagemax=9 " At most 9 tabs open
+call Map('<C-n>'  , ':tabnew<CR>')
 call Map('<C-Tab>', ':tabnext<CR>')
 call Map('<C-F4>' , ':tabclose<CR>')
 
-" Easy window navigation
-call Map('<C-h>', '<C-w>h')
-call Map('<C-j>', '<C-w>j')
-call Map('<C-k>', '<C-w>k')
-call Map('<C-l>', '<C-w>l')
-
-" Go to tab n
-call Map('<M-1>', '1gt')
-call Map('<M-2>', '2gt')
-call Map('<M-3>', '3gt')
-call Map('<M-4>', '4gt')
-call Map('<M-5>', '5gt')
-call Map('<M-6>', '6gt')
-call Map('<M-7>', '7gt')
-call Map('<M-8>', '8gt')
-call Map('<M-9>', '9gt')
+" Move around in insert mode
+imap <C-h> <Left>
+imap <C-j> <Up>
+imap <C-k> <Down>
+imap <C-l> <Right>
 
 " Disable arrows
 map <Up>    <Nop>

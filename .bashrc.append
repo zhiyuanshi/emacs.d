@@ -4,9 +4,6 @@ PS1="\n\W\$ "
 bind 'set completion-ignore-case on'
 
 # directories
-alias c='cd'
-alias d..='cd ..'
-alias d...='cd ../..'
 alias dD='cd ~/Dropbox/Dev'
 alias dz='cd ~/Dropbox/Dev/zhiyuanshi'
 alias dd='cd ~/Dropbox/Dev/zhiyuanshi/dotfiles'
