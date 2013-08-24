@@ -1,15 +1,13 @@
 
-cd ~/Dropbox
-PS1="\n\W\$ "
+cd ~/Dropbox/Dev/zhiyuanshi
+PS1="\nbash \W\$ "
 bind 'set completion-ignore-case on'
 
 # directories
 alias dD='cd ~/Dropbox/Dev'
 alias dz='cd ~/Dropbox/Dev/zhiyuanshi'
 alias dd='cd ~/Dropbox/Dev/zhiyuanshi/dotfiles'
-alias dg='cd ~/Dropbox/Dev/zhiyuanshi/grep'
 alias ds='cd ~/Dropbox/Dev/zhiyuanshi/scripts'
-alias dt='cd ~/Dropbox/Dev/zhiyuanshi/tb'
 
 # clean and clear
 alias cr='clear'
@@ -19,6 +17,7 @@ alias cn='~/Dropbox/Dev/zhiyuanshi/scripts/cleanup.sh'
 alias v='sudo gvim &> /dev/null'
 alias vv='v ~/Dropbox/Dev/zhiyuanshi/dotfiles/.vimrc'
 alias vb='v ~/Dropbox/Dev/zhiyuanshi/dotfiles/.bashrc.append'
+alias vo='v ~/Dropbox/org.org'
 alias vt='v ~/Dropbox/tweets.txt'
 
 # scripts
@@ -41,4 +40,4 @@ alias vpn='~/Dropbox/anyconnect-3.1.04059/vpn/vpn'
 # OPAM configuration
 # the line below is required by OPAM 1.0.0 only
 . /home/zshi/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-eval `opam config -env`
+eval `opam config env`

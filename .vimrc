@@ -13,7 +13,6 @@ Bundle 'Solarized'
 Bundle 'Zenburn'
 Bundle 'The-NERD-tree'
 Bundle 'mru.vim'
-Bundle 'TwitVim'
 
 " Required by Vundle
 filetype plugin indent on
@@ -23,12 +22,15 @@ syntax on
 set t_Co=256
 set background=light
 colorscheme solarized
-set guifont=Ubuntu\ Mono\ 13
+"set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
+"set guifont=Monospace\ 10
+set guifont=Ubuntu\ Mono\ 12
 
 " General
 "set autochdir   " Replaced by 'lcd %:p:h', which is purported to be better
 "set autowrite   " Automatically write buffer before special actions
 set completeopt=menu,longest " Always show the menu, insert longest match
+set nowrap
 set guioptions=
 set switchbuf=useopen,usetab,split " Want better buffer handling in quickfix mode
 
@@ -39,8 +41,8 @@ set columns=100
 set lines=40
 
 " Visual aids
-set cursorline
-set list
+"set cursorline
+"set list
 set listchars=tab:▸\ ,eol:¬ " Use the same symbols as TextMate for tabstops and EOLs
 set mousehide    " Hide mouse when typing
 set number       " Show line number
@@ -87,21 +89,18 @@ let maplocalleader = ",,"
 au FileType ocaml map <LocalLeader>a Iassert (<Esc>A);<Esc>
 
 map <Leader>a ggvG$
-map <Leader>b :tabedit ~/Dropbox/Dev/zhiyuanshi/dotfiles/.bashrc.append<CR>
+map <Leader>b :tabnew ~/Dropbox/Dev/zhiyuanshi/dotfiles/.bashrc.append<CR>
 map <Leader>c :!~/Dropbox/Dev/zhiyuanshi/scripts/cleanup.sh<CR>
 map <Leader>e :e<Space><Tab>
 map <Leader>h :nohlsearch<CR>
 map <Leader>l :set list!<CR>
 map <Leader>m :MRU<CR>
 map <Leader>n :NERDTreeToggle<CR>
-map <Leader>o :tabedit ~/Dropbox/org.org<CR>
+map <Leader>o :tabnew ~/Dropbox/org.org<CR>
 " Leave editor quickly (when saved)
 map <Leader>q :q<CR>
 "map <Leader>t :e ~/Dropbox/tweets.txt<CR>
-map <Leader>tu :UserTwitter<CR>
-map <Leader>tf :FriendsTwitter<CR>
-map <Leader>tp :CPosttoTwitter<CR>
-map <Leader>v :e ~/Dropbox/Dev/zhiyuanshi/dotfiles/.vimrc<CR>
+map <Leader>v :tabnew ~/Dropbox/Dev/zhiyuanshi/dotfiles/.vimrc<CR>
 map <Leader>w :w<CR>
 
 "map <Leader>gc :!git add . && git commit -m '
@@ -129,7 +128,7 @@ au FileType vim     call Map('<F10>', ':source %<CR>')
 
 " Tabs
 set tabpagemax=9 " At most 9 tabs open
-call Map('<C-n>'  , ':tabnew<CR>')
+call Map('<C-t>'  , ':tabnew<CR>')
 call Map('<C-Tab>', ':tabnext<CR>')
 call Map('<C-F4>' , ':tabclose<CR>')
 
