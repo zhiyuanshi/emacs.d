@@ -58,10 +58,11 @@ set tabstop=8    "A tab is 8 spaces
 set expandtab    " Tabs are evil
 set smarttab     "Indent instead of tab at start of line
 set shiftwidth=2
+au FileType haskell,ocaml,ruby,shell,vim set shiftwidth=2
+au FileType c,cpp,java,python,javascript set shiftwidth=4
 set autoindent
 set smartindent
 set nojoinspaces "Don't convert spaces to tabs
-au FileType c,cpp,python set shiftwidth=4
 au FileType c,cpp set cindent
 
 " Search and substitution
@@ -90,7 +91,7 @@ au FileType ocaml map <LocalLeader>a Iassert (<Esc>A);<Esc>
 
 map <Leader>a ggvG$
 map <Leader>b :tabnew ~/Dropbox/Dev/zhiyuanshi/dotfiles/.bashrc.append<CR>
-map <Leader>c :!~/Dropbox/Dev/zhiyuanshi/scripts/cleanup.sh<CR>
+map <Leader>c :!~/Dropbox/Dev/zhiyuanshi/scripts/clean.sh<CR>
 map <Leader>e :e<Space><Tab>
 map <Leader>h :nohlsearch<CR>
 map <Leader>l :set list!<CR>
