@@ -1,27 +1,50 @@
 
-cd ~/Dropbox/Dev/zhiyuanshi
-PS1="\nbash \W\$ "
+PS1="\n\W \$ "
 bind 'set completion-ignore-case on'
 
-# directories
-alias dD='cd ~/Dropbox/Dev'
-alias dz='cd ~/Dropbox/Dev/zhiyuanshi'
-alias dd='cd ~/Dropbox/Dev/zhiyuanshi/dotfiles'
-alias ds='cd ~/Dropbox/Dev/zhiyuanshi/scripts'
+alias cdc='cd ~/Dropbox/Coursework/Current'
+alias cdd='cd ~/Dropbox/Dev/dotfiles'
+alias cdP='cd /media/zshi/Passport'
+alias cds='cd ~/Dropbox/Dev/utils'
+alias cdt='cd ~/Dropbox/Dev/toolkit'
+alias cpt='cp -r ~/Dropbox/Dev/toolkit/* .'
 
 # clean and clear
 alias cr='clear'
-alias cn='~/Dropbox/Dev/zhiyuanshi/scripts/cleanup.sh'
+alias cn='~/Dropbox/Dev/utils/clean.sh'
 
 # vim
-alias v='sudo gvim &> /dev/null'
-alias vv='v ~/Dropbox/Dev/zhiyuanshi/dotfiles/.vimrc'
-alias vb='v ~/Dropbox/Dev/zhiyuanshi/dotfiles/.bashrc.append'
-alias vo='v ~/Dropbox/org.org'
-alias vt='v ~/Dropbox/tweets.txt'
+alias v='gvim &> /dev/null'
+alias vd='v ~/Dropbox/Dev/dotfiles'
+alias vv='v ~/Dropbox/Dev/dotfiles/.vimrc'
+alias vb='v ~/Dropbox/Dev/dotfiles/.bashrc.append'
+alias vs='v ~/Dropbox/Dev/utils'
+alias vt='v ~/Dropbox/Dev/toolkit'
 
-# scripts
-alias s='sudo ~/Dropbox/Dev/zhiyuanshi/scripts/setup.sh'
+# utils
+alias s='sudo ~/Dropbox/Dev/utils/setup.sh'
+alias gcj='~/Dropbox/Dev/utils/gcj.sh'
+
+# git
+alias gs='git status'
+alias gl='git log'
+alias gaa.='git add --all .' # 'git add --all <pathspec>' will let you also record the removals.
+alias gcm='git commit -m'
+alias gpom='git push origin master'
+alias gphm='git push heroku master'
+
+# other programs
+alias n='nautilus'
+alias o='xdg-open'
+alias ack='ack-grep'
+alias vpn='~/Dropbox/anyconnect-3.1.04059/vpn/vpn'
+alias sbt='~/software/sbt/bin/sbt'
+alias eclipse='eclipse 2> /dev/null &'
+alias t='tree'
+alias ea='~/software/adt-bundle-linux-x86_64-20131030/eclipse/eclipse 2> /dev/null &'
+alias ej='~/software/eclipse/eclipse 2> /dev/null &'
+alias play='~/software/play-2.2.1/play'
+alias phpS='php -S localhost:8000'
 
 # t
 alias tu='t update'
@@ -33,11 +56,20 @@ alias tstz='t search timeline @zhiyuan_shi'
 # backup my tweet history
 alias tb="tstz '.*' | sed 's/^\s\+//' | tee ~/Dropbox/tweets.txt"
 
-# other programs
-alias ack='ack-grep'
-alias vpn='~/Dropbox/anyconnect-3.1.04059/vpn/vpn'
+# Invert behavior of Fn key on Apple keyboard
+# https://help.ubuntu.com/community/AppleKeyboard#Change_Function_Key_behavior
+echo 2 > /sys/module/hid_apple/parameters/fnmode
 
-# OPAM configuration
+# Clear `Recently Used`
+echo > ~/.local/share/recently-used.xbel
+touch  ~/.local/share/recently-used.xbel
+echo 'gtk-recent-files-max-age=0' > ~/.gtkrc-2.0
+
+# Snap Framework (Haskell)
+# http://snapframework.com/docs/quickstart
+PATH=$HOME/.cabal/bin:$PATH
+
+# OPAM configuration (OCaml)
 # the line below is required by OPAM 1.0.0 only
-. /home/zshi/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-eval `opam config env`
+# . /home/zshi/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+# eval `opam config env`
