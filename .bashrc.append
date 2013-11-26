@@ -15,11 +15,11 @@ alias cn='~/Dropbox/Dev/utils/clean.sh'
 
 # vim
 alias v='gvim &> /dev/null'
-alias vd='v ~/Dropbox/Dev/dotfiles'
-alias vv='v ~/Dropbox/Dev/dotfiles/.vimrc'
 alias vb='v ~/Dropbox/Dev/dotfiles/.bashrc.append'
+alias vd='v ~/Dropbox/Dev/dotfiles'
 alias vs='v ~/Dropbox/Dev/utils'
 alias vt='v ~/Dropbox/Dev/toolkit'
+alias vv='v ~/Dropbox/Dev/dotfiles/.vimrc'
 
 # utils
 alias s='sudo ~/Dropbox/Dev/utils/setup.sh'
@@ -34,6 +34,7 @@ alias gpom='git push origin master'
 alias gphm='git push heroku master'
 
 # other programs
+alias g='google-chrome'
 alias n='nautilus'
 alias o='xdg-open'
 alias ack='ack-grep'
