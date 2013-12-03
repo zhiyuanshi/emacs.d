@@ -25,6 +25,9 @@ Bundle 'indenthaskell.vim'
 Bundle 'Haskell-Highlight-Enhanced'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'taglist.vim'
+"Bundle 'Twinside/vim-haskellConceal'
+Bundle 'scrooloose/syntastic'
+Bundle 'justinmk/vim-syntax-extra'
 
 " Required by Vundle
 filetype plugin indent on
@@ -38,8 +41,8 @@ syntax on
 set t_Co=256
 set guifont=Ubuntu\ Mono\ 14
 "set guifont=Monospace\ 10
-set background=dark
-colorscheme molokai
+set background=light
+colorscheme solarized
 "set cursorline
 
 " General
@@ -52,10 +55,10 @@ set guioptions=
 set switchbuf=useopen,usetab,split " Want better buffer handling in quickfix mode
 
 " Edit area
-set textwidth=80
-set colorcolumn=+1 " Highlight column after 'textwidth'
-set columns=120
-set lines=40
+set textwidth=0
+"set colorcolumn=+1 " Highlight column after 'textwidth'
+set columns=140
+set lines=50
 
 " Folding
 set nofoldenable
@@ -109,7 +112,7 @@ let maplocalleader = ",,"
 
 map <Leader>a ggvG$
 map <Leader>b :tabedit ~/Dropbox/Dev/dotfiles/.bashrc.append<CR>
-map <Leader>c :!~/Dropbox/Dev/scripts/clean.sh<CR>
+map <Leader>B :!cp /etc/skel/.bashrc ~ && cat ~/Dropbox/Dev/dotfiles/.bashrc.append >> ~/.bashrc<CR>
 map <Leader>e :e<Space><Tab>
 map <Leader>f :set foldenable! foldenable?<CR>
 map <Leader>m :MRU<CR>
@@ -119,6 +122,7 @@ map <Leader>q :q<CR>
 "map <Leader>s :source %<CR>
 map <Leader>t :TlistToggle<CR>
 map <Leader>v :tabedit ~/Dropbox/Dev/dotfiles/.vimrc<CR>
+map <Leader>V :!cp ~/Dropbox/Dev/dotfiles/.vimrc ~<CR>
 map <Leader>w :w<CR>
 
 "map <Leader>gc :!git add . && git commit -m '
@@ -126,34 +130,15 @@ map <Leader>w :w<CR>
 "map <Leader>gg :!git push github master
 
 " Function shortcuts
-call Map('<F1>', ':help ')
-call Map('<F2>', ':e ')
-call Map('<F3>', ':w<CR>')
-call Map('<F4>', ':colorscheme ')
-call Map('<F8>', ':!')
 call Map('<F9>', ':w<CR>:make<CR>')
 
-au BufEnter * if &filetype == 'text' | set nonumber wrap | else | set number nowrap | endif
+au BufEnter * if index(['text', 'markdown'], &filetype) != -1 | set nonumber wrap | else | set number nowrap | endif
 
 function! SetShiftWidth()
-  if &filetype == 'c' || &filetype == 'cpp' || &filetype == 'java'
+  if index(['haskell', 'c', 'cpp', 'java', 'javascript', 'xml', 'lex', 'yacc'], &filetype) != -1
     set shiftwidth=4
-
-  elseif &filetype == 'javascript' || &filetype == 'xml'
-    set shiftwidth=4
-
-  elseif &filetype == 'python' || &filetype == 'ruby' || &filetype == 'sh'
+  elseif index(['ocaml', 'python', 'ruby', 'sh', 'vim', 'r'], &filetype) != -1
     set shiftwidth=2
-
-  elseif &filetype == 'haskell' || &filetype == 'ocaml'
-    set shiftwidth=2
-
-  elseif &filetype == 'vim'
-    set shiftwidth=2
-
-  elseif &filetype == 'r'
-    set shiftwidth=2
-
   endif
 endfunction
 
@@ -210,8 +195,14 @@ function! SetRun()
   elseif &filetype == 'ocaml'
     call Map('<F10>', ':!./%<.native<Space>')
 
-  elseif &filetype == 'python' || &filetype == 'ruby' || &filetype == 'sh'
-    call Map('<F10>', ':!chmod +x % && ./%<Space>')
+  elseif &filetype == 'python'
+    call Map('<F10>', ':!python %<Space>')
+
+  elseif &filetype == 'ruby'
+    call Map('<F10>', ':!ruby %<Space>')
+
+  elseif &filetype == 'sh'
+    call Map('<F10>', ':!bash %<Space>')
 
   elseif &filetype == 'vim'
     call Map('<F10>', ':source %<CR>')
@@ -294,8 +285,8 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`
 au BufWritePre * :%s/\s\+$//e
 
 " Copy the vimrc file to home after saving it
-au BufWritePost .vimrc         :!cp % ~
-au BufWritePost .bashrc.append :!cp /etc/skel/.bashrc ~ && cat % >> ~/.bashrc
+"au BufWritePost .vimrc         :!cp % ~
+"au BufWritePost .bashrc.append :!cp /etc/skel/.bashrc ~ && cat % >> ~/.bashrc
 
 " http://vim.wikia.com/wiki/Smart_mapping_for_tab_completion
 function! SmartTab()
@@ -327,12 +318,11 @@ au BufEnter * :lchdir %:p:h
 " (happens when dropping a file on gvim).
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 
+au BufWritePre * retab
 " Remove Trailing Spaces
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
 au BufWritePre * :%s/\s\+$//e
 
-" Copy the vimrc file to home after saving it
-au BufWritePost .vimrc         :!cp % ~
-au BufWritePost .bashrc.append :!cp /etc/skel/.bashrc ~ && cat % >> ~/.bashrc
+"au BufWritePost .vimrc :source %
 
 augroup end

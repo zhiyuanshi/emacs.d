@@ -4,7 +4,9 @@ bind 'set completion-ignore-case on'
 
 alias cdc='cd ~/Dropbox/Coursework/Current'
 alias cdd='cd ~/Dropbox/Dev/dotfiles'
+alias cdD='cd ~/Dropbox/Dev'
 alias cdP='cd /media/zshi/Passport'
+alias cdrenren='cd ~/Dropbox/Dev/projects/frrr/renren'
 alias cds='cd ~/Dropbox/Dev/utils'
 alias cdt='cd ~/Dropbox/Dev/toolkit'
 alias cpt='cp -r ~/Dropbox/Dev/toolkit/* .'
@@ -28,34 +30,34 @@ alias gcj='~/Dropbox/Dev/utils/gcj.sh'
 # git
 alias gs='git status'
 alias gl='git log'
-alias gaa.='git add --all .' # 'git add --all <pathspec>' will let you also record the removals.
-alias gcm='git commit -m'
+alias gcm='git add --all && git commit -m' # 'git add --all <pathspec>' will let you also record the removals.
 alias gpom='git push origin master'
 alias gphm='git push heroku master'
+alias gg='gitg 2> /dev/null &'
 
 # other programs
-alias g='google-chrome'
+alias s='~/software/android-studio/bin/studio.sh'
+alias c='google-chrome'
 alias n='nautilus'
 alias o='xdg-open'
 alias ack='ack-grep'
 alias vpn='~/Dropbox/anyconnect-3.1.04059/vpn/vpn'
 alias sbt='~/software/sbt/bin/sbt'
-alias eclipse='eclipse 2> /dev/null &'
 alias t='tree'
 alias ea='~/software/adt-bundle-linux-x86_64-20131030/eclipse/eclipse 2> /dev/null &'
 alias ej='~/software/eclipse/eclipse 2> /dev/null &'
 alias play='~/software/play-2.2.1/play'
 alias phpS='php -S localhost:8000'
 
-# t
-alias tu='t update'
-alias tt='t timeline'
-alias ttz='t timeline @zhiyuan_shi'
-alias ts='t search'
-alias tst='t search timeline'
-alias tstz='t search timeline @zhiyuan_shi'
-# backup my tweet history
-alias tb="tstz '.*' | sed 's/^\s\+//' | tee ~/Dropbox/tweets.txt"
+# # t
+# alias tu='t update'
+# alias tt='t timeline'
+# alias ttz='t timeline @zhiyuan_shi'
+# alias ts='t search'
+# alias tst='t search timeline'
+# alias tstz='t search timeline @zhiyuan_shi'
+# # backup my tweet history
+# alias tb="tstz '.*' | sed 's/^\s\+//' | tee ~/Dropbox/tweets.txt"
 
 # Invert behavior of Fn key on Apple keyboard
 # https://help.ubuntu.com/community/AppleKeyboard#Change_Function_Key_behavior
