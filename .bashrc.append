@@ -1,11 +1,12 @@
 
-PS1="\n\W \$ "
+PS1="\n\n[\W] \$ "
 bind 'set completion-ignore-case on'
 
+alias ..='cd ..'
 alias cdc='cd ~/Dropbox/Coursework/Current'
 alias cdd='cd ~/Dropbox/Dev/dotfiles'
 alias cdD='cd ~/Dropbox/Dev'
-alias cdP='cd /media/zshi/Passport'
+alias cdP='cd /media/zhiyuan/Passport'
 alias cdrenren='cd ~/Dropbox/Dev/projects/frrr/renren'
 alias cds='cd ~/Dropbox/Dev/utils'
 alias cdt='cd ~/Dropbox/Dev/toolkit'
@@ -30,12 +31,17 @@ alias gcj='~/Dropbox/Dev/utils/gcj.sh'
 # git
 alias gs='git status'
 alias gl='git log'
-alias gcm='git add --all && git commit -m' # 'git add --all <pathspec>' will let you also record the removals.
-alias gpom='git push origin master'
-alias gphm='git push heroku master'
+alias gc='git add --all && git commit -m' # 'git add --all <pathspec>' will let you also record the removals.
+alias gp='git push origin master'
+alias gph='git push heroku master'
 alias gg='gitg 2> /dev/null &'
 
 # other programs
+alias g='google-chrome'
+alias jb='jekyll build'
+alias scbd='ruby ~/Dropbox/scb/scbd.rb'
+alias scb='ruby ~/Dropbox/scb/scb-cli.rb'
+alias p='pwd'
 alias s='~/software/android-studio/bin/studio.sh'
 alias c='google-chrome'
 alias n='nautilus'
@@ -47,7 +53,7 @@ alias t='tree'
 alias ea='~/software/adt-bundle-linux-x86_64-20131030/eclipse/eclipse 2> /dev/null &'
 alias ej='~/software/eclipse/eclipse 2> /dev/null &'
 alias play='~/software/play-2.2.1/play'
-alias phpS='php -S localhost:8000'
+# alias phpS='php -S localhost:8000'
 
 # # t
 # alias tu='t update'
@@ -61,7 +67,7 @@ alias phpS='php -S localhost:8000'
 
 # Invert behavior of Fn key on Apple keyboard
 # https://help.ubuntu.com/community/AppleKeyboard#Change_Function_Key_behavior
-echo 2 > /sys/module/hid_apple/parameters/fnmode
+# echo 2 > /sys/module/hid_apple/parameters/fnmode
 
 # Clear `Recently Used`
 echo > ~/.local/share/recently-used.xbel
@@ -74,5 +80,5 @@ PATH=$HOME/.cabal/bin:$PATH
 
 # OPAM configuration (OCaml)
 # the line below is required by OPAM 1.0.0 only
-# . /home/zshi/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+# . /home/zhiyuan/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 # eval `opam config env`
