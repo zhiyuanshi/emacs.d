@@ -24,10 +24,11 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'indenthaskell.vim'
 Bundle 'Haskell-Highlight-Enhanced'
 Bundle 'derekwyatt/vim-scala'
-Bundle 'taglist.vim'
+"Bundle 'taglist.vim'
 "Bundle 'Twinside/vim-haskellConceal'
 Bundle 'scrooloose/syntastic'
 Bundle 'justinmk/vim-syntax-extra'
+Bundle 'mattn/emmet-vim'
 
 " Required by Vundle
 filetype plugin indent on
@@ -39,15 +40,15 @@ au!
 " Appearance
 syntax on
 set t_Co=256
-set guifont=Ubuntu\ Mono\ 14
-"set guifont=Monospace\ 10
+set guifont=Ubuntu\ Mono\ 12
+" set guifont=Monospace\ 10
+" set guifont=DejaVu\ Sans\ Mono\ 10
 set background=light
 colorscheme solarized
-"set cursorline
 
 " General
-"set autochdir   " Replaced by 'lcd %:p:h', which is purported to be better
-"set autowrite   " Automatically write buffer before special actions
+" set autochdir   " Replaced by 'lcd %:p:h', which is purported to be better
+" set autowrite   " Automatically write buffer before special actions
 set shell=/bin/bash
 set completeopt=menu,longest " Always show the menu, insert longest match
 set nowrap
@@ -56,9 +57,9 @@ set switchbuf=useopen,usetab,split " Want better buffer handling in quickfix mod
 
 " Edit area
 set textwidth=0
-"set colorcolumn=+1 " Highlight column after 'textwidth'
+" set colorcolumn=+1 " Highlight column after 'textwidth'
 set columns=140
-set lines=50
+set lines=38
 
 " Folding
 set nofoldenable
@@ -67,8 +68,8 @@ set foldmethod=indent
 map <Space> za
 
 " Visual aids
-"set cursorline
-"set list
+" set cursorline
+" set list
 set listchars=tab:¿\ ,eol:¬ " Use the same symbols as TextMate for tabstops and EOL
 set mousehide    " Hide mouse when typing
 set number       " Show line number
@@ -107,37 +108,35 @@ endfunction
 
 " Leader shortcuts
 " , is a more convenient leader than \
-let mapleader = ","
-let maplocalleader = ",,"
+" let mapleader = ","
+" let maplocalleader = ",,"
 
-map <Leader>a ggvG$
-map <Leader>b :tabedit ~/Dropbox/Dev/dotfiles/.bashrc.append<CR>
-map <Leader>B :!cp /etc/skel/.bashrc ~ && cat ~/Dropbox/Dev/dotfiles/.bashrc.append >> ~/.bashrc<CR>
-map <Leader>e :e<Space><Tab>
-map <Leader>f :set foldenable! foldenable?<CR>
-map <Leader>m :MRU<CR>
-map <Leader>n :NERDTreeToggle<CR>
-map <Leader>o :tabedit ~/Dropbox/org.org<CR>
-map <Leader>q :q<CR>
-"map <Leader>s :source %<CR>
-map <Leader>t :TlistToggle<CR>
-map <Leader>v :tabedit ~/Dropbox/Dev/dotfiles/.vimrc<CR>
-map <Leader>V :!cp ~/Dropbox/Dev/dotfiles/.vimrc ~<CR>
-map <Leader>w :w<CR>
+call Map('<M-w>', ':w<CR>')
+call Map('<M-q>', ':q<CR>')
+call Map('<M-s>', ':source %<CR>')
+call Map('<M-a>', 'ggvG$')
+call Map('<M-m>', ':MRU<CR>')
+call Map('<M-n>', ':NERDTreeToggle<CR>')
+call Map('<M-f>', ':set foldenable! foldenable?<CR>')
 
-"map <Leader>gc :!git add . && git commit -m '
-"map <Leader>gb :!git push bitbucket master
-"map <Leader>gg :!git push github master
+call Map('<M-c>', ':w<CR>:make<CR>')
+
+call Map('<M-b>', ':tabedit ~/Dropbox/Dev/dotfiles/.bashrc.append<CR>')
+call Map('<M-B>', ':!cp /etc/skel/.bashrc ~ && cat ~/Dropbox/Dev/dotfiles/.bashrc.append >> ~/.bashrc<CR>')
+
+call Map('<M-e>', ':e<Space><Tab>')
+call Map('<M-t>', ':TlistToggle<CR>')
+call Map('<M-v>', ':tabedit ~/Dropbox/Dev/dotfiles/.vimrc<CR>')
+call Map('<M-V>', ':!cp ~/Dropbox/Dev/dotfiles/.vimrc ~<CR>')
 
 " Function shortcuts
-call Map('<F9>', ':w<CR>:make<CR>')
 
 au BufEnter * if index(['text', 'markdown'], &filetype) != -1 | set nonumber wrap | else | set number nowrap | endif
 
 function! SetShiftWidth()
-  if index(['haskell', 'c', 'cpp', 'java', 'javascript', 'xml', 'lex', 'yacc'], &filetype) != -1
+  if index(['haskell', 'python', 'c', 'cpp', 'java', 'javascript', 'xml', 'lex', 'yacc'], &filetype) != -1
     set shiftwidth=4
-  elseif index(['ocaml', 'python', 'ruby', 'sh', 'vim', 'r'], &filetype) != -1
+  elseif index(['ocaml', 'ruby', 'sh', 'vim', 'r'], &filetype) != -1
     set shiftwidth=2
   endif
 endfunction
@@ -181,31 +180,28 @@ au BufEnter * call SetMakePrg()
 
 function! SetRun()
   if &filetype == 'c' || &filetype == 'cpp'
-    call Map('<F10>', ':!./%<.out<Space>')
+    call Map('<M-r>', ':!./%<.out<Space>')
 
   elseif &filetype == 'java'
-    call Map('<F10>', ':!java %<<Space>')
+    call Map('<M-r>', ':!java %<<Space>')
 
   elseif &filetype == 'scala'
-    call Map('<F10>', ':!scala %<<Space>')
+    call Map('<M-r>', ':!scala %<<Space>')
 
   elseif &filetype == 'haskell'
-    call Map('<F10>', ':!./%<.exe<Space>')
+    call Map('<M-r>', ':!./%<.exe<Space>')
 
   elseif &filetype == 'ocaml'
-    call Map('<F10>', ':!./%<.native<Space>')
+    call Map('<M-r>', ':!./%<.native<Space>')
 
   elseif &filetype == 'python'
-    call Map('<F10>', ':!python %<Space>')
+    call Map('<M-r>', ':!python %<Space>')
 
   elseif &filetype == 'ruby'
-    call Map('<F10>', ':!ruby %<Space>')
+    call Map('<M-r>', ':!ruby %<Space>')
 
   elseif &filetype == 'sh'
-    call Map('<F10>', ':!bash %<Space>')
-
-  elseif &filetype == 'vim'
-    call Map('<F10>', ':source %<CR>')
+    call Map('<M-r>', ':!bash %<Space>')
 
   endif
 endfunction
@@ -228,8 +224,8 @@ nmap <C-0> g^
 "
 
 " Buffers
-"set hidden
-"call Map('<C-Tab>', ':bnext<CR>')
+" set hidden
+" call Map('<C-Tab>', ':bnext<CR>')
 
 " Tabs
 set tabpagemax=9 " At most 9 tabs open
@@ -266,7 +262,7 @@ imap <Tab> <C-r>=SmartTab()<CR>
 
 " Open a NERDTree automatically when Vim starts up if no files were specified
 " Also change current directory to Dev
-"au VimEnter * if (argc() == 0) | :NERDTree %:p:h | endif
+" au VimEnter * if (argc() == 0) | :NERDTree %:p:h | endif
 let NERDTreeIgnore=['^_build$', '^_tags$', '\.native$', '\.exe$']
 
 " Close Vim if the only window left open is a NERDTree
@@ -285,8 +281,8 @@ au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`
 au BufWritePre * :%s/\s\+$//e
 
 " Copy the vimrc file to home after saving it
-"au BufWritePost .vimrc         :!cp % ~
-"au BufWritePost .bashrc.append :!cp /etc/skel/.bashrc ~ && cat % >> ~/.bashrc
+" au BufWritePost .vimrc         :!cp % ~
+" au BufWritePost .bashrc.append :!cp /etc/skel/.bashrc ~ && cat % >> ~/.bashrc
 
 " http://vim.wikia.com/wiki/Smart_mapping_for_tab_completion
 function! SmartTab()
@@ -304,7 +300,7 @@ imap <Tab> <C-r>=SmartTab()<CR>
 
 " Open a NERDTree automatically when Vim starts up if no files were specified
 " Also change current directory to Dev
-"au VimEnter * if (argc() == 0) | :NERDTree %:p:h | endif
+" au VimEnter * if (argc() == 0) | :NERDTree %:p:h | endif
 let NERDTreeIgnore=['^_build$', '^_tags$', '\.native$', '\.exe$']
 
 " Close Vim if the only window left open is a NERDTree
@@ -323,6 +319,6 @@ au BufWritePre * retab
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
 au BufWritePre * :%s/\s\+$//e
 
-"au BufWritePost .vimrc :source %
+" au BufWritePost .vimrc :source %
 
 augroup end
