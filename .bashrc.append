@@ -31,12 +31,14 @@ alias gcj='~/Dropbox/Dev/utils/gcj.sh'
 # git
 alias gs='git status'
 alias gl='git log'
-alias gc='git add --all && git commit -m' # 'git add --all <pathspec>' will let you also record the removals.
+alias gc='git commit -am' # 'git add --all <pathspec>' will let you also record the removals.
 alias gp='git push origin master'
-alias gph='git push heroku master'
+alias assets-precompile='RAILS_ENV=production bundle exec rake assets:precompile'
+alias deploy='bundle install && git push heroku master && heroku run rake db:migrate'
 alias gg='gitg 2> /dev/null &'
 
 # other programs
+# alias b='bundle'
 alias g='google-chrome'
 alias jb='jekyll build'
 alias scbd='ruby ~/Dropbox/scb/scbd.rb'
