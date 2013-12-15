@@ -9,26 +9,31 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " My Bundles
+"Bundle 'Twinside/vim-haskellConceal'
+"Bundle 'taglist.vim'
 Bundle 'Guardian'
-Bundle 'molokai'
+Bundle 'Haskell-Highlight-Enhanced'
 Bundle 'Solarized'
-Bundle 'Zenburn'
-Bundle 'brettof86/vim-codeschool'
-Bundle 'noahfrederick/vim-hemisu'
-Bundle 'mru.vim'
 Bundle 'The-NERD-tree'
+Bundle 'Zenburn'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'brettof86/vim-codeschool'
+Bundle 'derekwyatt/vim-scala'
+Bundle 'indenthaskell.vim'
+Bundle 'justinmk/vim-syntax-extra'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'mattn/emmet-vim'
+Bundle 'molokai'
+Bundle 'mru.vim'
+Bundle 'noahfrederick/vim-hemisu'
+Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'indenthaskell.vim'
-Bundle 'Haskell-Highlight-Enhanced'
-Bundle 'derekwyatt/vim-scala'
-"Bundle 'taglist.vim'
-"Bundle 'Twinside/vim-haskellConceal'
-Bundle 'scrooloose/syntastic'
-Bundle 'justinmk/vim-syntax-extra'
-Bundle 'mattn/emmet-vim'
+Bundle 'w0ng/vim-hybrid'
+Bundle 'nanotech/jellybeans.vim'
 
 " Required by Vundle
 filetype plugin indent on
@@ -40,11 +45,11 @@ au!
 " Appearance
 syntax on
 set t_Co=256
-set guifont=Ubuntu\ Mono\ 12
+set guifont=Ubuntu\ Mono\ 14
 " set guifont=Monospace\ 10
 " set guifont=DejaVu\ Sans\ Mono\ 10
-set background=light
-colorscheme solarized
+set background=dark
+colorscheme hybrid
 
 " General
 " set autochdir   " Replaced by 'lcd %:p:h', which is purported to be better
@@ -58,8 +63,10 @@ set switchbuf=useopen,usetab,split " Want better buffer handling in quickfix mod
 " Edit area
 set textwidth=0
 " set colorcolumn=+1 " Highlight column after 'textwidth'
-set columns=140
-set lines=38
+set columns=160
+set lines=47
+
+let g:user_zen_leader_key = '<C-k>'
 
 " Folding
 set nofoldenable
@@ -108,35 +115,40 @@ endfunction
 
 " Leader shortcuts
 " , is a more convenient leader than \
-" let mapleader = ","
-" let maplocalleader = ",,"
+let mapleader = ","
+let maplocalleader = ",,"
 
+call Map('<M-e>', ':e<Space><Tab>')
 call Map('<M-w>', ':w<CR>')
 call Map('<M-q>', ':q<CR>')
-call Map('<M-s>', ':source %<CR>')
 call Map('<M-a>', 'ggvG$')
-call Map('<M-m>', ':MRU<CR>')
-call Map('<M-n>', ':NERDTreeToggle<CR>')
+call Map('<M-s>', ':source %<CR>')
 call Map('<M-f>', ':set foldenable! foldenable?<CR>')
-
 call Map('<M-c>', ':w<CR>:make<CR>')
+call Map('<M-k>', ':colorscheme<Space><TAB>')
+
+call Map('<M-n>', ':NERDTreeToggle<CR>')
+call Map('<M-m>', ':MRU<CR>')
+call Map('<M-t>', ':TlistToggle<CR>')
+call Map('<M-g>', ':GitGutterLineHighlightsToggle<CR>')
+
+call Map('<M-v>', ':tabedit ~/Dropbox/Dev/dotfiles/.vimrc<CR>')
+call Map('<M-V>', ':!cp ~/Dropbox/Dev/dotfiles/.vimrc ~<CR>')
 
 call Map('<M-b>', ':tabedit ~/Dropbox/Dev/dotfiles/.bashrc.append<CR>')
 call Map('<M-B>', ':!cp /etc/skel/.bashrc ~ && cat ~/Dropbox/Dev/dotfiles/.bashrc.append >> ~/.bashrc<CR>')
 
-call Map('<M-e>', ':e<Space><Tab>')
-call Map('<M-t>', ':TlistToggle<CR>')
-call Map('<M-v>', ':tabedit ~/Dropbox/Dev/dotfiles/.vimrc<CR>')
-call Map('<M-V>', ':!cp ~/Dropbox/Dev/dotfiles/.vimrc ~<CR>')
-
 " Function shortcuts
+
+" let g:gitgutter_realtime = 0
+" let g:gitgutter_eager = 0
 
 au BufEnter * if index(['text', 'markdown'], &filetype) != -1 | set nonumber wrap | else | set number nowrap | endif
 
 function! SetShiftWidth()
   if index(['haskell', 'python', 'c', 'cpp', 'java', 'javascript', 'xml', 'lex', 'yacc'], &filetype) != -1
     set shiftwidth=4
-  elseif index(['ocaml', 'ruby', 'sh', 'vim', 'r'], &filetype) != -1
+  elseif index(['ocaml', 'ruby', 'sh', 'vim', 'r', 'html', 'eruby'], &filetype) != -1
     set shiftwidth=2
   endif
 endfunction
@@ -211,16 +223,16 @@ au BufEnter * call SetRun()
 " Soft wrap plain text
 au BufEnter * if &filetype == 'markdown' || &filetype == 'text' | set wrap linebreak nolist | endif
 
-vmap <C-j> gj
-vmap <C-k> gk
-vmap <C-4> g$
-vmap <C-6> g^
-vmap <C-0> g^
-nmap <C-j> gj
-nmap <C-k> gk
-nmap <C-4> g$
-nmap <C-6> g^
-nmap <C-0> g^
+" vmap <C-j> gj
+" vmap <C-k> gk
+" vmap <C-4> g$
+" vmap <C-6> g^
+" vmap <C-0> g^
+" nmap <C-j> gj
+" nmap <C-k> gk
+" nmap <C-4> g$
+" nmap <C-6> g^
+" nmap <C-0> g^
 "
 
 " Buffers
@@ -234,10 +246,10 @@ call Map('<C-Tab>', ':tabnext<CR>')
 call Map('<C-F4>' , ':tabclose<CR>')
 
 " Move around in insert mode
-imap <C-h> <Left>
-imap <C-j> <Up>
-imap <C-k> <Down>
-imap <C-l> <Right>
+" imap <C-h> <Left>
+" imap <C-j> <Up>
+" imap <C-k> <Down>
+" imap <C-l> <Right>
 
 " Disable arrows
 map <Up>    <Nop>
@@ -263,6 +275,7 @@ imap <Tab> <C-r>=SmartTab()<CR>
 " Open a NERDTree automatically when Vim starts up if no files were specified
 " Also change current directory to Dev
 " au VimEnter * if (argc() == 0) | :NERDTree %:p:h | endif
+au VimEnter * :NERDTree %:p:h
 let NERDTreeIgnore=['^_build$', '^_tags$', '\.native$', '\.exe$']
 
 " Close Vim if the only window left open is a NERDTree
@@ -304,7 +317,9 @@ imap <Tab> <C-r>=SmartTab()<CR>
 let NERDTreeIgnore=['^_build$', '^_tags$', '\.native$', '\.exe$']
 
 " Close Vim if the only window left open is a NERDTree
-au BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" au BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+let g:NERDTreeWinSize = 40
 
 " Change directories automatically and print the directory after changing
 au BufEnter * :lchdir %:p:h
