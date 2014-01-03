@@ -17,15 +17,16 @@ Bundle 'gmarik/vundle'
 runtime macros/matchit.vim
 
 " My Bundles
+" Bundle 'airblade/vim-gitgutter'
 " Bundle 'taglist.vim'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'The-NERD-tree'
-Bundle 'airblade/vim-gitgutter'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'justinmk/vim-syntax-extra'
 Bundle 'kana/vim-textobj-user'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mattn/emmet-vim'
+Bundle 'mhinz/vim-signify'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-fugitive'
@@ -45,6 +46,9 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'tpope/vim-rails'
 Bundle 'vim-ruby/vim-ruby'
 
+" # Rust
+Bundle 'wting/rust.vim'
+
 " #Scala
 Bundle 'derekwyatt/vim-scala'
 
@@ -56,10 +60,13 @@ Bundle 'Guardian'
 Bundle 'Solarized'
 Bundle 'Zenburn'
 Bundle 'brettof86/vim-codeschool'
+Bundle 'jpo/vim-railscasts-theme'
 Bundle 'molokai'
+Bundle 'morhetz/gruvbox'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'noahfrederick/vim-hemisu'
 Bundle 'w0ng/vim-hybrid'
+Bundle 'zeis/vim-kolor'
 
 " Required by Vundle
 filetype plugin indent on
@@ -71,17 +78,17 @@ filetype plugin indent on
 syntax on
 set t_Co=256
 set guifont=Ubuntu\ Mono\ 14
-" set guifont=Monospace\ 12
+" set guifont=Monospace\ 11
 " set guifont=DejaVu\ Sans\ Mono\ 11
 set background=dark
-colorscheme hybrid
+colorscheme gruvbox
 
 " General
 " set autochdir   " Replaced by 'lcd %:p:h', which is purported to be better
 " set autowrite   " Automatically write buffer before special actions
 set shell=/bin/bash
 set completeopt=menu,longest " Always show the menu, insert longest match
-set nowrap
+set nowrap " Switch wrap off for everything
 set guioptions=
 set switchbuf=useopen,usetab,split " Want better buffer handling in quickfix mode
 let @/=''       " Get rid of the annoyance that search keyword gets highlighted every time I source a file
@@ -89,10 +96,9 @@ let @/=''       " Get rid of the annoyance that search keyword gets highlighted 
 " Edit area
 set textwidth=0
 " set colorcolumn=+1 " Highlight column after 'textwidth'
-set columns=150
-set lines=40
-
-let g:user_zen_leader_key = '<C-k>'
+set colorcolumn=120
+set columns=140
+set lines=50
 
 " Folding
 set nofoldenable
@@ -107,7 +113,7 @@ set listchars=tab:¿\ ,eol:¬ " Use the same symbols as TextMate for tabstops an
 set mousehide    " Hide mouse when typing
 set number       " Show line number
 set ruler
-set scrolloff=5  " Maintain some more context around the cursor
+set scrolloff=0  " Maintain some more context around the cursor
 set showcmd      " Show (partial) command in the bottom
 set showmatch    " Show matching braces
 set showmode
@@ -134,10 +140,14 @@ set wildignore+=*~,*.native,*.byte,*.hi,*.pyc,*.o
 set wildmenu        " Expand the command line using tab
 set wildmode=list:longest,full
 
-augroup alex_and_happy
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+augroup set_filetype_for_the_unknown
   au!
   au BufEnter *.x       set filetype=haskell
   au BufEnter *.y       set filetype=haskell
+  au BufEnter *.ash     set filetype=ruby
 augroup end
 
 augroup do_not_hard_wrap_plain_text
@@ -213,17 +223,16 @@ endfunction
 "-------------------------------------------------------------------------------
 " , is a more convenient leader than \
 let mapleader = " "
-let maplocalleader = ","
+let maplocalleader = ",,"
 nnoremap <Leader>a ggvG$
-nnoremap <Leader>b :tabedit ~/Dropbox/Dev/dotfiles/.bashrc.append<CR>
+nnoremap <Leader>c :colorscheme<Space><Tab>
 nnoremap <Leader>e :e<Space><Tab>
 nnoremap <Leader>f :set foldenable! foldenable?<CR>
-nnoremap <Leader>g :GitGutterToggle<CR>
-nnoremap <Leader>h :GitGutterLineHighlightsToggle<CR>
 nnoremap <Leader>n :NERDTreeTabsToggle<CR>
 nnoremap <Leader>p :CtrlP<CR>
 nnoremap <Leader>q :q<CR>
-nnoremap <Leader>v :tabedit ~/Dropbox/Dev/dotfiles/.vimrc<CR>
+nnoremap <Leader>tb :tabedit ~/Dropbox/Dev/dotfiles/.bashrc.append<CR>
+nnoremap <Leader>tv :tabedit ~/Dropbox/Dev/dotfiles/.vimrc<CR>
 nnoremap <Leader>w :w<CR>
 
 " au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
@@ -263,6 +272,7 @@ augroup end
 augroup make_and_run
   au!
                           nnoremap          <F9>  :w<CR>:make<CR>
+  au FileType c           nnoremap <buffer> <F10> :!./%<.out<Space>
   au FileType haskell     nnoremap <buffer> <F10> :!./%<.exe<Space>
   au FileType python      nnoremap <buffer> <F10> :!python %<Space>
   au FileType ruby        nnoremap <buffer> <F10> :!ruby %<Space>
