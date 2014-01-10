@@ -81,6 +81,9 @@ echo 'gtk-recent-files-max-age=0' > ~/.gtkrc-2.0
 PATH=$HOME/.cabal/bin:$PATH
 
 # OPAM configuration (OCaml)
+# XMonad
+xrandr --output DP1   --auto --left-of LVDS1 --primary
+xrandr --output LVDS1 --off
 # the line below is required by OPAM 1.0.0 only
 # . /home/zhiyuan/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 # eval `opam config env`

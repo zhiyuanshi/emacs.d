@@ -185,6 +185,9 @@ augroup end
 augroup after_saving_bashrc
   au!
   au BufWritePost .bashrc.append :silent !cp /etc/skel/.bashrc ~ && cat % >> ~/.bashrc
+  au BufWritePost .xsession :silent !cp % ~
+  au BufWritePost .gnomerc  :silent !cp % ~
+  au BufWritePost xmonad.hs :silent !cp % ~/.xmonad
 augroup end
 
 " Buffers
