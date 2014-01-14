@@ -1,3 +1,15 @@
-_tags
+/resources/
+*.log
+
+# OCaml
+/_build/
+
+# Scala
+*.class
+
+# sbt
+target/
+
+# Vim
 *~
 *.swp
