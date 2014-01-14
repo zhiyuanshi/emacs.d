@@ -27,6 +27,7 @@ Bundle 'kana/vim-textobj-user'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mattn/emmet-vim'
 Bundle 'mhinz/vim-signify'
+Bundle 'msanders/snipmate.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-fugitive'
@@ -43,6 +44,7 @@ Bundle 'vim-scripts/hlint'
 
 " #Ruby and Rails
 Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-rails'
 Bundle 'vim-ruby/vim-ruby'
 
@@ -60,6 +62,7 @@ Bundle 'Guardian'
 Bundle 'Solarized'
 Bundle 'Zenburn'
 Bundle 'brettof86/vim-codeschool'
+Bundle 'endel/vim-github-colorscheme'
 Bundle 'jpo/vim-railscasts-theme'
 Bundle 'molokai'
 Bundle 'morhetz/gruvbox'
@@ -78,10 +81,8 @@ filetype plugin indent on
 syntax on
 set t_Co=256
 set guifont=Ubuntu\ Mono\ 14
-" set guifont=Monospace\ 11
-" set guifont=DejaVu\ Sans\ Mono\ 11
-set background=dark
-colorscheme gruvbox
+set background=light
+colorscheme github
 
 " General
 " set autochdir   " Replaced by 'lcd %:p:h', which is purported to be better
@@ -97,8 +98,8 @@ let @/=''       " Get rid of the annoyance that search keyword gets highlighted 
 set textwidth=0
 " set colorcolumn=+1 " Highlight column after 'textwidth'
 set colorcolumn=120
-set columns=140
-set lines=50
+set columns=120
+set lines=48
 
 " Folding
 set nofoldenable
@@ -176,14 +177,11 @@ augroup before_saving
   au BufWritePre * :%s/\s\+$//e
 augroup end
 
-augroup after_saving_vimrc
+augroup after_saving_dotfiles
   au!
   au BufWritePost .vimrc :source %
   au BufWritePost .vimrc :silent !cp % ~
-augroup end
-
-augroup after_saving_bashrc
-  au!
+  au BufWritePost .emacs :silent !cp % ~
   au BufWritePost .bashrc.append :silent !cp /etc/skel/.bashrc ~ && cat % >> ~/.bashrc
   au BufWritePost .xsession :silent !cp % ~
   au BufWritePost .gnomerc  :silent !cp % ~
@@ -227,16 +225,17 @@ endfunction
 " , is a more convenient leader than \
 let mapleader = " "
 let maplocalleader = ",,"
-nnoremap <Leader>a ggvG$
-nnoremap <Leader>c :colorscheme<Space><Tab>
-nnoremap <Leader>e :e<Space><Tab>
-nnoremap <Leader>f :set foldenable! foldenable?<CR>
-nnoremap <Leader>n :NERDTreeTabsToggle<CR>
-nnoremap <Leader>p :CtrlP<CR>
-nnoremap <Leader>q :q<CR>
+nnoremap <Leader>a  ggvG$
+nnoremap <Leader>cc :colorscheme<Space><Tab>
+nnoremap <Leader>ct :call gruvbox#bg_toggle()<CR>
+nnoremap <Leader>e  :e<Space><Tab>
+nnoremap <Leader>f  :set foldenable! foldenable?<CR>
+nnoremap <Leader>n  :NERDTreeTabsToggle<CR>
+nnoremap <Leader>p  :CtrlP<CR>
+nnoremap <Leader>q  :q<CR>
 nnoremap <Leader>tb :tabedit ~/Dropbox/Dev/dotfiles/.bashrc.append<CR>
 nnoremap <Leader>tv :tabedit ~/Dropbox/Dev/dotfiles/.vimrc<CR>
-nnoremap <Leader>w :w<CR>
+nnoremap <Leader>w  :w<CR>
 
 " au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 " au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
@@ -277,6 +276,9 @@ augroup make_and_run
                           nnoremap          <F9>  :w<CR>:make<CR>
   au FileType c           nnoremap <buffer> <F10> :!./%<.out<Space>
   au FileType haskell     nnoremap <buffer> <F10> :!./%<.exe<Space>
+  au FileType ocaml       nnoremap <buffer> <F10> :!./%<.native<Space>
+  au FileType java        nnoremap <buffer> <F10> :!java %<<Space>
+  au FileType scala       nnoremap <buffer> <F10> :!scala %<<Space>
   au FileType python      nnoremap <buffer> <F10> :!python %<Space>
   au FileType ruby        nnoremap <buffer> <F10> :!ruby %<Space>
   au FileType sh          nnoremap <buffer> <F10> :!bash %<Space>
@@ -314,6 +316,7 @@ let g:gitgutter_eager = 0
 "       #vim2hs
 "-------------------------------------------------------------------------------
 let g:haskell_conceal_wide = 0
+let g:haskell_conceal_enumerations = 0
 
 "-------------------------------------------------------------------------------
 "       #ghcmod
@@ -358,8 +361,8 @@ augroup makeprg
   au FileType c           set makeprg=gcc\ %\ -o\ %<.out
   au FileType cpp         set makeprg=g++\ %\ -o\ %<.out
   au FileType haskell     set makeprg=ghc\ --make\ -Wall\ %\ -o\ %<.exe
+  au FileType ocaml       set makeprg=corebuild\ -use-ocamlfind\ -cflags\ '-warn-error'\ %<.native
   au FileType java        set makeprg=javac\ %
-  au FileType ocaml       set makeprg=ocamlbuild\ -use-ocamlfind\ -cflags\ '-warn-error\ A'\ %<.native
   au FileType scala       set makeprg=scalac\ %
 augroup end
 
@@ -368,5 +371,5 @@ augroup end
 "-------------------------------------------------------------------------------
 augroup ocp_indent
   au!
-  au FileType ocaml       source ~/.opam/4.01.0/share/typerex/ocp-indent/ocp-indent.vim
+  autocmd FileType ocaml source ~/.opam/4.01.0/share/vim/syntax/ocp-indent.vim
 augroup end
