@@ -80,7 +80,7 @@ filetype plugin indent on
 " Appearance
 syntax on
 set t_Co=256
-set guifont=Ubuntu\ Mono\ 14
+set guifont=Ubuntu\ Mono\ 12
 set background=light
 colorscheme github
 
@@ -108,7 +108,7 @@ set foldmethod=indent
 " map <Space> za
 
 " Visual aids
-" set cursorline
+set cursorline
 " set list
 set listchars=tab:¿\ ,eol:¬ " Use the same symbols as TextMate for tabstops and EOL
 set mousehide    " Hide mouse when typing
@@ -182,9 +182,10 @@ augroup after_saving_dotfiles
   au BufWritePost .vimrc :source %
   au BufWritePost .vimrc :silent !cp % ~
   au BufWritePost .emacs :silent !cp % ~
-  au BufWritePost .bashrc.append :silent !cp /etc/skel/.bashrc ~ && cat % >> ~/.bashrc
+  au BufWritePost .irbrc :silent !cp % ~
   au BufWritePost .xsession :silent !cp % ~
   au BufWritePost .gnomerc  :silent !cp % ~
+  au BufWritePost .bashrc.append :silent !cp /etc/skel/.bashrc ~ && cat % >> ~/.bashrc
   au BufWritePost xmonad.hs :silent !cp % ~/.xmonad
 augroup end
 
