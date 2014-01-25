@@ -80,9 +80,9 @@ filetype plugin indent on
 " Appearance
 syntax on
 set t_Co=256
-set guifont=Ubuntu\ Mono\ 12
+set guifont=Ubuntu\ Mono\ 13
 set background=light
-colorscheme github
+colorscheme gruvbox
 
 " General
 " set autochdir   " Replaced by 'lcd %:p:h', which is purported to be better
@@ -108,7 +108,7 @@ set foldmethod=indent
 " map <Space> za
 
 " Visual aids
-set cursorline
+" set cursorline
 " set list
 set listchars=tab:¿\ ,eol:¬ " Use the same symbols as TextMate for tabstops and EOL
 set mousehide    " Hide mouse when typing
@@ -149,6 +149,7 @@ augroup set_filetype_for_the_unknown
   au BufEnter *.x       set filetype=haskell
   au BufEnter *.y       set filetype=haskell
   au BufEnter *.ash     set filetype=ruby
+  au BufEnter *.md      set filetype=markdown
 augroup end
 
 augroup do_not_hard_wrap_plain_text
@@ -182,6 +183,7 @@ augroup after_saving_dotfiles
   au BufWritePost .vimrc :source %
   au BufWritePost .vimrc :silent !cp % ~
   au BufWritePost .emacs :silent !cp % ~
+  au BufWritePost prelude-modules.el :silent !cp % ~/.emacs.d
   au BufWritePost .irbrc :silent !cp % ~
   au BufWritePost .xsession :silent !cp % ~
   au BufWritePost .gnomerc  :silent !cp % ~
@@ -359,7 +361,7 @@ augroup end
 "-------------------------------------------------------------------------------
 augroup makeprg
   au!
-  au FileType c           set makeprg=gcc\ %\ -o\ %<.out
+  au FileType c           set makeprg=gcc\ -Wconversion\ %\ -o\ %<.out
   au FileType cpp         set makeprg=g++\ %\ -o\ %<.out
   au FileType haskell     set makeprg=ghc\ --make\ -Wall\ %\ -o\ %<.exe
   au FileType ocaml       set makeprg=corebuild\ -use-ocamlfind\ -cflags\ '-warn-error'\ %<.native
