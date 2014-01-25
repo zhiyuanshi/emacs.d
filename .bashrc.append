@@ -1,6 +1,22 @@
 
-PS1="\n\n[\W] \$ "
+cd ~/Dropbox/Dev
+PS1="\n[\W] \$ "
 bind 'set completion-ignore-case on'
+
+emacs --daemon 2> /dev/null
+
+# Disable ThinkPad TrackPoint
+xinput -set-prop "TPPS/2 IBM TrackPoint" "Device Enabled" 0
+
+alias kgp='killall gnome-panel'
+
+export scbd_port=8868
+export quotewatcherd_port=8869
+alias scb-gateway='ruby ~/Dropbox/Dev/sm/scb/scb-gateway.rb'
+alias scb-cli='ruby ~/Dropbox/Dev/sm/scb/scb-cli.rb'
+alias quotewatcherd='ruby ~/Dropbox/Dev/sm/aastocks/quotewatcherd.rb'
+
+alias reload='. ~/.bashrc'
 
 alias ..='cd ..'
 alias cdc='cd ~/Dropbox/Coursework/Current'
@@ -12,49 +28,42 @@ alias cds='cd ~/Dropbox/Dev/utils'
 alias cdt='cd ~/Dropbox/Dev/toolkit'
 alias cpt='cp -r ~/Dropbox/Dev/toolkit/* .'
 
-# clean and clear
 alias cr='clear'
 alias cn='~/Dropbox/Dev/utils/clean.sh'
 
-# vim
 alias v='gvim &> /dev/null'
-alias vb='v ~/Dropbox/Dev/dotfiles/.bashrc.append'
-alias vd='v ~/Dropbox/Dev/dotfiles'
-alias vs='v ~/Dropbox/Dev/utils'
-alias vt='v ~/Dropbox/Dev/toolkit'
-alias vv='v ~/Dropbox/Dev/dotfiles/.vimrc'
+alias e='emacsclient -c'
 
-# utils
 alias s='sudo ~/Dropbox/Dev/utils/setup.sh'
 alias gcj='~/Dropbox/Dev/utils/gcj.sh'
+alias slog='ruby ~/Dropbox/Dev/slog/slog.rb'
 
-# git
-alias gs='git status'
-alias gl='git log'
-alias gc='git commit -am' # 'git add --all <pathspec>' will let you also record the removals.
-alias gp='git push origin master'
-alias assets-precompile='RAILS_ENV=production bundle exec rake assets:precompile'
-alias deploy='bundle install && git push heroku master && heroku run rake db:migrate'
+# alias gs='git status'
+# alias gl='git log'
+# alias gc='git commit -am' # 'git add --all <pathspec>' will let you also record the removals.
+# alias gp='git push origin master'
+# alias gph='git push heroku master'
+# alias assets-precompile='RAILS_ENV=production bundle exec rake assets:precompile'
 alias gg='gitg 2> /dev/null &'
 
 # other programs
 # alias b='bundle'
-alias g='google-chrome'
-alias jb='jekyll build'
-alias scbd='ruby ~/Dropbox/scb/scbd.rb'
-alias scb='ruby ~/Dropbox/scb/scb-cli.rb'
-alias p='pwd'
-alias s='~/software/android-studio/bin/studio.sh'
-alias c='google-chrome'
-alias n='nautilus'
-alias o='xdg-open'
 alias ack='ack-grep'
-alias vpn='~/Dropbox/anyconnect-3.1.04059/vpn/vpn'
-alias sbt='~/software/sbt/bin/sbt'
-alias t='tree'
+alias c='google-chrome'
 alias ea='~/software/adt-bundle-linux-x86_64-20131030/eclipse/eclipse 2> /dev/null &'
 alias ej='~/software/eclipse/eclipse 2> /dev/null &'
+alias g='google-chrome'
+alias jb='jekyll build'
+alias ma='make all'
+alias mc='make clean'
+alias n='nautilus'
+alias o='xdg-open'
+alias p='pwd'
 alias play='~/software/play-2.2.1/play'
+alias s='~/software/android-studio/bin/studio.sh'
+alias t='tree'
+alias vpn='~/Dropbox/anyconnect-3.1.04059/vpn/vpn'
+alias sbtnew='mkdir -p src/{main,test}/{scala,java,resources} lib project'
 # alias phpS='php -S localhost:8000'
 
 # # t
@@ -69,21 +78,26 @@ alias play='~/software/play-2.2.1/play'
 
 # Invert behavior of Fn key on Apple keyboard
 # https://help.ubuntu.com/community/AppleKeyboard#Change_Function_Key_behavior
-# echo 2 > /sys/module/hid_apple/parameters/fnmode
+echo 2 > /sys/module/hid_apple/parameters/fnmode
 
 # Clear `Recently Used`
 echo > ~/.local/share/recently-used.xbel
 touch  ~/.local/share/recently-used.xbel
 echo 'gtk-recent-files-max-age=0' > ~/.gtkrc-2.0
 
+. ~/.scb
+
 # Snap Framework (Haskell)
 # http://snapframework.com/docs/quickstart
 PATH=$HOME/.cabal/bin:$PATH
 
-# OPAM configuration (OCaml)
 # XMonad
-xrandr --output DP1   --auto --left-of LVDS1 --primary
-xrandr --output LVDS1 --off
+# xrandr --output DP1   --auto --left-of LVDS1 --primary
+# xrandr --output LVDS1 --off
+
+################################################################################
+#       OPAM configuration (OCaml)
+################################################################################
 # the line below is required by OPAM 1.0.0 only
 # . /home/zhiyuan/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 # eval `opam config env`
