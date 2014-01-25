@@ -178,7 +178,7 @@ augroup before_saving
   au BufWritePre * :%s/\s\+$//e
 augroup end
 
-augroup after_saving_dotfiles
+augroup after_saving_config
   au!
   au BufWritePost .vimrc :source %
   au BufWritePost .vimrc :silent !cp % ~
@@ -188,6 +188,7 @@ augroup after_saving_dotfiles
   au BufWritePost .xsession :silent !cp % ~
   au BufWritePost .gnomerc  :silent !cp % ~
   au BufWritePost .bashrc.append :silent !cp /etc/skel/.bashrc ~ && cat % >> ~/.bashrc
+  au BufWritePost .zshrc  :silent !cp % ~
   au BufWritePost xmonad.hs :silent !cp % ~/.xmonad
 augroup end
 
@@ -236,8 +237,9 @@ nnoremap <Leader>f  :set foldenable! foldenable?<CR>
 nnoremap <Leader>n  :NERDTreeTabsToggle<CR>
 nnoremap <Leader>p  :CtrlP<CR>
 nnoremap <Leader>q  :q<CR>
-nnoremap <Leader>tb :tabedit ~/Dropbox/Dev/dotfiles/.bashrc.append<CR>
-nnoremap <Leader>tv :tabedit ~/Dropbox/Dev/dotfiles/.vimrc<CR>
+nnoremap <Leader>tb :tabedit ~/Dropbox/Dev/config/.bashrc.append<CR>
+nnoremap <Leader>tv :tabedit ~/Dropbox/Dev/config/.vimrc<CR>
+nnoremap <Leader>tz :tabedit ~/Dropbox/Dev/config/.zshrc<CR>
 nnoremap <Leader>w  :w<CR>
 
 " au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
