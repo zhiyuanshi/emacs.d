@@ -38,8 +38,8 @@ Bundle 'tsaleh/vim-matchit'
 " #Haskell
 " Bundle 'Twinside/vim-haskellConceal'
 " Bundle 'bitc/vim-hdevtools'
+" Bundle 'eagletmt/ghcmod-vim'
 Bundle 'dag/vim2hs'
-Bundle 'eagletmt/ghcmod-vim'
 Bundle 'vim-scripts/hlint'
 
 " #Ruby and Rails
@@ -80,9 +80,10 @@ filetype plugin indent on
 " Appearance
 syntax on
 set t_Co=256
-set guifont=Ubuntu\ Mono\ 13
+set guifont=Ubuntu\ Mono\ 14
+" set guifont=Monospace\ 11
 set background=light
-colorscheme gruvbox
+colorscheme solarized
 
 " General
 " set autochdir   " Replaced by 'lcd %:p:h', which is purported to be better
@@ -96,10 +97,9 @@ let @/=''       " Get rid of the annoyance that search keyword gets highlighted 
 
 " Edit area
 set textwidth=0
-" set colorcolumn=+1 " Highlight column after 'textwidth'
-set colorcolumn=120
-set columns=120
-set lines=48
+set colorcolumn=80,100 " Highlight column after 'textwidth'
+set columns=160
+set lines=45
 
 " Folding
 set nofoldenable
@@ -108,7 +108,7 @@ set foldmethod=indent
 " map <Space> za
 
 " Visual aids
-" set cursorline
+set cursorline
 " set list
 set listchars=tab:¿\ ,eol:¬ " Use the same symbols as TextMate for tabstops and EOL
 set mousehide    " Hide mouse when typing
@@ -131,7 +131,7 @@ set nojoinspaces "Don't convert spaces to tabs
 " Search and substitution
 set nohlsearch     " Highlight matches
 set incsearch    " Incremental search
-set ignorecase
+set noignorecase
 set smartcase
 set gdefault     " Make substitution flag 'g' is default on
 
