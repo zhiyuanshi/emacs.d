@@ -18,7 +18,7 @@ xinput -set-prop "TPPS/2 IBM TrackPoint" "Device Enabled" 0
 cd ~/Dropbox/Dev
 
 PROMPT="
-%c%% "
+%c%# "
 
 plugins=(git bundler gem heroku)
 
