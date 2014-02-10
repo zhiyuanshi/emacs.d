@@ -98,7 +98,7 @@ let @/=''       " Get rid of the annoyance that search keyword gets highlighted 
 " Edit area
 set textwidth=0
 set colorcolumn=80,100 " Highlight column after 'textwidth'
-set columns=160
+set columns=180
 set lines=45
 
 " Folding
@@ -108,7 +108,7 @@ set foldmethod=indent
 " map <Space> za
 
 " Visual aids
-set cursorline
+" set cursorline
 " set list
 set listchars=tab:¿\ ,eol:¬ " Use the same symbols as TextMate for tabstops and EOL
 set mousehide    " Hide mouse when typing
@@ -234,10 +234,13 @@ nnoremap <Leader>cc :colorscheme<Space><Tab>
 nnoremap <Leader>ct :call gruvbox#bg_toggle()<CR>
 nnoremap <Leader>e  :e<Space><Tab>
 nnoremap <Leader>f  :set foldenable! foldenable?<CR>
+nnoremap <Leader>gc :Gcommit<CR>
+nnoremap <Leader>gp :silent !git push origin master &<CR>
+nnoremap <Leader>gw :Gwrite<CR>
 nnoremap <Leader>n  :NERDTreeTabsToggle<CR>
 nnoremap <Leader>p  :CtrlP<CR>
 nnoremap <Leader>q  :q<CR>
-nnoremap <Leader>tb :tabedit ~/Dropbox/Dev/config/.bashrc.append<CR>
+" nnoremap <Leader>tb :tabedit ~/Dropbox/Dev/config/.bashrc.append<CR>
 nnoremap <Leader>tv :tabedit ~/Dropbox/Dev/config/.vimrc<CR>
 nnoremap <Leader>tz :tabedit ~/Dropbox/Dev/config/.zshrc<CR>
 nnoremap <Leader>w  :w<CR>
