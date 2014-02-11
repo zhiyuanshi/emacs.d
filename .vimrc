@@ -80,7 +80,7 @@ filetype plugin indent on
 " Appearance
 syntax on
 set t_Co=256
-set guifont=Ubuntu\ Mono\ 14
+set guifont=Ubuntu\ Mono\ 15
 " set guifont=Monospace\ 11
 set background=light
 colorscheme solarized
@@ -98,8 +98,8 @@ let @/=''       " Get rid of the annoyance that search keyword gets highlighted 
 " Edit area
 set textwidth=0
 set colorcolumn=80,100 " Highlight column after 'textwidth'
-set columns=180
-set lines=45
+set columns=170
+set lines=40
 
 " Folding
 set nofoldenable
@@ -129,7 +129,7 @@ set smartindent
 set nojoinspaces "Don't convert spaces to tabs
 
 " Search and substitution
-set nohlsearch     " Highlight matches
+set hlsearch     " Highlight matches
 set incsearch    " Incremental search
 set noignorecase
 set smartcase
@@ -311,7 +311,7 @@ let NERDTreeIgnore = ['^_build$', '^_tags$', '\.native$', '\.exe$', '\.sock$']
 
 " Close Vim if the only window left open is a NERDTree
 " au BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-let g:NERDTreeWinSize = 40
+let g:NERDTreeWinSize = 30
 
 "-------------------------------------------------------------------------------
 "       #GitGutter
