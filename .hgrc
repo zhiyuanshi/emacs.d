@@ -1,3 +1,7 @@
+[extensions]
+shelve=
+hgext.convert=
+
 [ui]
 # Name data to appear in commits
 username = zhiyuanshi <zhiyuanshi@server.fake>
