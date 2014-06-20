@@ -17,10 +17,9 @@ Bundle 'gmarik/vundle'
 runtime macros/matchit.vim
 
 " My Bundles
-" Bundle 'airblade/vim-gitgutter'
-" Bundle 'taglist.vim'
 Bundle 'Shougo/vimproc.vim'
 Bundle 'The-NERD-tree'
+" Bundle 'airblade/vim-gitgutter'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'justinmk/vim-syntax-extra'
 Bundle 'kana/vim-textobj-user'
@@ -29,39 +28,43 @@ Bundle 'mattn/emmet-vim'
 Bundle 'mhinz/vim-signify'
 Bundle 'msanders/snipmate.vim'
 Bundle 'scrooloose/syntastic'
+" Bundle 'taglist.vim'
+Bundle 'thoughtbot/vim-rspec'
 Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tsaleh/vim-matchit'
 
-" #Haskell
+" Bundle 'Shougo/neocomplete.vim'
+" let g:neocomplete#enable_at_startup = 1
+
+" Haskell
 " Bundle 'Twinside/vim-haskellConceal'
 " Bundle 'bitc/vim-hdevtools'
 " Bundle 'eagletmt/ghcmod-vim'
 Bundle 'dag/vim2hs'
 Bundle 'vim-scripts/hlint'
 
-" #Ruby and Rails
+" Ruby and Rails
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-rails'
 Bundle 'vim-ruby/vim-ruby'
 
-" # Rust
+" Rust
 Bundle 'wting/rust.vim'
 
-" #Scala
+" Scala
 Bundle 'derekwyatt/vim-scala'
 
-" #CoffeeScript
+" CoffeeScript
 Bundle 'kchmck/vim-coffee-script'
 
-" #Colorschemes
+" Colorschemes
 Bundle 'Guardian'
 Bundle 'Solarized'
 Bundle 'Zenburn'
-Bundle 'brettof86/vim-codeschool'
+Bundle '29decibel/codeschool-vim-theme'
 Bundle 'endel/vim-github-colorscheme'
 Bundle 'jpo/vim-railscasts-theme'
 Bundle 'molokai'
@@ -81,9 +84,9 @@ filetype plugin indent on
 syntax on
 set t_Co=256
 set guifont=Ubuntu\ Mono\ 15
-" set guifont=Monospace\ 11
-set background=light
-colorscheme solarized
+" set guifont=Monospace\ 12
+set background=dark
+colorscheme guardian
 
 " General
 " set autochdir   " Replaced by 'lcd %:p:h', which is purported to be better
@@ -96,10 +99,10 @@ set switchbuf=useopen,usetab,split " Want better buffer handling in quickfix mod
 let @/=''       " Get rid of the annoyance that search keyword gets highlighted every time I source a file
 
 " Edit area
-set textwidth=0
-set colorcolumn=80,100 " Highlight column after 'textwidth'
-set columns=170
-set lines=40
+set textwidth=100
+set colorcolumn=100 " Highlight column after 'textwidth'
+set columns=150
+set lines=45
 
 " Folding
 set nofoldenable
@@ -109,7 +112,7 @@ set foldmethod=indent
 
 " Visual aids
 " set cursorline
-" set list
+set nolist
 set listchars=tab:¿\ ,eol:¬ " Use the same symbols as TextMate for tabstops and EOL
 set mousehide    " Hide mouse when typing
 set number       " Show line number
@@ -148,7 +151,6 @@ augroup set_filetype_for_the_unknown
   au!
   au BufEnter *.x       set filetype=haskell
   au BufEnter *.y       set filetype=haskell
-  au BufEnter *.ash     set filetype=ruby
   au BufEnter *.md      set filetype=markdown
 augroup end
 
@@ -173,23 +175,27 @@ augroup before_saving
   au!
   au BufWritePre * retab
 
-  " Remove Trailing Spaces
+  " Remove trailing whitespaces
   " http://vim.wikia.com/wiki/Remove_unwanted_spaces
-  au BufWritePre * :%s/\s\+$//e
+  " au BufWritePre * :%s/\s\+$//e
 augroup end
 
-augroup after_saving_config
+augroup after_saving_dotfiles
   au!
-  au BufWritePost .vimrc :source %
-  au BufWritePost .vimrc :silent !cp % ~
-  au BufWritePost .emacs :silent !cp % ~
-  au BufWritePost prelude-modules.el :silent !cp % ~/.emacs.d
-  au BufWritePost .irbrc :silent !cp % ~
-  au BufWritePost .xsession :silent !cp % ~
-  au BufWritePost .gnomerc  :silent !cp % ~
   au BufWritePost .bashrc.append :silent !cp /etc/skel/.bashrc ~ && cat % >> ~/.bashrc
-  au BufWritePost .zshrc  :silent !cp % ~
+
+  au BufWritePost .emacs    :silent !cp % ~
+  au BufWritePost .gemrc    :silent !cp % ~
+  au BufWritePost .gnomerc  :silent !cp % ~
+  au BufWritePost .hgrc     :silent !cp % ~
+  au BufWritePost .irbrc    :silent !cp % ~
+  au BufWritePost .vimrc    :silent !cp % ~
+  au BufWritePost .xsession :silent !cp % ~
+  au BufWritePost .zshrc    :silent !cp % ~
+
+  au BufWritePost prelude-modules.el :silent !cp % ~/.emacs.d
   au BufWritePost xmonad.hs :silent !cp % ~/.xmonad
+  au BufWritePost .vimrc :source %
 augroup end
 
 " Buffers
@@ -213,7 +219,7 @@ function! SmartTab()
     return "\<C-n>"
   endif
 endfunction
-imap <Tab> <C-r>=SmartTab()<CR>
+" imap <Tab> <C-r>=SmartTab()<CR>
 
 "-------------------------------------------------------------------------------
 "       #Map
@@ -234,15 +240,11 @@ nnoremap <Leader>cc :colorscheme<Space><Tab>
 nnoremap <Leader>ct :call gruvbox#bg_toggle()<CR>
 nnoremap <Leader>e  :e<Space><Tab>
 nnoremap <Leader>f  :set foldenable! foldenable?<CR>
-nnoremap <Leader>gc :Gcommit<CR>
-nnoremap <Leader>gp :silent !git push origin master &<CR>
 nnoremap <Leader>gw :Gwrite<CR>
 nnoremap <Leader>n  :NERDTreeTabsToggle<CR>
-nnoremap <Leader>p  :CtrlP<CR>
 nnoremap <Leader>q  :q<CR>
-" nnoremap <Leader>tb :tabedit ~/Dropbox/Dev/config/.bashrc.append<CR>
-nnoremap <Leader>tv :tabedit ~/Dropbox/Dev/config/.vimrc<CR>
-nnoremap <Leader>tz :tabedit ~/Dropbox/Dev/config/.zshrc<CR>
+nnoremap <Leader>tv :tabedit ~/Dropbox/Code/dotfiles/.vimrc<CR>
+nnoremap <Leader>tz :tabedit ~/Dropbox/Code/dotfiles/.zshrc<CR>
 nnoremap <Leader>w  :w<CR>
 
 " au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
@@ -251,9 +253,13 @@ nnoremap <Leader>w  :w<CR>
 "-------------------------------------------------------------------------------
 "       #Ctrl
 "-------------------------------------------------------------------------------
-call Map('<C-x>', '"+d')
+call Map('<C-a>', 'ggvG$')
 call Map('<C-c>', '"+y')
+call Map('<C-o>', ':e<Space><Tab>')
+call Map('<C-q>', ':q<CR>')
+call Map('<C-s>', ':w<CR>')
 call Map('<C-v>', '"+p')
+call Map('<C-x>', '"+d')
 
 call Map('<C-t>'  , ':tabnew<CR>')
 call Map('<C-Tab>', ':tabnext<CR>')
@@ -304,21 +310,21 @@ map <Right> <Nop>
 "       #NERDTree
 "-------------------------------------------------------------------------------
 " Open a NERDTree automatically when Vim starts up if no files were specified
-" Also change current directory to Dev
+" Also change current directory to Code
 " au VimEnter * :NERDTree %:p:h
 " au VimEnter * if (argc() == 0) | :NERDTree %:p:h | endif
 let NERDTreeIgnore = ['^_build$', '^_tags$', '\.native$', '\.exe$', '\.sock$']
 
 " Close Vim if the only window left open is a NERDTree
 " au BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-let g:NERDTreeWinSize = 30
+let g:NERDTreeWinSize = 24
 
 "-------------------------------------------------------------------------------
 "       #GitGutter
 "-------------------------------------------------------------------------------
 " To stop vim-gitgutter running real-time and eagerly
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
+" let g:gitgutter_realtime = 0
+" let g:gitgutter_eager = 0
 
 "-------------------------------------------------------------------------------
 "       #vim2hs
@@ -367,6 +373,7 @@ augroup end
 augroup makeprg
   au!
   au FileType c           set makeprg=gcc\ -Wconversion\ %\ -o\ %<.out
+  " au FileType c           set makeprg=gcc\ %\ -o\ %<.out\ -lm
   au FileType cpp         set makeprg=g++\ %\ -o\ %<.out
   au FileType haskell     set makeprg=ghc\ --make\ -Wall\ %\ -o\ %<.exe
   au FileType ocaml       set makeprg=corebuild\ -use-ocamlfind\ -cflags\ '-warn-error'\ %<.native
