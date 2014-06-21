@@ -86,7 +86,7 @@ set t_Co=256
 set guifont=Ubuntu\ Mono\ 15
 " set guifont=Monospace\ 12
 set background=dark
-colorscheme guardian
+colorscheme kolor
 
 " General
 " set autochdir   " Replaced by 'lcd %:p:h', which is purported to be better
@@ -100,7 +100,7 @@ let @/=''       " Get rid of the annoyance that search keyword gets highlighted 
 
 " Edit area
 set textwidth=100
-set colorcolumn=100 " Highlight column after 'textwidth'
+set colorcolumn=120 " Highlight column after 'textwidth'
 set columns=150
 set lines=45
 
