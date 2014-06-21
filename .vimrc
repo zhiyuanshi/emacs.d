@@ -83,7 +83,7 @@ filetype plugin indent on
 " Appearance
 syntax on
 set t_Co=256
-set guifont=Ubuntu\ Mono\ 15
+set guifont=Ubuntu\ Mono\ 14
 " set guifont=Monospace\ 12
 set background=dark
 colorscheme kolor
