@@ -19,7 +19,6 @@ runtime macros/matchit.vim
 " My Bundles
 Bundle 'Shougo/vimproc.vim'
 Bundle 'The-NERD-tree'
-" Bundle 'airblade/vim-gitgutter'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'justinmk/vim-syntax-extra'
 Bundle 'kana/vim-textobj-user'
@@ -44,6 +43,7 @@ Bundle 'tsaleh/vim-matchit'
 " Bundle 'eagletmt/ghcmod-vim'
 Bundle 'dag/vim2hs'
 Bundle 'vim-scripts/hlint'
+Bundle 'lukerandall/haskellmode-vim'
 
 " Ruby and Rails
 Bundle 'nelstrom/vim-textobj-rubyblock'
@@ -85,8 +85,8 @@ syntax on
 set t_Co=256
 set guifont=Ubuntu\ Mono\ 14
 " set guifont=Monospace\ 12
-set background=dark
-colorscheme kolor
+set background=light
+colorscheme hybrid-light
 
 " General
 " set autochdir   " Replaced by 'lcd %:p:h', which is purported to be better
@@ -152,6 +152,8 @@ augroup set_filetype_for_the_unknown
   au BufEnter *.x       set filetype=haskell
   au BufEnter *.y       set filetype=haskell
   au BufEnter *.md      set filetype=markdown
+  au BufEnter Gemfile   set filetype=ruby
+  au BufEnter Guardfile set filetype=ruby
 augroup end
 
 augroup do_not_hard_wrap_plain_text
