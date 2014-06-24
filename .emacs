@@ -12,3 +12,5 @@
 
 (require 'evil)
 (evil-mode 1)
+
+(tool-bar-mode -1)
