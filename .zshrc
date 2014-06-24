@@ -20,15 +20,13 @@ PROMPT="
 
 plugins=(git mercurial ruby rails bundler gem heroku)
 
-alias ack='ack-grep'
 alias clr='clear'
-alias gitg='gitg 2> /dev/null &'
-alias gvim='gvim 2> /dev/null'
-alias thg='thg 2> /dev/null &'
+alias tree='t'
 alias open='xdg-open'
-alias tree='tree'
+alias ack='ack-grep'
 
-alias dad='ruby ~/Dropbox/Code/script/dad.rb'
+alias v='gvim 2> /dev/null'
+alias e='emacsclient -c'
 
 # Invert behavior of Fn key on Apple keyboard
 # https://help.ubuntu.com/community/AppleKeyboard#Change_Function_Key_behavior
