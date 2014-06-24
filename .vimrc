@@ -3,9 +3,6 @@
 set nocompatible " I want Vim, not Vi
 filetype plugin indent off
 
-"-------------------------------------------------------------------------------
-"       #Vundle
-"-------------------------------------------------------------------------------
 " Required by Vundle
 filetype off
 set runtimepath+=~/.vim/bundle/vundle/
@@ -61,25 +58,16 @@ Bundle 'derekwyatt/vim-scala'
 Bundle 'kchmck/vim-coffee-script'
 
 " Colorschemes
-Bundle 'Guardian'
 Bundle 'Solarized'
 Bundle 'Zenburn'
-Bundle '29decibel/codeschool-vim-theme'
-Bundle 'endel/vim-github-colorscheme'
 Bundle 'jpo/vim-railscasts-theme'
-Bundle 'molokai'
 Bundle 'morhetz/gruvbox'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'noahfrederick/vim-hemisu'
 Bundle 'w0ng/vim-hybrid'
 Bundle 'zeis/vim-kolor'
 
 " Required by Vundle
 filetype plugin indent on
 
-"-------------------------------------------------------------------------------
-"       #General settings
-"-------------------------------------------------------------------------------
 " Appearance
 syntax on
 set t_Co=256
@@ -207,9 +195,6 @@ augroup end
 " Tabs
 set tabpagemax=9 " At most 9 tabs open
 
-"-------------------------------------------------------------------------------
-"       #Completion
-"-------------------------------------------------------------------------------
 " http://vim.wikia.com/wiki/Smart_mapping_for_tab_completion
 function! SmartTab()
   " Treat <Tab> as a <Tab> if there is no character or just a <Space>
@@ -223,17 +208,11 @@ function! SmartTab()
 endfunction
 " imap <Tab> <C-r>=SmartTab()<CR>
 
-"-------------------------------------------------------------------------------
-"       #Map
-"-------------------------------------------------------------------------------
 function! Map(lhs, rhs)
   execute 'noremap'  a:lhs           a:rhs
   execute 'inoremap' a:lhs '<Esc>' . a:rhs
 endfunction
 
-"-------------------------------------------------------------------------------
-"       #Leader
-"-------------------------------------------------------------------------------
 " , is a more convenient leader than \
 let mapleader = " "
 let maplocalleader = ",,"
@@ -252,9 +231,6 @@ nnoremap <Leader>w  :w<CR>
 " au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
 " au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
 
-"-------------------------------------------------------------------------------
-"       #Ctrl
-"-------------------------------------------------------------------------------
 call Map('<C-a>', 'ggvG$')
 call Map('<C-c>', '"+y')
 call Map('<C-o>', ':e<Space><Tab>')
@@ -273,9 +249,6 @@ inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
 
-"-------------------------------------------------------------------------------
-"       #ghcmod
-"-------------------------------------------------------------------------------
 augroup ghc_mod
   au!
   au FileType haskell   nnoremap <buffer> <F1> :GhcModType<CR>
@@ -284,9 +257,6 @@ augroup ghc_mod
   au FileType haskell   nnoremap <buffer> <F4> :GhcModLint<CR>
 augroup end
 
-"-------------------------------------------------------------------------------
-"       #make_and_run
-"-------------------------------------------------------------------------------
 augroup make_and_run
   au!
                           nnoremap          <F9>  :w<CR>:make<CR>
@@ -300,17 +270,11 @@ augroup make_and_run
   au FileType sh          nnoremap <buffer> <F10> :!bash %<Space>
 augroup end
 
-"-------------------------------------------------------------------------------
-"       #arrows
-"-------------------------------------------------------------------------------
 map <Up>    <Nop>
 map <Down>  <Nop>
 map <Left>  <Nop>
 map <Right> <Nop>
 
-"-------------------------------------------------------------------------------
-"       #NERDTree
-"-------------------------------------------------------------------------------
 " Open a NERDTree automatically when Vim starts up if no files were specified
 " Also change current directory to Code
 " au VimEnter * :NERDTree %:p:h
@@ -321,34 +285,18 @@ let NERDTreeIgnore = ['^_build$', '^_tags$', '\.native$', '\.exe$', '\.sock$']
 " au BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let g:NERDTreeWinSize = 24
 
-"-------------------------------------------------------------------------------
-"       #GitGutter
-"-------------------------------------------------------------------------------
-" To stop vim-gitgutter running real-time and eagerly
-" let g:gitgutter_realtime = 0
-" let g:gitgutter_eager = 0
-
-"-------------------------------------------------------------------------------
-"       #vim2hs
-"-------------------------------------------------------------------------------
+" vim2hs
 let g:haskell_conceal_wide = 0
 let g:haskell_conceal_enumerations = 0
 
-"-------------------------------------------------------------------------------
-"       #ghcmod
-"-------------------------------------------------------------------------------
+" ghcmod
 " https://github.com/eagletmt/ghcmod-vim/wiki/Customize
 let &l:statusline = '%{empty(getqflist()) ? "[No Errors]" : "[Errors Found]"}' . (empty(&l:statusline) ? &statusline : &l:statusline)
 
-"-------------------------------------------------------------------------------
-"       #haskell-mode
-"-------------------------------------------------------------------------------
+" haskell-mode
 let g:haddock_browser = "/usr/bin/google-chrome"
 let g:ghc = "/usr/bin/ghc"
 
-"-------------------------------------------------------------------------------
-"       #indentation
-"-------------------------------------------------------------------------------
 augroup indentation
   au!
   au FileType c           set shiftwidth=4 cindent
@@ -369,9 +317,6 @@ augroup indentation
   au FileType yacc        set shiftwidth=4
 augroup end
 
-"-------------------------------------------------------------------------------
-"       #makeprg
-"-------------------------------------------------------------------------------
 augroup makeprg
   au!
   au FileType c           set makeprg=gcc\ -Wconversion\ %\ -o\ %<.out
@@ -383,9 +328,6 @@ augroup makeprg
   au FileType scala       set makeprg=scalac\ %
 augroup end
 
-"-------------------------------------------------------------------------------
-"       #ocp-indent
-"-------------------------------------------------------------------------------
 augroup ocp_indent
   au!
   autocmd FileType ocaml source ~/.opam/4.01.0/share/vim/syntax/ocp-indent.vim
