@@ -257,19 +257,6 @@ augroup ghc_mod
   au FileType haskell   nnoremap <buffer> <F4> :GhcModLint<CR>
 augroup end
 
-augroup make_and_run
-  au!
-                          nnoremap          <F9>  :w<CR>:make<CR>
-  au FileType c           nnoremap <buffer> <F10> :!./%<.out<Space>
-  au FileType haskell     nnoremap <buffer> <F10> :!./%<.exe<Space>
-  au FileType ocaml       nnoremap <buffer> <F10> :!./%<.native<Space>
-  au FileType java        nnoremap <buffer> <F10> :!java %<<Space>
-  au FileType scala       nnoremap <buffer> <F10> :!scala %<<Space>
-  au FileType python      nnoremap <buffer> <F10> :!python %<Space>
-  au FileType ruby        nnoremap <buffer> <F10> :!ruby %<Space>
-  au FileType sh          nnoremap <buffer> <F10> :!bash %<Space>
-augroup end
-
 map <Up>    <Nop>
 map <Down>  <Nop>
 map <Left>  <Nop>
@@ -283,7 +270,7 @@ let NERDTreeIgnore = ['^_build$', '^_tags$', '\.native$', '\.exe$', '\.sock$']
 
 " Close Vim if the only window left open is a NERDTree
 " au BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-let g:NERDTreeWinSize = 24
+" let g:NERDTreeWinSize = 24
 
 " vim2hs
 let g:haskell_conceal_wide = 0
