@@ -249,7 +249,7 @@ inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
 
-augroup ghc_mod
+augroup ghcmod
   au!
   au FileType haskell   nnoremap <buffer> <F1> :GhcModType<CR>
   au FileType haskell   nnoremap <buffer> <F2> :GhcModTypeClear<CR>
@@ -288,31 +288,20 @@ augroup indentation
   au!
   au FileType c           set shiftwidth=4 cindent
   au FileType cpp         set shiftwidth=4 cindent
-  au FileType eruby       set shiftwidth=2
   au FileType haskell     set shiftwidth=4
-  au FileType html        set shiftwidth=2
   au FileType java        set shiftwidth=4
-  au FileType javascript  set shiftwidth=2
   au FileType lex         set shiftwidth=4
-  au FileType ocaml       set shiftwidth=2
   au FileType python      set shiftwidth=4
+  au FileType xml         set shiftwidth=4
+  au FileType yacc        set shiftwidth=4
+  au FileType eruby       set shiftwidth=2
+  au FileType html        set shiftwidth=2
+  au FileType javascript  set shiftwidth=2
+  au FileType ocaml       set shiftwidth=2
   au FileType r           set shiftwidth=2
   au FileType ruby        set shiftwidth=2
   au FileType sh          set shiftwidth=2
   au FileType vim         set shiftwidth=2
-  au FileType xml         set shiftwidth=4
-  au FileType yacc        set shiftwidth=4
-augroup END
-
-augroup makeprg
-  au!
-  au FileType c           set makeprg=gcc\ -Wconversion\ %\ -o\ %<.out
-  " au FileType c           set makeprg=gcc\ %\ -o\ %<.out\ -lm
-  au FileType cpp         set makeprg=g++\ %\ -o\ %<.out
-  au FileType haskell     set makeprg=ghc\ --make\ -Wall\ %\ -o\ %<.exe
-  au FileType ocaml       set makeprg=corebuild\ -use-ocamlfind\ -cflags\ '-warn-error'\ %<.native
-  au FileType java        set makeprg=javac\ %
-  au FileType scala       set makeprg=scalac\ %
 augroup END
 
 augroup ocp_indent
