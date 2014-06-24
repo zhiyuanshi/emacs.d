@@ -1,6 +1,7 @@
 [extensions]
-shelve=
-hgext.convert=
+shelve =
+hgext.convert =
+hgext.bookmarks =
 
 [ui]
 # Name data to appear in commits
