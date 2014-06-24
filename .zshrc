@@ -26,7 +26,7 @@ alias open='xdg-open'
 alias ack='ack-grep'
 
 alias v='gvim 2> /dev/null'
-alias e='emacsclient -c'
+alias e='emacs'
 
 # Invert behavior of Fn key on Apple keyboard
 # https://help.ubuntu.com/community/AppleKeyboard#Change_Function_Key_behavior
