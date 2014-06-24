@@ -183,7 +183,7 @@ augroup after_saving_dotfiles
   au BufWritePost .xsession :silent !cp % ~
   au BufWritePost .zshrc    :silent !cp % ~
 
-  au BufWritePost prelude-modules.el :silent !cp % ~/.emacs.d
+  au BufWritePost prelude-modules.el :silent !cp % ~/.emacs.d/prelude
   au BufWritePost xmonad.hs :silent !cp % ~/.xmonad
   au BufWritePost .vimrc :source %
 augroup end
