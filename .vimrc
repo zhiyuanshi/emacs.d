@@ -142,13 +142,13 @@ augroup set_filetype_for_the_unknown
   au BufEnter *.md      set filetype=markdown
   au BufEnter Gemfile   set filetype=ruby
   au BufEnter Guardfile set filetype=ruby
-augroup end
+augroup END
 
 augroup do_not_hard_wrap_plain_text
   au!
   au FileType text        set wrap linebreak nolist
   au FileType markdown    set wrap linebreak nolist
-augroup end
+augroup END
 
 augroup before_loading
   au!
@@ -159,7 +159,7 @@ augroup before_loading
   " Don't do it when the position is invalid or when inside an event handler
   " (happens when dropping a file on gvim).
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
-augroup end
+augroup END
 
 augroup before_saving
   au!
@@ -168,7 +168,7 @@ augroup before_saving
   " Remove trailing whitespaces
   " http://vim.wikia.com/wiki/Remove_unwanted_spaces
   " au BufWritePre * :%s/\s\+$//e
-augroup end
+augroup END
 
 augroup after_saving_dotfiles
   au!
@@ -186,7 +186,7 @@ augroup after_saving_dotfiles
   au BufWritePost prelude-modules.el :silent !cp % ~/.emacs.d/prelude
   au BufWritePost xmonad.hs :silent !cp % ~/.xmonad
   au BufWritePost .vimrc :source %
-augroup end
+augroup END
 
 " Buffers
 " set hidden
@@ -255,7 +255,7 @@ augroup ghc_mod
   au FileType haskell   nnoremap <buffer> <F2> :GhcModTypeClear<CR>
   au FileType haskell   nnoremap <buffer> <F3> :GhcModCheck<CR>
   au FileType haskell   nnoremap <buffer> <F4> :GhcModLint<CR>
-augroup end
+augroup END
 
 map <Up>    <Nop>
 map <Down>  <Nop>
@@ -302,7 +302,7 @@ augroup indentation
   au FileType vim         set shiftwidth=2
   au FileType xml         set shiftwidth=4
   au FileType yacc        set shiftwidth=4
-augroup end
+augroup END
 
 augroup makeprg
   au!
@@ -313,9 +313,9 @@ augroup makeprg
   au FileType ocaml       set makeprg=corebuild\ -use-ocamlfind\ -cflags\ '-warn-error'\ %<.native
   au FileType java        set makeprg=javac\ %
   au FileType scala       set makeprg=scalac\ %
-augroup end
+augroup END
 
 augroup ocp_indent
   au!
   autocmd FileType ocaml source ~/.opam/4.01.0/share/vim/syntax/ocp-indent.vim
-augroup end
+augroup END
