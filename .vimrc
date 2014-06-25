@@ -14,9 +14,22 @@ Bundle 'gmarik/vundle'
 runtime macros/matchit.vim
 
 " My Bundles
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'Shougo/vimproc.vim'
+
 Bundle 'The-NERD-tree'
 Bundle 'jistr/vim-nerdtree-tabs'
+
+" Open a NERDTree automatically when Vim starts up if no files were specified
+" Also change current directory to Code
+" au VimEnter * :NERDTree %:p:h
+" au VimEnter * if (argc() == 0) | :NERDTree %:p:h | endif
+let NERDTreeIgnore = ['^_build$', '^_tags$', '\.native$', '\.exe$', '\.sock$']
+
+" Close Vim if the only window left open is a NERDTree
+" au BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" let g:NERDTreeWinSize = 24
+
 Bundle 'justinmk/vim-syntax-extra'
 Bundle 'kana/vim-textobj-user'
 Bundle 'kien/ctrlp.vim'
@@ -25,28 +38,52 @@ Bundle 'mhinz/vim-signify'
 Bundle 'msanders/snipmate.vim'
 Bundle 'scrooloose/syntastic'
 " Bundle 'taglist.vim'
-Bundle 'thoughtbot/vim-rspec'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tsaleh/vim-matchit'
 
-" Bundle 'Shougo/neocomplete.vim'
-" let g:neocomplete#enable_at_startup = 1
-
 " Haskell
-" Bundle 'Twinside/vim-haskellConceal'
-" Bundle 'bitc/vim-hdevtools'
-" Bundle 'eagletmt/ghcmod-vim'
-Bundle 'dag/vim2hs'
-Bundle 'vim-scripts/hlint'
-Bundle 'lukerandall/haskellmode-vim'
+
+Bundle 'eagletmt/ghcmod-vim'
+
+" https://github.com/eagletmt/ghcmod-vim/wiki/Customize
+hi ghcmodType ctermbg=yellow
+let g:ghcmod_type_highlight = 'ghcmodType'
+
+let &l:statusline = '%{empty(getqflist()) ? "[No Errors]" : "[Errors Found]"}' . (empty(&l:statusline) ? &statusline : &l:statusline)
+
+" Auto-checking on writing
+" augroup ghcmod-vim
+" au!
+" au BufWritePost *.hs GhcModCheckAndLintAsync
+" augroup END
+
+Bundle 'eagletmt/neco-ghc'
+
+augroup neco-ghc
+au!
+au FileType haskell setlocal omnifunc=necoghc#omnifunc
+" To work with YouCompleteMe
+let g:ycm_semantic_triggers = {'haskell' : ['.']}
+let g:necoghc_enable_detailed_browse = 1
+augroup END
+
+" Bundle 'dag/vim2hs'
+" let g:haskell_conceal_wide = 0
+" let g:haskell_conceal_enumerations = 0
+
+" Bundle 'lukerandall/haskellmode-vim'
+" " haskell-mode
+" let g:haddock_browser = "/usr/bin/google-chrome"
+" let g:ghc = "/usr/bin/ghc"
 
 " Ruby and Rails
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-rails'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'thoughtbot/vim-rspec'
 
 " Rust
 Bundle 'wting/rust.vim'
@@ -135,78 +172,12 @@ set wildmode=list:longest,full
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
-augroup set_filetype_for_the_unknown
-  au!
-  au BufEnter *.x       set filetype=haskell
-  au BufEnter *.y       set filetype=haskell
-  au BufEnter *.md      set filetype=markdown
-  au BufEnter Gemfile   set filetype=ruby
-  au BufEnter Guardfile set filetype=ruby
-augroup END
-
-augroup do_not_hard_wrap_plain_text
-  au!
-  au FileType text        set wrap linebreak nolist
-  au FileType markdown    set wrap linebreak nolist
-augroup END
-
-augroup before_loading
-  au!
-  " Change directories automatically and print the directory after changing
-  au BufEnter * :lchdir %:p:h
-
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
-augroup END
-
-augroup before_saving
-  au!
-  au BufWritePre * retab
-
-  " Remove trailing whitespaces
-  " http://vim.wikia.com/wiki/Remove_unwanted_spaces
-  " au BufWritePre * :%s/\s\+$//e
-augroup END
-
-augroup after_saving_dotfiles
-  au!
-  au BufWritePost .bashrc.append :silent !cp /etc/skel/.bashrc ~ && cat % >> ~/.bashrc
-
-  au BufWritePost .emacs    :silent !cp % ~
-  au BufWritePost .gemrc    :silent !cp % ~
-  au BufWritePost .gnomerc  :silent !cp % ~
-  au BufWritePost .hgrc     :silent !cp % ~
-  au BufWritePost .irbrc    :silent !cp % ~
-  au BufWritePost .vimrc    :silent !cp % ~
-  au BufWritePost .xsession :silent !cp % ~
-  au BufWritePost .zshrc    :silent !cp % ~
-
-  au BufWritePost prelude-modules.el :silent !cp % ~/.emacs.d/prelude
-  au BufWritePost xmonad.hs :silent !cp % ~/.xmonad
-  au BufWritePost .vimrc :source %
-augroup END
-
 " Buffers
 " set hidden
 " call Map('<C-Tab>', ':bnext<CR>')
 
 " Tabs
 set tabpagemax=9 " At most 9 tabs open
-
-" http://vim.wikia.com/wiki/Smart_mapping_for_tab_completion
-function! SmartTab()
-  " Treat <Tab> as a <Tab> if there is no character or just a <Space>
-  " before the cursor. Otherwise treat <Tab> as the key for completion.
-  let c =  strpart(getline("."), col(".") - 2, 1)
-  if (c == "" || c == " ")
-    return "\<Tab>"
-  else
-    return "\<C-n>"
-  endif
-endfunction
-" imap <Tab> <C-r>=SmartTab()<CR>
 
 function! Map(lhs, rhs)
   execute 'noremap'  a:lhs           a:rhs
@@ -228,9 +199,6 @@ nnoremap <Leader>tv :tabedit ~/Dropbox/Code/dotfiles/.vimrc<CR>
 nnoremap <Leader>tz :tabedit ~/Dropbox/Code/dotfiles/.zshrc<CR>
 nnoremap <Leader>w  :w<CR>
 
-" au FileType haskell nnoremap <buffer> <F1> :HdevtoolsType<CR>
-" au FileType haskell nnoremap <buffer> <silent> <F2> :HdevtoolsClear<CR>
-
 call Map('<C-a>', 'ggvG$')
 call Map('<C-c>', '"+y')
 call Map('<C-o>', ':e<Space><Tab>')
@@ -249,62 +217,73 @@ inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
 
-augroup ghcmod
-  au!
-  au FileType haskell   nnoremap <buffer> <F1> :GhcModType<CR>
-  au FileType haskell   nnoremap <buffer> <F2> :GhcModTypeClear<CR>
-  au FileType haskell   nnoremap <buffer> <F3> :GhcModCheck<CR>
-  au FileType haskell   nnoremap <buffer> <F4> :GhcModLint<CR>
-augroup END
-
 map <Up>    <Nop>
 map <Down>  <Nop>
 map <Left>  <Nop>
 map <Right> <Nop>
 
-" Open a NERDTree automatically when Vim starts up if no files were specified
-" Also change current directory to Code
-" au VimEnter * :NERDTree %:p:h
-" au VimEnter * if (argc() == 0) | :NERDTree %:p:h | endif
-let NERDTreeIgnore = ['^_build$', '^_tags$', '\.native$', '\.exe$', '\.sock$']
 
-" Close Vim if the only window left open is a NERDTree
-" au BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-" let g:NERDTreeWinSize = 24
+" Automatic commands
+augroup AutoCmd
+au!
 
-" vim2hs
-let g:haskell_conceal_wide = 0
-let g:haskell_conceal_enumerations = 0
+au BufEnter *.x       set filetype=haskell
+au BufEnter *.y       set filetype=haskell
+au BufEnter *.md      set filetype=markdown
+au BufEnter Gemfile   set filetype=ruby
+au BufEnter Guardfile set filetype=ruby
 
-" ghcmod
-" https://github.com/eagletmt/ghcmod-vim/wiki/Customize
-let &l:statusline = '%{empty(getqflist()) ? "[No Errors]" : "[Errors Found]"}' . (empty(&l:statusline) ? &statusline : &l:statusline)
+au FileType text        set wrap linebreak nolist
+au FileType markdown    set wrap linebreak nolist
 
-" haskell-mode
-let g:haddock_browser = "/usr/bin/google-chrome"
-let g:ghc = "/usr/bin/ghc"
+" Change directories automatically and print the directory after changing
+au BufEnter * :lchdir %:p:h
 
-augroup indentation
-  au!
-  au FileType c           set shiftwidth=4 cindent
-  au FileType cpp         set shiftwidth=4 cindent
-  au FileType haskell     set shiftwidth=4
-  au FileType java        set shiftwidth=4
-  au FileType lex         set shiftwidth=4
-  au FileType python      set shiftwidth=4
-  au FileType xml         set shiftwidth=4
-  au FileType yacc        set shiftwidth=4
-  au FileType eruby       set shiftwidth=2
-  au FileType html        set shiftwidth=2
-  au FileType javascript  set shiftwidth=2
-  au FileType ocaml       set shiftwidth=2
-  au FileType r           set shiftwidth=2
-  au FileType ruby        set shiftwidth=2
-  au FileType sh          set shiftwidth=2
-  au FileType vim         set shiftwidth=2
-augroup END
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 
-augroup ocp_indent
-  au!
-  autocmd FileType ocaml source ~/.opam/4.01.0/share/vim/syntax/ocp-indent.vim
+au BufWritePre * retab
+
+" Remove trailing whitespaces
+" http://vim.wikia.com/wiki/Remove_unwanted_spaces
+" au BufWritePre * :%s/\s\+$//e
+
+au BufWritePost .bashrc.append :silent !cp /etc/skel/.bashrc ~ && cat % >> ~/.bashrc
+au BufWritePost .emacs    :silent !cp % ~
+au BufWritePost .gemrc    :silent !cp % ~
+au BufWritePost .gnomerc  :silent !cp % ~
+au BufWritePost .hgrc     :silent !cp % ~
+au BufWritePost .irbrc    :silent !cp % ~
+au BufWritePost .vimrc    :silent !cp % ~
+au BufWritePost .vimrc    :source %
+au BufWritePost .xsession :silent !cp % ~
+au BufWritePost .zshrc    :silent !cp % ~
+au BufWritePost prelude-modules.el :silent !cp % ~/.emacs.d/prelude
+
+au FileType haskell nnoremap <buffer> <F1> :GhcModType<CR>
+au FileType haskell nnoremap <buffer> <F2> :GhcModTypeClear<CR>
+au FileType haskell nnoremap <buffer> <F3> :GhcModCheck<CR>
+au FileType haskell nnoremap <buffer> <F4> :GhcModLint<CR>
+
+au FileType c           set shiftwidth=4 cindent
+au FileType cpp         set shiftwidth=4 cindent
+au FileType haskell     set shiftwidth=4
+au FileType java        set shiftwidth=4
+au FileType lex         set shiftwidth=4
+au FileType python      set shiftwidth=4
+au FileType xml         set shiftwidth=4
+au FileType yacc        set shiftwidth=4
+au FileType eruby       set shiftwidth=2
+au FileType html        set shiftwidth=2
+au FileType javascript  set shiftwidth=2
+au FileType ocaml       set shiftwidth=2
+au FileType r           set shiftwidth=2
+au FileType ruby        set shiftwidth=2
+au FileType sh          set shiftwidth=2
+au FileType vim         set shiftwidth=2
+
+au FileType ocaml source ~/.opam/4.01.0/share/vim/syntax/ocp-indent.vim
+
 augroup END
