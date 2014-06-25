@@ -14,8 +14,20 @@ Bundle 'gmarik/vundle'
 runtime macros/matchit.vim
 
 " My Bundles
-Bundle 'Valloric/YouCompleteMe'
 Bundle 'Shougo/vimproc.vim'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'justinmk/vim-syntax-extra'
+Bundle 'kana/vim-textobj-user'
+Bundle 'kien/ctrlp.vim'
+Bundle 'mattn/emmet-vim'
+Bundle 'mhinz/vim-signify'
+Bundle 'msanders/snipmate.vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'tsaleh/vim-matchit'
 
 Bundle 'The-NERD-tree'
 Bundle 'jistr/vim-nerdtree-tabs'
@@ -30,21 +42,7 @@ let NERDTreeIgnore = ['^_build$', '^_tags$', '\.native$', '\.exe$', '\.sock$']
 " au BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " let g:NERDTreeWinSize = 24
 
-Bundle 'justinmk/vim-syntax-extra'
-Bundle 'kana/vim-textobj-user'
-Bundle 'kien/ctrlp.vim'
-Bundle 'mattn/emmet-vim'
-Bundle 'mhinz/vim-signify'
-Bundle 'msanders/snipmate.vim'
-Bundle 'scrooloose/syntastic'
-" Bundle 'taglist.vim'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tsaleh/vim-matchit'
-
 " Haskell
-
 Bundle 'eagletmt/ghcmod-vim'
 
 " https://github.com/eagletmt/ghcmod-vim/wiki/Customize
@@ -69,24 +67,12 @@ let g:ycm_semantic_triggers = {'haskell' : ['.']}
 let g:necoghc_enable_detailed_browse = 1
 augroup END
 
-" Bundle 'dag/vim2hs'
-" let g:haskell_conceal_wide = 0
-" let g:haskell_conceal_enumerations = 0
-
-" Bundle 'lukerandall/haskellmode-vim'
-" " haskell-mode
-" let g:haddock_browser = "/usr/bin/google-chrome"
-" let g:ghc = "/usr/bin/ghc"
-
 " Ruby and Rails
 Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'thoughtbot/vim-rspec'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-rails'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'thoughtbot/vim-rspec'
-
-" Rust
-Bundle 'wting/rust.vim'
 
 " Scala
 Bundle 'derekwyatt/vim-scala'
@@ -94,7 +80,7 @@ Bundle 'derekwyatt/vim-scala'
 " CoffeeScript
 Bundle 'kchmck/vim-coffee-script'
 
-" Colorschemes
+" Color schemes
 Bundle 'Solarized'
 Bundle 'Zenburn'
 Bundle 'jpo/vim-railscasts-theme'
@@ -111,7 +97,7 @@ set t_Co=256
 set guifont=Ubuntu\ Mono\ 14
 " set guifont=Monospace\ 12
 set background=light
-colorscheme hybrid-light
+colorscheme solarized
 
 " General
 " set autochdir   " Replaced by 'lcd %:p:h', which is purported to be better
@@ -221,7 +207,6 @@ map <Up>    <Nop>
 map <Down>  <Nop>
 map <Left>  <Nop>
 map <Right> <Nop>
-
 
 " Automatic commands
 augroup AutoCmd
