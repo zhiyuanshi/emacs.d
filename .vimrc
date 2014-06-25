@@ -116,7 +116,7 @@ colorscheme hybrid-light
 " General
 " set autochdir   " Replaced by 'lcd %:p:h', which is purported to be better
 " set autowrite   " Automatically write buffer before special actions
-set shell=/bin/bash
+set shell=/usr/bin/zsh
 set completeopt=menu,longest " Always show the menu, insert longest match
 set nowrap " Switch wrap off for everything
 set guioptions=
