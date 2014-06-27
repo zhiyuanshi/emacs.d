@@ -21,7 +21,7 @@ PROMPT="
 plugins=(git mercurial ruby rails bundler gem heroku)
 
 alias clr='clear'
-alias tree='t'
+alias t='tree'
 alias open='xdg-open'
 alias ack='ack-grep'
 
