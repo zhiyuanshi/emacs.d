@@ -43,19 +43,19 @@ let NERDTreeIgnore = ['^_build$', '^_tags$', '\.native$', '\.exe$', '\.sock$']
 " let g:NERDTreeWinSize = 24
 
 " Haskell
+Bundle 'dag/vim2hs'
 Bundle 'eagletmt/ghcmod-vim'
 
 " https://github.com/eagletmt/ghcmod-vim/wiki/Customize
 hi ghcmodType ctermbg=yellow
 let g:ghcmod_type_highlight = 'ghcmodType'
 
-let &l:statusline = '%{empty(getqflist()) ? "[No Errors]" : "[Errors Found]"}' . (empty(&l:statusline) ? &statusline : &l:statusline)
-
+augroup ghcmod-vim
+au!
+au FileType haskell let &l:statusline = '%{empty(getqflist()) ? "[No Errors]" : "[Errors Found]"}' . (empty(&l:statusline) ? &statusline : &l:statusline)
 " Auto-checking on writing
-" augroup ghcmod-vim
-" au!
-" au BufWritePost *.hs GhcModCheckAndLintAsync
-" augroup END
+au BufWritePost *.hs GhcModCheckAndLintAsync
+augroup END
 
 Bundle 'eagletmt/neco-ghc'
 
@@ -110,10 +110,10 @@ set switchbuf=useopen,usetab,split " Want better buffer handling in quickfix mod
 let @/=''       " Get rid of the annoyance that search keyword gets highlighted every time I source a file
 
 " Edit area
-set textwidth=100
-set colorcolumn=120 " Highlight column after 'textwidth'
-set columns=150
-set lines=45
+set textwidth=120
+set colorcolumn=+1 " Highlight column after 'textwidth'
+set columns=130
+set lines=47
 
 " Folding
 set nofoldenable
