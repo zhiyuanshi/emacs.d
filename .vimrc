@@ -111,7 +111,7 @@ let @/=''       " Get rid of the annoyance that search keyword gets highlighted 
 
 " Edit area
 set textwidth=120
-set colorcolumn=+1 " Highlight column after 'textwidth'
+set colorcolumn=121 " Highlight column after 'textwidth'
 set columns=130
 set lines=47
 
