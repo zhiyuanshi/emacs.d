@@ -54,7 +54,7 @@ augroup ghcmod-vim
 au!
 au FileType haskell let &l:statusline = '%{empty(getqflist()) ? "[No Errors]" : "[Errors Found]"}' . (empty(&l:statusline) ? &statusline : &l:statusline)
 " Auto-checking on writing
-au BufWritePost *.hs GhcModCheckAndLintAsync
+" au BufWritePost *.hs GhcModCheckAndLintAsync
 augroup END
 
 Bundle 'eagletmt/neco-ghc'
