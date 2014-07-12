@@ -221,7 +221,8 @@ set nofoldenable
 " Always show the menu, insert longest match
 set completeopt=menu,longest
 
-" set wildignore+=*~,*.native,*.byte,*.hi,*.pyc,*.o
+" Ignore Haskell's dist/ directory in CtrlP
+set wildignore+=*/dist/*
 
 " Expand the command line using tab
 set wildmenu
