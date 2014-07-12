@@ -20,7 +20,6 @@ Plugin 'gmarik/Vundle.vim'
 "-----------------------------------------------------------------------------
 " GENERAL PLUGINS
 
-Plugin 'Shougo/vimproc.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'justinmk/vim-syntax-extra'
 
@@ -66,6 +65,7 @@ Plugin 'dag/vim2hs'
 " otherwise collapsed into a single ellipsis
 let g:haskell_conceal_enumerations = 0
 
+Plugin 'Shougo/vimproc.vim'     " Dependency
 Plugin 'eagletmt/ghcmod-vim'
 
 " https://github.com/eagletmt/ghcmod-vim/wiki/Customize
