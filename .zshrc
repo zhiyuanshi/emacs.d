@@ -28,6 +28,8 @@ alias ack='ack-grep'
 alias v='gvim 2> /dev/null'
 alias e='emacs'
 
+export DOTFILES=~/Dropbox/Code/dotfiles
+
 # Invert behavior of Fn key on Apple keyboard
 # https://help.ubuntu.com/community/AppleKeyboard#Change_Function_Key_behavior
 # echo 2 > /sys/module/hid_apple/parameters/fnmode
