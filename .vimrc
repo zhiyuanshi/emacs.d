@@ -1,97 +1,136 @@
 " .vimrc
 
-set nocompatible " I want Vim, not Vi
-filetype plugin indent off
+" I want Vim, not Vi
+set nocompatible
 
-" Required by Vundle
-filetype off
-set runtimepath+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+"=============================================================================
+" VUNDLE
 
-" vim-textobj-rubyblock requires that the matchit.vim plugin is enabled.
-" https://github.com/nelstrom/vim-textobj-rubyblock
-runtime macros/matchit.vim
+filetype off                  " Required
 
-" My Bundles
-Bundle 'Shougo/vimproc.vim'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'justinmk/vim-syntax-extra'
-Bundle 'kana/vim-textobj-user'
-Bundle 'kien/ctrlp.vim'
-Bundle 'mattn/emmet-vim'
-Bundle 'mhinz/vim-signify'
-Bundle 'msanders/snipmate.vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tsaleh/vim-matchit'
+" Set the runtime path to include Vundle and initialize
+set runtimepath+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'The-NERD-tree'
-Bundle 'jistr/vim-nerdtree-tabs'
+" Let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" Keep Plugin commands between vundle#begin/end.
+
+"-----------------------------------------------------------------------------
+" GENERAL PLUGINS
+
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'justinmk/vim-syntax-extra'
+
+Plugin 'kien/ctrlp.vim'
+
+" Search in Files, Buffers and MRU files at the same time
+" let g:ctrlp_cmd = 'CtrlPMixed'
+
+Plugin 'rking/ag.vim'
+
+Plugin 'mhinz/vim-signify'
+
+" TextMate-style snippets for Vim
+Plugin 'msanders/snipmate.vim'
+
+" Plugin 'scrooloose/syntastic'
+
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+
+Plugin 'The-NERD-tree'
+Plugin 'jistr/vim-nerdtree-tabs'
 
 " Open a NERDTree automatically when Vim starts up if no files were specified
 " Also change current directory to Code
 " au VimEnter * :NERDTree %:p:h
 " au VimEnter * if (argc() == 0) | :NERDTree %:p:h | endif
-let NERDTreeIgnore = ['^_build$', '^_tags$', '\.native$', '\.exe$', '\.sock$']
+" let NERDTreeIgnore = ['^_build$', '^_tags$', '\.native$', '\.exe$', '\.sock$']
 
 " Close Vim if the only window left open is a NERDTree
 " au BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " let g:NERDTreeWinSize = 24
 
-" Haskell
-Bundle 'dag/vim2hs'
-Bundle 'eagletmt/ghcmod-vim'
+"-----------------------------------------------------------------------------
+" HASKELL
+
+Plugin 'dag/vim2hs'
+
+" disable concealing of "enumerations": commatized lists like
+" deriving clauses and LANGUAGE pragmas,
+" otherwise collapsed into a single ellipsis
+let g:haskell_conceal_enumerations = 0
+
+Plugin 'eagletmt/ghcmod-vim'
 
 " https://github.com/eagletmt/ghcmod-vim/wiki/Customize
 hi ghcmodType ctermbg=yellow
 let g:ghcmod_type_highlight = 'ghcmodType'
 
-augroup ghcmod-vim
-au!
+au FileType haskell nmap <buffer> <F1> :GhcModType<CR>
+au FileType haskell nmap <buffer> <F2> :GhcModTypeClear<CR>
+au FileType haskell nmap <buffer> <F3> :GhcModCheck<CR>
+au FileType haskell nmap <buffer> <F4> :GhcModLint<CR>
+
 au FileType haskell let &l:statusline = '%{empty(getqflist()) ? "[No Errors]" : "[Errors Found]"}' . (empty(&l:statusline) ? &statusline : &l:statusline)
 " Auto-checking on writing
 " au BufWritePost *.hs GhcModCheckAndLintAsync
-augroup END
 
-Bundle 'eagletmt/neco-ghc'
+Plugin 'eagletmt/neco-ghc'
 
-augroup neco-ghc
-au!
-au FileType haskell setlocal omnifunc=necoghc#omnifunc
+au FileType haskell setl omnifunc=necoghc#omnifunc
 " To work with YouCompleteMe
-let g:ycm_semantic_triggers = {'haskell' : ['.']}
+" let g:ycm_semantic_triggers = {'haskell' : ['.']}
 let g:necoghc_enable_detailed_browse = 1
-augroup END
 
-" Ruby and Rails
-Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'thoughtbot/vim-rspec'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-rails'
-Bundle 'vim-ruby/vim-ruby'
+"-----------------------------------------------------------------------------
+" RUBY & RAILS
 
-" Scala
-Bundle 'derekwyatt/vim-scala'
+Plugin 'kana/vim-textobj-user'          " Dependency
+runtime macros/matchit.vim              " Required
+Plugin 'nelstrom/vim-textobj-rubyblock'
 
-" CoffeeScript
-Bundle 'kchmck/vim-coffee-script'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-rails'
+Plugin 'vim-ruby/vim-ruby'
 
-" Color schemes
-Bundle 'Solarized'
-Bundle 'Zenburn'
-Bundle 'jpo/vim-railscasts-theme'
-Bundle 'morhetz/gruvbox'
-Bundle 'w0ng/vim-hybrid'
-Bundle 'zeis/vim-kolor'
+"-----------------------------------------------------------------------------
 
-" Required by Vundle
-filetype plugin indent on
+" The tabular plugin must come _before_ vim-markdown.
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
-" Appearance
+Plugin 'derekwyatt/vim-scala'
+Plugin 'kchmck/vim-coffee-script'
+
+" HTML editing
+Plugin 'mattn/emmet-vim'
+
+"-----------------------------------------------------------------------------
+" COLOR SCHEMES
+
+Plugin 'Solarized'
+Plugin 'Zenburn'
+Plugin 'jpo/vim-railscasts-theme'
+Plugin 'morhetz/gruvbox'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'zeis/vim-kolor'
+
+"-----------------------------------------------------------------------------
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " Required
+filetype plugin indent on    " Required
+
+"=============================================================================
+" VIM SETTINGS
+
 syntax on
 set t_Co=256
 set guifont=Ubuntu\ Mono\ 14
@@ -99,129 +138,185 @@ set guifont=Ubuntu\ Mono\ 14
 set background=light
 colorscheme solarized
 
-" General
-" set autochdir   " Replaced by 'lcd %:p:h', which is purported to be better
-" set autowrite   " Automatically write buffer before special actions
-set shell=/usr/bin/zsh
-set completeopt=menu,longest " Always show the menu, insert longest match
-set nowrap " Switch wrap off for everything
-set guioptions=
-set switchbuf=useopen,usetab,split " Want better buffer handling in quickfix mode
-let @/=''       " Get rid of the annoyance that search keyword gets highlighted every time I source a file
+"-----------------------------------------------------------------------------
 
-" Edit area
-set textwidth=120
-set colorcolumn=121 " Highlight column after 'textwidth'
-set columns=130
-set lines=47
+set columns=100
+set lines=50
 
-" Folding
-set nofoldenable
-set foldmethod=indent
-" Space to toggle folds
-" map <Space> za
+" Highlight column after 'textwidth'
+set colorcolumn=+1
 
-" Visual aids
-" set cursorline
-set nolist
-set listchars=tab:¿\ ,eol:¬ " Use the same symbols as TextMate for tabstops and EOL
-set mousehide    " Hide mouse when typing
-set number       " Show line number
+" Maintain some more context around the cursor
+set scrolloff=3
+
+"-----------------------------------------------------------------------------
+
+" Show line number
+set number
+
+" Show line and column number of the cursor position
 set ruler
-set scrolloff=0  " Maintain some more context around the cursor
-set showcmd      " Show (partial) command in the bottom
-set showmatch    " Show matching braces
+
+" Show (partial) command in the bottom
+set showcmd
+
+" Show matching braces
+set showmatch
+
 set showmode
 
-" Tab and indentation
-set tabstop=8    "A tab is 8 spaces
-set expandtab    " Tabs are evil
-set smarttab     "Indent instead of tab at start of line
+" Always show status line
+set laststatus=2
+
+" Command line history
+set history=99
+
+" Hide mouse when typing
+set mousehide
+
+" Remove GUI-nonsense
+set guioptions=
+
+"-----------------------------------------------------------------------------
+
+" Make tabs into spaces (set by tabstop)
+set expandtab
+
+"A tab is 8 spaces
+set tabstop=8
+
 set shiftwidth=2
+
+set textwidth=78
+
+"Indent instead of tab at start of line
+set smarttab
+
+"-----------------------------------------------------------------------------
+
+" Switch wrap off for everything
+set nowrap
+
+" Copy indent from current line when starting a new line
 set autoindent
+
+" Do smart autoindenting when starting a new line, require 'autoindent'
 set smartindent
-set nojoinspaces "Don't convert spaces to tabs
 
-" Search and substitution
-set hlsearch     " Highlight matches
-set incsearch    " Incremental search
-set noignorecase
-set smartcase
-set gdefault     " Make substitution flag 'g' is default on
+"Don't convert spaces to tabs
+set nojoinspaces
 
-" Wild stuff
-set wildcharm=<Tab> " Let <Tab> be recognized when used inside a macro
-set wildignore+=*~,*.native,*.byte,*.hi,*.pyc,*.o
-set wildmenu        " Expand the command line using tab
+"-----------------------------------------------------------------------------
+" FOLDING
+
+" Automatically fold by indent level
+set foldmethod=indent
+
+" Disable folding by default
+set nofoldenable
+
+"-----------------------------------------------------------------------------
+" COMPLETION
+
+" Always show the menu, insert longest match
+set completeopt=menu,longest
+
+" set wildignore+=*~,*.native,*.byte,*.hi,*.pyc,*.o
+
+" Expand the command line using tab
+set wildmenu
 set wildmode=list:longest,full
 
-" Don't use Ex mode, use Q for formatting
-map Q gq
+"-----------------------------------------------------------------------------
+" UNPRINTABLE CHARACTERS
 
-" Buffers
-" set hidden
-" call Map('<C-Tab>', ':bnext<CR>')
+" Don't display unprintable characters by default
+" Use the same symbols as TextMate for tabstops and EOL
+set nolist
+set listchars=tab:¿\ ,eol:¬
 
-" Tabs
-set tabpagemax=9 " At most 9 tabs open
+"-----------------------------------------------------------------------------
+" SEARCH & SUBSTITUTION
+
+" Highlight matches
+set hlsearch
+
+" Incremental search
+set incsearch
+
+" Do case-sensitive matching
+set noignorecase
+
+" Be case-sensitive when there's a capital letter
+set smartcase
+
+" Make substitution flag 'g' by default on
+set gdefault
+
+" Get rid of the annoyance that search keyword gets highlighted every time I
+" source a file
+let @/=''
+
+"-----------------------------------------------------------------------------
+" MISC
+
+" Use current shell for shell commands
+set shell=$SHELL
+
+set noswapfile
+
+" Want better buffer handling in quickfix mode
+set switchbuf=useopen,usetab,split
+
+"=============================================================================
+" KEY MAPPINGS
+
+" Let <Tab> be recognized when used inside a macro
+set wildcharm=<Tab>
+
+" , is a more convenient leader than \
+let mapleader = " "
+let maplocalleader = ",,"
+nmap <Leader>a  ggvG$
+nmap <Leader>c  :colorscheme<Space><Tab>
+nmap <Leader>e  :e<Space><Tab>
+nmap <Leader>f  :set foldenable! foldenable?<CR>
+nmap <Leader>gw :Gwrite<CR>
+nmap <Leader>h  :h<Space>
+nmap <Leader>n  :NERDTreeMirrorToggle<CR>
+nmap <Leader>q  :q<CR>
+nmap <Leader>te :tabedit ~/Dropbox/Code/dotfiles/.emacs<CR>
+nmap <Leader>tv :tabedit ~/Dropbox/Code/dotfiles/.vimrc<CR>
+nmap <Leader>tz :tabedit ~/Dropbox/Code/dotfiles/.zshrc<CR>
+nmap <Leader>w  :w<CR>
 
 function! Map(lhs, rhs)
   execute 'noremap'  a:lhs           a:rhs
   execute 'inoremap' a:lhs '<Esc>' . a:rhs
 endfunction
 
-" , is a more convenient leader than \
-let mapleader = " "
-let maplocalleader = ",,"
-nnoremap <Leader>a  ggvG$
-nnoremap <Leader>cc :colorscheme<Space><Tab>
-nnoremap <Leader>ct :call gruvbox#bg_toggle()<CR>
-nnoremap <Leader>e  :e<Space><Tab>
-nnoremap <Leader>f  :set foldenable! foldenable?<CR>
-nnoremap <Leader>gw :Gwrite<CR>
-nnoremap <Leader>n  :NERDTreeTabsToggle<CR>
-nnoremap <Leader>q  :q<CR>
-nnoremap <Leader>tv :tabedit ~/Dropbox/Code/dotfiles/.vimrc<CR>
-nnoremap <Leader>tz :tabedit ~/Dropbox/Code/dotfiles/.zshrc<CR>
-nnoremap <Leader>w  :w<CR>
-
-call Map('<C-a>', 'ggvG$')
-call Map('<C-c>', '"+y')
-call Map('<C-o>', ':e<Space><Tab>')
-call Map('<C-q>', ':q<CR>')
-call Map('<C-s>', ':w<CR>')
-call Map('<C-v>', '"+p')
 call Map('<C-x>', '"+d')
+call Map('<C-c>', '"+y')
+call Map('<C-v>', '"+p')
 
 call Map('<C-t>'  , ':tabnew<CR>')
 call Map('<C-Tab>', ':tabnext<CR>')
 call Map('<C-F4>' , ':tabclose<CR>')
 
 " Move around in insert mode
-inoremap <C-h> <Left>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-l> <Right>
+imap <C-h> <Left>
+imap <C-j> <Down>
+imap <C-k> <Up>
+imap <C-l> <Right>
 
-map <Up>    <Nop>
-map <Down>  <Nop>
-map <Left>  <Nop>
-map <Right> <Nop>
+" Don't use Ex mode, use Q for formatting
+map Q gq
 
-" Automatic commands
-augroup AutoCmd
-au!
-
-au BufEnter *.x       set filetype=haskell
-au BufEnter *.y       set filetype=haskell
-au BufEnter *.md      set filetype=markdown
-au BufEnter Gemfile   set filetype=ruby
-au BufEnter Guardfile set filetype=ruby
-
-au FileType text        set wrap linebreak nolist
-au FileType markdown    set wrap linebreak nolist
+"=============================================================================
+" AUTO COMMANDS
 
 " Change directories automatically and print the directory after changing
+" Replaced 'set autochdir'
 au BufEnter * :lchdir %:p:h
 
 " When editing a file, always jump to the last known cursor position.
@@ -233,42 +328,23 @@ au BufWritePre * retab
 
 " Remove trailing whitespaces
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
-" au BufWritePre * :%s/\s\+$//e
+au BufWritePre * :%s/\s\+$//e
 
-au BufWritePost .bashrc.append :silent !cp /etc/skel/.bashrc ~ && cat % >> ~/.bashrc
-au BufWritePost .emacs    :silent !cp % ~
-au BufWritePost .gemrc    :silent !cp % ~
-au BufWritePost .gnomerc  :silent !cp % ~
-au BufWritePost .hgrc     :silent !cp % ~
-au BufWritePost .irbrc    :silent !cp % ~
-au BufWritePost .vimrc    :silent !cp % ~
-au BufWritePost .vimrc    :source %
-au BufWritePost .xsession :silent !cp % ~
-au BufWritePost .zshrc    :silent !cp % ~
-au BufWritePost prelude-modules.el :silent !cp % ~/.emacs.d/prelude
+"-----------------------------------------------------------------------------
+" LANGUAGE-SPECIFIC
 
-au FileType haskell nnoremap <buffer> <F1> :GhcModType<CR>
-au FileType haskell nnoremap <buffer> <F2> :GhcModTypeClear<CR>
-au FileType haskell nnoremap <buffer> <F3> :GhcModCheck<CR>
-au FileType haskell nnoremap <buffer> <F4> :GhcModLint<CR>
+au BufWritePost {.vimrc,.emacs,.zshrc} :silent !cp % ~
 
-au FileType c           set shiftwidth=4 cindent
-au FileType cpp         set shiftwidth=4 cindent
-au FileType haskell     set shiftwidth=4
-au FileType java        set shiftwidth=4
-au FileType lex         set shiftwidth=4
-au FileType python      set shiftwidth=4
-au FileType xml         set shiftwidth=4
-au FileType yacc        set shiftwidth=4
-au FileType eruby       set shiftwidth=2
-au FileType html        set shiftwidth=2
-au FileType javascript  set shiftwidth=2
-au FileType ocaml       set shiftwidth=2
-au FileType r           set shiftwidth=2
-au FileType ruby        set shiftwidth=2
-au FileType sh          set shiftwidth=2
-au FileType vim         set shiftwidth=2
+au BufRead,BufNewFile {Gemfile,Rakefile,Guardfile,*.rake,config.ru} setl ft=ruby
+au BufRead,BufNewFile {*.md,*.markdown}                             setl ft=markdown
+au BufRead,BufNewFile {*.x,*.y}                                     setl ft=haskell
+
+au FileType {c,cpp}                                     setl shiftwidth=4 cindent
+au FileType {haskell,python,java,xml,lex,yacc}          setl shiftwidth=4
+au FileType {ruby,eruby,sh,javascript,ocaml,vim,r,html} setl shiftwidth=2
+
+" This option ('linebreak') is not used when the 'wrap' option is off or 'list' is on.
+au FileType text     setl wrap nolist linebreak
+au FileType markdown setl wrap nolist linebreak
 
 au FileType ocaml source ~/.opam/4.01.0/share/vim/syntax/ocp-indent.vim
-
-augroup END
