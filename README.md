@@ -2,11 +2,21 @@
 
 ## Install
 
-```bash
-rm ~/.vimrc && rm -rf ~/.vim/ && cp ~/Dropbox/Code/dotfiles/.vimrc ~
-```
+1. Clear
+   ```bash
+   $rm ~/.vimrc && rm -rf ~/.vim/
+   ```
 
-Install [Vundle](https://github.com/gmarik/Vundle.vim)
+2. Install [Vundle](https://github.com/gmarik/Vundle.vim):
+
+   ```bash
+   git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+   ```
+
+3. Restore .vimrc
+   ```bash
+   cp ~/Dropbox/Code/dotfiles/.vimrc ~
+   ```
 
 Open Vim and run `:PluginInstall`
 
