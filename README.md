@@ -1,11 +1,25 @@
+# Vim
+
+## Install
+
+```bash
+rm ~/.vimrc && rm -rf ~/.vim/ && cp ~/Dropbox/Code/dotfiles/.vimrc ~
+```
+
+Install [Vundle](https://github.com/gmarik/Vundle.vim)
+
+Open Vim and run `:PluginInstall`
+
+make [Shougo/vimproc.vim](https://github.com/Shougo/vimproc.vim) (required by [eagletmt/ghcmod-vim](https://github.com/eagletmt/ghcmod-vim))
+
+make [Valloric/YouCompleteMe](https://github.com/Shougo/vimproc.vim)
+
 # Emacs
 
 ## Install
 
-Remove existing local Emacs configurations and packages:
-
 ```bash
-rm -rf ~/.emacs*
+rm ~/.emacs && rm -rf ~/.emacs.d/
 ```
 
 [Fast-forward install](https://github.com/bbatsov/prelude#fast-forward) Prelude:
@@ -14,20 +28,15 @@ rm -rf ~/.emacs*
 curl -L http://git.io/epre | sh
 ```
 
-Backup pristine configurations:
-
 ```bash
-export DOTFILES_DIR=~/Dropbox/Code/dotfiles
-cp ~/.emacs.d/prelude-modules.el $DOTFILES_DIR
+cp ~/.emacs.d/prelude-modules.el ~/Dropbox/Code/dotfiles/.emacs.d/prelude-modules.el.original
 ```
 
-Now, open Emacs to let Prelude be initialized.
-
-Apply custom configurations:
+Open Emacs and Prelude will be automatically initialized.
 
 ```bash
-cp $DOTFILES_DIR/.emacs ~
-cp $DOTFILES_DIR/prelude-modules.el ~/.emacs.d
+cp ~/Dropbox/Code/dotfiles/.emacs ~
+cp ~/Dropbox/Code/dotfiles/prelude-modules.el ~/.emacs.d
 ```
 
 The evil package that comes with Prelude doesn't seem to work. If that's the case, open Emacs and do a manual [install](http://www.emacswiki.org/emacs/Evil#toc1) by:
@@ -35,5 +44,3 @@ The evil package that comes with Prelude doesn't seem to work. If that's the cas
 ```bash
 M-x package-install RET evil RET
 ```
-
-Done.
