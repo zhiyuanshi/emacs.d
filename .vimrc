@@ -335,9 +335,9 @@ au BufWritePre * :%s/\s\+$//e
 
 au BufWritePost {.vimrc,.emacs,.zshrc} :silent !cp % ~
 
-au BufRead,BufNewFile {Gemfile,Rakefile,Guardfile,*.rake,config.ru} setl ft=ruby
-au BufRead,BufNewFile {*.md,*.markdown}                             setl ft=markdown
-au BufRead,BufNewFile {*.x,*.y}                                     setl ft=haskell
+au BufEnter {Gemfile,Rakefile,Guardfile,*.rake,config.ru} setl ft=ruby
+au BufEnter {*.md,*.markdown}                             setl ft=markdown
+au BufEnter {*.x,*.y}                                     setl ft=haskell
 
 au FileType {c,cpp}                                     setl shiftwidth=4 cindent
 au FileType {haskell,python,java,xml,lex,yacc}          setl shiftwidth=4
