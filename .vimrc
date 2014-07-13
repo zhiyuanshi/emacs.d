@@ -86,6 +86,22 @@ au FileType haskell setl omnifunc=necoghc#omnifunc
 let g:necoghc_enable_detailed_browse = 1
 
 "-----------------------------------------------------------------------------
+" COQ
+
+Plugin 'def-lkb/vimbufsync'             " Dependency
+Plugin 'the-lambda-church/coquille'
+
+au FileType coq nmap <buffer> <C-c><C-l> :CoqLaunch<CR>
+au FileType coq nmap <buffer> <C-c><C-c> :CoqToCursor<CR>
+au FileType coq nmap <buffer> <C-c><C-n> :CoqNext<CR>
+au FileType coq nmap <buffer> <C-c><C-u> :CoqUndo<CR>
+au FileType coq nmap <buffer> <C-c><C-k> :CoqKill<CR>
+
+" Set it to 'true' if you want Coquille to move your cursor to the end of the
+" lock zone after calls to CoqNext or CoqUndo.
+let g:coquille_auto_move = 'true'
+
+"-----------------------------------------------------------------------------
 " RUBY & RAILS
 
 Plugin 'kana/vim-textobj-user'          " Dependency
@@ -131,14 +147,14 @@ filetype plugin indent on    " Required
 
 syntax on
 set t_Co=256
-set guifont=Ubuntu\ Mono\ 15
+set guifont=Ubuntu\ Mono\ 14
 " set guifont=Monospace\ 12
 set background=light
 colorscheme Tomorrow
 
 "-----------------------------------------------------------------------------
 
-set columns=122
+set columns=124
 set lines=45
 
 " Highlight column after 'textwidth'
@@ -237,14 +253,14 @@ set listchars=tab:¿\ ,eol:¬
 "-----------------------------------------------------------------------------
 " SEARCH & SUBSTITUTION
 
+" Case-insensitive search
+set ignorecase
+
 " Highlight matches
 set hlsearch
 
 " Incremental search
 set incsearch
-
-" Do case-sensitive matching
-set noignorecase
 
 " Be case-sensitive when there's a capital letter
 set smartcase
