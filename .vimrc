@@ -60,10 +60,8 @@ Plugin 'jistr/vim-nerdtree-tabs'
 
 Plugin 'dag/vim2hs'
 
-" disable concealing of "enumerations": commatized lists like
-" deriving clauses and LANGUAGE pragmas,
-" otherwise collapsed into a single ellipsis
-let g:haskell_conceal_enumerations = 0
+" Disable all conceals, including the simple ones like lambda and composition
+let g:haskell_conceal = 0
 
 Plugin 'Shougo/vimproc.vim'     " Dependency
 Plugin 'eagletmt/ghcmod-vim'
