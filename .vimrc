@@ -140,11 +140,11 @@ colorscheme Tomorrow
 
 "-----------------------------------------------------------------------------
 
-set columns=100
-set lines=50
+set columns=122
+set lines=45
 
 " Highlight column after 'textwidth'
-set colorcolumn=+1
+set colorcolumn=+1,+41
 
 " Maintain some more context around the cursor
 set scrolloff=3
