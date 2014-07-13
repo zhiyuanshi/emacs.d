@@ -116,6 +116,7 @@ Plugin 'mattn/emmet-vim'
 
 Plugin 'Solarized'
 Plugin 'Zenburn'
+Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'jpo/vim-railscasts-theme'
 Plugin 'morhetz/gruvbox'
 Plugin 'w0ng/vim-hybrid'
@@ -132,10 +133,10 @@ filetype plugin indent on    " Required
 
 syntax on
 set t_Co=256
-set guifont=Ubuntu\ Mono\ 14
+set guifont=Ubuntu\ Mono\ 15
 " set guifont=Monospace\ 12
 set background=light
-colorscheme solarized
+colorscheme Tomorrow
 
 "-----------------------------------------------------------------------------
 
