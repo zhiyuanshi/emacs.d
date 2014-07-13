@@ -77,7 +77,6 @@ au FileType haskell nmap <buffer> <F2> :GhcModTypeClear<CR>
 au FileType haskell nmap <buffer> <F3> :GhcModCheck<CR>
 au FileType haskell nmap <buffer> <F4> :GhcModLint<CR>
 
-au FileType haskell let &l:statusline = '%{empty(getqflist()) ? "[No Errors]" : "[Errors Found]"}' . (empty(&l:statusline) ? &statusline : &l:statusline)
 " Auto-checking on writing
 " au BufWritePost *.hs GhcModCheckAndLintAsync
 
@@ -325,6 +324,9 @@ au BufEnter * :lchdir %:p:h
 " (happens when dropping a file on gvim).
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 
+"-----------------------------------------------------------------------------
+
+" Replace white-spaces containing a <Tab> with new strings of white-space.
 au BufWritePre * retab
 
 " Remove trailing whitespaces
