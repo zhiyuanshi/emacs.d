@@ -23,7 +23,6 @@ plugins=(git mercurial ruby rails bundler gem heroku)
 alias clr='clear'
 alias t='tree'
 alias open='xdg-open'
-alias ack='ack-grep'
 
 alias v='gvim 2> /dev/null'
 alias e='emacs'
