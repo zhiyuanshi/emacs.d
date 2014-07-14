@@ -22,6 +22,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'justinmk/vim-syntax-extra'
+Plugin 'terryma/vim-multiple-cursors'
 
 Plugin 'kien/ctrlp.vim'
 
