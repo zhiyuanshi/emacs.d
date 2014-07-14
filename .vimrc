@@ -35,7 +35,7 @@ Plugin 'mhinz/vim-signify'
 " TextMate-style snippets for Vim
 Plugin 'msanders/snipmate.vim'
 
-" Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
@@ -58,17 +58,23 @@ Plugin 'jistr/vim-nerdtree-tabs'
 "-----------------------------------------------------------------------------
 " HASKELL
 
-Plugin 'dag/vim2hs'
+Plugin 'lukerandall/haskellmode-vim'
+
+" The preferred HTML browser for viewing Haddock documentation, required
+let g:haddock_browser = "usr/bin/google-chrome"
+
+" Crossed out since it causes data constructors in Haskell not to be highlighted
+" Plugin 'dag/vim2hs'
 
 " Disable all conceals, including the simple ones like lambda and composition
-let g:haskell_conceal = 0
+" let g:haskell_conceal = 0
 
 Plugin 'Shougo/vimproc.vim'     " Dependency
 Plugin 'eagletmt/ghcmod-vim'
 
 " https://github.com/eagletmt/ghcmod-vim/wiki/Customize
 hi ghcmodType ctermbg=yellow
-let g:ghcmod_type_highlight = 'ghcmodType'
+let g:ghcmod_type_highlight = "ghcmodType"
 
 au FileType haskell nmap <buffer> <F1> :GhcModType<CR>
 au FileType haskell nmap <buffer> <F2> :GhcModTypeClear<CR>
@@ -99,7 +105,7 @@ au FileType coq nmap <buffer> <C-c><C-k> :CoqKill<CR>
 
 " Set it to 'true' if you want Coquille to move your cursor to the end of the
 " lock zone after calls to CoqNext or CoqUndo.
-let g:coquille_auto_move = 'true'
+let g:coquille_auto_move = "true"
 
 "-----------------------------------------------------------------------------
 " RUBY & RAILS
@@ -147,10 +153,10 @@ filetype plugin indent on    " Required
 
 syntax on
 set t_Co=256
-set guifont=Ubuntu\ Mono\ 14
+set guifont=Ubuntu\ Mono\ 15
 " set guifont=Monospace\ 12
 set background=light
-colorscheme Tomorrow
+colorscheme solarized
 
 "-----------------------------------------------------------------------------
 
@@ -306,17 +312,17 @@ nmap <Leader>tz :tabedit ~/Dropbox/Code/dotfiles/.zshrc<CR>
 nmap <Leader>w  :w<CR>
 
 function! Map(lhs, rhs)
-  execute 'noremap'  a:lhs           a:rhs
-  execute 'inoremap' a:lhs '<Esc>' . a:rhs
+  execute "noremap"  a:lhs           a:rhs
+  execute "inoremap" a:lhs "<Esc>" . a:rhs
 endfunction
 
-call Map('<C-x>', '"+d')
-call Map('<C-c>', '"+y')
-call Map('<C-v>', '"+p')
+call Map("<C-x>", '"+d')
+call Map("<C-c>", '"+y')
+call Map("<C-v>", '"+p')
 
-call Map('<C-t>'  , ':tabnew<CR>')
-call Map('<C-Tab>', ':tabnext<CR>')
-call Map('<C-F4>' , ':tabclose<CR>')
+call Map("<C-t>"  , ":tabnew<CR>")
+call Map("<C-Tab>", ":tabnext<CR>")
+call Map("<C-F4>" , ":tabclose<CR>")
 
 " Move around in insert mode
 imap <C-h> <Left>
