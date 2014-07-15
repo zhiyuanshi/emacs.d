@@ -379,9 +379,9 @@ au BufEnter {Gemfile,Rakefile,Guardfile,*.rake,config.ru} setl ft=ruby
 au BufEnter {*.md,*.markdown}                             setl ft=markdown
 au BufEnter {*.x,*.y}                                     setl ft=haskell
 
-au FileType {c,cpp}                                     setl shiftwidth=4 cindent
-au FileType {haskell,python,java,xml,lex,yacc}          setl shiftwidth=4
-au FileType {ruby,eruby,sh,javascript,ocaml,vim,r,html} setl shiftwidth=2
+au FileType {c,cpp}                                             setl shiftwidth=4 cindent
+au FileType {python,java,xml,lex,yacc}                          setl shiftwidth=4
+au FileType {haskell,ocaml,ruby,eruby,javascript,sh,vim,r,html} setl shiftwidth=2
 
 " This option ('linebreak') is not used when the 'wrap' option is off or 'list' is on.
 au FileType text     setl wrap nolist linebreak
