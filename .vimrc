@@ -172,11 +172,11 @@ set t_Co=256
 set guifont=Ubuntu\ Mono\ 15
 " set guifont=Monospace\ 12
 set background=light
-colorscheme Tomorrow
+colorscheme solarized
 
 "-----------------------------------------------------------------------------
 
-set columns=124
+set columns=125
 set lines=45
 
 " Highlight column after 'textwidth'
@@ -355,6 +355,9 @@ map Q gq
 " Change directories automatically and print the directory after changing
 " Replaced 'set autochdir'
 au BufEnter * :lchdir %:p:h
+
+" Fix broken syntax highlighting
+au BufEnter * :syntax sync fromstart
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
