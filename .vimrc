@@ -66,11 +66,22 @@ Plugin 'lukerandall/haskellmode-vim'
 " The preferred HTML browser for viewing Haddock documentation, required
 let g:haddock_browser = "usr/bin/google-chrome"
 
-" Crossed out since it causes data constructors in Haskell not to be highlighted
+"-----------------------------------------------------------------------------
+
+" Crossed out since vim2hs:
+" (1) Does not highlight data constructors with (at least) the solarized theme, and
+" (2) Pegs the CPU while you are scrolling.
+
 " Plugin 'dag/vim2hs'
 
 " Disable all conceals, including the simple ones like lambda and composition
 " let g:haskell_conceal = 0
+
+"-----------------------------------------------------------------------------
+
+Plugin 'travitch/hasksyn'
+
+"-----------------------------------------------------------------------------
 
 Plugin 'Shougo/vimproc.vim'     " Dependency
 Plugin 'eagletmt/ghcmod-vim'
@@ -86,6 +97,8 @@ au FileType haskell nmap <buffer> <F4> :GhcModLint<CR>
 
 " Auto-checking on writing
 " au BufWritePost *.hs GhcModCheckAndLintAsync
+
+"-----------------------------------------------------------------------------
 
 Plugin 'eagletmt/neco-ghc'
 
@@ -159,7 +172,7 @@ set t_Co=256
 set guifont=Ubuntu\ Mono\ 15
 " set guifont=Monospace\ 12
 set background=light
-colorscheme solarized
+colorscheme Tomorrow
 
 "-----------------------------------------------------------------------------
 
