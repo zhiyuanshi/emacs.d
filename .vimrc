@@ -27,11 +27,14 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'kien/ctrlp.vim'
 
 " Search in Files, Buffers and MRU files at the same time
-" let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_cmd = 'CtrlPMixed'
 
 Plugin 'rking/ag.vim'
 
 Plugin 'mhinz/vim-signify'
+
+" Don't run Sy by default
+let g:signify_disable_by_default = 1
 
 " TextMate-style snippets for Vim
 Plugin 'msanders/snipmate.vim'
@@ -40,6 +43,7 @@ Plugin 'scrooloose/syntastic'
 
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
@@ -169,7 +173,7 @@ filetype plugin indent on    " Required
 
 syntax on
 set t_Co=256
-set guifont=Ubuntu\ Mono\ 15
+set guifont=Ubuntu\ Mono\ 14
 " set guifont=Monospace\ 12
 set background=light
 colorscheme solarized
@@ -322,6 +326,7 @@ nmap <Leader>gw :Gwrite<CR>
 nmap <Leader>h  :h<Space>
 nmap <Leader>n  :NERDTreeMirrorToggle<CR>
 nmap <Leader>q  :q<CR>
+nmap <Leader>s  :%s/
 nmap <Leader>te :tabedit ~/Dropbox/Code/dotfiles/.emacs<CR>
 nmap <Leader>tv :tabedit ~/Dropbox/Code/dotfiles/.vimrc<CR>
 nmap <Leader>tz :tabedit ~/Dropbox/Code/dotfiles/.zshrc<CR>
