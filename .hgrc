@@ -2,6 +2,7 @@
 shelve=
 hgext.convert=
 hgext.bookmarks=
+hggit=
 
 [ui]
 # Name data to appear in commits
