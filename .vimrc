@@ -22,7 +22,14 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'justinmk/vim-syntax-extra'
+
 Plugin 'terryma/vim-multiple-cursors'
+
+" If set to 0, then pressing g:multi_cursor_quit_key in Insert mode will not
+" quit and delete all existing cursors. This is useful if you want to press
+" Escape and go back to Normal mode, and still be able to operate on all the
+" cursors.
+let g:multi_cursor_exit_from_insert_mode = 0
 
 Plugin 'kien/ctrlp.vim'
 
@@ -34,7 +41,7 @@ Plugin 'rking/ag.vim'
 Plugin 'mhinz/vim-signify'
 
 " Don't run Sy by default
-let g:signify_disable_by_default = 1
+" let g:signify_disable_by_default = 1
 
 " TextMate-style snippets for Vim
 Plugin 'msanders/snipmate.vim'
@@ -173,7 +180,7 @@ filetype plugin indent on    " Required
 
 syntax on
 set t_Co=256
-set guifont=Ubuntu\ Mono\ 14
+set guifont=Ubuntu\ Mono\ 15
 " set guifont=Monospace\ 12
 set background=light
 colorscheme solarized
