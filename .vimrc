@@ -147,6 +147,12 @@ Plugin 'tpope/vim-rails'
 Plugin 'vim-ruby/vim-ruby'
 
 "-----------------------------------------------------------------------------
+" HTML
+
+Plugin 'gregsexton/MatchTag'
+Plugin 'mattn/emmet-vim'
+
+"-----------------------------------------------------------------------------
 
 " The tabular plugin must come _before_ vim-markdown.
 Plugin 'godlygeek/tabular'
@@ -154,9 +160,6 @@ Plugin 'plasticboy/vim-markdown'
 
 Plugin 'derekwyatt/vim-scala'
 Plugin 'kchmck/vim-coffee-script'
-
-" HTML editing
-Plugin 'mattn/emmet-vim'
 
 "-----------------------------------------------------------------------------
 " COLOR SCHEMES
