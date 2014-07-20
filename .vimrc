@@ -34,7 +34,7 @@ let g:multi_cursor_exit_from_insert_mode = 0
 Plugin 'kien/ctrlp.vim'
 
 " Search in Files, Buffers and MRU files at the same time
-let g:ctrlp_cmd = 'CtrlPMixed'
+" let g:ctrlp_cmd = 'CtrlPMixed'
 
 Plugin 'rking/ag.vim'
 
@@ -332,6 +332,7 @@ nmap <Leader>f  :set foldenable! foldenable?<CR>
 nmap <Leader>gw :Gwrite<CR>
 nmap <Leader>h  :h<Space>
 nmap <Leader>n  :NERDTreeMirrorToggle<CR>
+nmap <Leader>p  :CtrlP<CR>
 nmap <Leader>q  :q<CR>
 nmap <Leader>s  :%s/
 nmap <Leader>te :tabedit ~/Dropbox/Code/dotfiles/.emacs<CR>
@@ -351,6 +352,8 @@ call Map("<C-v>", '"+p')
 call Map("<C-t>"  , ":tabnew<CR>")
 call Map("<C-Tab>", ":tabnext<CR>")
 call Map("<C-F4>" , ":tabclose<CR>")
+
+call Map("<M-p>", ":CtrlPMixed<CR>")
 
 " Move around in insert mode
 imap <C-h> <Left>
