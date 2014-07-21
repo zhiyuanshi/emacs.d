@@ -52,6 +52,7 @@ Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
@@ -151,6 +152,7 @@ Plugin 'vim-ruby/vim-ruby'
 
 Plugin 'gregsexton/MatchTag'
 Plugin 'mattn/emmet-vim'
+Plugin 'tpope/vim-ragtag'
 
 "-----------------------------------------------------------------------------
 
@@ -183,7 +185,7 @@ filetype plugin indent on    " Required
 
 syntax on
 set t_Co=256
-set guifont=Ubuntu\ Mono\ 15
+set guifont=Ubuntu\ Mono\ 14
 " set guifont=Monospace\ 12
 set background=light
 colorscheme solarized
