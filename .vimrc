@@ -50,6 +50,7 @@ Plugin 'kien/ctrlp.vim'
 " let g:ctrlp_cmd = 'CtrlPMixed'
 
 Plugin 'rking/ag.vim'
+nmap <Leader>ag :Ag<Space>
 
 "-----------------------------------------------------------------------------
 
