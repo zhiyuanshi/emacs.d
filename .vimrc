@@ -29,6 +29,24 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 
 "-----------------------------------------------------------------------------
+" netrw
+
+" Tree style listing
+" let g:netrw_liststyle = 3
+
+" Ignore case in sorting
+let g:netrw_sort_options = "i"
+
+" Open netrw at startup if the argument is a directory ($ vim /tmp)
+" http://stackoverflow.com/questions/18287558/alternative-to-nerdtree-in-vim/18287760#18287760
+au VimEnter * if isdirectory(expand("<afile>")) | Explore | endif
+
+Plugin 'tpope/vim-vinegar'
+
+" Modify NerdTree to make it use the split explorer model
+let NERDTreeHijackNetrw = 1
+
+"-----------------------------------------------------------------------------
 
 Plugin 'kien/ctrlp.vim'
 
@@ -381,10 +399,6 @@ map Q gq
 
 "=============================================================================
 " Auto-commands
-
-" Open netrw at startup if the argument is a directory ($ vim /tmp)
-" http://stackoverflow.com/questions/18287558/alternative-to-nerdtree-in-vim/18287760#18287760
-au VimEnter * if isdirectory(expand('<afile>')) | Explore | endif
 
 " Change directories automatically and print the directory after changing
 " Replaced 'set autochdir'
