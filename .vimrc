@@ -353,6 +353,7 @@ nmap <Leader>te :tabedit ~/Dropbox/Code/dotfiles/.emacs<CR>
 nmap <Leader>tv :tabedit ~/Dropbox/Code/dotfiles/.vimrc<CR>
 nmap <Leader>tz :tabedit ~/Dropbox/Code/dotfiles/.zshrc<CR>
 nmap <Leader>w  :w<CR>
+nmap <Leader>x  :Explore<CR>
 
 function! Map(lhs, rhs)
   execute "noremap"  a:lhs           a:rhs
@@ -380,6 +381,10 @@ map Q gq
 
 "=============================================================================
 " Auto-commands
+
+" Open netrw at startup if the argument is a directory ($ vim /tmp)
+" http://stackoverflow.com/questions/18287558/alternative-to-nerdtree-in-vim/18287760#18287760
+au VimEnter * if isdirectory(expand('<afile>')) | Explore | endif
 
 " Change directories automatically and print the directory after changing
 " Replaced 'set autochdir'
