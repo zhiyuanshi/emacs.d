@@ -19,6 +19,10 @@ Plugin 'gmarik/Vundle.vim'
 
 "-----------------------------------------------------------------------------
 
+" , is a more convenient leader than \
+let mapleader = " "
+let maplocalleader = ",,"
+
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-eunuch'
@@ -29,33 +33,25 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 
 "-----------------------------------------------------------------------------
-" netrw
+" File navigation
 
-" Tree style listing
-" let g:netrw_liststyle = 3
-
-" Ignore case in sorting
-let g:netrw_sort_options = "i"
-
-" Open netrw at startup if the argument is a directory ($ vim /tmp)
-" http://stackoverflow.com/questions/18287558/alternative-to-nerdtree-in-vim/18287760#18287760
-au VimEnter * if isdirectory(expand("<afile>")) | Explore | endif
-
-Plugin 'tpope/vim-vinegar'
+Plugin 'The-NERD-tree'
+Plugin 'jistr/vim-nerdtree-tabs'
+nmap <Leader>n :NERDTreeMirrorToggle<CR>
 
 " Modify NerdTree to make it use the split explorer model
-let NERDTreeHijackNetrw = 1
-
-"-----------------------------------------------------------------------------
+" http://vimcasts.org/blog/2013/01/oil-and-vinegar-split-windows-and-project-drawer/
+" Plugin 'tpope/vim-vinegar'
+" let NERDTreeHijackNetrw = 1
 
 Plugin 'kien/ctrlp.vim'
 
 " Search in Files, Buffers and MRU files at the same time
 " let g:ctrlp_cmd = 'CtrlPMixed'
 
-"-----------------------------------------------------------------------------
-
 Plugin 'rking/ag.vim'
+
+"-----------------------------------------------------------------------------
 
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'justinmk/vim-syntax-extra'
@@ -85,21 +81,6 @@ Plugin 'msanders/snipmate.vim'
 Plugin 'scrooloose/syntastic'
 
 "-----------------------------------------------------------------------------
-
-" Plugin 'The-NERD-tree'
-" Plugin 'jistr/vim-nerdtree-tabs'
-
-" Open a NERDTree automatically when Vim starts up if no files were specified
-" Also change current directory to Code
-" au VimEnter * :NERDTree %:p:h
-" au VimEnter * if (argc() == 0) | :NERDTree %:p:h | endif
-" let NERDTreeIgnore = ['^_build$', '^_tags$', '\.native$', '\.exe$', '\.sock$']
-
-" Close Vim if the only window left open is a NERDTree
-" au BufEnter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-" let g:NERDTreeWinSize = 24
-
-"-----------------------------------------------------------------------------
 " Haskell
 
 Plugin 'lukerandall/haskellmode-vim'
@@ -107,22 +88,15 @@ Plugin 'lukerandall/haskellmode-vim'
 " The preferred HTML browser for viewing Haddock documentation, required
 let g:haddock_browser = "usr/bin/google-chrome"
 
-"-----------------------------------------------------------------------------
-
-" Crossed out since vim2hs:
+" Crossed vim2hs out since:
 " (1) Does not highlight data constructors with (at least) the solarized theme, and
 " (2) Pegs the CPU while you are scrolling.
-
 " Plugin 'dag/vim2hs'
 
 " Disable all conceals, including the simple ones like lambda and composition
 " let g:haskell_conceal = 0
 
-"-----------------------------------------------------------------------------
-
 Plugin 'travitch/hasksyn'
-
-"-----------------------------------------------------------------------------
 
 Plugin 'Shougo/vimproc.vim'     " Dependency
 Plugin 'eagletmt/ghcmod-vim'
@@ -138,8 +112,6 @@ au FileType haskell nmap <buffer> <F4> :GhcModLint<CR>
 
 " Auto-checking on writing
 " au BufWritePost *.hs GhcModCheckAndLintAsync
-
-"-----------------------------------------------------------------------------
 
 Plugin 'eagletmt/neco-ghc'
 
@@ -354,24 +326,18 @@ set switchbuf=useopen,usetab,split
 " Let <Tab> be recognized when used inside a macro
 set wildcharm=<Tab>
 
-" , is a more convenient leader than \
-let mapleader = " "
-let maplocalleader = ",,"
 nmap <Leader>a  ggvG$
 nmap <Leader>c  :colorscheme<Space><Tab>
 nmap <Leader>e  :e<Space><Tab>
 nmap <Leader>f  :set foldenable! foldenable?<CR>
-nmap <Leader>gw :Gwrite<CR>
 nmap <Leader>h  :h<Space>
-" nmap <Leader>n  :NERDTreeMirrorToggle<CR>
-nmap <Leader>p  :CtrlP<CR>
 nmap <Leader>q  :q<CR>
+nmap <Leader>x  :qa<CR>
 nmap <Leader>s  :%s/
 nmap <Leader>te :tabedit ~/Dropbox/Code/dotfiles/.emacs<CR>
 nmap <Leader>tv :tabedit ~/Dropbox/Code/dotfiles/.vimrc<CR>
 nmap <Leader>tz :tabedit ~/Dropbox/Code/dotfiles/.zshrc<CR>
 nmap <Leader>w  :w<CR>
-nmap <Leader>x  :Explore<CR>
 
 function! Map(lhs, rhs)
   execute "noremap"  a:lhs           a:rhs
