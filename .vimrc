@@ -4,7 +4,7 @@
 set nocompatible
 
 "=============================================================================
-" VUNDLE
+" Vundle
 
 filetype off                  " Required
 
@@ -18,35 +18,6 @@ Plugin 'gmarik/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 
 "-----------------------------------------------------------------------------
-" GENERAL PLUGINS
-
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'justinmk/vim-syntax-extra'
-
-Plugin 'terryma/vim-multiple-cursors'
-
-" If set to 0, then pressing g:multi_cursor_quit_key in Insert mode will not
-" quit and delete all existing cursors. This is useful if you want to press
-" Escape and go back to Normal mode, and still be able to operate on all the
-" cursors.
-let g:multi_cursor_exit_from_insert_mode = 0
-
-Plugin 'kien/ctrlp.vim'
-
-" Search in Files, Buffers and MRU files at the same time
-" let g:ctrlp_cmd = 'CtrlPMixed'
-
-Plugin 'rking/ag.vim'
-
-Plugin 'mhinz/vim-signify'
-
-" Don't run Sy by default
-" let g:signify_disable_by_default = 1
-
-" TextMate-style snippets for Vim
-Plugin 'msanders/snipmate.vim'
-
-Plugin 'scrooloose/syntastic'
 
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-commentary'
@@ -57,8 +28,48 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 
-Plugin 'The-NERD-tree'
-Plugin 'jistr/vim-nerdtree-tabs'
+"-----------------------------------------------------------------------------
+
+Plugin 'kien/ctrlp.vim'
+
+" Search in Files, Buffers and MRU files at the same time
+" let g:ctrlp_cmd = 'CtrlPMixed'
+
+"-----------------------------------------------------------------------------
+
+Plugin 'rking/ag.vim'
+
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'justinmk/vim-syntax-extra'
+
+"-----------------------------------------------------------------------------
+
+Plugin 'terryma/vim-multiple-cursors'
+
+" If set to 0, then pressing g:multi_cursor_quit_key in Insert mode will not
+" quit and delete all existing cursors. This is useful if you want to press
+" Escape and go back to Normal mode, and still be able to operate on all the
+" cursors.
+let g:multi_cursor_exit_from_insert_mode = 0
+
+"-----------------------------------------------------------------------------
+
+Plugin 'mhinz/vim-signify'
+
+" Don't run Sy by default
+let g:signify_disable_by_default = 1
+
+"-----------------------------------------------------------------------------
+
+" TextMate-style snippets for Vim
+Plugin 'msanders/snipmate.vim'
+
+Plugin 'scrooloose/syntastic'
+
+"-----------------------------------------------------------------------------
+
+" Plugin 'The-NERD-tree'
+" Plugin 'jistr/vim-nerdtree-tabs'
 
 " Open a NERDTree automatically when Vim starts up if no files were specified
 " Also change current directory to Code
@@ -71,7 +82,7 @@ Plugin 'jistr/vim-nerdtree-tabs'
 " let g:NERDTreeWinSize = 24
 
 "-----------------------------------------------------------------------------
-" HASKELL
+" Haskell
 
 Plugin 'lukerandall/haskellmode-vim'
 
@@ -120,7 +131,7 @@ au FileType haskell setl omnifunc=necoghc#omnifunc
 let g:necoghc_enable_detailed_browse = 1
 
 "-----------------------------------------------------------------------------
-" COQ
+" Coq
 
 Plugin 'def-lkb/vimbufsync'             " Dependency
 Plugin 'the-lambda-church/coquille'
@@ -136,7 +147,7 @@ au FileType coq nmap <buffer> <C-c><C-k> :CoqKill<CR>
 let g:coquille_auto_move = "true"
 
 "-----------------------------------------------------------------------------
-" RUBY & RAILS
+" Ruby & Rails
 
 Plugin 'kana/vim-textobj-user'          " Dependency
 runtime macros/matchit.vim              " Required
@@ -164,7 +175,7 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'kchmck/vim-coffee-script'
 
 "-----------------------------------------------------------------------------
-" COLOR SCHEMES
+" Color schemes
 
 Plugin 'Solarized'
 Plugin 'Zenburn'
@@ -181,11 +192,10 @@ call vundle#end()            " Required
 filetype plugin indent on    " Required
 
 "=============================================================================
-" VIM SETTINGS
 
 syntax on
 set t_Co=256
-set guifont=Ubuntu\ Mono\ 14
+set guifont=Ubuntu\ Mono\ 15
 " set guifont=Monospace\ 12
 set background=light
 colorscheme solarized
@@ -259,7 +269,7 @@ set smartindent
 set nojoinspaces
 
 "-----------------------------------------------------------------------------
-" FOLDING
+" Folding
 
 " Automatically fold by indent level
 set foldmethod=indent
@@ -268,7 +278,7 @@ set foldmethod=indent
 set nofoldenable
 
 "-----------------------------------------------------------------------------
-" COMPLETION
+" Completion
 
 " Always show the menu, insert longest match
 set completeopt=menu,longest
@@ -281,7 +291,7 @@ set wildmenu
 set wildmode=list:longest,full
 
 "-----------------------------------------------------------------------------
-" UNPRINTABLE CHARACTERS
+" Unprintable characters
 
 " Don't display unprintable characters by default
 " Use the same symbols as TextMate for tabstops and EOL
@@ -289,7 +299,7 @@ set nolist
 set listchars=tab:¿\ ,eol:¬
 
 "-----------------------------------------------------------------------------
-" SEARCH & SUBSTITUTION
+" Search & substitution
 
 " Case-insensitive search
 set ignorecase
@@ -311,7 +321,6 @@ set gdefault
 let @/=''
 
 "-----------------------------------------------------------------------------
-" MISC
 
 " Use current shell for shell commands
 set shell=$SHELL
@@ -322,7 +331,7 @@ set noswapfile
 set switchbuf=useopen,usetab,split
 
 "=============================================================================
-" KEY MAPPINGS
+" Key mappings
 
 " Let <Tab> be recognized when used inside a macro
 set wildcharm=<Tab>
@@ -336,7 +345,7 @@ nmap <Leader>e  :e<Space><Tab>
 nmap <Leader>f  :set foldenable! foldenable?<CR>
 nmap <Leader>gw :Gwrite<CR>
 nmap <Leader>h  :h<Space>
-nmap <Leader>n  :NERDTreeMirrorToggle<CR>
+" nmap <Leader>n  :NERDTreeMirrorToggle<CR>
 nmap <Leader>p  :CtrlP<CR>
 nmap <Leader>q  :q<CR>
 nmap <Leader>s  :%s/
@@ -370,7 +379,7 @@ imap <C-l> <Right>
 map Q gq
 
 "=============================================================================
-" AUTO COMMANDS
+" Auto-commands
 
 " Change directories automatically and print the directory after changing
 " Replaced 'set autochdir'
@@ -394,7 +403,7 @@ au BufWritePre * retab
 au BufWritePre * :%s/\s\+$//e
 
 "-----------------------------------------------------------------------------
-" LANGUAGE-SPECIFIC
+" Language-specific auto-commands
 
 au BufWritePost {.vimrc,.emacs,.zshrc} :silent !cp % ~
 
