@@ -68,9 +68,9 @@ alias open="xdg-open"
 alias v="gvim 2> /dev/null"
 alias e="emacs"
 
-alias vimconfig="v $DOTFILES/.vimrc"
-alias emacsconfig="v $DOTFILES/.emacs"
-alias zshconfig="v $DOTFILES/.zshrc"
+alias vimrc="v $DOTFILES/.vimrc"
+alias emacs="v $DOTFILES/.emacs"
+alias zshrc="v $DOTFILES/.zshrc"
 
 # Deprecated, since ag is noticeably faster than ack
 alias ack="ack-grep"
