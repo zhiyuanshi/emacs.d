@@ -41,8 +41,8 @@ nmap <Leader>n :NERDTreeMirrorToggle<CR>
 
 " Modify NerdTree to make it use the split explorer model
 " http://vimcasts.org/blog/2013/01/oil-and-vinegar-split-windows-and-project-drawer/
-" Plugin 'tpope/vim-vinegar'
-" let NERDTreeHijackNetrw = 1
+Plugin 'tpope/vim-vinegar'
+let NERDTreeHijackNetrw = 1
 
 Plugin 'kien/ctrlp.vim'
 
@@ -138,7 +138,7 @@ au FileType coq nmap <buffer> <C-c><C-k> :CoqKill<CR>
 let g:coquille_auto_move = "true"
 
 "-----------------------------------------------------------------------------
-" Ruby & Rails
+" Ruby, Rails & web development
 
 Plugin 'kana/vim-textobj-user'          " Dependency
 runtime macros/matchit.vim              " Required
@@ -148,9 +148,6 @@ Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-rails'
 Plugin 'vim-ruby/vim-ruby'
-
-"-----------------------------------------------------------------------------
-" HTML
 
 Plugin 'gregsexton/MatchTag'
 Plugin 'mattn/emmet-vim'
