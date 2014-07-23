@@ -51,7 +51,9 @@ fi
 # ENV VARIABLES
 
 export PATH=$PATH:"/home/zhiyuan/.opam/4.01.0/bin:/home/zhiyuan/.rvm/gems/ruby-1.9.3-p484/bin:/home/zhiyuan/.rvm/gems/ruby-1.9.3-p484@global/bin:/home/zhiyuan/.rvm/rubies/ruby-1.9.3-p484/bin:/home/zhiyuan/.rvm/bin:/home/zhiyuan/.cabal/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-export DOTFILES=$HOME/Dropbox/Code/dotfiles
+
+export CODE=$HOME/Dropbox/Code
+export DOTFILES=$CODE/dotfiles
 
 #-----------------------------------------------------------------------------
 # ALIASES
@@ -62,15 +64,17 @@ export DOTFILES=$HOME/Dropbox/Code/dotfiles
 # For a full list of active aliases, run `alias`.
 
 alias cl="clear"
-alias t="tree"
 alias open="xdg-open"
 
 alias v="gvim 2> /dev/null"
 alias e="emacs"
 
-alias vimrc="v $DOTFILES/.vimrc"
-alias emacs="v $DOTFILES/.emacs"
-alias zshrc="v $DOTFILES/.zshrc"
+alias code="cd $CODE"
+alias dotfiles="cd $DOTFILES"
+
+alias vimrc="$EDITOR $DOTFILES/.vimrc"
+alias emacs="$EDITOR $DOTFILES/.emacs"
+alias zshrc="$EDITOR $DOTFILES/.zshrc"
 
 # Deprecated, since ag is noticeably faster than ack
 alias ack="ack-grep"
