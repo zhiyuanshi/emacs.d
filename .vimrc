@@ -80,6 +80,9 @@ Plugin 'msanders/snipmate.vim'
 
 Plugin 'scrooloose/syntastic'
 
+" Let the location list always be updated when you run the checkers
+let g:syntastic_always_populate_loc_list = 1
+
 "-----------------------------------------------------------------------------
 " Haskell
 
