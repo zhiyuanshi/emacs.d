@@ -50,7 +50,6 @@ Plugin 'kien/ctrlp.vim'
 " let g:ctrlp_cmd = 'CtrlPMixed'
 
 Plugin 'rking/ag.vim'
-nmap <Leader>ag :Ag<Space>
 
 "-----------------------------------------------------------------------------
 
@@ -168,10 +167,10 @@ Plugin 'vim-scripts/TwitVim'
 " You can set twitvim_count to any integer from 1 to 200.
 let twitvim_count = 200
 
-nmap <Leader>tu :UserTwitter<CR>
+command Tlog    :UserTwitter
 
 " Post the current line in the buffer to Twitter
-nmap <Leader>tp :CPosttoTwitter<CR>
+command Tpost   :CPosttoTwitter
 
 "-----------------------------------------------------------------------------
 " Color schemes
@@ -405,9 +404,9 @@ au BufEnter {Gemfile,Rakefile,Guardfile,*.rake,config.ru} setl ft=ruby
 au BufEnter {*.md,*.markdown}                             setl ft=markdown
 au BufEnter {*.x,*.y}                                     setl ft=haskell
 
-au FileType {c,cpp}                                             setl shiftwidth=4 cindent
-au FileType {python,java,xml,lex,yacc}                          setl shiftwidth=4
-au FileType {haskell,ocaml,ruby,eruby,javascript,sh,vim,r,html} setl shiftwidth=2
+au FileType {c,cpp}                                                  setl shiftwidth=4 cindent
+au FileType {python,xml,lex,yacc}                                    setl shiftwidth=4
+au FileType {haskell,ocaml,ruby,eruby,java,javascript,sh,vim,r,html} setl shiftwidth=2
 
 " This option ('linebreak') is not used when the 'wrap' option is off or 'list' is on.
 au FileType text     setl wrap nolist linebreak
