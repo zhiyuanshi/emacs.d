@@ -68,6 +68,9 @@ let g:multi_cursor_exit_from_insert_mode = 0
 
 "-----------------------------------------------------------------------------
 
+" Lean & mean status/tabline for vim that's light as air
+Plugin 'bling/vim-airline'
+
 Plugin 'mhinz/vim-signify'
 
 " Don't run Sy by default
