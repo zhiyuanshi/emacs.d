@@ -55,13 +55,12 @@ Plugin 'majutsushi/tagbar'
 
 nmap <Leader>= :TagbarToggle<CR>
 
-" If you use multiple tabs and want Tagbar to also open in the current tab
-" when you switch to an already loaded, supported buffer:
-au BufEnter * nested :call tagbar#autoopen(0)
+" Open Tagbar if you open a supported file in an already running Vim
+au FileType * nested :call tagbar#autoopen(0)
 
 " Vim window will be expanded by the width of the Tagbar window if using a GUI
 " version of Vim.
-let g:tagbar_expand = 1
+" let g:tagbar_expand = 1
 
 " https://github.com/majutsushi/tagbar/wiki#haskell
 let g:tagbar_type_haskell = {
