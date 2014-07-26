@@ -168,7 +168,8 @@ hi ghcmodType ctermbg=yellow
 let g:ghcmod_type_highlight = "ghcmodType"
 
 au FileType haskell call BufferMap("<C-c><C-c>", ":GhcModCheckAndLintAsync<CR>")
-au FileType haskell call BufferMap("<C-c><C-t>", ":GhcModInfoPreview<CR>")
+au FileType haskell call BufferMap("<C-c><C-t>", ":GhcModType<CR>")
+au FileType haskell call BufferMap("<C-c><C-i>", ":GhcModInfoPreview<CR>")
 au FileType haskell call BufferMap("<C-c><C-s>", ":GhcModTypeInsert<CR>")
 
 " Auto-checking on writing
