@@ -16,12 +16,29 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Keep Plugin commands between vundle#begin/end.
-
 "-----------------------------------------------------------------------------
 
 " , is a more convenient leader than \
 let mapleader = " "
 let maplocalleader = ",,"
+
+function BaseMap(lhs, options, rhs)
+  execute "noremap"  a:options a:lhs           a:rhs
+
+  " In insert mode, pressing Ctrl-o switches to normal mode for one command,
+  " then switches back to insert mode when the command is finished.
+  execute "inoremap" a:options a:lhs "<C-o>" . a:rhs
+endfunction
+
+function Map(lhs, rhs)
+  call BaseMap(a:lhs, "", a:rhs)
+endfunction
+
+function BufferMap(lhs, rhs)
+  call BaseMap(a:lhs, "<buffer>", a:rhs)
+endfunction
+
+"-----------------------------------------------------------------------------
 
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-commentary'
@@ -49,6 +66,8 @@ Plugin 'kien/ctrlp.vim'
 " Search in Files, Buffers and MRU files at the same time
 " let g:ctrlp_cmd = 'CtrlPMixed'
 
+call Map("<M-p>", ":CtrlPMixed<CR>")
+
 Plugin 'rking/ag.vim'
 
 Plugin 'majutsushi/tagbar'
@@ -56,7 +75,7 @@ Plugin 'majutsushi/tagbar'
 nmap <Leader>= :TagbarToggle<CR>
 
 " Open Tagbar if you open a supported file in an already running Vim
-au FileType * nested :call tagbar#autoopen(0)
+" au FileType * nested :call tagbar#autoopen(0)
 
 " https://github.com/majutsushi/tagbar/wiki#haskell
 let g:tagbar_type_haskell = {
@@ -143,10 +162,10 @@ Plugin 'eagletmt/ghcmod-vim'
 hi ghcmodType ctermbg=yellow
 let g:ghcmod_type_highlight = "ghcmodType"
 
-au FileType haskell nmap <buffer> <C-h><C-t> :GhcModType<CR>
-au FileType haskell nmap <buffer> <C-h><C-c> :GhcModTypeClear<CR>
-au FileType haskell nmap <buffer> <C-h><C-h> :GhcModCheck<CR>
-au FileType haskell nmap <buffer> <C-h><C-l> :GhcModLint<CR>
+au FileType haskell call BufferMap("<C-c><C-t>", ":GhcModType<CR>")
+au FileType haskell call BufferMap("<C-c><C-l>", ":GhcModTypeClear<CR>")
+au FileType haskell call BufferMap("<C-c><C-c>", ":GhcModCheck<CR>")
+au FileType haskell call BufferMap("<C-c><C-l>", ":GhcModLint<CR>")
 
 " Auto-checking on writing
 " au BufWritePost *.hs GhcModCheckAndLintAsync
@@ -172,11 +191,11 @@ let g:necoghc_enable_detailed_browse = 1
 Plugin 'def-lkb/vimbufsync'             " Dependency
 Plugin 'the-lambda-church/coquille'
 
-au FileType coq nmap <buffer> <C-c><C-l> :CoqLaunch<CR>
-au FileType coq nmap <buffer> <C-c><C-c> :CoqToCursor<CR>
-au FileType coq nmap <buffer> <C-c><C-n> :CoqNext<CR>
-au FileType coq nmap <buffer> <C-c><C-u> :CoqUndo<CR>
-au FileType coq nmap <buffer> <C-c><C-k> :CoqKill<CR>
+au FileType coq call BufferMap("<C-c><C-l>", ":CoqLaunch<CR>")
+au FileType coq call BufferMap("<C-c><C-c>", ":CoqToCursor<CR>")
+au FileType coq call BufferMap("<C-c><C-n>", ":CoqNext<CR>")
+au FileType coq call BufferMap("<C-c><C-u>", ":CoqUndo<CR>")
+au FileType coq call BufferMap("<C-c><C-k>", ":CoqKill<CR>")
 
 " Set it to 'true' if you want Coquille to move your cursor to the end of the
 " lock zone after calls to CoqNext or CoqUndo.
@@ -225,9 +244,6 @@ Plugin 'Solarized'
 Plugin 'Zenburn'
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'jpo/vim-railscasts-theme'
-Plugin 'morhetz/gruvbox'
-Plugin 'w0ng/vim-hybrid'
-Plugin 'zeis/vim-kolor'
 
 "-----------------------------------------------------------------------------
 
@@ -247,7 +263,7 @@ colorscheme Tomorrow
 "-----------------------------------------------------------------------------
 
 set columns=130
-set lines=50
+set lines=45
 
 " Highlight column after 'textwidth'
 set colorcolumn=+1,+41
@@ -390,11 +406,6 @@ nmap <Leader>v :tabedit ~/Dropbox/Code/dotfiles/.vimrc<CR>
 nmap <Leader>w :w<CR>
 nmap <Leader>x :qa<CR>
 
-function! Map(lhs, rhs)
-  execute "noremap"  a:lhs           a:rhs
-  execute "inoremap" a:lhs "<Esc>" . a:rhs
-endfunction
-
 call Map("<C-x>", '"+d')
 call Map("<C-c>", '"+y')
 call Map("<C-v>", '"+p')
@@ -402,8 +413,6 @@ call Map("<C-v>", '"+p')
 call Map("<C-t>"  , ":tabnew<CR>")
 call Map("<C-Tab>", ":tabnext<CR>")
 call Map("<C-F4>" , ":tabclose<CR>")
-
-call Map("<M-p>", ":CtrlPMixed<CR>")
 
 " Move around in insert mode
 imap <C-h> <Left>
@@ -445,7 +454,6 @@ au BufWritePost {.vimrc,.emacs,.zshrc} :silent !cp % ~
 
 au BufEnter {Gemfile,Rakefile,Guardfile,*.rake,config.ru} setl ft=ruby
 au BufEnter {*.md,*.markdown}                             setl ft=markdown
-au BufEnter {*.x,*.y}                                     setl ft=haskell
 
 au FileType {c,cpp}                                                  setl shiftwidth=4 cindent
 au FileType {python,xml,lex,yacc}                                    setl shiftwidth=4
