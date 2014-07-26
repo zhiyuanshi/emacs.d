@@ -162,10 +162,9 @@ Plugin 'eagletmt/ghcmod-vim'
 hi ghcmodType ctermbg=yellow
 let g:ghcmod_type_highlight = "ghcmodType"
 
-au FileType haskell call BufferMap("<C-c><C-t>", ":GhcModType<CR>")
-au FileType haskell call BufferMap("<C-c><C-l>", ":GhcModTypeClear<CR>")
-au FileType haskell call BufferMap("<C-c><C-c>", ":GhcModCheck<CR>")
-au FileType haskell call BufferMap("<C-c><C-l>", ":GhcModLint<CR>")
+au FileType haskell call BufferMap("<C-c><C-c>", ":GhcModCheckAndLintAsync<CR>")
+au FileType haskell call BufferMap("<C-c><C-t>", ":GhcModInfoPreview<CR>")
+au FileType haskell call BufferMap("<C-c><C-s>", ":GhcModTypeInsert<CR>")
 
 " Auto-checking on writing
 " au BufWritePost *.hs GhcModCheckAndLintAsync
