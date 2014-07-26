@@ -58,10 +58,6 @@ nmap <Leader>= :TagbarToggle<CR>
 " Open Tagbar if you open a supported file in an already running Vim
 au FileType * nested :call tagbar#autoopen(0)
 
-" Vim window will be expanded by the width of the Tagbar window if using a GUI
-" version of Vim.
-" let g:tagbar_expand = 1
-
 " https://github.com/majutsushi/tagbar/wiki#haskell
 let g:tagbar_type_haskell = {
     \ 'ctagsbin'  : 'hasktags',
@@ -116,9 +112,11 @@ let g:signify_disable_by_default = 1
 
 Plugin 'scrooloose/syntastic'
 
+let g:syntastic_echo_current_error = 0
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_jump = 2
 let g:syntastic_auto_loc_list = 1
+let g:syntastic_haskell_checkers = ["hdevtools", "hlint"]
 
 Plugin 'terryma/vim-multiple-cursors'
 
@@ -244,12 +242,12 @@ set t_Co=256
 set guifont=Ubuntu\ Mono\ 15
 " set guifont=Monospace\ 12
 set background=light
-colorscheme solarized
+colorscheme Tomorrow
 
 "-----------------------------------------------------------------------------
 
-set columns=125
-set lines=45
+set columns=130
+set lines=50
 
 " Highlight column after 'textwidth'
 set colorcolumn=+1,+41
@@ -382,18 +380,15 @@ set switchbuf=useopen,usetab,split
 " Let <Tab> be recognized when used inside a macro
 set wildcharm=<Tab>
 
-nmap <Leader>a  ggvG$
-nmap <Leader>c  :colorscheme<Space><Tab>
-nmap <Leader>e  :e<Space><Tab>
-nmap <Leader>f  :set foldenable! foldenable?<CR>
-nmap <Leader>h  :h<Space>
-nmap <Leader>q  :q<CR>
-nmap <Leader>x  :qa<CR>
-nmap <Leader>s  :%s/
-nmap <Leader>te :tabedit ~/Dropbox/Code/dotfiles/.emacs<CR>
-nmap <Leader>tv :tabedit ~/Dropbox/Code/dotfiles/.vimrc<CR>
-nmap <Leader>tz :tabedit ~/Dropbox/Code/dotfiles/.zshrc<CR>
-nmap <Leader>w  :w<CR>
+nmap <Leader>a ggvG$
+nmap <Leader>c :colorscheme<Space><Tab>
+nmap <Leader>e :e<Space><Tab>
+nmap <Leader>h :h<Space>
+nmap <Leader>q :q<CR>
+nmap <Leader>s :%s/
+nmap <Leader>v :tabedit ~/Dropbox/Code/dotfiles/.vimrc<CR>
+nmap <Leader>w :w<CR>
+nmap <Leader>x :qa<CR>
 
 function! Map(lhs, rhs)
   execute "noremap"  a:lhs           a:rhs
