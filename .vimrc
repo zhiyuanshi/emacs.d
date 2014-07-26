@@ -33,11 +33,11 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 
 "-----------------------------------------------------------------------------
-" File navigation
+" Navigation
 
 Plugin 'The-NERD-tree'
 Plugin 'jistr/vim-nerdtree-tabs'
-nmap <Leader>n :NERDTreeMirrorToggle<CR>
+nmap <Leader>- :NERDTreeMirrorToggle<CR>
 
 " Modify NerdTree to make it use the split explorer model
 " http://vimcasts.org/blog/2013/01/oil-and-vinegar-split-windows-and-project-drawer/
@@ -51,12 +51,75 @@ Plugin 'kien/ctrlp.vim'
 
 Plugin 'rking/ag.vim'
 
+Plugin 'majutsushi/tagbar'
+
+nmap <Leader>= :TagbarToggle<CR>
+
+" If you use multiple tabs and want Tagbar to also open in the current tab
+" when you switch to an already loaded, supported buffer:
+au BufEnter * nested :call tagbar#autoopen(0)
+
+" Vim window will be expanded by the width of the Tagbar window if using a GUI
+" version of Vim.
+let g:tagbar_expand = 1
+
+" https://github.com/majutsushi/tagbar/wiki#haskell
+let g:tagbar_type_haskell = {
+    \ 'ctagsbin'  : 'hasktags',
+    \ 'ctagsargs' : '-x -c -o-',
+    \ 'kinds'     : [
+        \  'm:modules:0:1',
+        \  'd:data: 0:1',
+        \  'd_gadt: data gadt:0:1',
+        \  't:type names:0:1',
+        \  'nt:new types:0:1',
+        \  'c:classes:0:1',
+        \  'cons:constructors:1:1',
+        \  'c_gadt:constructor gadt:1:1',
+        \  'c_a:constructor accessors:1:1',
+        \  'ft:function types:1:1',
+        \  'fi:function implementations:0:1',
+        \  'o:others:0:1'
+    \ ],
+    \ 'sro'        : '.',
+    \ 'kind2scope' : {
+        \ 'm' : 'module',
+        \ 'c' : 'class',
+        \ 'd' : 'data',
+        \ 't' : 'type'
+    \ },
+    \ 'scope2kind' : {
+        \ 'module' : 'm',
+        \ 'class'  : 'c',
+        \ 'data'   : 'd',
+        \ 'type'   : 't'
+    \ }
+\ }
+
 "-----------------------------------------------------------------------------
 
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'justinmk/vim-syntax-extra'
 
-"-----------------------------------------------------------------------------
+" Faster than neocomplete
+Plugin 'Valloric/YouCompleteMe'
+
+" Lean & mean status/tabline for vim that's light as air
+Plugin 'bling/vim-airline'
+
+" TextMate-style snippets for Vim
+Plugin 'msanders/snipmate.vim'
+
+" Faster than vim-gitgutter
+Plugin 'mhinz/vim-signify'
+
+" Don't run Sy by default
+let g:signify_disable_by_default = 1
+
+Plugin 'scrooloose/syntastic'
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_jump = 2
+let g:syntastic_auto_loc_list = 1
 
 Plugin 'terryma/vim-multiple-cursors'
 
@@ -67,41 +130,12 @@ Plugin 'terryma/vim-multiple-cursors'
 let g:multi_cursor_exit_from_insert_mode = 0
 
 "-----------------------------------------------------------------------------
-
-" Lean & mean status/tabline for vim that's light as air
-Plugin 'bling/vim-airline'
-
-Plugin 'mhinz/vim-signify'
-
-" Don't run Sy by default
-let g:signify_disable_by_default = 1
-
-"-----------------------------------------------------------------------------
-
-" TextMate-style snippets for Vim
-Plugin 'msanders/snipmate.vim'
-
-Plugin 'scrooloose/syntastic'
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_jump = 2
-let g:syntastic_auto_loc_list = 1
-
-"-----------------------------------------------------------------------------
 " Haskell
 
 Plugin 'lukerandall/haskellmode-vim'
 
 " The preferred HTML browser for viewing Haddock documentation, required
 let g:haddock_browser = "usr/bin/google-chrome"
-
-" Crossed vim2hs out since:
-" (1) Does not highlight data constructors with (at least) the solarized theme, and
-" (2) Pegs the CPU while you are scrolling.
-" Plugin 'dag/vim2hs'
-
-" Disable all conceals, including the simple ones like lambda and composition
-" let g:haskell_conceal = 0
 
 Plugin 'travitch/hasksyn'
 
@@ -112,10 +146,10 @@ Plugin 'eagletmt/ghcmod-vim'
 hi ghcmodType ctermbg=yellow
 let g:ghcmod_type_highlight = "ghcmodType"
 
-au FileType haskell nmap <buffer> <F1> :GhcModType<CR>
-au FileType haskell nmap <buffer> <F2> :GhcModTypeClear<CR>
-au FileType haskell nmap <buffer> <F3> :GhcModCheck<CR>
-au FileType haskell nmap <buffer> <F4> :GhcModLint<CR>
+au FileType haskell nmap <buffer> <C-h><C-t> :GhcModType<CR>
+au FileType haskell nmap <buffer> <C-h><C-c> :GhcModTypeClear<CR>
+au FileType haskell nmap <buffer> <C-h><C-h> :GhcModCheck<CR>
+au FileType haskell nmap <buffer> <C-h><C-l> :GhcModLint<CR>
 
 " Auto-checking on writing
 " au BufWritePost *.hs GhcModCheckAndLintAsync
@@ -126,6 +160,14 @@ au FileType haskell setl omnifunc=necoghc#omnifunc
 " To work with YouCompleteMe
 " let g:ycm_semantic_triggers = {'haskell' : ['.']}
 let g:necoghc_enable_detailed_browse = 1
+
+" Crossed vim2hs out since it:
+" (1) Does not highlight data constructors with (at least) the solarized theme, and
+" (2) Pegs the CPU while you are scrolling.
+" Plugin 'dag/vim2hs'
+
+" Disable all conceals, including the simple ones like lambda and composition
+" let g:haskell_conceal = 0
 
 "-----------------------------------------------------------------------------
 " Coq
