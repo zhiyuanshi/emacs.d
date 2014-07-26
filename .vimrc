@@ -23,6 +23,7 @@ let mapleader = " "
 let maplocalleader = ",,"
 
 function BaseMap(lhs, options, rhs)
+  " Note that C-c (copy) is a prefix of other buffer-specific commands lead by C-c.
   execute "noremap"  a:options a:lhs           a:rhs
 
   " In insert mode, pressing Ctrl-o switches to normal mode for one command,
@@ -411,8 +412,8 @@ nmap <Leader>v :tabedit ~/Dropbox/Code/dotfiles/.vimrc<CR>
 nmap <Leader>w :w<CR>
 nmap <Leader>x :qa<CR>
 
-call Map("<C-x>", '"+d')
-call Map("<C-c>", '"+y')
+vmap <C-x> "+d
+vmap <C-c> "+y
 call Map("<C-v>", '"+p')
 
 call Map("<C-t>"  , ":tabnew<CR>")
