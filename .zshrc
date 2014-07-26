@@ -73,7 +73,7 @@ alias code="cd $CODE"
 alias dotfiles="cd $DOTFILES"
 
 alias vimrc="$EDITOR $DOTFILES/.vimrc"
-alias emacs="$EDITOR $DOTFILES/.emacs"
+alias emacsconfig="$EDITOR $DOTFILES/.emacs"
 alias zshrc="$EDITOR $DOTFILES/.zshrc"
 
 # Deprecated, since ag is noticeably faster than ack
