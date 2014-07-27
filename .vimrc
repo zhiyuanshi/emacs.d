@@ -21,23 +21,6 @@ Plugin 'gmarik/Vundle.vim'
 let mapleader = " "
 let maplocalleader = ","
 
-function BaseMap(lhs, options, rhs)
-  " Note that C-c (copy) is a prefix of other buffer-specific commands lead by C-c.
-  execute "noremap"  a:options a:lhs           a:rhs
-
-  " In insert mode, pressing Ctrl-o switches to normal mode for one command,
-  " then switches back to insert mode when the command is finished.
-  execute "inoremap" a:options a:lhs "<C-o>" . a:rhs
-endfunction
-
-function Map(lhs, rhs)
-  call BaseMap(a:lhs, "", a:rhs)
-endfunction
-
-function BufferMap(lhs, rhs)
-  call BaseMap(a:lhs, "<buffer>", a:rhs)
-endfunction
-
 "-----------------------------------------------------------------------------
 
 Plugin 'tpope/vim-abolish'
@@ -54,7 +37,7 @@ Plugin 'tpope/vim-unimpaired'
 
 Plugin 'The-NERD-tree'
 Plugin 'jistr/vim-nerdtree-tabs'
-nmap <Leader>- :NERDTreeMirrorToggle<CR>
+map <Leader>- :NERDTreeMirrorToggle<CR>
 
 " Modify NerdTree to make it use the split explorer model
 " http://vimcasts.org/blog/2013/01/oil-and-vinegar-split-windows-and-project-drawer/
@@ -66,13 +49,14 @@ Plugin 'kien/ctrlp.vim'
 " Search in Files, Buffers and MRU files at the same time
 " let g:ctrlp_cmd = 'CtrlPMixed'
 
-call Map("<M-p>", ":CtrlPMixed<CR>")
+map  <M-p>      :CtrlPMixed<CR>
+imap <M-p> <C-o>:CtrlPMixed<CR>
 
 Plugin 'rking/ag.vim'
 
 Plugin 'majutsushi/tagbar'
 
-nmap <Leader>= :TagbarToggle<CR>
+map <Leader>= :TagbarToggle<CR>
 
 " Open Tagbar if you open a supported file in an already running Vim
 " au FileType * nested :call tagbar#autoopen(0)
@@ -160,8 +144,8 @@ let g:haddock_browser = "usr/bin/google-chrome"
 
 au BufEnter *.hs compiler ghc
 
-au FileType haskell nmap <buffer> <LocalLeader>g :GHCi<Space>
-au FileType haskell nmap <buffer> <LocalLeader>r :GHCReload<CR>
+au FileType haskell map <buffer> <LocalLeader>g :GHCi<Space>
+au FileType haskell map <buffer> <LocalLeader>r :GHCReload<CR>
 
 Plugin 'Shougo/vimproc.vim'     " Dependency
 Plugin 'eagletmt/ghcmod-vim'
@@ -170,10 +154,10 @@ Plugin 'eagletmt/ghcmod-vim'
 hi ghcmodType ctermbg=yellow
 let g:ghcmod_type_highlight = "ghcmodType"
 
-au FileType haskell call BufferMap("<C-c><C-c>", ":GhcModCheckAndLintAsync<CR>")
-au FileType haskell call BufferMap("<C-c><C-t>", ":GhcModType<CR>")
-au FileType haskell call BufferMap("<C-c><C-i>", ":GhcModInfoPreview<CR>")
-au FileType haskell call BufferMap("<C-c><C-s>", ":GhcModTypeInsert<CR>")
+au FileType haskell map <buffer> <C-c><C-c> :GhcModCheckAndLintAsync<CR>
+au FileType haskell map <buffer> <C-c><C-t> :GhcModType<CR>
+au FileType haskell map <buffer> <C-c><C-i> :GhcModInfoPreview<CR>
+au FileType haskell map <buffer> <C-c><C-s> :GhcModTypeInsert<CR>
 
 " Auto-checking on writing
 " au BufWritePost *.hs GhcModCheckAndLintAsync
@@ -201,11 +185,11 @@ Plugin 'travitch/hasksyn'
 Plugin 'def-lkb/vimbufsync'             " Dependency
 Plugin 'the-lambda-church/coquille'
 
-au FileType coq call BufferMap("<C-c><C-l>", ":CoqLaunch<CR>")
-au FileType coq call BufferMap("<C-c><C-c>", ":CoqToCursor<CR>")
-au FileType coq call BufferMap("<C-c><C-n>", ":CoqNext<CR>")
-au FileType coq call BufferMap("<C-c><C-u>", ":CoqUndo<CR>")
-au FileType coq call BufferMap("<C-c><C-k>", ":CoqKill<CR>")
+au FileType coq map <buffer> <C-c><C-l> :CoqLaunch<CR>
+au FileType coq map <buffer> <C-c><C-c> :CoqToCursor<CR>
+au FileType coq map <buffer> <C-c><C-n> :CoqNext<CR>
+au FileType coq map <buffer> <C-c><C-u> :CoqUndo<CR>
+au FileType coq map <buffer> <C-c><C-k> :CoqKill<CR>
 
 " Set it to 'true' if you want Coquille to move your cursor to the end of the
 " lock zone after calls to CoqNext or CoqUndo.
@@ -406,23 +390,33 @@ set switchbuf=useopen,usetab,split
 " Let <Tab> be recognized when used inside a macro
 set wildcharm=<Tab>
 
-nmap <Leader>a ggvG$
-nmap <Leader>c :colorscheme<Space><Tab>
-nmap <Leader>e :e<Space><Tab>
-nmap <Leader>h :h<Space>
-nmap <Leader>q :q<CR>
-nmap <Leader>s :%s/
-nmap <Leader>v :tabedit ~/Dropbox/Code/dotfiles/.vimrc<CR>
-nmap <Leader>w :w<CR>
-nmap <Leader>x :qa<CR>
+map <Leader>a ggvG$
+map <Leader>c :colorscheme<Space><Tab>
+map <Leader>e :e<Space><Tab>
+map <Leader>h :h<Space>
+map <Leader>q :q<CR>
+map <Leader>s :%s/
+map <Leader>v :tabedit ~/Dropbox/Code/dotfiles/.vimrc<CR>
+map <Leader>w :w<CR>
+map <Leader>x :qa<CR>
 
 vmap <C-x> "+d
 vmap <C-c> "+y
-call Map("<C-v>", '"+p')
 
-call Map("<C-t>"  , ":tabnew<CR>")
-call Map("<C-Tab>", ":tabnext<CR>")
-call Map("<C-F4>" , ":tabclose<CR>")
+map  <C-v>      "+p
+imap <C-v> <C-o>"+p
+
+map  <C-t>      :tabnew<CR>
+imap <C-t> <C-o>:tabnew<CR>
+
+map  <C-Tab>      :tabnext<CR>
+imap <C-Tab> <C-o>:tabnext<CR>
+
+map  <C-S-Tab>      :tabprev<CR>
+imap <C-S-Tab> <C-o>:tabprev<CR>
+
+map  <C-F4>      :tabclose<CR>
+imap <C-F4> <C-o>:tabclose<CR>
 
 " Move around in insert mode
 imap <C-h> <Left>
