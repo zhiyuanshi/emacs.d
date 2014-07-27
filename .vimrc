@@ -18,9 +18,8 @@ Plugin 'gmarik/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 "-----------------------------------------------------------------------------
 
-" , is a more convenient leader than \
 let mapleader = " "
-let maplocalleader = ",,"
+let maplocalleader = ","
 
 function BaseMap(lhs, options, rhs)
   " Note that C-c (copy) is a prefix of other buffer-specific commands lead by C-c.
@@ -159,7 +158,10 @@ Plugin 'lukerandall/haskellmode-vim'
 " The preferred HTML browser for viewing Haddock documentation, required
 let g:haddock_browser = "usr/bin/google-chrome"
 
-Plugin 'travitch/hasksyn'
+au BufEnter *.hs compiler ghc
+
+au FileType haskell nmap <buffer> <LocalLeader>g :GHCi<Space>
+au FileType haskell nmap <buffer> <LocalLeader>r :GHCReload<CR>
 
 Plugin 'Shougo/vimproc.vim'     " Dependency
 Plugin 'eagletmt/ghcmod-vim'
@@ -190,6 +192,8 @@ let g:necoghc_enable_detailed_browse = 1
 
 " Disable all conceals, including the simple ones like lambda and composition
 " let g:haskell_conceal = 0
+
+Plugin 'travitch/hasksyn'
 
 "-----------------------------------------------------------------------------
 " Coq
