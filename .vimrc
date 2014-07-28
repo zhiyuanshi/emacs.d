@@ -418,8 +418,8 @@ map <Leader>x :qa<CR>
 vmap <C-x> "+d
 vmap <C-c> "+y
 
-map  <C-v>            "+p
-imap <C-v> <C-o>h<C-o>"+p
+map  <C-v>      "+p
+imap <C-v> <Esc>"+p
 
 map  <C-t>      :tabnew<CR>
 imap <C-t> <C-o>:tabnew<CR>
