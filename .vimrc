@@ -248,9 +248,9 @@ command Tpost   :CPosttoTwitter
 "-----------------------------------------------------------------------------
 " Color schemes
 
-Plugin 'Solarized'
 Plugin 'Zenburn'
-Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'chriskempson/base16-vim'
 Plugin 'jpo/vim-railscasts-theme'
 
 "-----------------------------------------------------------------------------
@@ -265,8 +265,8 @@ syntax on
 set t_Co=256
 set guifont=Ubuntu\ Mono\ 15
 " set guifont=Monospace\ 12
-set background=dark
-colorscheme solarized
+set background=light
+colorscheme base16-tomorrow
 
 "-----------------------------------------------------------------------------
 
