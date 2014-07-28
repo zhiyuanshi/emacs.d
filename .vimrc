@@ -257,7 +257,7 @@ set t_Co=256
 set guifont=Ubuntu\ Mono\ 15
 " set guifont=Monospace\ 12
 set background=light
-colorscheme Tomorrow
+colorscheme solarized
 
 "-----------------------------------------------------------------------------
 
@@ -459,7 +459,7 @@ au BufWritePre * :%s/\s\+$//e
 "-----------------------------------------------------------------------------
 " Language-specific auto-commands
 
-au BufWritePost {.vimrc,.emacs,.zshrc} :silent !cp % ~
+au BufWritePost {.vimrc,.emacs,.zshrc} :silent !ruby setup.rb
 
 au BufEnter {Gemfile,Rakefile,Guardfile,*.rake,config.ru} setl ft=ruby
 au BufEnter {*.md,*.markdown}                             setl ft=markdown
