@@ -423,6 +423,12 @@ imap <C-S-Tab> <C-o>:tabprev<CR>
 map  <C-F4>      :tabclose<CR>
 imap <C-F4> <C-o>:tabclose<CR>
 
+" Move around between windows
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
 " Move around in insert mode
 imap <C-h> <Left>
 imap <C-j> <Down>
