@@ -96,13 +96,18 @@ let g:tagbar_type_haskell = {
 
 "-----------------------------------------------------------------------------
 
-Plugin 'justinmk/vim-syntax-extra'
+" Lean & mean status/tabline for vim that's light as air
+Plugin 'bling/vim-airline'
+
+" The tabular plugin must come _before_ vim-markdown.
+Plugin 'godlygeek/tabular'
+
+" http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+map <Leader>a= :Tabularize /=<CR>
+map <Leader>a: :Tabularize /:\zs<CR>
 
 " Faster than neocomplete
 Plugin 'Valloric/YouCompleteMe'
-
-" Lean & mean status/tabline for vim that's light as air
-Plugin 'bling/vim-airline'
 
 " TextMate-style snippets for Vim
 Plugin 'msanders/snipmate.vim'
@@ -112,6 +117,8 @@ Plugin 'mhinz/vim-signify'
 
 " Don't run Sy by default
 let g:signify_disable_by_default = 1
+
+Plugin 'justinmk/vim-syntax-extra'
 
 Plugin 'scrooloose/syntastic'
 
@@ -133,12 +140,6 @@ Plugin 'terryma/vim-multiple-cursors'
 " Escape and go back to Normal mode, and still be able to operate on all the
 " cursors.
 let g:multi_cursor_exit_from_insert_mode = 0
-
-Plugin 'godlygeek/tabular'
-
-" http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
-map <Leader>a= :Tabularize /=<CR>
-map <Leader>a: :Tabularize /:\zs<CR>
 
 "-----------------------------------------------------------------------------
 " Haskell
@@ -224,8 +225,6 @@ Plugin 'tpope/vim-ragtag'
 
 "-----------------------------------------------------------------------------
 
-" The tabular plugin must come _before_ vim-markdown.
-Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
 Plugin 'derekwyatt/vim-scala'
