@@ -105,8 +105,9 @@ Plugin 'bling/vim-airline'
 Plugin 'godlygeek/tabular'
 
 " http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
-map <Leader>a= :Tabularize /=<CR>
-map <Leader>a: :Tabularize /:\zs<CR>
+map <Leader>a-- :Tabularize /--<CR>
+map <Leader>a=  :Tabularize /=<CR>
+map <Leader>a:  :Tabularize /:\zs<CR>
 
 " Faster than neocomplete
 Plugin 'Valloric/YouCompleteMe'
