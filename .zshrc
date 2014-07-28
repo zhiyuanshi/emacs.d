@@ -72,9 +72,9 @@ alias e="emacs"
 alias code="cd $CODE"
 alias dotfiles="cd $DOTFILES"
 
-alias vimrc="$EDITOR $DOTFILES/.vimrc"
-alias emacsconfig="$EDITOR $DOTFILES/.emacs"
-alias zshrc="$EDITOR $DOTFILES/.zshrc"
+alias dotvim="$EDITOR $DOTFILES/.vimrc"
+alias dotemacs="$EDITOR $DOTFILES/.emacs"
+alias dotzsh="$EDITOR $DOTFILES/.zshrc"
 
 # Deprecated, since ag is noticeably faster than ack
 alias ack="ack-grep"
