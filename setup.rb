@@ -25,5 +25,5 @@ DOTFILES.each do |f|
 end
 
 if !did_anything
-  puts "Did nothing."
+  puts "Nothing to be done."
 end
