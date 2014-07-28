@@ -134,6 +134,12 @@ Plugin 'terryma/vim-multiple-cursors'
 " cursors.
 let g:multi_cursor_exit_from_insert_mode = 0
 
+Plugin 'godlygeek/tabular'
+
+" http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+map <Leader>a= :Tabularize /=<CR>
+map <Leader>a: :Tabularize /:\zs<CR>
+
 "-----------------------------------------------------------------------------
 " Haskell
 
@@ -256,7 +262,7 @@ syntax on
 set t_Co=256
 set guifont=Ubuntu\ Mono\ 15
 " set guifont=Monospace\ 12
-set background=light
+set background=dark
 colorscheme solarized
 
 "-----------------------------------------------------------------------------
