@@ -8,7 +8,7 @@
 
 Remove existing dotfiles:
 
-    rm ~/.vimrc && rm -rf ~/.vim/
+    rm -rf ~/.vimrc ~/.vim
 
 Install [Vundle](https://github.com/gmarik/Vundle.vim).
 
@@ -18,15 +18,15 @@ Restore dotfiles:
 
 Open Vim and run `:PluginInstall`.
 
-make [Shougo/vimproc.vim](https://github.com/Shougo/vimproc.vim) (required by [eagletmt/ghcmod-vim](https://github.com/eagletmt/ghcmod-vim) and some other useful plugins)
+make [Shougo/vimproc.vim](https://github.com/Shougo/vimproc.vim) (required by [eagletmt/ghcmod-vim](https://github.com/eagletmt/ghcmod-vim) and some other useful plugins).
 
-make [Valloric/YouCompleteMe](https://github.com/Shougo/vimproc.vim)
+make [Valloric/YouCompleteMe](https://github.com/Shougo/vimproc.vim).
 
 ## Install Emacs
 
 Remove existing dotfiles:
 
-    rm ~/.emacs && rm -rf ~/.emacs.d
+    rm -rf ~/.emacs ~/.emacs.d
 
 Install Emacs [Prelude](https://github.com/bbatsov/prelude#fast-forward).
 
