@@ -14,10 +14,7 @@ DOTFILES.each do |f|
   local_path  = File.join(dotfilesdir, f)
   remote_path = File.join(homedir, f)
 
-  local_mtime  = File.mtime(local_path)
-  remote_mtime = File.mtime(remote_path)
-
-  if remote_mtime < local_mtime
+  if !File.exists?(remote_path) || File.mtime(remote_path) < File.mtime(local_path)
     FileUtils.cp local_path, homedir
     did_anything = true
     puts "Copied #{f} to home"
