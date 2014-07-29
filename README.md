@@ -1,64 +1,46 @@
-# Vim
+# zhiyuanshi dotfiles
 
-## Install
+## Prerequisites
 
-1. Clear:
+    export DOTFILES=~/Dropbox/Code/dotfiles
 
-   ```bash
-   $ rm ~/.vimrc && rm -rf ~/.vim/
-   ```
+## Install Vim
 
-2. Install [Vundle](https://github.com/gmarik/Vundle.vim):
+Remove existing dotfiles:
 
-   ```bash
-   $ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-   ```
+    rm ~/.vimrc && rm -rf ~/.vim/
 
-3. Restore `.vimrc`:
+Install [Vundle](https://github.com/gmarik/Vundle.vim).
 
-   ```bash
-   $ cp ~/Dropbox/Code/dotfiles/.vimrc ~
-   ```
+Restore dotfiles:
 
-4. Open Vim and run `:PluginInstall`
+    cp $DOTFILES/.vimrc ~
 
-5. make [Shougo/vimproc.vim](https://github.com/Shougo/vimproc.vim) (required by [eagletmt/ghcmod-vim](https://github.com/eagletmt/ghcmod-vim))
+Open Vim and run `:PluginInstall`.
 
-6. make [Valloric/YouCompleteMe](https://github.com/Shougo/vimproc.vim)
+make [Shougo/vimproc.vim](https://github.com/Shougo/vimproc.vim) (required by [eagletmt/ghcmod-vim](https://github.com/eagletmt/ghcmod-vim) and some other useful plugins)
 
-# Emacs
+make [Valloric/YouCompleteMe](https://github.com/Shougo/vimproc.vim)
 
-## Install
+## Install Emacs
 
-1. Clear:
+Remove existing dotfiles:
 
-   ```bash
-   $ rm ~/.emacs && rm -rf ~/.emacs.d/
-   ```
+    rm ~/.emacs && rm -rf ~/.emacs.d
 
-2. Install [Prelude](https://github.com/bbatsov/prelude#fast-forward):
+Install Emacs [Prelude](https://github.com/bbatsov/prelude#fast-forward).
 
-   ```bash
-   $ curl -L http://git.io/epre | sh
-   ```
+Back up `prelude-modules.el`:
 
-3. Back up `prelude-modules.el`:
+    cp ~/.emacs.d/prelude-modules.el $DOTFILES/.emacs.d/prelude-modules.el.original
 
-   ```bash
-   $ cp ~/.emacs.d/prelude-modules.el ~/Dropbox/Code/dotfiles/.emacs.d/prelude-modules.el.original
-   ```
+Open Emacs to allow Prelude be automatically initialized.
 
-4. Open Emacs. Prelude will be automatically initialized.
+Restore dotfiles:
 
-5. Restore `.emacs` and `prelude-modules.el`:
+    cp $DOTFILES/.emacs ~
+    cp $DOTFILES/.emacs.d/prelude-modules.el ~/.emacs.d
 
-   ```bash
-   $ cp ~/Dropbox/Code/dotfiles/.emacs ~
-   $ cp ~/Dropbox/Code/dotfiles/prelude-modules.el ~/.emacs.d
-   ```
+(Optional) The evil package that comes with Prelude doesn't seem to work. If that's the case, open Emacs and do a [manual install](http://www.emacswiki.org/emacs/Evil#toc1) by:
 
-6. (Optional) The evil package that comes with Prelude doesn't seem to work. If that's the case, open Emacs and do a [manual install](http://www.emacswiki.org/emacs/Evil#toc1) by:
-
-   ```bash
-   M-x package-install RET evil RET
-   ```
+    M-x package-install RET evil RET
