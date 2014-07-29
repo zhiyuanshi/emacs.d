@@ -75,9 +75,9 @@ Plugin 'bling/vim-airline'
 Plugin 'godlygeek/tabular'
 
 " http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
-map <Leader>a-- :Tabularize /--<CR>
-map <Leader>a=  :Tabularize /=<CR>
-map <Leader>a:  :Tabularize /:\zs<CR>
+map <Leader>t-- :Tabularize /--<CR>
+map <Leader>t=  :Tabularize /=<CR>
+map <Leader>t:  :Tabularize /:\zs<CR>
 
 " Faster than neocomplete
 Plugin 'Valloric/YouCompleteMe'
@@ -234,7 +234,7 @@ filetype plugin indent on    " Required
 
 syntax on
 set t_Co=256
-set guifont=Ubuntu\ Mono\ 15
+set guifont=Ubuntu\ Mono\ 14
 " set guifont=Monospace\ 12
 set background=light
 colorscheme base16-tomorrow
