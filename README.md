@@ -2,6 +2,12 @@
 
 ## Prerequisites
 
+Set zsh as your login shell:
+
+    chsh -s $(which zsh)
+
+Set variables:
+
     export DOTFILES=~/Dropbox/Code/dotfiles
 
 ## Install Vim
