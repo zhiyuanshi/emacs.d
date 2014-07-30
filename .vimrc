@@ -51,7 +51,7 @@ Plugin 'kien/ctrlp.vim'
 " Search in Files, Buffers and MRU files at the same time
 " let g:ctrlp_cmd = 'CtrlPMixed'
 
-map  <M-p>      :CtrlPMixed<CR>
+map <M-p> :CtrlPMixed<CR>
 
 Plugin 'rking/ag.vim'
 
@@ -205,16 +205,16 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'kchmck/vim-coffee-script'
 
-Plugin 'vim-scripts/TwitVim'
+" Plugin 'vim-scripts/TwitVim'
 
-" The number of tweets returned by :UserTwitter (default: 20)
-" You can set twitvim_count to any integer from 1 to 200.
-let twitvim_count = 200
+" " The number of tweets returned by :UserTwitter (default: 20)
+" " You can set twitvim_count to any integer from 1 to 200.
+" let twitvim_count = 200
 
-command Tlog    :UserTwitter
+" command Tlog    :UserTwitter
 
-" Post the current line in the buffer to Twitter
-command Tpost   :CPosttoTwitter
+" " Post the current line in the buffer to Twitter
+" command Tpost   :CPosttoTwitter
 
 "-----------------------------------------------------------------------------
 " Color schemes
@@ -236,8 +236,8 @@ syntax on
 set t_Co=256
 set guifont=Ubuntu\ Mono\ 14
 " set guifont=Monospace\ 12
-set background=light
-colorscheme base16-tomorrow
+set background=dark
+colorscheme base16-railscasts
 
 "-----------------------------------------------------------------------------
 
