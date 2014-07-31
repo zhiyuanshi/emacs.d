@@ -245,7 +245,7 @@ set columns=130
 set lines=45
 
 " Highlight column after 'textwidth'
-set colorcolumn=+1,+41
+set colorcolumn=88
 
 " Maintain some more context around the cursor
 set scrolloff=3
