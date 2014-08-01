@@ -38,16 +38,16 @@ Install Emacs [Prelude](https://github.com/bbatsov/prelude#fast-forward):
 
     curl -L http://git.io/epre | sh
 
-Back up `prelude-modules.el`:
+Back up the latest pristine `prelude-modules.el`:
 
     cp ~/.emacs.d/prelude-modules.el $DOTFILES/.emacs.d/prelude-modules.el.original
 
-Open Emacs to allow Prelude be automatically initialized.
+Open Emacs to allow Prelude be automatically initialized. This may take some time.
 
 Restore dotfiles:
 
     cp $DOTFILES/.emacs ~
-    cp $DOTFILES/.emacs.d/prelude-modules.el ~/.emacs.d
+    cp $DOTFILES/.emacs.d/prelude-modules.el ~/.emacs.d/prelude-modules.el
 
 (Optional) The evil package that comes with Prelude doesn't seem to work. If that's the case, open Emacs and do a [manual install](http://www.emacswiki.org/emacs/Evil#toc1) by:
 
