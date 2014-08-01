@@ -34,7 +34,9 @@ Remove existing dotfiles:
 
     rm -rf ~/.emacs ~/.emacs.d
 
-Install Emacs [Prelude](https://github.com/bbatsov/prelude#fast-forward).
+Install Emacs [Prelude](https://github.com/bbatsov/prelude#fast-forward):
+
+    curl -L http://git.io/epre | sh
 
 Back up `prelude-modules.el`:
 
