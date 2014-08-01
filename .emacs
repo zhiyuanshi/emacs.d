@@ -18,3 +18,6 @@
 
 (require 'evil)
 (evil-mode 1)
+
+;; set font for all windows. don't keep window size fixed
+(set-frame-font "Ubuntu Mono-15" nil t)
