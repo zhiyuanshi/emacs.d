@@ -141,10 +141,10 @@ Plugin 'eagletmt/ghcmod-vim'
 hi ghcmodType ctermbg=yellow
 let g:ghcmod_type_highlight = "ghcmodType"
 
-au FileType haskell map <buffer> <C-c><C-c> :GhcModCheckAndLintAsync<CR>
-au FileType haskell map <buffer> <C-c><C-t> :GhcModType<CR>
-au FileType haskell map <buffer> <C-c><C-i> :GhcModInfoPreview<CR>
-au FileType haskell map <buffer> <C-c><C-s> :GhcModTypeInsert<CR>
+au FileType haskell nmap <buffer> <C-c><C-c> :GhcModCheckAndLintAsync<CR>
+au FileType haskell nmap <buffer> <C-c><C-t> :GhcModType<CR>
+au FileType haskell nmap <buffer> <C-c><C-i> :GhcModInfoPreview<CR>
+au FileType haskell nmap <buffer> <C-c><C-s> :GhcModTypeInsert<CR>
 
 " Auto-checking on writing
 " au BufWritePost *.hs GhcModCheckAndLintAsync
@@ -172,11 +172,11 @@ Plugin 'travitch/hasksyn'
 Plugin 'def-lkb/vimbufsync'             " Dependency
 Plugin 'the-lambda-church/coquille'
 
-au FileType coq map <buffer> <C-c><C-l> :CoqLaunch<CR>
-au FileType coq map <buffer> <C-c><C-c> :CoqToCursor<CR>
-au FileType coq map <buffer> <C-c><C-n> :CoqNext<CR>
-au FileType coq map <buffer> <C-c><C-u> :CoqUndo<CR>
-au FileType coq map <buffer> <C-c><C-k> :CoqKill<CR>
+au FileType coq nmap <buffer> <C-c><C-l> :CoqLaunch<CR>
+au FileType coq nmap <buffer> <C-c><C-c> :CoqToCursor<CR>
+au FileType coq nmap <buffer> <C-c><C-n> :CoqNext<CR>
+au FileType coq nmap <buffer> <C-c><C-u> :CoqUndo<CR>
+au FileType coq nmap <buffer> <C-c><C-k> :CoqKill<CR>
 
 " Set it to 'true' if you want Coquille to move your cursor to the end of the
 " lock zone after calls to CoqNext or CoqUndo.
