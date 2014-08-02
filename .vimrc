@@ -119,20 +119,20 @@ Plugin 'Shougo/vimshell.vim'
 "=============================================================================
 " Haskell
 
-Plugin 'lukerandall/haskellmode-vim'
+" Plugin 'lukerandall/haskellmode-vim'
 
-" The preferred HTML browser for viewing Haddock documentation, required
-let g:haddock_browser = "usr/bin/google-chrome"
+" " The preferred HTML browser for viewing Haddock documentation, required
+" let g:haddock_browser = "usr/bin/google-chrome"
 
-" By default, haskellmode sets omnifunc and completefunc to a GHC-based
-" completion of imported symbols and completion from Haddock, respectively. If
-" you want to turn these off (e.g. if you're using necoghc or an autocomplete
-" system like YCM or neocomplete), use:
+" " By default, haskellmode sets omnifunc and completefunc to a GHC-based
+" " completion of imported symbols and completion from Haddock, respectively. If
+" " you want to turn these off (e.g. if you're using necoghc or an autocomplete
+" " system like YCM or neocomplete), use:
 
-let g:haskellmode_completion_ghc = 0
-let g:haskellmode_completion_haddock = 0
+" let g:haskellmode_completion_ghc = 0
+" let g:haskellmode_completion_haddock = 0
 
-au BufEnter *.hs compiler ghc
+" au BufEnter *.hs compiler ghc
 
 Plugin 'Shougo/vimproc.vim'     " Dependency
 Plugin 'eagletmt/ghcmod-vim'
