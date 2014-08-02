@@ -49,6 +49,6 @@ Restore dotfiles:
     cp $DOTFILES/.emacs ~
     cp $DOTFILES/.emacs.d/prelude-modules.el ~/.emacs.d/prelude-modules.el
 
-(Optional) The evil package that comes with Prelude doesn't seem to work. If that's the case, open Emacs and do a [manual install](http://www.emacswiki.org/emacs/Evil#toc1) by:
+The evil package that comes with Prelude doesn't seem to work. If that's the case, open Emacs and do a [manual install](http://www.emacswiki.org/emacs/Evil#toc1) by:
 
     M-x package-install RET evil RET
