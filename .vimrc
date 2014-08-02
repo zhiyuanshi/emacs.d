@@ -219,10 +219,7 @@ Plugin 'kchmck/vim-coffee-script'
 "-----------------------------------------------------------------------------
 " Color schemes
 
-Plugin 'Zenburn'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'chriskempson/base16-vim'
-Plugin 'jpo/vim-railscasts-theme'
 
 "-----------------------------------------------------------------------------
 
@@ -234,18 +231,20 @@ filetype plugin indent on    " Required
 
 syntax on
 set t_Co=256
-set guifont=Ubuntu\ Mono\ 14
+set guifont=Ubuntu\ Mono\ 15
 " set guifont=Monospace\ 12
-set background=dark
-colorscheme base16-railscasts
+set background=light
+colorscheme base16-solarized
 
 "-----------------------------------------------------------------------------
 
-set columns=130
+set columns=100
 set lines=45
 
+set textwidth=88
+
 " Highlight column after 'textwidth'
-set colorcolumn=88
+set colorcolumn=+1
 
 " Maintain some more context around the cursor
 set scrolloff=3
@@ -287,8 +286,6 @@ set expandtab
 set tabstop=8
 
 set shiftwidth=2
-
-set textwidth=78
 
 "Indent instead of tab at start of line
 set smarttab
