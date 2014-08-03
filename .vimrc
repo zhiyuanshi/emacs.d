@@ -141,7 +141,8 @@ Plugin 'eagletmt/ghcmod-vim'
 hi ghcmodType ctermbg=yellow
 let g:ghcmod_type_highlight = "ghcmodType"
 
-au FileType haskell nmap <buffer> <C-c><C-c> :GhcModCheckAndLintAsync<CR>
+au FileType haskell nmap <buffer> <C-c><C-c> :GhcModCheckAsync<CR>
+au FileType haskell nmap <buffer> <C-c><C-l> :GhcModLintAsync<CR>
 au FileType haskell nmap <buffer> <C-c><C-t> :GhcModType<CR>
 au FileType haskell nmap <buffer> <C-c><C-i> :GhcModInfoPreview<CR>
 au FileType haskell nmap <buffer> <C-c><C-s> :GhcModTypeInsert<CR>
@@ -234,7 +235,7 @@ set t_Co=256
 set guifont=Ubuntu\ Mono\ 15
 " set guifont=Monospace\ 12
 set background=light
-colorscheme base16-solarized
+colorscheme base16-paraiso
 
 "-----------------------------------------------------------------------------
 
