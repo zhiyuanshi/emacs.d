@@ -15,7 +15,7 @@ DISABLE_UPDATE_PROMPT="true"
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(bundler cabal gem git heroku mercurial rails rake ruby rvm sbt scala)
+plugins=(bundler cabal gem git heroku mercurial rails rake rbenv ruby sbt scala)
 
 # PROMPT="
 # %c%# "
@@ -32,9 +32,6 @@ echo "gtk-recent-files-max-age=0" > $HOME/.gtkrc-2.0
 
 # Disable ThinkPad TrackPoint
 xinput -set-prop "TPPS/2 IBM TrackPoint" "Device Enabled" 0
-
-# For RVM to work in ZSH
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 # Invert behavior of Fn key on Apple keyboard
 # https://help.ubuntu.com/community/AppleKeyboard#Change_Function_Key_behavior
@@ -75,6 +72,11 @@ alias dotfiles="cd $DOTFILES"
 alias dotvim="$EDITOR $DOTFILES/.vimrc"
 alias dotemacs="$EDITOR $DOTFILES/.emacs"
 alias dotzsh="$EDITOR $DOTFILES/.zshrc"
+alias setup-dotfiles="ruby $DOTFILES/setup.rb"
 
-# Deprecated, since ag is noticeably faster than ack
-alias ack="ack-grep"
+# opam
+eval `opam config env`
+
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
