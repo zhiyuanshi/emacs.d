@@ -26,6 +26,7 @@ let maplocalleader = ","
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-repeat'
@@ -239,7 +240,7 @@ colorscheme base16-paraiso
 
 "-----------------------------------------------------------------------------
 
-set columns=100
+set columns=110
 set lines=45
 
 set textwidth=88
