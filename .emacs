@@ -61,6 +61,7 @@
 
 (setq make-backup-files nil) ;; don't create backup~ files
 (setq auto-save-default nil) ;; don't create #autosave# files
+(setq mode-require-final-newline nil)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
