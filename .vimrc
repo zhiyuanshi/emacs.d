@@ -236,7 +236,7 @@ set t_Co=256
 set guifont=Ubuntu\ Mono\ 15
 " set guifont=Monospace\ 12
 set background=dark
-colorscheme base16-mocha
+colorscheme base16-eighties
 
 "-----------------------------------------------------------------------------
 
@@ -444,10 +444,12 @@ au BufWritePre * :%s/\s\+$//e
 "-----------------------------------------------------------------------------
 " Language-specific auto-commands
 
+" Deprecated! as we'll create symlinks instead.
+
 " If we are editing a dotfile with one of the following names but it is not in
 " the $DOTFILES directory, then there is obviously no setup.rb in the current
 " directory and the error is silently ignored as we wish.
-au BufWritePost {.vimrc,.emacs,.zshrc} :silent !ruby setup.rb
+" au BufWritePost {.vimrc,.emacs,.zshrc} :silent !ruby setup.rb
 
 au BufEnter {Gemfile,Rakefile,Guardfile,*.rake,config.ru} setl ft=ruby
 au BufEnter {*.md,*.markdown}                             setl ft=markdown
