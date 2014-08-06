@@ -12,6 +12,7 @@
 (defvar my-packages
   '(evil
     fiplr
+    ecb
     flycheck
     company
     smex
@@ -40,7 +41,7 @@
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-15"))
 
-(load-theme 'base16-eighties t)
+(load-theme 'base16-mocha t)
 
 (menu-bar-mode 1)
 (tool-bar-mode 0)
@@ -71,6 +72,9 @@
 
 ;; fiplr
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
+
+;; ecb
+(require 'ecb)
 
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
