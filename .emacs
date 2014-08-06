@@ -59,6 +59,8 @@
 ;; http://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Emacs-Sessions.html
 (desktop-save-mode 1)
 
+(prefer-coding-system 'utf-8)
+
 (setq make-backup-files nil) ;; don't create backup~ files
 (setq auto-save-default nil) ;; don't create #autosave# files
 (setq mode-require-final-newline nil)
