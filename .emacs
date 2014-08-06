@@ -41,7 +41,7 @@
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-15"))
 
-(load-theme 'base16-mocha t)
+(load-theme 'tango t)
 
 (menu-bar-mode 1)
 (tool-bar-mode 0)
@@ -105,6 +105,8 @@
 ;; structured-haskell-mode
 (require 'shm)
 (add-hook 'haskell-mode-hook 'structured-haskell-mode)
+(set-face-background 'shm-current-face "#eee8d5")
+(set-face-background 'shm-quarantine-face "lemonchiffon")
 
 ;; proof-general
 (setq proof-three-window-mode-policy 'hybrid)
