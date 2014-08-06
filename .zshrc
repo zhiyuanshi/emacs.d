@@ -64,7 +64,7 @@ alias cl="clear"
 alias open="xdg-open"
 
 alias v="gvim 2> /dev/null"
-alias e="emacs"
+alias e="emacsclient --create-frame --no-wait --alternate-editor=\"\""
 
 alias code="cd $CODE"
 alias dotfiles="cd $DOTFILES"
@@ -72,7 +72,6 @@ alias dotfiles="cd $DOTFILES"
 alias dotvim="$EDITOR $DOTFILES/.vimrc"
 alias dotemacs="$EDITOR $DOTFILES/.emacs"
 alias dotzsh="$EDITOR $DOTFILES/.zshrc"
-alias setup-dotfiles="ruby $DOTFILES/setup.rb"
 
 # opam
 eval `opam config env`
