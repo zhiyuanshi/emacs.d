@@ -55,6 +55,9 @@
 
 (show-paren-mode 1)
 
+;; tabs
+(setq-default indent-tabs-mode nil)
+
 ;; save the state of Emacs from one session to another
 ;; http://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Emacs-Sessions.html
 (desktop-save-mode 1)
