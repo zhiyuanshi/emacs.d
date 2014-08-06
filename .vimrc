@@ -235,8 +235,8 @@ syntax on
 set t_Co=256
 set guifont=Ubuntu\ Mono\ 15
 " set guifont=Monospace\ 12
-set background=dark
-colorscheme base16-eighties
+set background=light
+colorscheme base16-paraiso
 
 "-----------------------------------------------------------------------------
 
