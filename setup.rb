@@ -1,3 +1,5 @@
+# Deprecated! You should create symlinks in the home directory instead.
+
 require 'fileutils'
 
 DOTFILES = %w(.vimrc .emacs .zshrc)
@@ -5,8 +7,8 @@ DOTFILES = %w(.vimrc .emacs .zshrc)
 dotfilesdir = File.expand_path(File.dirname(__FILE__))
 homedir     = Dir.home
 
-# puts "dotfiles directory is '#{dotfilesdir}'"
-# puts "home directory is '#{homedir}'"
+puts "dotfiles directory is '#{dotfilesdir}'"
+puts "home directory is '#{homedir}'"
 
 did_anything = false
 
