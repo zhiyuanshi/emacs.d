@@ -10,7 +10,7 @@ Set variables:
 
     export DOTFILES=~/Dropbox/Code/dotfiles
 
-## Install Vim
+## Reset Vim
 
 Remove existing dotfiles:
 
@@ -20,7 +20,7 @@ Install [Vundle](https://github.com/gmarik/Vundle.vim).
 
 Restore dotfiles:
 
-    cp $DOTFILES/.vimrc ~
+    ruby $DOTFILES/create-symlinks.rb
 
 Open Vim and run `:PluginInstall`.
 
@@ -28,23 +28,12 @@ make [Shougo/vimproc.vim](https://github.com/Shougo/vimproc.vim) (required by [e
 
 make [Valloric/YouCompleteMe](https://github.com/Shougo/vimproc.vim).
 
-## Install Emacs
+## Reset Emacs
 
 Remove existing dotfiles:
 
     rm -rf ~/.emacs ~/.emacs.d
 
-Install Emacs [Prelude](https://github.com/bbatsov/prelude#fast-forward):
-
-    curl -L http://git.io/epre | sh
-
-Back up the latest pristine `prelude-modules.el`:
-
-    cp ~/.emacs.d/prelude-modules.el $DOTFILES/.emacs.d/prelude-modules.el.original
-
-Open Emacs to allow Prelude be automatically initialized. This may take some time.
-
 Restore dotfiles:
 
-    cp $DOTFILES/.emacs ~
-    cp $DOTFILES/.emacs.d/prelude-modules.el ~/.emacs.d/prelude-modules.el
+    ruby $DOTFILES/create-symlinks.rb
