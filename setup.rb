@@ -1,4 +1,13 @@
-# Deprecated! You should create symlinks in the home directory instead.
+require 'rainbow'
+
+notice = "This script is deprecated. You should create symlinks in the home directory instead.
+Type 'yes' to continue. Anything else will abort this script."
+
+$stderr.puts Rainbow(notice).red
+unless gets.chomp == "yes"
+  $stderr.puts "Abort."
+  exit 1
+end
 
 require 'fileutils'
 
