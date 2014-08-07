@@ -110,7 +110,9 @@
 
 ;; structured-haskell-mode
 (require 'shm)
+(require 'shm-case-split)
 (add-hook 'haskell-mode-hook 'structured-haskell-mode)
+(define-key shm-map (kbd "C-c C-s") 'shm/case-split)
 (set-face-background 'shm-current-face "#eee8d5")
 (set-face-background 'shm-quarantine-face "lemonchiffon")
 
