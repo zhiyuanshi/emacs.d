@@ -73,6 +73,8 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
+;; https://github.com/lewang/flx
+(setq gc-cons-threshold 20000000)
 
 ;; evil
 (require 'evil)
