@@ -26,7 +26,6 @@
     shm
     ;; ruby
     inf-ruby
-    flymake-ruby
     robe
     base16-theme))
 
@@ -117,10 +116,6 @@
 (set-face-background 'shm-quarantine-face "lemonchiffon")
 
 ;; proof-general
-
-;; flymake-ruby
-(require 'flymake-ruby)
-(add-hook 'ruby-mode-hook 'flymake-ruby-load)
 
 ;; robe
 (add-hook 'ruby-mode-hook 'robe-mode)
