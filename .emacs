@@ -104,7 +104,15 @@
 (setq ido-use-faces nil)
 
 ;; haskell-mode
-(add-hook 'haskell-mode-hook 'structured-haskell-mode)
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
+
+(custom-set-variables
+  '(haskell-process-suggest-remove-import-lines t)
+  '(haskell-process-suggest-hoogle-imports t)
+  '(haskell-process-auto-import-loaded-modules t)
+  '(haskell-process-log t))
 
 ;; company-ghc
 (push 'company-ghc company-backends)
