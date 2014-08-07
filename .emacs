@@ -117,7 +117,6 @@
 (set-face-background 'shm-quarantine-face "lemonchiffon")
 
 ;; proof-general
-(setq proof-three-window-mode-policy 'hybrid)
 
 ;; flymake-ruby
 (require 'flymake-ruby)
