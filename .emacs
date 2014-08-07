@@ -1,6 +1,10 @@
-;; .emacs --- an idempotent .emacs for immediate deployment
+;;; .emacs --- an idempotent .emacs for immediate deployment
 
-;; common lisp goodies, loop
+;;; Commentary:
+
+;;; Code:
+
+;; common Lisp goodies, loop
 (require 'cl)
 (require 'package)
 
@@ -124,3 +128,6 @@
 ;; robe
 (add-hook 'ruby-mode-hook 'robe-mode)
 (push 'company-robe company-backends)
+
+(provide '.emacs)
+;;; .emacs ends here
