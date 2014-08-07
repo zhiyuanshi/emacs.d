@@ -15,6 +15,7 @@
 
 (defvar my-packages
   '(evil
+    evil-surround
     fiplr
     flycheck
     company
@@ -79,6 +80,10 @@
 ;; evil
 (require 'evil)
 (evil-mode 1)
+
+;; evil-surround
+(require 'evil-surround)
+(global-evil-surround-mode 1)
 
 ;; fiplr
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
