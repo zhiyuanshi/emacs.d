@@ -16,7 +16,6 @@
 (defvar my-packages
   '(evil
     fiplr
-    ecb
     flycheck
     company
     smex
@@ -82,9 +81,6 @@
 
 ;; fiplr
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
-
-;; ecb
-(require 'ecb)
 
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
