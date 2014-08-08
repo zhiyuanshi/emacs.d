@@ -3,7 +3,7 @@
 " I want Vim, not Vi
 set nocompatible
 
-"=============================================================================
+"-----------------------------------------------------------------------------
 " Vundle
 
 filetype off                  " Required
@@ -117,7 +117,7 @@ let g:multi_cursor_exit_from_insert_mode = 0
 
 Plugin 'Shougo/vimshell.vim'
 
-"=============================================================================
+"-----------------------------------------------------------------------------
 " Haskell
 
 " Plugin 'lukerandall/haskellmode-vim'
@@ -229,7 +229,7 @@ Plugin 'chriskempson/base16-vim'
 call vundle#end()            " Required
 filetype plugin indent on    " Required
 
-"=============================================================================
+"-----------------------------------------------------------------------------
 
 syntax on
 set t_Co=256
@@ -368,7 +368,7 @@ set noswapfile
 " Want better buffer handling in quickfix mode
 set switchbuf=useopen,usetab,split
 
-"=============================================================================
+"-----------------------------------------------------------------------------
 " Key mappings
 
 " Let <Tab> be recognized when used inside a macro
@@ -417,7 +417,7 @@ imap <C-l> <Right>
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
-"=============================================================================
+"-----------------------------------------------------------------------------
 " Auto-commands
 
 " Change directories automatically and print the directory after changing
