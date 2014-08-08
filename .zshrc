@@ -38,44 +38,42 @@ xinput -set-prop "TPPS/2 IBM TrackPoint" "Device Enabled" 0
 # echo 2 > /sys/module/hid_apple/parameters/fnmode
 
 # Preferred editor for local and remote sessions
+EMACSCLIENT="emacsclient --create-frame --no-wait --alternate-editor=\"\""
+
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR="vim"
 else
-  export EDITOR="v"
+  export EDITOR="$EMACSCLIENT"
 fi
 
-#-----------------------------------------------------------------------------
-# ENV VARIABLES
-
-export PATH=$PATH:"/home/zhiyuan/.opam/4.01.0/bin:/home/zhiyuan/.rvm/gems/ruby-1.9.3-p484/bin:/home/zhiyuan/.rvm/gems/ruby-1.9.3-p484@global/bin:/home/zhiyuan/.rvm/rubies/ruby-1.9.3-p484/bin:/home/zhiyuan/.rvm/bin:/home/zhiyuan/.cabal/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
-
 export CODE=$HOME/Dropbox/Code
-export DOTFILES=$CODE/dotfiles
 
-#-----------------------------------------------------------------------------
-# ALIASES
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-
+# Aliases
 alias cl="clear"
 alias open="xdg-open"
 
 alias v="gvim 2> /dev/null"
-alias e="emacsclient --create-frame --no-wait --alternate-editor=\"\""
+alias e="$EMACSCLIENT"
 
 alias code="cd $CODE"
-alias dotfiles="cd $DOTFILES"
 
+export DOTFILES=$CODE/dotfiles
+
+alias dotfiles="cd $DOTFILES"
 alias dotvim="$EDITOR $DOTFILES/.vimrc"
 alias dotemacs="$EDITOR $DOTFILES/.emacs"
 alias dotzsh="$EDITOR $DOTFILES/.zshrc"
 
+# Set the PATH
+export PATH="/usr/local/bin:$PATH"
+
 # opam
+export PATH="$HOME/.opam/4.01.0/bin:$PATH"
 eval `opam config env`
 
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# cabal
+export PATH="$HOME/.cabal/bin:$PATH"
