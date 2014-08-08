@@ -69,6 +69,10 @@
 ;; http://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Emacs-Sessions.html
 (desktop-save-mode 1)
 
+;; https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdisplaynicely
+(set-terminal-coding-system 'utf-8-unix)
+(set-keyboard-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
 (setq make-backup-files nil) ;; don't create backup~ files
