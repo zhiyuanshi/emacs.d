@@ -64,8 +64,8 @@ alias dotvim="$EDITOR $DOTFILES/.vimrc"
 alias dotemacs="$EDITOR $DOTFILES/.emacs"
 alias dotzsh="$EDITOR $DOTFILES/.zshrc"
 
-# Set the PATH
-export PATH="/usr/local/bin:$PATH"
+# The default PATH defined in /etc/environment
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 # opam
 export PATH="$HOME/.opam/4.01.0/bin:$PATH"
