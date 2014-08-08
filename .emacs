@@ -94,7 +94,7 @@
 
 ;; dired+
 (require 'dired+)
-(toggle-diredp-find-file-reuse-dir 1)
+(diredp-toggle-find-file-reuse-dir 1)
 
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
