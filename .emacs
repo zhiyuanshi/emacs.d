@@ -22,6 +22,7 @@
     company
     smex
     flx-ido
+    imenu-anywhere
     ;; haskell
     haskell-mode
     company-ghc
@@ -127,6 +128,9 @@
 ;; disable ido faces to see flx highlights.
 (setq ido-enable-flex-matching t)
 (setq ido-use-faces nil)
+
+;; imenu-anywhere
+(global-set-key (kbd "C-x m") 'imenu-anywhere)
 
 ;; haskell-mode
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
