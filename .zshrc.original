@@ -51,7 +51,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/home/zhiyuan/.cabal/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/zhiyuan/.rvm/bin:/home/zhiyuan/.opam/4.01.0/bin:/home/zhiyuan/.rvm/gems/ruby-1.9.3-p484/bin:/home/zhiyuan/.rvm/gems/ruby-1.9.3-p484@global/bin:/home/zhiyuan/.rvm/rubies/ruby-1.9.3-p484/bin:/home/zhiyuan/.rvm/bin:/home/zhiyuan/.cabal/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/zhiyuan/.rvm/bin"
+export PATH="/home/zhiyuan/.cabal/bin:/home/zhiyuan/.rbenv/shims:/home/zhiyuan/.rbenv/bin:/home/zhiyuan/.opam/4.01.0/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/zhiyuan/.rvm/bin:/home/zhiyuan/.rvm/bin:/home/zhiyuan/.rvm/bin:/home/zhiyuan/.rvm/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
