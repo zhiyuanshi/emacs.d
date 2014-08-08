@@ -46,6 +46,7 @@ else
 fi
 
 export CODE="$HOME/Dropbox/Code"
+export DOTFILES="$CODE/dotfiles"
 
 # Aliases
 alias cl="clear"
@@ -55,10 +56,8 @@ alias v="gvim 2> /dev/null"
 alias e="$EMACSCLIENT"
 
 alias code="cd $CODE"
-
-export DOTFILES="$CODE/dotfiles"
-
 alias dotfiles="cd $DOTFILES"
+
 alias vimconfig="$EDITOR $DOTFILES/.vimrc"
 alias emacsconfig="$EDITOR $DOTFILES/.emacs"
 alias zshconfig="$EDITOR $DOTFILES/.zshrc"
