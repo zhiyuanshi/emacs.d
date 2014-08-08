@@ -58,8 +58,8 @@ alias e="$EMACSCLIENT"
 alias code="cd $CODE"
 alias dotfiles="cd $DOTFILES"
 
-alias vimconfig="$EDITOR $DOTFILES/.vimrc"
-alias emacsconfig="$EDITOR $DOTFILES/.emacs"
+alias vimconfig="v $DOTFILES/.vimrc"
+alias emacsconfig="$EMACSCLIENT $DOTFILES/.emacs"
 alias zshconfig="$EDITOR $DOTFILES/.zshrc"
 
 # The default PATH defined in /etc/environment
