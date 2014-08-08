@@ -37,7 +37,7 @@ xinput -set-prop "TPPS/2 IBM TrackPoint" "Device Enabled" 0
 # echo 2 > /sys/module/hid_apple/parameters/fnmode
 
 # Preferred editor for local and remote sessions
-EMACSCLIENT="emacsclient --create-frame --no-wait --alternate-editor=\"\""
+EMACSCLIENT="emacsclient --create-frame --no-wait --alternate-editor=''"
 
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR="vim"
