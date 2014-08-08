@@ -29,6 +29,7 @@
     inf-ruby
     robe
     ;; web
+    rinari
     web-mode
     base16-theme))
 
@@ -138,6 +139,9 @@
 ;; robe
 (add-hook 'ruby-mode-hook 'robe-mode)
 (push 'company-robe company-backends)
+
+;; rinari
+(require 'rinari)
 
 ;; web-mode
 (require 'web-mode)
