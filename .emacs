@@ -75,7 +75,15 @@
 (setq auto-save-default nil) ;; don't create #autosave# files
 (setq mode-require-final-newline nil)
 
+;; https://ghc.haskell.org/trac/ghc/wiki/Emacs#Untabifyingabuffer
+(defun untabify-current-buffer ()
+  "Untabify current buffer."
+  (interactive)
+  (save-excursion (untabify (point-min) (point-max))))
+
+(add-hook 'before-save-hook 'untabify-current-buffer)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
 ;; https://github.com/lewang/flx
