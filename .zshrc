@@ -22,13 +22,12 @@ plugins=(bundler cabal gem git heroku mercurial rails rake rbenv ruby sbt scala)
 
 source $ZSH/oh-my-zsh.sh        # Required
 
-#=============================================================================
-# USER CONFIGURATION
+# User configuration
 
 # Clear "Recently Used"
-echo > $HOME/.local/share/recently-used.xbel
-touch  $HOME/.local/share/recently-used.xbel
-echo "gtk-recent-files-max-age=0" > $HOME/.gtkrc-2.0
+echo > "$HOME/.local/share/recently-used.xbel"
+touch  "$HOME/.local/share/recently-used.xbel"
+echo "gtk-recent-files-max-age=0" > "$HOME/.gtkrc-2.0"
 
 # Disable ThinkPad TrackPoint
 xinput -set-prop "TPPS/2 IBM TrackPoint" "Device Enabled" 0
@@ -46,7 +45,7 @@ else
   export EDITOR="$EMACSCLIENT"
 fi
 
-export CODE=$HOME/Dropbox/Code
+export CODE="$HOME/Dropbox/Code"
 
 # Aliases
 alias cl="clear"
@@ -57,12 +56,12 @@ alias e="$EMACSCLIENT"
 
 alias code="cd $CODE"
 
-export DOTFILES=$CODE/dotfiles
+export DOTFILES="$CODE/dotfiles"
 
 alias dotfiles="cd $DOTFILES"
-alias dotvim="$EDITOR $DOTFILES/.vimrc"
-alias dotemacs="$EDITOR $DOTFILES/.emacs"
-alias dotzsh="$EDITOR $DOTFILES/.zshrc"
+alias vimconfig="$EDITOR $DOTFILES/.vimrc"
+alias emacsconfig="$EDITOR $DOTFILES/.emacs"
+alias zshconfig="$EDITOR $DOTFILES/.zshrc"
 
 # The default PATH defined in /etc/environment
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
