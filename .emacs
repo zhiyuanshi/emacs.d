@@ -157,6 +157,11 @@
 
 ;; proof-general
 
+;; inf-ruby
+(add-hook 'ruby-mode-hook
+  (lambda ()
+    (local-set-key (kbd "C-c C-c") 'inf-ruby-console-auto)))
+
 ;; robe
 (add-hook 'ruby-mode-hook 'robe-mode)
 (push 'company-robe company-backends)
