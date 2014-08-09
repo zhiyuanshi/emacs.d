@@ -104,6 +104,7 @@
 
 ;; projectile
 (projectile-global-mode)
+(setq projectile-completion-system 'grizzl)
 
 ;; fiplr
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
