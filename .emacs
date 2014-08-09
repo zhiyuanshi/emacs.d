@@ -89,6 +89,8 @@
 (setq auto-save-default nil) ;; don't create #autosave# files
 (setq mode-require-final-newline nil)
 
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;; https://ghc.haskell.org/trac/ghc/wiki/Emacs#Untabifyingabuffer
 (defun untabify-current-buffer ()
   "Untabify current buffer."
