@@ -14,19 +14,13 @@
 (package-initialize)
 
 (defvar my-packages
-  '(evil
-    evil-surround
-    projectile
-    fiplr
-    dired+
-    direx
-    smartparens
+  '(evil evil-surround
+    projectile fiplr imenu-anywhere
+    dired+ direx
     flycheck
     auto-complete ;; company
-    smex
-    flx-ido
-    imenu-anywhere
-    popwin
+    smartparens
+    smex flx-ido popwin
     ;; haskell
     haskell-mode
     ;; company-ghc
