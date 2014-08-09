@@ -18,6 +18,7 @@
     evil-surround
     fiplr
     dired+
+    direx
     flycheck
     company
     smex
@@ -108,6 +109,10 @@
 ;; dired+
 (require 'dired+)
 (diredp-toggle-find-file-reuse-dir 1)
+
+;; direx
+(require 'direx)
+(global-set-key (kbd "C-x C-d") 'direx:jump-to-directory)
 
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
