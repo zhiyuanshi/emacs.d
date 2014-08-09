@@ -21,7 +21,7 @@
     direx
     smartparens
     flycheck
-    company
+    auto-complete ;; company
     smex
     flx-ido
     imenu-anywhere
@@ -133,9 +133,13 @@
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
+;; auto-complete
+(require 'auto-complete-config)
+(ac-config-default)
+
 ;; company
 ;; (add-hook 'after-init-hook 'global-company-mode)
-(global-company-mode)
+;; (global-company-mode)
 
 ;; smex
 (global-set-key (kbd "M-x") 'smex)
