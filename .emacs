@@ -19,6 +19,7 @@
     fiplr
     dired+
     direx
+    smartparens
     flycheck
     company
     smex
@@ -113,6 +114,9 @@
 ;; direx
 (require 'direx)
 (global-set-key (kbd "C-x C-d") 'direx:jump-to-directory)
+
+;; smartparens
+(require 'smartparens-config) ;; the default configuration
 
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
