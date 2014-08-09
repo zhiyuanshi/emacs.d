@@ -15,7 +15,7 @@
 
 (defvar my-packages
   '(evil evil-surround
-    projectile fiplr imenu-anywhere
+    projectile imenu-anywhere
     dired+ direx
     flycheck
     auto-complete
@@ -105,9 +105,6 @@
 ;; projectile
 (projectile-global-mode)
 (setq projectile-completion-system 'grizzl)
-
-;; fiplr
-(global-set-key (kbd "C-x f") 'fiplr-find-file)
 
 ;; dired+
 (require 'dired+)
