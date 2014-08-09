@@ -31,6 +31,7 @@
     shm
     ;; ruby
     inf-ruby
+    company-inf-ruby
     robe
     ;; web
     rinari
@@ -175,6 +176,10 @@
 (add-hook 'ruby-mode-hook
   (lambda ()
     (local-set-key (kbd "C-c C-c") 'inf-ruby-console-auto)))
+
+;; company-inf-ruby
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-inf-ruby))
 
 ;; robe
 (add-hook 'ruby-mode-hook 'robe-mode)
