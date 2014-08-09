@@ -37,6 +37,7 @@
     ;; web
     rinari
     web-mode
+    coffee-mode
     base16-theme))
 
 (defun my-packages-installed-p ()
@@ -203,6 +204,11 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+;; coffee-mode
+(require 'coffee-mode)
+(custom-set-variables
+  '(coffee-tab-width 2))
 
 (provide '.emacs)
 ;;; .emacs ends here
