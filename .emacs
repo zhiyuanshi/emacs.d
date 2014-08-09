@@ -108,6 +108,12 @@
 ;; fiplr
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
 
+;; neotree
+;; To install: git clone https://github.com/jaypei/emacs-neotree.git ~/.emacs.d/elpa/neotree
+(add-to-list 'load-path "~/.emacs.d/elpa/neotree")
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+
 ;; dired+
 (require 'dired+)
 (diredp-toggle-find-file-reuse-dir 1)
