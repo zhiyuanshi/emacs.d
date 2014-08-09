@@ -18,21 +18,13 @@
     projectile fiplr imenu-anywhere
     dired+ direx
     flycheck
-    auto-complete ;; company
+    auto-complete
+    ;; company company-ghc company-inf-ruby
     smartparens
     smex flx-ido popwin
-    ;; haskell
-    haskell-mode
-    ;; company-ghc
-    shm
-    ;; ruby
-    inf-ruby
-    ;; company-inf-ruby
-    robe
-    ;; web
-    rinari
-    web-mode
-    coffee-mode
+    haskell-mode shm
+    inf-ruby robe rinari
+    web-mode coffee-mode
     base16-theme))
 
 (defun my-packages-installed-p ()
@@ -140,6 +132,13 @@
 ;; (add-hook 'after-init-hook 'global-company-mode)
 ;; (global-company-mode)
 
+;; company-ghc
+;; (push 'company-ghc company-backends)
+
+;; company-inf-ruby
+;; (eval-after-load 'company
+;;   '(add-to-list 'company-backends 'company-inf-ruby))
+
 ;; smex
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
@@ -176,9 +175,6 @@
   '(haskell-process-log t)
   '(haskell-process-type 'cabal-repl))
 
-;; company-ghc
-;; (push 'company-ghc company-backends)
-
 ;; structured-haskell-mode
 (require 'shm)
 (require 'shm-case-split)
@@ -212,10 +208,6 @@
 (add-hook 'ruby-mode-hook
   (lambda ()
     (local-set-key (kbd "C-c C-c") 'inf-ruby-console-auto)))
-
-;; company-inf-ruby
-;; (eval-after-load 'company
-;;   '(add-to-list 'company-backends 'company-inf-ruby))
 
 ;; robe
 (add-hook 'ruby-mode-hook 'robe-mode)
