@@ -25,6 +25,7 @@
     smex
     flx-ido
     imenu-anywhere
+    popwin
     ;; haskell
     haskell-mode
     company-ghc
@@ -146,6 +147,10 @@
 
 ;; imenu-anywhere
 (global-set-key (kbd "C-x m") 'imenu-anywhere)
+
+;; popwin
+(require 'popwin)
+(popwin-mode 1)
 
 ;; haskell-mode
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
