@@ -136,6 +136,7 @@
 ;; auto-complete
 (require 'auto-complete-config)
 (ac-config-default)
+(setq ac-use-fuzzy t)
 
 ;; company
 ;; (add-hook 'after-init-hook 'global-company-mode)
