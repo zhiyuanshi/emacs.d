@@ -62,6 +62,8 @@ alias vimconfig="v $DOTFILES/.vimrc"
 alias emacsconfig="$EMACSCLIENT $DOTFILES/.emacs"
 alias zshconfig="$EDITOR $DOTFILES/.zshrc"
 
+alias node="nodejs"
+
 # The default PATH defined in /etc/environment
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
