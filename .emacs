@@ -18,7 +18,6 @@
     evil-surround
     fiplr
     dired+
-    direx
     smartparens
     flycheck
     company
@@ -117,10 +116,6 @@
 ;; dired+
 (require 'dired+)
 (diredp-toggle-find-file-reuse-dir 1)
-
-;; direx
-(require 'direx)
-(global-set-key (kbd "C-x C-d") 'direx:jump-to-directory)
 
 ;; smartparens
 (smartparens-global-mode 1)
