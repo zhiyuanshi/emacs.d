@@ -16,6 +16,7 @@
 (defvar my-packages
   '(evil
     evil-surround
+    projectile
     fiplr
     dired+
     direx
@@ -114,6 +115,9 @@
 ;; evil-surround
 (require 'evil-surround)
 (global-evil-surround-mode 1)
+
+;; projectile
+(projectile-global-mode)
 
 ;; fiplr
 (global-set-key (kbd "C-x f") 'fiplr-find-file)
