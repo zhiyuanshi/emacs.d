@@ -139,6 +139,10 @@
 (setq ido-enable-flex-matching t)
 (setq ido-use-faces nil)
 
+;; imenu
+(add-hook 'ruby-mode-hook 'imenu-add-menubar-index)
+(setq imenu-auto-rescan t)
+
 ;; imenu-anywhere
 (global-set-key (kbd "C-x m") 'imenu-anywhere)
 
