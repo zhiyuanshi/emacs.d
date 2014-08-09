@@ -72,6 +72,7 @@
 (show-paren-mode 1)
 
 ;; tabs
+(setq tab-width 2)
 (setq-default indent-tabs-mode nil)
 
 ;; save the state of Emacs from one session to another
