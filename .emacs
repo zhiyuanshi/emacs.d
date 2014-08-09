@@ -29,11 +29,11 @@
     popwin
     ;; haskell
     haskell-mode
-    company-ghc
+    ;; company-ghc
     shm
     ;; ruby
     inf-ruby
-    company-inf-ruby
+    ;; company-inf-ruby
     robe
     ;; web
     rinari
@@ -183,7 +183,7 @@
   '(haskell-process-type 'cabal-repl))
 
 ;; company-ghc
-(push 'company-ghc company-backends)
+;; (push 'company-ghc company-backends)
 
 ;; structured-haskell-mode
 (require 'shm)
@@ -220,12 +220,12 @@
     (local-set-key (kbd "C-c C-c") 'inf-ruby-console-auto)))
 
 ;; company-inf-ruby
-(eval-after-load 'company
-  '(add-to-list 'company-backends 'company-inf-ruby))
+;; (eval-after-load 'company
+;;   '(add-to-list 'company-backends 'company-inf-ruby))
 
 ;; robe
 (add-hook 'ruby-mode-hook 'robe-mode)
-(push 'company-robe company-backends)
+;; (push 'company-robe company-backends)
 
 ;; rinari
 (require 'rinari)
