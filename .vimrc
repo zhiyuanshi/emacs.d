@@ -89,6 +89,8 @@ Plugin 'justinmk/vim-syntax-extra'
 
 Plugin 'scrooloose/syntastic'
 
+au FileType qf nmap <buffer> <Leader>q :bdelete<CR>
+
 let g:syntastic_echo_current_error = 0
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_jump = 2
