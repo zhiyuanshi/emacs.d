@@ -99,7 +99,7 @@ let g:syntastic_haskell_checkers = ["hdevtools", "hlint"]
 
 " Disable Syntastic's automatic syntax checking for Haskell because the error
 " messages are not wrapped.
-" Instead, use C-c C-c to do manual checks (offered by ghcmod-vim).
+" Instead, use <Leader>cc to do manual checks (offered by ghcmod-vim).
 let g:syntastic_mode_map = { "mode": "active", "passive_filetypes": ["haskell"] }
 
 Plugin 'terryma/vim-multiple-cursors'
