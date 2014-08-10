@@ -35,7 +35,7 @@ Plugin 'Shougo/unite.vim'
 
 Plugin 'The-NERD-tree'
 Plugin 'jistr/vim-nerdtree-tabs'
-map <C-k><C-b> :NERDTreeMirrorToggle<CR>
+map <Leader>n :NERDTreeMirrorToggle<CR>
 
 " Modify NerdTree to make it use the split explorer model
 " http://vimcasts.org/blog/2013/01/oil-and-vinegar-split-windows-and-project-drawer/
@@ -134,11 +134,11 @@ Plugin 'eagletmt/ghcmod-vim'
 hi ghcmodType ctermbg=yellow
 let g:ghcmod_type_highlight = "ghcmodType"
 
-au FileType haskell nmap <buffer> <C-c><C-c> :GhcModCheckAsync<CR>
-au FileType haskell nmap <buffer> <C-c><C-l> :GhcModLintAsync<CR>
-au FileType haskell nmap <buffer> <C-c><C-t> :GhcModType<CR>
-au FileType haskell nmap <buffer> <C-c><C-i> :GhcModInfoPreview<CR>
-au FileType haskell nmap <buffer> <C-c><C-s> :GhcModTypeInsert<CR>
+au FileType haskell nmap <buffer> <Leader>cc :GhcModCheckAsync<CR>
+au FileType haskell nmap <buffer> <Leader>cl :GhcModLintAsync<CR>
+au FileType haskell nmap <buffer> <Leader>ct :GhcModType<CR>
+au FileType haskell nmap <buffer> <Leader>ci :GhcModInfoPreview<CR>
+au FileType haskell nmap <buffer> <Leader>cs :GhcModTypeInsert<CR>
 
 " Auto-checking on writing
 " au BufWritePost *.hs GhcModCheckAndLintAsync
@@ -165,11 +165,11 @@ Plugin 'travitch/hasksyn'
 Plugin 'def-lkb/vimbufsync'             " Dependency
 Plugin 'the-lambda-church/coquille'
 
-au FileType coq nmap <buffer> <C-c><C-l> :CoqLaunch<CR>
-au FileType coq nmap <buffer> <C-c><C-c> :CoqToCursor<CR>
-au FileType coq nmap <buffer> <C-c><C-n> :CoqNext<CR>
-au FileType coq nmap <buffer> <C-c><C-u> :CoqUndo<CR>
-au FileType coq nmap <buffer> <C-c><C-k> :CoqKill<CR>
+au FileType coq nmap <buffer> <Leader>cl :CoqLaunch<CR>
+au FileType coq nmap <buffer> <Leader>cc :CoqToCursor<CR>
+au FileType coq nmap <buffer> <Leader>cn :CoqNext<CR>
+au FileType coq nmap <buffer> <Leader>cu :CoqUndo<CR>
+au FileType coq nmap <buffer> <Leader>ck :CoqKill<CR>
 
 " Set it to 'true' if you want Coquille to move your cursor to the end of the
 " lock zone after calls to CoqNext or CoqUndo.
