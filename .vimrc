@@ -343,7 +343,6 @@ set switchbuf=useopen,usetab,split
 set wildcharm=<Tab>
 
 map <Leader>a ggvG$
-map <Leader>c :colorscheme<Space><Tab>
 map <Leader>e :e<Space><Tab>
 map <Leader>h :h<Space>
 map <Leader>q :q<CR>
