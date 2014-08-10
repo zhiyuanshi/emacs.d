@@ -185,7 +185,11 @@ Plugin 'nelstrom/vim-textobj-rubyblock'
 
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-endwise'
+
 Plugin 'tpope/vim-rails'
+
+  au User Rails vmap <buffer> <Leader>ce :Rextract<Space>
+
 Plugin 'vim-ruby/vim-ruby'
 
 Plugin 'gregsexton/MatchTag'
