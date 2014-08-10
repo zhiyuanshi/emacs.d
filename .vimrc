@@ -193,7 +193,11 @@ Plugin 'tpope/vim-ragtag'
 Plugin 'plasticboy/vim-markdown'
 
 Plugin 'derekwyatt/vim-scala'
+
 Plugin 'kchmck/vim-coffee-script'
+
+au FileType coffee nmap <buffer> <Leader>cw :CoffeeWatch vertical<CR>
+au FileType coffee nmap <buffer> <Leader>cl :CoffeeLint \| cwindow<CR>
 
 " Plugin 'vim-scripts/TwitVim'
 
