@@ -3,7 +3,6 @@
 " I want Vim, not Vi
 set nocompatible
 
-"-----------------------------------------------------------------------------
 " Vundle
 
 filetype off                  " Required
@@ -16,12 +15,9 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Keep Plugin commands between vundle#begin/end.
-"-----------------------------------------------------------------------------
 
 let mapleader = " "
 let maplocalleader = ","
-
-"-----------------------------------------------------------------------------
 
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-commentary'
@@ -33,7 +29,6 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 
-"-----------------------------------------------------------------------------
 " Navigation
 
 Plugin 'Shougo/unite.vim'
@@ -66,8 +61,6 @@ map <Leader>= :TagbarToggle<CR>
 " https://github.com/majutsushi/tagbar/wiki#haskell
 
 Plugin 'bitc/lushtags'
-
-"-----------------------------------------------------------------------------
 
 " Lean & mean status/tabline for vim that's light as air
 Plugin 'bling/vim-airline'
@@ -117,7 +110,6 @@ let g:multi_cursor_exit_from_insert_mode = 0
 
 Plugin 'Shougo/vimshell.vim'
 
-"-----------------------------------------------------------------------------
 " Haskell
 
 " Plugin 'lukerandall/haskellmode-vim'
@@ -168,7 +160,6 @@ let g:necoghc_enable_detailed_browse = 1
 
 Plugin 'travitch/hasksyn'
 
-"-----------------------------------------------------------------------------
 " Coq
 
 Plugin 'def-lkb/vimbufsync'             " Dependency
@@ -184,7 +175,6 @@ au FileType coq nmap <buffer> <C-c><C-k> :CoqKill<CR>
 " lock zone after calls to CoqNext or CoqUndo.
 let g:coquille_auto_move = "true"
 
-"-----------------------------------------------------------------------------
 " Ruby, Rails & web development
 
 Plugin 'kana/vim-textobj-user'          " Dependency
@@ -199,8 +189,6 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'gregsexton/MatchTag'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-ragtag'
-
-"-----------------------------------------------------------------------------
 
 Plugin 'plasticboy/vim-markdown'
 
@@ -218,18 +206,13 @@ Plugin 'kchmck/vim-coffee-script'
 " " Post the current line in the buffer to Twitter
 " command Tpost   :CPosttoTwitter
 
-"-----------------------------------------------------------------------------
 " Color schemes
 
 Plugin 'chriskempson/base16-vim'
 
-"-----------------------------------------------------------------------------
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " Required
 filetype plugin indent on    " Required
-
-"-----------------------------------------------------------------------------
 
 syntax on
 set t_Co=256
@@ -237,8 +220,6 @@ set guifont=Ubuntu\ Mono\ 15
 " set guifont=Monospace\ 12
 set background=light
 colorscheme base16-paraiso
-
-"-----------------------------------------------------------------------------
 
 set columns=110
 set lines=45
@@ -250,8 +231,6 @@ set colorcolumn=+1
 
 " Maintain some more context around the cursor
 set scrolloff=3
-
-"-----------------------------------------------------------------------------
 
 " Show line number
 set number
@@ -279,8 +258,6 @@ set mousehide
 " Remove GUI-nonsense
 set guioptions=
 
-"-----------------------------------------------------------------------------
-
 " Make tabs into spaces (set by tabstop)
 set expandtab
 
@@ -291,8 +268,6 @@ set shiftwidth=2
 
 "Indent instead of tab at start of line
 set smarttab
-
-"-----------------------------------------------------------------------------
 
 " Switch wrap off for everything
 set nowrap
@@ -306,7 +281,6 @@ set smartindent
 "Don't convert spaces to tabs
 set nojoinspaces
 
-"-----------------------------------------------------------------------------
 " Folding
 
 " Automatically fold by indent level
@@ -315,7 +289,6 @@ set foldmethod=indent
 " Disable folding by default
 set nofoldenable
 
-"-----------------------------------------------------------------------------
 " Completion
 
 " Always show the menu, insert longest match
@@ -328,7 +301,6 @@ set wildignore+=*/dist/*
 set wildmenu
 set wildmode=list:longest,full
 
-"-----------------------------------------------------------------------------
 " Unprintable characters
 
 " Don't display unprintable characters by default
@@ -336,7 +308,6 @@ set wildmode=list:longest,full
 set nolist
 set listchars=tab:¿\ ,eol:¬
 
-"-----------------------------------------------------------------------------
 " Search & substitution
 
 " Case-insensitive search
@@ -358,8 +329,6 @@ set gdefault
 " source a file
 let @/=''
 
-"-----------------------------------------------------------------------------
-
 " Use current shell for shell commands
 set shell=$SHELL
 
@@ -368,7 +337,6 @@ set noswapfile
 " Want better buffer handling in quickfix mode
 set switchbuf=useopen,usetab,split
 
-"-----------------------------------------------------------------------------
 " Key mappings
 
 " Let <Tab> be recognized when used inside a macro
@@ -417,7 +385,6 @@ imap <C-l> <Right>
 " Don't use Ex mode, use Q for formatting
 map Q gq
 
-"-----------------------------------------------------------------------------
 " Auto-commands
 
 " Change directories automatically and print the directory after changing
@@ -432,8 +399,6 @@ au BufEnter * :syntax sync fromstart
 " (happens when dropping a file on gvim).
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 
-"-----------------------------------------------------------------------------
-
 " Replace white-spaces containing a <Tab> with new strings of white-space.
 au BufWritePre * retab
 
@@ -441,7 +406,6 @@ au BufWritePre * retab
 " http://vim.wikia.com/wiki/Remove_unwanted_spaces
 au BufWritePre * :%s/\s\+$//e
 
-"-----------------------------------------------------------------------------
 " Language-specific auto-commands
 
 " Deprecated! as we'll create symlinks instead.
