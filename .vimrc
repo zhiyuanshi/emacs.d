@@ -35,30 +35,32 @@ Plugin 'Shougo/unite.vim'
 
 Plugin 'The-NERD-tree'
 Plugin 'jistr/vim-nerdtree-tabs'
-map <Leader>n :NERDTreeMirrorToggle<CR>
+
+  map <Leader>n :NERDTreeMirrorToggle<CR>
 
 " Modify NerdTree to make it use the split explorer model
 " http://vimcasts.org/blog/2013/01/oil-and-vinegar-split-windows-and-project-drawer/
 Plugin 'tpope/vim-vinegar'
-let NERDTreeHijackNetrw = 1
+
+  let NERDTreeHijackNetrw = 1
 
 Plugin 'kien/ctrlp.vim'
 
-" Search in Files, Buffers and MRU files at the same time
-" let g:ctrlp_cmd = 'CtrlPMixed'
+  " Search in Files, Buffers and MRU files at the same time
+  " let g:ctrlp_cmd = 'CtrlPMixed'
 
-map <M-p> :CtrlPMixed<CR>
+  map <M-p> :CtrlPMixed<CR>
 
 Plugin 'rking/ag.vim'
 
 Plugin 'majutsushi/tagbar'
 
-map <Leader>= :TagbarToggle<CR>
+  map <Leader>= :TagbarToggle<CR>
 
-" Open Tagbar if you open a supported file in an already running Vim
-" au FileType * nested :call tagbar#autoopen(0)
+  " Open Tagbar if you open a supported file in an already running Vim
+  " au FileType * nested :call tagbar#autoopen(0)
 
-" https://github.com/majutsushi/tagbar/wiki#haskell
+  " https://github.com/majutsushi/tagbar/wiki#haskell
 
 Plugin 'bitc/lushtags'
 
@@ -68,10 +70,10 @@ Plugin 'bling/vim-airline'
 " The tabular plugin must come _before_ vim-markdown.
 Plugin 'godlygeek/tabular'
 
-" http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
-map <Leader>t-- :Tabularize /--<CR>
-map <Leader>t=  :Tabularize /=<CR>
-map <Leader>t:  :Tabularize /:\zs<CR>
+  " http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+  map <Leader>t-- :Tabularize /--<CR>
+  map <Leader>t=  :Tabularize /=<CR>
+  map <Leader>t:  :Tabularize /:\zs<CR>
 
 " Faster than neocomplete
 Plugin 'Valloric/YouCompleteMe'
@@ -82,33 +84,33 @@ Plugin 'msanders/snipmate.vim'
 " Faster than vim-gitgutter
 Plugin 'mhinz/vim-signify'
 
-" Don't run Sy by default
-" let g:signify_disable_by_default = 1
+  " Don't run Sy by default
+  " let g:signify_disable_by_default = 1
 
 Plugin 'justinmk/vim-syntax-extra'
 
 Plugin 'scrooloose/syntastic'
 
-au FileType qf nmap <buffer> <Leader>q :bdelete<CR>
+  au FileType qf nmap <buffer> <Leader>q :bdelete<CR>
 
-let g:syntastic_echo_current_error = 0
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_jump = 2
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_haskell_checkers = ["hdevtools", "hlint"]
+  let g:syntastic_echo_current_error = 0
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_jump = 2
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_haskell_checkers = ["hdevtools", "hlint"]
 
-" Disable Syntastic's automatic syntax checking for Haskell because the error
-" messages are not wrapped.
-" Instead, use <Leader>cc to do manual checks (offered by ghcmod-vim).
-let g:syntastic_mode_map = { "mode": "active", "passive_filetypes": ["haskell"] }
+  " Disable Syntastic's automatic syntax checking for Haskell because the error
+  " messages are not wrapped.
+  " Instead, use <Leader>cc to do manual checks (offered by ghcmod-vim).
+  let g:syntastic_mode_map = { "mode": "active", "passive_filetypes": ["haskell"] }
 
 Plugin 'terryma/vim-multiple-cursors'
 
-" If set to 0, then pressing g:multi_cursor_quit_key in Insert mode will not
-" quit and delete all existing cursors. This is useful if you want to press
-" Escape and go back to Normal mode, and still be able to operate on all the
-" cursors.
-let g:multi_cursor_exit_from_insert_mode = 0
+  " If set to 0, then pressing g:multi_cursor_quit_key in Insert mode will not
+  " quit and delete all existing cursors. This is useful if you want to press
+  " Escape and go back to Normal mode, and still be able to operate on all the
+  " cursors.
+  let g:multi_cursor_exit_from_insert_mode = 0
 
 Plugin 'Shougo/vimshell.vim'
 
@@ -116,49 +118,49 @@ Plugin 'Shougo/vimshell.vim'
 
 " Plugin 'lukerandall/haskellmode-vim'
 
-" " The preferred HTML browser for viewing Haddock documentation, required
-" let g:haddock_browser = "usr/bin/google-chrome"
+  " " The preferred HTML browser for viewing Haddock documentation, required
+  " let g:haddock_browser = "usr/bin/google-chrome"
 
-" " By default, haskellmode sets omnifunc and completefunc to a GHC-based
-" " completion of imported symbols and completion from Haddock, respectively. If
-" " you want to turn these off (e.g. if you're using necoghc or an autocomplete
-" " system like YCM or neocomplete), use:
+  " " By default, haskellmode sets omnifunc and completefunc to a GHC-based
+  " " completion of imported symbols and completion from Haddock, respectively. If
+  " " you want to turn these off (e.g. if you're using necoghc or an autocomplete
+  " " system like YCM or neocomplete), use:
 
-" let g:haskellmode_completion_ghc = 0
-" let g:haskellmode_completion_haddock = 0
+  " let g:haskellmode_completion_ghc = 0
+  " let g:haskellmode_completion_haddock = 0
 
-" au BufEnter *.hs compiler ghc
+  " au BufEnter *.hs compiler ghc
 
 Plugin 'Shougo/vimproc.vim'     " Dependency
 Plugin 'eagletmt/ghcmod-vim'
 
-" https://github.com/eagletmt/ghcmod-vim/wiki/Customize
-hi ghcmodType ctermbg=yellow
-let g:ghcmod_type_highlight = "ghcmodType"
+  " https://github.com/eagletmt/ghcmod-vim/wiki/Customize
+  hi ghcmodType ctermbg=yellow
+  let g:ghcmod_type_highlight = "ghcmodType"
 
-au FileType haskell nmap <buffer> <Leader>cc :GhcModCheckAsync<CR>
-au FileType haskell nmap <buffer> <Leader>cl :GhcModLintAsync<CR>
-au FileType haskell nmap <buffer> <Leader>ct :GhcModType<CR>
-au FileType haskell nmap <buffer> <Leader>ci :GhcModInfoPreview<CR>
-au FileType haskell nmap <buffer> <Leader>cs :GhcModTypeInsert<CR>
+  au FileType haskell nmap <buffer> <Leader>cc :GhcModCheckAsync<CR>
+  au FileType haskell nmap <buffer> <Leader>cl :GhcModLintAsync<CR>
+  au FileType haskell nmap <buffer> <Leader>ct :GhcModType<CR>
+  au FileType haskell nmap <buffer> <Leader>ci :GhcModInfoPreview<CR>
+  au FileType haskell nmap <buffer> <Leader>cs :GhcModTypeInsert<CR>
 
-" Auto-checking on writing
-" au BufWritePost *.hs GhcModCheckAndLintAsync
+  " Auto-checking on writing
+  " au BufWritePost *.hs GhcModCheckAndLintAsync
 
 Plugin 'eagletmt/neco-ghc'
 
-au FileType haskell setl omnifunc=necoghc#omnifunc
-" To work with YouCompleteMe
-" let g:ycm_semantic_triggers = {'haskell' : ['.']}
-let g:necoghc_enable_detailed_browse = 1
+  au FileType haskell setl omnifunc=necoghc#omnifunc
+  " To work with YouCompleteMe
+  " let g:ycm_semantic_triggers = {'haskell' : ['.']}
+  let g:necoghc_enable_detailed_browse = 1
 
 " Crossed vim2hs out since it:
 " (1) Does not highlight data constructors with (at least) the solarized theme, and
 " (2) Pegs the CPU while you are scrolling.
 " Plugin 'dag/vim2hs'
 
-" Disable all conceals, including the simple ones like lambda and composition
-" let g:haskell_conceal = 0
+  " Disable all conceals, including the simple ones like lambda and composition
+  " let g:haskell_conceal = 0
 
 Plugin 'travitch/hasksyn'
 
@@ -167,15 +169,15 @@ Plugin 'travitch/hasksyn'
 Plugin 'def-lkb/vimbufsync'             " Dependency
 Plugin 'the-lambda-church/coquille'
 
-au FileType coq nmap <buffer> <Leader>cl :CoqLaunch<CR>
-au FileType coq nmap <buffer> <Leader>cc :CoqToCursor<CR>
-au FileType coq nmap <buffer> <Leader>cn :CoqNext<CR>
-au FileType coq nmap <buffer> <Leader>cu :CoqUndo<CR>
-au FileType coq nmap <buffer> <Leader>ck :CoqKill<CR>
+  au FileType coq nmap <buffer> <Leader>cl :CoqLaunch<CR>
+  au FileType coq nmap <buffer> <Leader>cc :CoqToCursor<CR>
+  au FileType coq nmap <buffer> <Leader>cn :CoqNext<CR>
+  au FileType coq nmap <buffer> <Leader>cu :CoqUndo<CR>
+  au FileType coq nmap <buffer> <Leader>ck :CoqKill<CR>
 
-" Set it to 'true' if you want Coquille to move your cursor to the end of the
-" lock zone after calls to CoqNext or CoqUndo.
-let g:coquille_auto_move = "true"
+  " Set it to 'true' if you want Coquille to move your cursor to the end of the
+  " lock zone after calls to CoqNext or CoqUndo.
+  let g:coquille_auto_move = "true"
 
 " Ruby, Rails & web development
 
@@ -198,19 +200,19 @@ Plugin 'derekwyatt/vim-scala'
 
 Plugin 'kchmck/vim-coffee-script'
 
-au FileType coffee nmap <buffer> <Leader>cw :CoffeeWatch vertical<CR>
-au FileType coffee nmap <buffer> <Leader>cl :CoffeeLint \| cwindow<CR>
+  au FileType coffee nmap <buffer> <Leader>cw :CoffeeWatch vertical<CR>
+  au FileType coffee nmap <buffer> <Leader>cl :CoffeeLint \| cwindow<CR>
 
 " Plugin 'vim-scripts/TwitVim'
 
-" " The number of tweets returned by :UserTwitter (default: 20)
-" " You can set twitvim_count to any integer from 1 to 200.
-" let twitvim_count = 200
+  " " The number of tweets returned by :UserTwitter (default: 20)
+  " " You can set twitvim_count to any integer from 1 to 200.
+  " let twitvim_count = 200
 
-" command Tlog    :UserTwitter
+  " command Tlog    :UserTwitter
 
-" " Post the current line in the buffer to Twitter
-" command Tpost   :CPosttoTwitter
+  " " Post the current line in the buffer to Twitter
+  " command Tpost   :CPosttoTwitter
 
 " Color schemes
 
