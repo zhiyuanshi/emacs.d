@@ -36,7 +36,7 @@ Plugin 'Shougo/unite.vim'
 Plugin 'The-NERD-tree'
 Plugin 'jistr/vim-nerdtree-tabs'
 
-  map <Leader>n :NERDTreeMirrorToggle<CR>
+  " map <Leader>n :NERDTreeMirrorToggle<CR>
 
 " Modify NerdTree to make it use the split explorer model
 " http://vimcasts.org/blog/2013/01/oil-and-vinegar-split-windows-and-project-drawer/
