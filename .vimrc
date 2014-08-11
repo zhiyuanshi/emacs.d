@@ -233,7 +233,7 @@ set t_Co=256
 set guifont=Ubuntu\ Mono\ 15
 " set guifont=Monospace\ 12
 set background=light
-colorscheme base16-londontube
+colorscheme base16-solarized
 
 set columns=110
 set lines=45
