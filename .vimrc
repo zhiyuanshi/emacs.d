@@ -185,7 +185,7 @@ Plugin 'kana/vim-textobj-user'          " Dependency
 runtime macros/matchit.vim              " Required
 Plugin 'nelstrom/vim-textobj-rubyblock'
 
-Plugin 'thoughtbot/vim-rspec'
+Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-endwise'
 
 Plugin 'tpope/vim-rails'
@@ -197,7 +197,7 @@ Plugin 'tpope/vim-rails'
   au User Rails nmap <buffer> <Leader>cs :Tschema<CR>
   au User Rails nmap <buffer> <Leader>cr :Tinitializer<CR>
 
-Plugin 'vim-ruby/vim-ruby'
+Plugin 'thoughtbot/vim-rspec'
 
 Plugin 'gregsexton/MatchTag'
 Plugin 'mattn/emmet-vim'
