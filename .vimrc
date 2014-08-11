@@ -189,6 +189,11 @@ Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-rails'
 
   au User Rails vmap <buffer> <Leader>ce :Rextract<Space>
+  au User Rails nmap <buffer> <Leader>cm :Emodel<Space><Tab>
+  au User Rails nmap <buffer> <Leader>cv :Eview<Space><Tab>
+  au User Rails nmap <buffer> <Leader>cc :Econtroller<Space><Tab>
+  au User Rails nmap <buffer> <Leader>cs :Eschema<CR>
+  au User Rails nmap <buffer> <Leader>cr :Einitializer<CR>
 
 Plugin 'vim-ruby/vim-ruby'
 
@@ -237,7 +242,7 @@ set lines=45
 set textwidth=88
 
 " Highlight column after 'textwidth'
-set colorcolumn=+1
+" set colorcolumn=+1
 
 " Maintain some more context around the cursor
 set scrolloff=3
@@ -357,7 +362,7 @@ map <Leader>e :e<Space><Tab>
 map <Leader>h :h<Space>
 map <Leader>q :q<CR>
 map <Leader>s :%s/
-map <Leader>v :tabedit ~/Dropbox/Code/dotfiles/.vimrc<CR>
+map <Leader>v :edit $DOTFILES/.vimrc<CR>
 map <Leader>w :w<CR>
 map <Leader>x :qa<CR>
 
