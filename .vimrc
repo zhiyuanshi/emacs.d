@@ -91,6 +91,7 @@ Plugin 'justinmk/vim-syntax-extra'
 
 Plugin 'scrooloose/syntastic'
 
+  nmap <Leader>r :Errors<CR>
   au FileType qf nmap <buffer> <Leader>q :bdelete<CR>
 
   let g:syntastic_echo_current_error = 0
@@ -233,8 +234,8 @@ syntax on
 set t_Co=256
 set guifont=Ubuntu\ Mono\ 15
 " set guifont=Monospace\ 12
-set background=dark
-colorscheme base16-eighties
+set background=light
+colorscheme base16-londontube
 
 set columns=110
 set lines=45
