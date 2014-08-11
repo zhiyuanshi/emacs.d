@@ -181,12 +181,12 @@ Plugin 'the-lambda-church/coquille'
 
 " Ruby, Rails & web development
 
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-endwise'
+
 Plugin 'kana/vim-textobj-user'          " Dependency
 runtime macros/matchit.vim              " Required
 Plugin 'nelstrom/vim-textobj-rubyblock'
-
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-endwise'
 
 Plugin 'tpope/vim-rails'
 
