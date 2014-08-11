@@ -189,11 +189,11 @@ Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-rails'
 
   au User Rails vmap <buffer> <Leader>ce :Rextract<Space>
-  au User Rails nmap <buffer> <Leader>cm :Emodel<Space><Tab>
-  au User Rails nmap <buffer> <Leader>cv :Eview<Space><Tab>
-  au User Rails nmap <buffer> <Leader>cc :Econtroller<Space><Tab>
-  au User Rails nmap <buffer> <Leader>cs :Eschema<CR>
-  au User Rails nmap <buffer> <Leader>cr :Einitializer<CR>
+  au User Rails nmap <buffer> <Leader>cm :Tmodel<Space><Tab>
+  au User Rails nmap <buffer> <Leader>cv :Tview<Space><Tab>
+  au User Rails nmap <buffer> <Leader>cc :Tcontroller<Space><Tab>
+  au User Rails nmap <buffer> <Leader>cs :Tschema<CR>
+  au User Rails nmap <buffer> <Leader>cr :Tinitializer<CR>
 
 Plugin 'vim-ruby/vim-ruby'
 
@@ -233,8 +233,8 @@ syntax on
 set t_Co=256
 set guifont=Ubuntu\ Mono\ 15
 " set guifont=Monospace\ 12
-set background=light
-colorscheme base16-paraiso
+set background=dark
+colorscheme base16-eighties
 
 set columns=110
 set lines=45
