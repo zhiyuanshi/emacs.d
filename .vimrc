@@ -99,6 +99,7 @@ Plugin 'scrooloose/syntastic'
   let g:syntastic_auto_jump = 2
   " let g:syntastic_auto_loc_list = 1
   let g:syntastic_haskell_checkers = ["hdevtools", "hlint"]
+  let g:syntastic_ruby_checkers = ["mri", "rubocop"]
 
   " Disable Syntastic's automatic syntax checking for Haskell because the error
   " messages are not wrapped.
