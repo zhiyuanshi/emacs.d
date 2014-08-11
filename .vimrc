@@ -196,8 +196,6 @@ Plugin 'tpope/vim-rails'
   au User Rails nmap <buffer> <Leader>cs :Tschema<CR>
   au User Rails nmap <buffer> <Leader>cr :Tinitializer<CR>
 
-Plugin 'thoughtbot/vim-rspec'
-
 Plugin 'gregsexton/MatchTag'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-ragtag'
