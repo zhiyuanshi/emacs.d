@@ -239,7 +239,7 @@ set t_Co=256
 set guifont=Ubuntu\ Mono\ 15
 " set guifont=Monospace\ 12
 set background=dark
-colorscheme base16-railscasts
+colorscheme base16-mocha
 
 set columns=110
 set lines=45
