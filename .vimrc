@@ -301,6 +301,9 @@ set smartindent
 "Don't convert spaces to tabs
 set nojoinspaces
 
+" No <EOL> should be written for the last line in the file
+set noeol
+
 " Folding
 
 " Automatically fold by indent level
