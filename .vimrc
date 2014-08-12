@@ -77,8 +77,15 @@ Plugin 'godlygeek/tabular'
 " Faster than neocomplete
 Plugin 'Valloric/YouCompleteMe'
 
+" Snippets
+
+Plugin 'SirVer/ultisnips'
+
 " TextMate-style snippets for Vim
 Plugin 'msanders/snipmate.vim'
+
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
 
 " Faster than vim-gitgutter
 Plugin 'mhinz/vim-signify'
@@ -231,8 +238,8 @@ syntax on
 set t_Co=256
 set guifont=Ubuntu\ Mono\ 15
 " set guifont=Monospace\ 12
-set background=light
-colorscheme base16-solarized
+set background=dark
+colorscheme base16-railscasts
 
 set columns=110
 set lines=45
