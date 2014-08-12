@@ -86,8 +86,6 @@ Plugin 'mhinz/vim-signify'
   " Don't run Sy by default
   " let g:signify_disable_by_default = 1
 
-Plugin 'justinmk/vim-syntax-extra'
-
 Plugin 'scrooloose/syntastic'
 
   nmap <Leader>r :Errors<CR>
