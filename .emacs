@@ -169,6 +169,9 @@
 (popwin-mode 1)
 
 ;; haskell-mode
+(add-hook 'haskell-mode-hook
+  (lambda () (set-input-method "TeX")))
+
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 ;; (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 ;; (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
