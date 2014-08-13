@@ -13,7 +13,7 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ruby "$DOTFILES/copy_dotfiles.rb"
 
 # Install plugins:
-gvim +PluginInstall +qall
+vim +PluginInstall +qall # Must be terminal Vim, so that the next command won't be run until this finishes.
 
 # Build YouCompleteMe:
 cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer
