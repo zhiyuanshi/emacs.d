@@ -173,7 +173,11 @@
   (lambda () (set-input-method "TeX")))
 
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-;; (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+
+;; Choose this one because: C-c C-. => 'haskell-indent-align-guards-and-rhs, nice! :)
+;; Cf. https://github.com/haskell/haskell-mode/wiki/Indentation
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+
 ;; (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
 
 (custom-set-variables
