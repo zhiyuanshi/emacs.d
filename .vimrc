@@ -437,9 +437,9 @@ au BufWritePre * :%s/\s\+$//e
 " directory and the error is silently ignored as we wish.
 au BufWritePost {.vimrc,.emacs,.zshrc} :silent !ruby copy_dotfiles.rb
 
-au BufEnter {Gemfile,Rakefile,Guardfile,*.rake,config.ru} setl ft=ruby
-au BufEnter {*.md,*.markdown}                             setl ft=markdown
-au BufEnter {*.x,*.y}                                     setl ft=haskell
+au BufEnter {Gemfile,Rakefile,Guardfile,*.rake,*.ru} setl ft=ruby
+au BufEnter {*.md,*.markdown}                        setl ft=markdown
+au BufEnter {*.x,*.y}                                setl ft=haskell
 
 au FileType {c,cpp}                                                  setl shiftwidth=4 cindent
 au FileType {python,xml,lex,yacc}                                    setl shiftwidth=4
