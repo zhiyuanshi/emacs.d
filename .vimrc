@@ -35,7 +35,7 @@ Plugin 'Shougo/unite.vim'
 Plugin 'The-NERD-tree'
 Plugin 'jistr/vim-nerdtree-tabs'
 
-  " map <Leader>n :NERDTreeMirrorToggle<CR>
+  " nmap <Leader>n :NERDTreeMirrorToggle<CR>
 
 " Modify NerdTree to make it use the split explorer model
 " http://vimcasts.org/blog/2013/01/oil-and-vinegar-split-windows-and-project-drawer/
@@ -48,15 +48,15 @@ Plugin 'kien/ctrlp.vim'
   " Search in Files, Buffers and MRU files at the same time
   " let g:ctrlp_cmd = 'CtrlPMixed'
 
-  map <M-p> :CtrlPMixed<CR>
+  nmap <M-p> :CtrlPMixed<CR>
 
 Plugin 'rking/ag.vim'
 
-  map \ :Ag<Space>
+  nmap \ :Ag<Space>
 
 Plugin 'majutsushi/tagbar'
 
-  map <Leader>= :TagbarToggle<CR>
+  nmap <Leader>= :TagbarToggle<CR>
 
   " Open Tagbar if you open a supported file in an already running Vim
   " au FileType * nested :call tagbar#autoopen(0)
@@ -72,9 +72,9 @@ Plugin 'bling/vim-airline'
 Plugin 'godlygeek/tabular'
 
   " http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
-  map <Leader>t-- :Tabularize /--<CR>
-  map <Leader>t=  :Tabularize /=<CR>
-  map <Leader>t:  :Tabularize /:\zs<CR>
+  nmap <Leader>t-- :Tabularize /--<CR>
+  nmap <Leader>t=  :Tabularize /=<CR>
+  nmap <Leader>t:  :Tabularize /:\zs<CR>
 
 " Faster than neocomplete
 Plugin 'Valloric/YouCompleteMe'
@@ -367,31 +367,31 @@ set switchbuf=useopen,usetab,split
 " Let <Tab> be recognized when used inside a macro
 set wildcharm=<Tab>
 
-map <Leader>a ggvG$
-map <Leader>e :e<Space><Tab>
-map <Leader>h :h<Space>
-map <Leader>q :q<CR>
-map <Leader>s :%s/
-map <Leader>v :edit $DOTFILES/.vimrc<CR>
-map <Leader>w :w<CR>
-map <Leader>x :qa<CR>
+nmap <Leader>a ggvG$
+nmap <Leader>e :e<Space><Tab>
+nmap <Leader>h :h<Space>
+nmap <Leader>q :q<CR>
+nmap <Leader>s :%s/
+nmap <Leader>v :edit $DOTFILES/.vimrc<CR>
+nmap <Leader>w :w<CR>
+nmap <Leader>x :qa<CR>
 
 vmap <C-x> "+d
 vmap <C-c> "+y
 
-" map  <C-v>      "+p
+" nmap  <C-v>      "+p
 imap <C-v> <Esc>"+p
 
-map  <C-t>      :tabnew<CR>
+nmap  <C-t>      :tabnew<CR>
 imap <C-t> <C-o>:tabnew<CR>
 
-map  <C-Tab>      :tabnext<CR>
+nmap  <C-Tab>      :tabnext<CR>
 imap <C-Tab> <C-o>:tabnext<CR>
 
-map  <C-S-Tab>      :tabprev<CR>
+nmap  <C-S-Tab>      :tabprev<CR>
 imap <C-S-Tab> <C-o>:tabprev<CR>
 
-map  <C-F4>      :tabclose<CR>
+nmap  <C-F4>      :tabclose<CR>
 imap <C-F4> <C-o>:tabclose<CR>
 
 " Move around between windows
