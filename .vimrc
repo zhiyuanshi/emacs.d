@@ -72,9 +72,9 @@ Plugin 'bling/vim-airline'
 Plugin 'godlygeek/tabular'
 
   " http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
-  nmap <Leader>t-- :Tabularize /--<CR>
-  nmap <Leader>t=  :Tabularize /=<CR>
-  nmap <Leader>t:  :Tabularize /:\zs<CR>
+  map <Leader>t-- :Tabularize /--<CR>
+  map <Leader>t=  :Tabularize /=<CR>
+  map <Leader>t:  :Tabularize /:\zs<CR>
 
 " Faster than neocomplete
 Plugin 'Valloric/YouCompleteMe'
@@ -382,16 +382,16 @@ vmap <C-c> "+y
 " nmap  <C-v>      "+p
 imap <C-v> <Esc>"+p
 
-nmap  <C-t>      :tabnew<CR>
+nmap <C-t>      :tabnew<CR>
 imap <C-t> <C-o>:tabnew<CR>
 
-nmap  <C-Tab>      :tabnext<CR>
+nmap <C-Tab>      :tabnext<CR>
 imap <C-Tab> <C-o>:tabnext<CR>
 
-nmap  <C-S-Tab>      :tabprev<CR>
+nmap <C-S-Tab>      :tabprev<CR>
 imap <C-S-Tab> <C-o>:tabprev<CR>
 
-nmap  <C-F4>      :tabclose<CR>
+nmap <C-F4>      :tabclose<CR>
 imap <C-F4> <C-o>:tabclose<CR>
 
 " Move around between windows
