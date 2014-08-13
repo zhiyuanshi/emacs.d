@@ -20,17 +20,25 @@ Remove existing configuration and packages:
 
     rm -rf ~/.vimrc ~/.vim
 
-Install [Vundle](https://github.com/gmarik/Vundle.vim).
+Set up [Vundle](https://github.com/gmarik/Vundle.vim):
+
+    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 Restore dotfiles:
 
     ruby "$DOTFILES/copy_dotfiles.rb"
 
-Open Vim and run `:PluginInstall`.
+Install plugins:
 
-make [Shougo/vimproc.vim](https://github.com/Shougo/vimproc.vim) (required by [eagletmt/ghcmod-vim](https://github.com/eagletmt/ghcmod-vim) and some other useful plugins).
+    gvim +PluginInstall +qall
 
-make [Valloric/YouCompleteMe](https://github.com/Shougo/vimproc.vim).
+Build [Valloric/YouCompleteMe](https://github.com/Valloric/YouCompleteMe):
+
+    cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer
+
+Build [Shougo/vimproc.vim](https://github.com/Shougo/vimproc.vim):
+
+    cd ~/.vim/bundle/vimproc.vim && make
 
 ## Reset Emacs
 
