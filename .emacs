@@ -171,7 +171,7 @@
 ;; haskell-mode
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 ;; (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
+;; (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
 
 (custom-set-variables
   '(haskell-process-suggest-remove-import-lines t)
