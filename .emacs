@@ -21,7 +21,7 @@
     auto-complete
     ;; company company-ghc company-inf-ruby
     smartparens
-    smex flx-ido popwin
+    smex flx-ido popwin smooth-scrolling
     haskell-mode shm
     inf-ruby robe rinari
     web-mode coffee-mode
@@ -37,8 +37,8 @@
       (package-install p))))
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Frame-Parameters.html
-(add-to-list 'default-frame-alist '(width  . 110))
-(add-to-list 'default-frame-alist '(height . 50))
+(add-to-list 'default-frame-alist '(width  . 120))
+(add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-15"))
 
 (load-theme 'tango t)
