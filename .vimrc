@@ -377,7 +377,7 @@ map <Leader>x :qa<CR>
 vmap <C-x> "+d
 vmap <C-c> "+y
 
-map  <C-v>      "+p
+" map  <C-v>      "+p
 imap <C-v> <Esc>"+p
 
 map  <C-t>      :tabnew<CR>
