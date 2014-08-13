@@ -124,7 +124,8 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'xolox/vim-misc' " Dependency
 Plugin 'xolox/vim-session'
 
-  let g:session_autosave = 1
+  let g:session_autosave = 'yes'
+  let g:session_autoload = 'yes'
   let g:session_persist_colors = 0
 
 " Haskell
