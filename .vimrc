@@ -84,7 +84,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 
 " TextMate-style snippets for Vim
-Plugin 'msanders/snipmate.vim'
+" Plugin 'msanders/snipmate.vim'
 
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
