@@ -68,6 +68,8 @@ Plugin 'bitc/lushtags'
 " Lean & mean status/tabline for vim that's light as air
 Plugin 'bling/vim-airline'
 
+" Editing
+
 " The tabular plugin must come _before_ vim-markdown.
 Plugin 'godlygeek/tabular'
 
@@ -78,8 +80,6 @@ Plugin 'godlygeek/tabular'
 
 " Faster than neocomplete
 Plugin 'Valloric/YouCompleteMe'
-
-" Snippets
 
 Plugin 'SirVer/ultisnips'
 
@@ -120,6 +120,12 @@ Plugin 'terryma/vim-multiple-cursors'
   " Escape and go back to Normal mode, and still be able to operate on all the
   " cursors.
   let g:multi_cursor_exit_from_insert_mode = 0
+
+Plugin 'xolox/vim-misc' " Dependency
+Plugin 'xolox/vim-session'
+
+  let g:session_autosave = 1
+  let g:session_persist_colors = 0
 
 " Haskell
 
@@ -240,8 +246,8 @@ syntax on
 set t_Co=256
 set guifont=Ubuntu\ Mono\ 15
 " set guifont=Monospace\ 12
-set background=dark
-colorscheme base16-mocha
+set background=light
+colorscheme base16-solarized
 
 set columns=110
 set lines=45
