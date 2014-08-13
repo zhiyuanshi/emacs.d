@@ -32,11 +32,11 @@ Install plugins:
 
     gvim +PluginInstall +qall
 
-Build [Valloric/YouCompleteMe](https://github.com/Valloric/YouCompleteMe):
+Build [YouCompleteMe](https://github.com/Valloric/YouCompleteMe):
 
     cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer
 
-Build [Shougo/vimproc.vim](https://github.com/Shougo/vimproc.vim):
+Build [vimproc.vim](https://github.com/Shougo/vimproc.vim):
 
     cd ~/.vim/bundle/vimproc.vim && make
 
