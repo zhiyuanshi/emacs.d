@@ -52,6 +52,8 @@ Plugin 'kien/ctrlp.vim'
 
 Plugin 'rking/ag.vim'
 
+  map \ :Ag<Space>
+
 Plugin 'majutsushi/tagbar'
 
   map <Leader>= :TagbarToggle<CR>
