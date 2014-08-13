@@ -6,13 +6,17 @@ Set zsh as your login shell:
 
     chsh -s $(which zsh)
 
-Set variables:
+Set the path to your local dotfiles directory if you haven't done so. In my case, that is:
 
-    export DOTFILES=~/Dropbox/Code/dotfiles
+    export DOTFILES="~/Dropbox/Code/dotfiles"
+
+Clone the repository to get a local copy:
+
+    git clone https://github.com/zhiyuanshi/dotfiles.git "$DOTFILES"
 
 ## Reset Vim
 
-Remove existing dotfiles:
+Remove existing configuration and packages:
 
     rm -rf ~/.vimrc ~/.vim
 
@@ -20,7 +24,7 @@ Install [Vundle](https://github.com/gmarik/Vundle.vim).
 
 Restore dotfiles:
 
-    ruby copy_dotfiles.rb
+    ruby "$DOTFILES/copy_dotfiles.rb"
 
 Open Vim and run `:PluginInstall`.
 
@@ -30,10 +34,10 @@ make [Valloric/YouCompleteMe](https://github.com/Shougo/vimproc.vim).
 
 ## Reset Emacs
 
-Remove existing dotfiles:
+Remove existing configuration and packages:
 
     rm -rf ~/.emacs ~/.emacs.d
 
 Restore dotfiles:
 
-    ruby copy_dotfiles.rb
+    ruby "$DOTFILES/copy_dotfiles.rb"
