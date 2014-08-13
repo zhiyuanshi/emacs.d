@@ -20,7 +20,7 @@ Install [Vundle](https://github.com/gmarik/Vundle.vim).
 
 Restore dotfiles:
 
-    ruby $DOTFILES/create-symlinks.rb
+    ruby copy-dotfiles.rb
 
 Open Vim and run `:PluginInstall`.
 
@@ -36,4 +36,4 @@ Remove existing dotfiles:
 
 Restore dotfiles:
 
-    ruby $DOTFILES/create-symlinks.rb
+    ruby copy-dotfiles.rb
