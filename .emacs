@@ -122,9 +122,6 @@
 (projectile-global-mode)
 (setq projectile-completion-system 'grizzl)
 
-;; fiplr
-(global-set-key (kbd "C-x f") 'fiplr-find-file)
-
 ;; dired+
 (require 'dired+)
 (diredp-toggle-find-file-reuse-dir 1)
@@ -172,9 +169,6 @@
 ;; imenu
 (add-hook 'ruby-mode-hook 'imenu-add-menubar-index)
 (setq imenu-auto-rescan t)
-
-;; imenu-anywhere
-(global-set-key (kbd "C-x m") 'imenu-anywhere)
 
 ;; popwin
 (require 'popwin)
