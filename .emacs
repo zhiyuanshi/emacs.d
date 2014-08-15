@@ -111,10 +111,6 @@
 (require 'dired+)
 (diredp-toggle-find-file-reuse-dir 1)
 
-;; direx
-(require 'direx)
-(global-set-key (kbd "C-x C-d") 'direx:jump-to-directory)
-
 ;; smartparens
 (smartparens-global-mode 1)
 (require 'smartparens-config) ;; the default configuration
