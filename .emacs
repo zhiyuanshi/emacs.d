@@ -106,7 +106,7 @@
   "d" 'ido-dired
   "e" 'ido-find-file
   "f" 'fiplr-find-file
-  "k" 'ido-kill-buffer
+  "k" 'kill-buffer-and-window
   "m" 'imenu-anywhere
   "q" 'delete-window
   "r" 'flycheck-list-errors
