@@ -14,7 +14,7 @@
 (package-initialize)
 
 (defvar my-packages
-  '(evil evil-surround
+  '(evil evil-leader evil-surround
     projectile fiplr imenu-anywhere
     dired+
     flycheck
@@ -91,6 +91,26 @@
 
 ;; https://github.com/lewang/flx
 (setq gc-cons-threshold 20000000)
+
+;; evil-leader
+
+;; Note: You should enable global-evil-leader-mode before you enable evil-mode,
+;; otherwise evil-leader won’t be enabled in initial buffers (*scratch*, *Messages*, …).
+(global-evil-leader-mode)
+(evil-leader/set-leader "<SPC>")
+(evil-leader/set-key
+  "a" 'align-regexp
+  "b" 'ido-switch-buffer
+  "d" 'ido-dired
+  "e" 'ido-find-file
+  "f" 'fiplr-find-file
+  "k" 'ido-kill-buffer
+  "m" 'imenu-anywhere
+  "q" 'delete-window
+  "w" 'save-buffer
+  "x" 'kill-emacs)
+(evil-leader/set-key-for-mode
+  'flycheck-mode "r" 'flycheck-list-errors)
 
 ;; evil
 (require 'evil)
