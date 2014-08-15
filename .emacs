@@ -16,7 +16,7 @@
 (defvar my-packages
   '(evil evil-surround
     projectile fiplr imenu-anywhere
-    dired+ direx
+    dired+
     flycheck
     auto-complete
     ;; company company-ghc company-inf-ruby
