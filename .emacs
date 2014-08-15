@@ -92,8 +92,6 @@
 ;; https://github.com/lewang/flx
 (setq gc-cons-threshold 20000000)
 
-(global-set-key (kbd "<escape>") 'keyboard-quit)
-
 ;; evil-leader
 
 ;; Note: You should enable global-evil-leader-mode before you enable evil-mode,
