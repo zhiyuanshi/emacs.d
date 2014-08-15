@@ -104,8 +104,9 @@
   "d" 'ido-dired
   "e" 'ido-find-file
   "f" 'fiplr-find-file
+  "k" 'kill-buffer-and-window
   "m" 'imenu-anywhere
-  "q" 'kill-buffer-and-window
+  "q" 'delete-window
   "r" 'flycheck-list-errors
   "w" 'save-buffer
   "x" 'kill-emacs)
