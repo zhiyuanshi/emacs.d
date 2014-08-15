@@ -109,10 +109,9 @@
   "k" 'ido-kill-buffer
   "m" 'imenu-anywhere
   "q" 'delete-window
+  "r" 'flycheck-list-errors
   "w" 'save-buffer
   "x" 'kill-emacs)
-(evil-leader/set-key-for-mode
-  'flycheck-mode "r" 'flycheck-list-errors)
 
 ;; evil
 (require 'evil)
