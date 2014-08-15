@@ -98,7 +98,12 @@ Plugin 'mhinz/vim-signify'
 Plugin 'scrooloose/syntastic'
 
   nmap <Leader>r :Errors<CR>
-  au FileType qf nmap <buffer> <Leader>q :bdelete<CR>
+
+  " A possible hack for the bug (?) that in a Syntastic error window, if you press
+  " <Leader>q, the corresponding program window itself, instead of the Syntastic error
+  " window, is being closed. Seems unneccessary now.
+
+  " au FileType qf nmap <buffer> <Leader>q :bdelete<CR>
 
   " let g:syntastic_auto_loc_list = 1
   let g:syntastic_aggregate_errors = 1
