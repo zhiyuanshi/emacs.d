@@ -59,8 +59,8 @@ alias code="cd $CODE"
 alias dotfiles="cd $DOTFILES"
 
 alias vimconfig="v $DOTFILES/.vimrc"
-alias emacsconfig="$EMACSCLIENT $DOTFILES/.emacs"
-alias zshconfig="$EDITOR $DOTFILES/.zshrc"
+alias emacsconfig="v $DOTFILES/.emacs"
+alias zshconfig="v $DOTFILES/.zshrc"
 
 # The default PATH defined in /etc/environment
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
