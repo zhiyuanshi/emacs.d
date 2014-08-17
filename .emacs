@@ -185,7 +185,7 @@
 ;; Cf. https://github.com/haskell/haskell-mode/wiki/Indentation
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 
-;; (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
 
 (custom-set-variables
   '(haskell-process-suggest-remove-import-lines t)
