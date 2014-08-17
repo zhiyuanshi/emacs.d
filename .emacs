@@ -84,7 +84,6 @@
   (interactive)
   (save-excursion (untabify (point-min) (point-max))))
 
-(add-hook 'before-save-hook 'untabify-current-buffer)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
