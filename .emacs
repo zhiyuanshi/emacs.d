@@ -25,7 +25,7 @@
     haskell-mode shm
     inf-ruby robe rinari
     web-mode coffee-mode
-    base16-theme))
+    solarized-theme base16-theme))
 
 (defun my-packages-installed-p ()
   (every #'package-installed-p my-packages))
@@ -41,7 +41,7 @@
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(font . "Monaco-13"))
 
-(load-theme 'tango t)
+(load-theme 'solarized-light t)
 
 ;; GUI
 (when window-system
