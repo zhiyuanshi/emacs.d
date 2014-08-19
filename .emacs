@@ -99,7 +99,7 @@
 (evil-leader/set-leader "<SPC>")
 (evil-leader/set-key
   "a" 'align-regexp
-  "b" 'ido-switch-buffer
+  "b" 'list-buffers
   "d" 'ido-dired
   "e" 'ido-find-file
   "f" 'fiplr-find-file
