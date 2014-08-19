@@ -110,6 +110,8 @@
   "w" 'save-buffer
   "x" 'kill-emacs)
 
+(global-set-key (kbd "<C-tab>") 'next-buffer)
+
 ;; evil
 (require 'evil)
 (evil-mode 1)
@@ -175,8 +177,8 @@
 (popwin-mode 1)
 
 ;; haskell-mode
-(add-hook 'haskell-mode-hook
-  (lambda () (set-input-method "TeX")))
+;; (add-hook 'haskell-mode-hook
+;;   (lambda () (set-input-method "TeX")))
 
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
