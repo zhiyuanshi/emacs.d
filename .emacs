@@ -98,15 +98,20 @@
 (global-evil-leader-mode)
 (evil-leader/set-leader "<SPC>")
 (evil-leader/set-key
-  "a" 'align-regexp
+  "a" 'mark-whole-buffer
+  "A" 'align-regexp
   "b" 'list-buffers
   "d" 'ido-dired
   "e" 'ido-find-file
   "f" 'fiplr-find-file
   "k" 'kill-buffer-and-window
   "m" 'imenu-anywhere
+  "n" 'make-frame-command
   "q" 'delete-window
+  "Q" 'delete-frame
   "r" 'flycheck-list-errors
+  "s" 'evil-window-split
+  "v" 'evil-window-vsplit
   "w" 'save-buffer
   "x" 'kill-emacs)
 
