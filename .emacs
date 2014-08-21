@@ -15,6 +15,7 @@
 
 (defvar my-packages
   '(evil evil-leader evil-surround evil-nerd-commenter
+    expand-region
     projectile fiplr imenu-anywhere
     dired+
     flycheck
@@ -127,6 +128,9 @@
 
 ;; evil-nerd-commenter
 (evilnc-default-hotkeys)
+
+;; expand-region
+(global-set-key (kbd "C-=") 'er/expand-region)
 
 ;; projectile
 (projectile-global-mode)
