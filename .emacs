@@ -14,7 +14,7 @@
 (package-initialize)
 
 (defvar my-packages
-  '(evil evil-leader evil-surround
+  '(evil evil-leader evil-surround evil-nerd-commenter
     projectile fiplr imenu-anywhere
     dired+
     flycheck
@@ -124,6 +124,9 @@
 ;; evil-surround
 (require 'evil-surround)
 (global-evil-surround-mode 1)
+
+;; evil-nerd-commenter
+(evilnc-default-hotkeys)
 
 ;; projectile
 (projectile-global-mode)
