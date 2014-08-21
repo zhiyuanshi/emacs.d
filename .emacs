@@ -16,7 +16,7 @@
 (defvar my-packages
   '(evil evil-leader evil-surround evil-nerd-commenter
     expand-region
-    projectile fiplr imenu-anywhere
+    projectile imenu-anywhere
     dired+
     flycheck
     auto-complete
@@ -104,7 +104,7 @@
   "b" 'list-buffers
   "d" 'ido-dired
   "e" 'ido-find-file
-  "f" 'fiplr-find-file
+  "f" 'projectile-find-file
   "k" 'kill-buffer-and-window
   "m" 'imenu-anywhere
   "n" 'make-frame-command
