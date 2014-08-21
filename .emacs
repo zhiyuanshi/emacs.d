@@ -16,7 +16,7 @@
 (defvar my-packages
   '(evil evil-leader evil-surround evil-nerd-commenter
     expand-region
-    projectile imenu-anywhere
+    projectile projectile-rails imenu-anywhere
     dired+
     flycheck
     auto-complete
@@ -135,6 +135,9 @@
 ;; projectile
 (projectile-global-mode)
 (setq projectile-completion-system 'grizzl)
+
+;; projectile-rails
+(add-hook 'projectile-mode-hook 'projectile-rails-on)
 
 ;; dired+
 (require 'dired+)
