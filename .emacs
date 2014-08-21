@@ -45,8 +45,10 @@
 (load-theme 'tango t)
 
 ;; GUI
-(when window-system
-  (setq frame-title-format '(buffer-file-name "%f" ("%b"))))
+(setq frame-title-format
+  '("" (:eval (if (buffer-file-name)
+                  (abbreviate-file-name (buffer-file-name))
+                  "%b")) " - Emacs"))
 (menu-bar-mode 1)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
