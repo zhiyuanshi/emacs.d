@@ -183,6 +183,10 @@
 (setq ido-enable-flex-matching t)
 (setq ido-use-faces nil)
 
+;; uniquify
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward)
+
 ;; imenu
 (add-hook 'ruby-mode-hook 'imenu-add-menubar-index)
 (setq imenu-auto-rescan t)
