@@ -19,7 +19,7 @@
     projectile projectile-rails imenu-anywhere
     dired+
     flycheck
-    auto-complete
+    auto-complete yasnippet
     ;; company company-ghc company-inf-ruby
     smartparens
     smex flx-ido popwin smooth-scrolling
