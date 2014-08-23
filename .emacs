@@ -109,12 +109,9 @@
   "f" 'projectile-find-file
   "k" 'kill-buffer-and-window
   "m" 'imenu-anywhere
-  "n" 'make-frame-command
   "q" 'delete-window
   "Q" 'delete-frame
   "r" 'flycheck-list-errors
-  "s" 'evil-window-split
-  "v" 'evil-window-vsplit
   "w" 'save-buffer
   "x" 'kill-emacs)
 
