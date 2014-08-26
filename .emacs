@@ -195,6 +195,9 @@
 (require 'popwin)
 (popwin-mode 1)
 
+;; smooth-scrolling
+(require 'smooth-scrolling)
+
 ;; haskell-mode
 ;; (add-hook 'haskell-mode-hook
 ;;   (lambda () (set-input-method "TeX")))
