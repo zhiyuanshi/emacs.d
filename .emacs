@@ -27,7 +27,8 @@
     haskell-mode shm
     inf-ruby robe rinari
     web-mode coffee-mode
-    solarized-theme base16-theme))
+    color-theme-solarized ;; Replace bbatsov's version due to its unpleasant Ruby syntax highlighting
+    base16-theme))
 
 (defun my-packages-installed-p ()
   (every #'package-installed-p my-packages))
@@ -43,7 +44,7 @@
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(font . "Monaco-13"))
 
-(load-theme 'tango t)
+(load-theme 'solarized-light t)
 
 ;; GUI
 (setq frame-title-format
