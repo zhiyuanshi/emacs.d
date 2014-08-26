@@ -44,7 +44,7 @@
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(font . "Monaco-13"))
 
-(load-theme 'tango t)
+(load-theme 'dichromacy t)
 
 ;; GUI
 (setq frame-title-format
