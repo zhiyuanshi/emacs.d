@@ -198,6 +198,11 @@
 ;; smooth-scrolling
 (require 'smooth-scrolling)
 
+;; http://stackoverflow.com/questions/445873/how-can-i-make-emacs-mouse-scrolling-slower-and-smoother
+;; http://www.emacswiki.org/emacs/SmoothScrolling
+(setq mouse-wheel-scroll-amount '(3 ((shift) . 40) ((control) . nil)))
+(setq mouse-wheel-progressive-speed nil)
+
 ;; haskell-mode
 ;; (add-hook 'haskell-mode-hook
 ;;   (lambda () (set-input-method "TeX")))
