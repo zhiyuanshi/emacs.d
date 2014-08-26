@@ -104,7 +104,7 @@
 (evil-leader/set-key
   "a" 'mark-whole-buffer
   "A" 'align-regexp
-  "b" 'list-buffers
+  "b" 'ido-switch-buffer
   "d" 'ido-dired
   "e" 'ido-find-file
   "f" 'projectile-find-file
