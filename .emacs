@@ -67,13 +67,6 @@
 (setq tab-width 2)
 (setq-default indent-tabs-mode nil)
 
-;; Highlight text beyond 80th column
-;; https://ghc.haskell.org/trac/ghc/wiki/Emacs#Highlighttextbeyond80thcolumn
-(require 'whitespace)
-(setq whitespace-style '(face lines-tail))
-(setq whitespace-line-column 80)
-(global-whitespace-mode t)
-
 ;; save the state of Emacs from one session to another
 ;; http://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Emacs-Sessions.html
 (desktop-save-mode 1)
