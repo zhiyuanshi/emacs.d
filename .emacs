@@ -72,6 +72,7 @@
 (desktop-save-mode 1)
 
 ;; https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdisplaynicely
+(setq locale-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8-unix)
 (set-keyboard-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
