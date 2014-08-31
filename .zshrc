@@ -49,6 +49,8 @@ export CODE="$HOME/Dropbox/Code"
 export DOTFILES="$CODE/dotfiles"
 
 # Aliases
+alias reload=". ~/.zshrc && echo Reloaded .zshrc from ~/.zshrc"
+
 alias cl="clear"
 alias open="xdg-open"
 
