@@ -111,6 +111,7 @@
   "f" 'projectile-find-file
   "k" 'kill-buffer-and-window
   "m" 'imenu-anywhere
+  "p" 'projectile-switch-project
   "q" 'delete-window
   "w" 'save-buffer
   "=" 'align-regexp
