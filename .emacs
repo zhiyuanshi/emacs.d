@@ -22,7 +22,7 @@
     auto-complete yasnippet
     ;; company company-ghc company-inf-ruby
     smartparens
-    smex flx-ido grizzl popwin smooth-scrolling
+    smex flx-ido helm grizzl popwin smooth-scrolling
     magit
     haskell-mode shm
     inf-ruby robe rinari
