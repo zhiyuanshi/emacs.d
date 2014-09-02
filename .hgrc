@@ -1,9 +1,5 @@
 [extensions]
-shelve=
-hgext.convert=
-hgext.bookmarks=
-hggit=
+shelve =
 
 [ui]
-# Name data to appear in commits
-username = zhiyuanshi <zhiyuanshi@server.fake>
+username = Zhiyuan Shi <zhiyuan.shi@gmail.com>
