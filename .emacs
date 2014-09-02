@@ -131,7 +131,7 @@
 (evilnc-default-hotkeys)
 
 ;; expand-region
-(global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C-'") 'er/expand-region)
 
 ;; multiple-cursors
 (require 'multiple-cursors)
