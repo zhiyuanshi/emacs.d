@@ -15,7 +15,7 @@ end
 
 require 'fileutils'
 
-DOTFILES = %w(.vimrc .emacs .zshrc)
+DOTFILES = %w(.vimrc .emacs .zshrc .hgrc)
 
 dotfilesdir = File.expand_path(File.dirname(__FILE__))
 homedir     = Dir.home

@@ -63,6 +63,7 @@ alias dotfiles="cd $DOTFILES"
 alias vimconfig="v $DOTFILES/.vimrc"
 alias emacsconfig="v $DOTFILES/.emacs"
 alias zshconfig="v $DOTFILES/.zshrc"
+alias hgconfig="v $DOTFILES/.hgrc"
 
 alias hlog="hg log --template '{rev} {date|isodate} {desc|firstline}\n' --limit 20"
 
