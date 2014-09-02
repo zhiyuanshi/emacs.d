@@ -65,7 +65,7 @@ alias emacsconfig="v $DOTFILES/.emacs"
 alias zshconfig="v $DOTFILES/.zshrc"
 alias hgconfig="v $DOTFILES/.hgrc"
 
-alias hlog="hg log --template '#{rev} {date|isodate} {desc|firstline}\n' --limit 20"
+alias hlog="hg log --template '#{rev} {date|isodate} {desc|firstline}\n' | less"
 
 # The default PATH defined in /etc/environment
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
