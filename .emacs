@@ -15,8 +15,8 @@
 
 (defvar my-packages
   '(evil evil-leader evil-surround evil-nerd-commenter
-    expand-region
-    projectile projectile-rails imenu-anywhere
+    expand-region multiple-cursors
+    projectile projectile-rails imenu-anywhere ag
     dired+
     flycheck
     auto-complete yasnippet
@@ -105,18 +105,16 @@
 (evil-leader/set-leader "<SPC>")
 (evil-leader/set-key
   "a" 'mark-whole-buffer
-  "A" 'align-regexp
   "b" 'ido-switch-buffer
-  "d" 'ido-dired
+  "d" 'dired-jump
   "e" 'ido-find-file
   "f" 'projectile-find-file
   "k" 'kill-buffer-and-window
   "m" 'imenu-anywhere
   "q" 'delete-window
-  "Q" 'delete-frame
-  "r" 'flycheck-list-errors
   "w" 'save-buffer
-  "x" 'kill-emacs)
+  "=" 'align-regexp
+  "/" 'projectile-ag)
 
 (global-set-key (kbd "<C-tab>") 'next-buffer)
 
