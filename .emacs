@@ -42,7 +42,9 @@
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Frame-Parameters.html
 (add-to-list 'default-frame-alist '(width  . 100))
 (add-to-list 'default-frame-alist '(height . 45))
-(add-to-list 'default-frame-alist '(font . "Monaco-13"))
+;; (add-to-list 'default-frame-alist '(font . "Monaco-12"))
+(add-to-list 'default-frame-alist '(font . "Monospace-12"))
+;; (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-15"))
 
 (load-theme 'tango t)
 
