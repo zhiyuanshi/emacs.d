@@ -117,7 +117,7 @@
   "q" 'delete-window
   "w" 'save-buffer
   "=" 'align-regexp
-  "/" 'projectile-ag)
+  "/" 'ag-regexp)
 
 (global-set-key (kbd "<C-tab>") 'next-buffer)
 
