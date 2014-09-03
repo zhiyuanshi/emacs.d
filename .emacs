@@ -149,6 +149,10 @@
 ;; projectile-rails
 (add-hook 'projectile-mode-hook 'projectile-rails-on)
 
+;; ag
+(setq ag-highlight-search t)
+(setq ag-reuse-buffers 't)
+
 ;; dired+
 (require 'dired+)
 (diredp-toggle-find-file-reuse-dir 1)
