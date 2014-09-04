@@ -47,7 +47,7 @@
 ;; (add-to-list 'default-frame-alist '(font . "Monospace-12"))
 ;; (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-14"))
 
-(load-theme 'solarized-light t)
+(load-theme 'tango t)
 
 ;; GUI
 (setq frame-title-format
