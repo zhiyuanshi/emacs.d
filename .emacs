@@ -43,8 +43,8 @@
 (add-to-list 'default-frame-alist '(width  . 100))
 (add-to-list 'default-frame-alist '(height . 45))
 ;; (add-to-list 'default-frame-alist '(font . "Monaco-12"))
-(add-to-list 'default-frame-alist '(font . "Monospace-12"))
-;; (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-15"))
+;; (add-to-list 'default-frame-alist '(font . "Monospace-12"))
+(add-to-list 'default-frame-alist '(font . "Ubuntu Mono-13"))
 
 (load-theme 'tango t)
 
