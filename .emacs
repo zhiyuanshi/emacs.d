@@ -253,8 +253,8 @@
 (require 'shm-case-split)
 (add-hook 'haskell-mode-hook 'structured-haskell-mode)
 (define-key shm-map (kbd "C-c C-s") 'shm/case-split)
-(set-face-background 'shm-current-face    "#494949")
-(set-face-background 'shm-quarantine-face "#595959")
+(set-face-background 'shm-current-face "#eee8d5")
+(set-face-background 'shm-quarantine-face "lemonchiffon")
 (setq shm-idle-timeout 0)
 
 ;; proof-general
