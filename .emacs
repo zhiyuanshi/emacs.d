@@ -109,6 +109,8 @@
   "d" 'dired-jump
   "e" 'ido-find-file
   "f" 'projectile-find-file
+  "g" 'ace-jump-mode
+  "G" 'ace-jump-mode-pop-mark
   "k" 'kill-buffer-and-window
   "m" 'imenu-anywhere
   "p" 'projectile-switch-project
@@ -118,8 +120,6 @@
   "/" 'ag-regexp)
 
 ;; ace-jump-mode
-(define-key evil-normal-state-map (kbd "C-c SPC") 'ace-jump-mode)
-
 ;; Enable a more powerful jump back function from ace jump mode
 (autoload
   'ace-jump-mode-pop-mark
@@ -128,11 +128,9 @@
   t)
 (eval-after-load "ace-jump-mode"
   '(ace-jump-mode-enable-mark-sync))
-(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
 
 (setq ace-jump-mode-gray-background nil)
 (setq ace-jump-mode-scope 'window)
-
 
 (global-set-key (kbd "<C-tab>") 'next-buffer)
 
