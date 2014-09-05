@@ -228,6 +228,7 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
 
 (custom-set-variables
+  '(coffee-tab-width 2)
   '(haskell-process-suggest-remove-import-lines t)
   '(haskell-process-suggest-hoogle-imports t)
   '(haskell-process-auto-import-loaded-modules t)
@@ -302,8 +303,6 @@
 
 ;; coffee-mode
 (require 'coffee-mode)
-(custom-set-variables
-  '(coffee-tab-width 2))
 
 (provide '.emacs)
 ;;; .emacs ends here
