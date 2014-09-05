@@ -102,7 +102,7 @@
 ;; Note: You should enable global-evil-leader-mode before you enable evil-mode,
 ;; otherwise evil-leader won’t be enabled in initial buffers (*scratch*, *Messages*, …).
 (global-evil-leader-mode)
-(evil-leader/set-leader "<SPC>")
+(evil-leader/set-leader ",")
 (evil-leader/set-key
   "a" 'mark-whole-buffer
   "b" 'ido-switch-buffer
@@ -116,6 +116,23 @@
   "w" 'save-buffer
   "=" 'align-regexp
   "/" 'ag-regexp)
+
+;; ace-jump-mode
+(define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)
+
+;; Enable a more powerful jump back function from ace jump mode
+(autoload
+  'ace-jump-mode-pop-mark
+  "ace-jump-mode"
+  "Ace jump back:-)"
+  t)
+(eval-after-load "ace-jump-mode"
+  '(ace-jump-mode-enable-mark-sync))
+(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+
+(setq ace-jump-mode-gray-background nil)
+(setq ace-jump-mode-scope 'window)
+
 
 (global-set-key (kbd "<C-tab>") 'next-buffer)
 
