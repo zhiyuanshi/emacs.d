@@ -227,14 +227,6 @@
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
 
-(custom-set-variables
-  '(coffee-tab-width 2)
-  '(haskell-process-suggest-remove-import-lines t)
-  '(haskell-process-suggest-hoogle-imports t)
-  '(haskell-process-auto-import-loaded-modules t)
-  '(haskell-process-log t)
-  '(haskell-process-type 'cabal-repl))
-
 ;; https://github.com/magnars/.emacs.d/blob/master/defuns/lisp-defuns.el
 (defun eval-and-replace ()
   "Replace the preceding sexp with its value."
@@ -303,6 +295,14 @@
 
 ;; coffee-mode
 (require 'coffee-mode)
+
+(custom-set-variables
+  '(coffee-tab-width 2)
+  '(haskell-process-suggest-remove-import-lines t)
+  '(haskell-process-suggest-hoogle-imports t)
+  '(haskell-process-auto-import-loaded-modules t)
+  '(haskell-process-log t)
+  '(haskell-process-type 'cabal-repl))
 
 (provide '.emacs)
 ;;; .emacs ends here
