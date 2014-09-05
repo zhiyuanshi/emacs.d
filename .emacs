@@ -105,7 +105,7 @@
 (evil-leader/set-leader "<SPC>")
 (evil-leader/set-key
   "a" 'mark-whole-buffer
-  "b" 'projectile-switch-to-buffer
+  "b" 'ido-switch-buffer
   "d" 'dired-jump
   "e" 'ido-find-file
   "f" 'projectile-find-file
