@@ -15,7 +15,7 @@
 
 (defvar my-packages
   '(evil evil-leader evil-surround evil-nerd-commenter
-    expand-region multiple-cursors
+    ace-jump-mode expand-region multiple-cursors
     projectile projectile-rails imenu-anywhere ag
     dired+
     flycheck
