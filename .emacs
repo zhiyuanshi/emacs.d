@@ -67,6 +67,17 @@
 (setq tab-width 2)
 (setq-default indent-tabs-mode nil)
 
+;; Truncate lines and don't use word-wrapping for code, but do the opposites for text.
+(add-hook 'text-mode-hook '(lambda ()
+  (setq truncate-lines nil
+        word-wrap t)))
+
+(add-hook 'prog-mode-hook '(lambda ()
+  (setq truncate-lines t
+        word-wrap nil)))
+
+(setq fill-column 80)
+
 ;; save the state of Emacs from one session to another
 ;; http://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Emacs-Sessions.html
 (desktop-save-mode 1)
