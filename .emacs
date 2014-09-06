@@ -26,7 +26,7 @@
     magit
     haskell-mode shm
     inf-ruby robe rinari
-    web-mode coffee-mode
+    web-mode coffee-mode sass-mode
     color-theme-solarized ;; Replace bbatsov's version due to its unpleasant Ruby syntax highlighting
     base16-theme))
 
