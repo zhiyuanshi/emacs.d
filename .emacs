@@ -26,7 +26,7 @@
     magit
     haskell-mode shm
     inf-ruby robe rinari
-    web-mode coffee-mode sass-mode
+    web-mode js2-mode coffee-mode sass-mode
     color-theme-solarized ;; Replace bbatsov's version due to its unpleasant Ruby syntax highlighting
     base16-theme))
 
@@ -320,6 +320,9 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 (setq js-indent-level 2)
+
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
 
 ;; coffee-mode
 (require 'coffee-mode)
