@@ -308,6 +308,8 @@
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
+(setq js-indent-level 2)
+
 ;; coffee-mode
 (require 'coffee-mode)
 
