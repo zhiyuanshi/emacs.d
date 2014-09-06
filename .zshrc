@@ -56,6 +56,7 @@ alias open="xdg-open"
 
 alias v="gvim 2> /dev/null"
 alias e="$EMACSCLIENT"
+alias s="subl"
 
 alias code="cd $CODE"
 alias dotfiles="cd $DOTFILES"
