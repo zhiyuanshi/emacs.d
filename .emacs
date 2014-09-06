@@ -327,6 +327,8 @@
 ;; coffee-mode
 (require 'coffee-mode)
 
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . web-mode))
+
 (custom-set-variables
   '(coffee-tab-width 2)
   '(haskell-process-suggest-remove-import-lines t)
