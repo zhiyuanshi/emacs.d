@@ -44,7 +44,7 @@
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-15"))
 
-(load-theme 'base16-eighties t)
+(load-theme 'solarized-light t)
 
 ;; GUI
 (setq frame-title-format
