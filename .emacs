@@ -17,6 +17,7 @@
   '(
     ;; Better defaults
     anzu
+    discover-my-major
     flx-ido
     grizzl
     helm
@@ -159,6 +160,8 @@
 (require 'anzu)
 (diminish 'anzu-mode)
 (global-anzu-mode +1)
+
+(define-key 'help-command (kbd "C-m") 'discover-my-major)
 
 ;; evil
 (require 'evil)
