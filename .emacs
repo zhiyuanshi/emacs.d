@@ -344,6 +344,8 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 (setq js-indent-level 2)
+;; https://github.com/lunaryorn/.emacs.d/blob/master/init.el
+(setq-default js2-basic-offset 2)
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
