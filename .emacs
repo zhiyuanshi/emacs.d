@@ -131,8 +131,8 @@
   "d" 'dired-jump
   "e" 'ido-find-file
   "f" 'projectile-find-file
-  "g" 'ace-jump-mode
-  "G" 'ace-jump-mode-pop-mark
+  "j" 'ace-jump-mode
+  "J" 'ace-jump-mode-pop-mark
   "k" 'kill-buffer-and-window
   "m" 'imenu-anywhere
   "p" 'projectile-switch-project
