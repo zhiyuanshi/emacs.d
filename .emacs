@@ -134,7 +134,6 @@
   "d" 'dired-jump
   "e" 'ido-find-file
   "f" 'projectile-find-file
-  "F" 'projectile-find-file-in-known-projects
   "j" 'ace-jump-mode
   "J" 'ace-jump-mode-pop-mark
   "k" 'kill-buffer-and-window
