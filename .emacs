@@ -141,6 +141,9 @@
   "=" 'align-regexp
   "/" 'ag-regexp)
 
+(global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+
 ;; ace-jump-mode
 ;; Enable a more powerful jump back function from ace jump mode
 (autoload
