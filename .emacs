@@ -35,6 +35,8 @@
     ;; company company-ghc company-inf-ruby
 
     magit
+    github-browse-file
+
     haskell-mode shm
     inf-ruby robe rinari
     web-mode js2-mode coffee-mode sass-mode
