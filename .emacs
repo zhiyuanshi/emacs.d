@@ -16,6 +16,7 @@
 (defvar my-packages
   '(
     ;; Better defaults
+    anzu
     flx-ido
     grizzl
     helm
@@ -153,6 +154,11 @@
 (setq ace-jump-mode-scope 'window)
 
 (global-set-key (kbd "<C-tab>") 'next-buffer)
+
+;; anzu
+(require 'anzu)
+(diminish 'anzu-mode)
+(global-anzu-mode +1)
 
 ;; evil
 (require 'evil)
