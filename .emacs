@@ -21,8 +21,16 @@
     flycheck flycheck-haskell
     auto-complete yasnippet
     ;; company company-ghc company-inf-ruby
+
+    ;; Things that should be the default
     smartparens
-    smex flx-ido helm grizzl popwin smooth-scrolling
+    smex
+    flx-ido
+    helm
+    grizzl
+    popwin
+    smooth-scrolling
+
     magit
     haskell-mode shm
     inf-ruby robe rinari
