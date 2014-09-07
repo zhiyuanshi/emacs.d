@@ -35,6 +35,7 @@
     ;; company company-ghc company-inf-ruby
 
     magit
+    git-messenger
     github-browse-file
 
     haskell-mode shm
@@ -141,6 +142,7 @@
   "q" 'delete-window
   "w" 'save-buffer
   "=" 'align-regexp
+  "?" 'git-messenger:popup-message
   "/" 'ag-regexp)
 
 (global-set-key (kbd "C-=") 'text-scale-increase)
@@ -207,6 +209,10 @@
 ;; smartparens
 (smartparens-global-mode 1)
 (require 'smartparens-config) ;; the default configuration
+
+;; git-messenger
+;; Always show detail message
+(setq git-messenger:show-detail t)
 
 ;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
