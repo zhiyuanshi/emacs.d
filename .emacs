@@ -196,7 +196,7 @@
 
 ;; ag
 (setq ag-highlight-search t)
-(setq ag-reuse-buffers 't)
+(setq ag-reuse-buffers t)
 
 ;; dired+
 (require 'dired+)
