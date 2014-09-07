@@ -14,22 +14,23 @@
 (package-initialize)
 
 (defvar my-packages
-  '(evil evil-leader evil-surround evil-nerd-commenter
+  '(
+    ;; Better defaults
+    flx-ido
+    grizzl
+    helm
+    popwin
+    smartparens
+    smex
+    smooth-scrolling
+
+    evil evil-leader evil-surround evil-nerd-commenter
     ace-jump-mode expand-region multiple-cursors
     projectile projectile-rails imenu-anywhere ag
     dired+
     flycheck flycheck-haskell
     auto-complete yasnippet
     ;; company company-ghc company-inf-ruby
-
-    ;; Things that should be the default
-    smartparens
-    smex
-    flx-ido
-    helm
-    grizzl
-    popwin
-    smooth-scrolling
 
     magit
     haskell-mode shm
