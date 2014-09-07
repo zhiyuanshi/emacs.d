@@ -18,7 +18,7 @@
     ace-jump-mode expand-region multiple-cursors
     projectile projectile-rails imenu-anywhere ag
     dired+
-    flycheck
+    flycheck flycheck-haskell
     auto-complete yasnippet
     ;; company company-ghc company-inf-ruby
     smartparens
@@ -275,6 +275,9 @@
 (set-face-background 'shm-current-face "#eee8d5")
 (set-face-background 'shm-quarantine-face "lemonchiffon")
 (setq shm-idle-timeout 0)
+
+;; flycheck-haskell
+(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup)
 
 ;; proof-general
 
