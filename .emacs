@@ -175,9 +175,16 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;;              Custom functions
+;;              Custom definitions
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
+(defmacro after-load (feature &rest body)
+  "After FEATURE is loaded, evaluate BODY."
+  (declare (indent defun))
+  `(eval-after-load ,feature
+     '(progn ,@body)))
 
 ;; https://ghc.haskell.org/trac/ghc/wiki/Emacs#Untabifyingabuffer
 (defun untabify-current-buffer ()
@@ -270,7 +277,8 @@
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
-(define-key shm-map (kbd "C-c C-s") 'shm/case-split)
+(after-load 'shm-case-split
+  (define-key shm-map (kbd "C-c C-s") 'shm/case-split))
 
 (add-hook 'ruby-mode-hook
   (lambda ()
