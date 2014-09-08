@@ -20,7 +20,6 @@
     discover-my-major
     flx-ido
     grizzl
-    helm
     popwin
     smex
     smooth-scrolling
