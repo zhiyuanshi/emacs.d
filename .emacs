@@ -268,23 +268,6 @@
 
 (add-hook 'robe-mode-hook 'ac-robe-setup)
 
-;; company
-;; (add-hook 'after-init-hook 'global-company-mode)
-;; (global-company-mode)
-
-;; company-ghc
-;; (push 'company-ghc company-backends)
-
-;; company-inf-ruby
-;; (eval-after-load 'company
-;;   '(add-to-list 'company-backends 'company-inf-ruby))
-
-;; (push 'company-robe company-backends)
-
-;; smex
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-
 ;; flx-ido
 (require 'flx-ido)
 (ido-mode 1)
