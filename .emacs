@@ -22,30 +22,71 @@
     grizzl
     helm
     popwin
-    smartparens
     smex
     smooth-scrolling
 
-    evil evil-leader evil-surround evil-nerd-commenter
-    ace-jump-mode expand-region multiple-cursors
-    projectile projectile-rails imenu-anywhere ag
-    dired+
-    flycheck flycheck-haskell
-    auto-complete yasnippet
-    ;; company company-ghc company-inf-ruby
+    ;; Text editing
+    ace-jump-mode
+    expand-region
 
-    magit
+    ;; Evil mode
+    evil
+    evil-leader
+    evil-nerd-commenter
+    evil-surround
+
+    ;; File system browser
+    dired+
+
+    ;; Fuzzy finder for quickly opening files
+    projectile
+
+    ;; Fast project-wide search and replace
+    ag
+    imenu-anywhere
+
+    ;; Multiple cursors and selections
+    multiple-cursors
+
+    ;; Snippets
+    yasnippet
+
+    ;; Syntax checking
+    flycheck
+
+    ;; Auto-completion
+    auto-complete
+    smartparens
+
+    ;; Color themes
+    base16-theme
+    color-theme-solarized ;; Replace bbatsov's version due to its unpleasant Ruby syntax highlighting
+
+    ;; Git
     git-messenger
     github-browse-file
+    magit
 
-    haskell-mode shm
-    inf-ruby robe rinari
-    web-mode js2-mode coffee-mode sass-mode
+    ;; Haskell
+    flycheck-haskell
+    haskell-mode
+    shm
 
+    ;; Ruby
+    inf-ruby
+    rinari
+    robe
+
+    ;; Web
+    coffee-mode
+    js2-mode
+    projectile-rails
+    sass-mode
+    web-mode
+
+    ;; Markup
     pandoc-mode
-
-    color-theme-solarized ;; Replace bbatsov's version due to its unpleasant Ruby syntax highlighting
-    base16-theme))
+    ))
 
 (defun my-packages-installed-p ()
   (every #'package-installed-p my-packages))
