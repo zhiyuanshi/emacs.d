@@ -72,6 +72,9 @@
     haskell-mode
     shm
 
+    ;; Dependently typed functional programming languages
+    idris-mode
+
     ;; Ruby
     inf-ruby
     robe
