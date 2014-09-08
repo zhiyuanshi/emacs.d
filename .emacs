@@ -6,6 +6,13 @@
 
 ;; common Lisp goodies, loop
 (require 'cl)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;              Packages
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (require 'package)
 
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
@@ -27,6 +34,7 @@
     ;; Text editing
     ace-jump-mode
     expand-region
+    multiple-cursors
 
     ;; Evil mode
     evil
@@ -37,25 +45,18 @@
     ;; File system browser
     dired+
 
-    ;; Fuzzy finder for quickly opening files
-    projectile
-
-    ;; Fast project-wide search and replace
+    ;; Go to anything
     ag
     imenu-anywhere
-
-    ;; Multiple cursors and selections
-    multiple-cursors
-
-    ;; Snippets
-    yasnippet
+    projectile
 
     ;; Syntax checking
     flycheck
 
-    ;; Auto-completion
+    ;; Auto-completion & snippets
     auto-complete
     smartparens
+    yasnippet
 
     ;; Color themes
     base16-theme
@@ -86,7 +87,7 @@
     sass-mode
     web-mode
 
-    ;; Markup
+    ;; Markup languages (Markdown, LaTeX, etc.)
     pandoc-mode
     ))
 
@@ -99,6 +100,12 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;              Appearance
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Frame-Parameters.html
 (add-to-list 'default-frame-alist '(width  . 100))
 (add-to-list 'default-frame-alist '(height . 45))
@@ -106,14 +113,19 @@
 
 (load-theme 'dichromacy t)
 
-;; GUI
+(menu-bar-mode 1)
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
+
 (setq frame-title-format
   '("" (:eval (if (buffer-file-name)
                   (abbreviate-file-name (buffer-file-name))
                   "%b")) " - Emacs"))
-(menu-bar-mode 1)
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
+
+;; http://stackoverflow.com/questions/445873/how-can-i-make-emacs-mouse-scrolling-slower-and-smoother
+;; http://www.emacswiki.org/emacs/SmoothScrolling
+(setq mouse-wheel-scroll-amount '(3 ((shift) . 40) ((control) . nil)))
+(setq mouse-wheel-progressive-speed nil)
 
 (setq inhibit-startup-screen t)
 
@@ -123,7 +135,13 @@
 
 (show-paren-mode 1)
 
-;; tabs
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;              Text styling
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Tabs
 (setq tab-width 2)
 (setq-default indent-tabs-mode nil)
 
@@ -138,9 +156,15 @@
 
 (setq-default fill-column 80)
 
-;; save the state of Emacs from one session to another
-;; http://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Emacs-Sessions.html
-(desktop-save-mode 1)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(setq mode-require-final-newline nil)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;              Encoding
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdisplaynicely
 (setq locale-coding-system 'utf-8)
@@ -149,11 +173,11 @@
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-(setq make-backup-files nil) ;; don't create backup~ files
-(setq auto-save-default nil) ;; don't create #autosave# files
-(setq mode-require-final-newline nil)
-
-(defalias 'yes-or-no-p 'y-or-n-p)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;              Custom functions
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; https://ghc.haskell.org/trac/ghc/wiki/Emacs#Untabifyingabuffer
 (defun untabify-current-buffer ()
@@ -161,12 +185,45 @@
   (interactive)
   (save-excursion (untabify (point-min) (point-max))))
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; https://github.com/magnars/.emacs.d/blob/master/defuns/lisp-defuns.el
+(defun eval-and-replace ()
+  "Replace the preceding sexp with its value."
+  (interactive)
+  (backward-kill-sexp)
+  (condition-case nil
+    (prin1 (eval (read (current-kill 0)))
+           (current-buffer))
+    (error (message "Invalid expression")
+           (insert (current-kill 0)))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;              Misc
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; Save the state of Emacs from one session to another
+;; http://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Emacs-Sessions.html
+(desktop-save-mode 1)
+
+(setq make-backup-files nil) ;; don't create backup~ files
+(setq auto-save-default nil) ;; don't create #autosave# files
+
+;; uniquify
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward)
 
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
-;; https://github.com/lewang/flx
-(setq gc-cons-threshold 20000000)
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+(setq gc-cons-threshold 20000000) ;; https://github.com/lewang/flx
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;              Key bindings
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; evil-leader
 
@@ -190,20 +247,61 @@
   "w" 'save-buffer
   "=" 'align-regexp
   "?" 'git-messenger:popup-message
-  "/" 'ag-regexp)
-
-;; smex
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+  "/" 'ag-regexp
+  )
 
 (global-set-key (kbd "C-=") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
+
+(global-set-key (kbd "<C-tab>") 'next-buffer)
+
+;; https://github.com/magnars/.emacs.d/blob/master/key-bindings.el
+(global-set-key (kbd "C-c C-e") 'eval-and-replace)
+
+(define-key 'help-command (kbd "C-m") 'discover-my-major)
+
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+
+(global-set-key (kbd "C-'") 'er/expand-region)
+
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+(define-key shm-map (kbd "C-c C-s") 'shm/case-split)
+
+(add-hook 'ruby-mode-hook
+  (lambda ()
+    (local-set-key (kbd "C-c C-c") 'inf-ruby-console-auto)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;              Better defaults
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; anzu
+(require 'anzu)
+(diminish 'anzu-mode)
+(global-anzu-mode +1)
+
+;; flx-ido
+(require 'flx-ido)
+(ido-mode 1)
+(ido-everywhere 1)
+(flx-ido-mode 1)
+;; disable ido faces to see flx highlights.
+(setq ido-enable-flex-matching t)
+(setq ido-use-faces nil)
+
+;; popwin
+(require 'popwin)
+(popwin-mode 1)
+
+;; smooth-scrolling
+(require 'smooth-scrolling)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -224,14 +322,8 @@
 (setq ace-jump-mode-gray-background nil)
 (setq ace-jump-mode-scope 'window)
 
-(global-set-key (kbd "<C-tab>") 'next-buffer)
-
-;; anzu
-(require 'anzu)
-(diminish 'anzu-mode)
-(global-anzu-mode +1)
-
-(define-key 'help-command (kbd "C-m") 'discover-my-major)
+;; multiple-cursors
+(require 'multiple-cursors)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -243,22 +335,12 @@
 (require 'evil)
 (evil-mode 1)
 
-;; evil-surround
-(require 'evil-surround)
-(global-evil-surround-mode 1)
-
 ;; evil-nerd-commenter
 (evilnc-default-hotkeys)
 
-;; expand-region
-(global-set-key (kbd "C-'") 'er/expand-region)
-
-;; multiple-cursors
-(require 'multiple-cursors)
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+;; evil-surround
+(require 'evil-surround)
+(global-evil-surround-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -266,29 +348,27 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Fuzzy finder for quickly opening files
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; dired+
+(require 'dired+)
+(diredp-toggle-find-file-reuse-dir 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;;              Fast project-wide search and replace
+;;              Go to anything
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Multiple cursors and selections
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ag
+(setq ag-highlight-search t)
+(setq ag-reuse-buffers t)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Snippets
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; imenu
+(add-hook 'ruby-mode-hook 'imenu-add-menubar-index)
+(setq imenu-auto-rescan t)
+
+;; projectile
+(projectile-global-mode)
+(setq projectile-completion-system 'grizzl)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -296,26 +376,19 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; projectile
-(projectile-global-mode)
-(setq projectile-completion-system 'grizzl)
-
-;; projectile-rails
-(add-hook 'projectile-mode-hook 'projectile-rails-on)
-
-;; ag
-(setq ag-highlight-search t)
-(setq ag-reuse-buffers t)
-
-;; dired+
-(require 'dired+)
-(diredp-toggle-find-file-reuse-dir 1)
+;; flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;;              Auto-completion
+;;              Auto-completion & snippets
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; auto-complete
+(require 'auto-complete-config)
+(ac-config-default)
+(setq ac-use-fuzzy t)
 
 ;; smartparens
 (smartparens-global-mode 1)
@@ -328,47 +401,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; git-messenger
-;; Always show detail message
-(setq git-messenger:show-detail t)
-
-;; flycheck
-(add-hook 'after-init-hook #'global-flycheck-mode)
-
-;; auto-complete
-(require 'auto-complete-config)
-(ac-config-default)
-(setq ac-use-fuzzy t)
-
-(add-hook 'robe-mode-hook 'ac-robe-setup)
-
-;; flx-ido
-(require 'flx-ido)
-(ido-mode 1)
-(ido-everywhere 1)
-(flx-ido-mode 1)
-;; disable ido faces to see flx highlights.
-(setq ido-enable-flex-matching t)
-(setq ido-use-faces nil)
-
-;; uniquify
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'post-forward)
-
-;; imenu
-(add-hook 'ruby-mode-hook 'imenu-add-menubar-index)
-(setq imenu-auto-rescan t)
-
-;; popwin
-(require 'popwin)
-(popwin-mode 1)
-
-;; smooth-scrolling
-(require 'smooth-scrolling)
-
-;; http://stackoverflow.com/questions/445873/how-can-i-make-emacs-mouse-scrolling-slower-and-smoother
-;; http://www.emacswiki.org/emacs/SmoothScrolling
-(setq mouse-wheel-scroll-amount '(3 ((shift) . 40) ((control) . nil)))
-(setq mouse-wheel-progressive-speed nil)
+(setq git-messenger:show-detail t) ;; Always show detail message
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -377,6 +410,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; haskell-mode
+
 ;; (add-hook 'haskell-mode-hook
 ;;   (lambda () (set-input-method "TeX")))
 
@@ -388,31 +422,24 @@
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
 
-;; https://github.com/magnars/.emacs.d/blob/master/defuns/lisp-defuns.el
-(defun eval-and-replace ()
-  "Replace the preceding sexp with its value."
-  (interactive)
-  (backward-kill-sexp)
-  (condition-case nil
-    (prin1 (eval (read (current-kill 0)))
-           (current-buffer))
-    (error (message "Invalid expression")
-           (insert (current-kill 0)))))
-
-;; https://github.com/magnars/.emacs.d/blob/master/key-bindings.el
-(global-set-key (kbd "C-c C-e") 'eval-and-replace)
+;; flycheck-haskell
+(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup)
 
 ;; structured-haskell-mode
 (require 'shm)
 (require 'shm-case-split)
 (add-hook 'haskell-mode-hook 'structured-haskell-mode)
-(define-key shm-map (kbd "C-c C-s") 'shm/case-split)
 (set-face-background 'shm-current-face "#eee8d5")
 (set-face-background 'shm-quarantine-face "lemonchiffon")
 (setq shm-idle-timeout 0)
 
-;; flycheck-haskell
-(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;              Dependently typed functional programming languages
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; idris-mode
 
 ;; proof-general
 
@@ -441,13 +468,9 @@
 (add-to-list 'auto-mode-alist '("Puppetfile\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Berksfile\\'" . ruby-mode))
 
-;; inf-ruby
-(add-hook 'ruby-mode-hook
-  (lambda ()
-    (local-set-key (kbd "C-c C-c") 'inf-ruby-console-auto)))
-
 ;; robe
 (add-hook 'ruby-mode-hook 'robe-mode)
+(add-hook 'robe-mode-hook 'ac-robe-setup)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -455,10 +478,28 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; coffee-mode
+(require 'coffee-mode)
+
+;; js-mode
+(setq js-indent-level 2)
+
+;; js2-mode
+
+;; https://github.com/lunaryorn/.emacs.d/blob/master/init.el
+(setq-default js2-basic-offset 2)
+
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+
+;; projectile-rails
+(add-hook 'projectile-mode-hook 'projectile-rails-on)
+
 ;; rinari
 (require 'rinari)
 
 ;; web-mode
+
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
@@ -468,22 +509,12 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-
-(setq js-indent-level 2)
-;; https://github.com/lunaryorn/.emacs.d/blob/master/init.el
-(setq-default js2-basic-offset 2)
-
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
-
-;; coffee-mode
-(require 'coffee-mode)
-
+;;;;;;;;;;;;
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . web-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;;              Markup
+;;              Markup languages (Markdown, LaTeX, etc.)
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
