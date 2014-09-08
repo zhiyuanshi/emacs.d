@@ -41,6 +41,9 @@
     haskell-mode shm
     inf-ruby robe rinari
     web-mode js2-mode coffee-mode sass-mode
+
+    pandoc-mode
+
     color-theme-solarized ;; Replace bbatsov's version due to its unpleasant Ruby syntax highlighting
     base16-theme))
 
@@ -362,6 +365,9 @@
 (require 'coffee-mode)
 
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . web-mode))
+
+;; pandoc-mode
+(add-hook 'markdown-mode-hook 'turn-on-pandoc)
 
 (custom-set-variables
   '(coffee-tab-width 2)
