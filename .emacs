@@ -74,13 +74,13 @@
 
     ;; Ruby
     inf-ruby
-    rinari
     robe
 
     ;; Web
     coffee-mode
     js2-mode
     projectile-rails
+    rinari
     sass-mode
     web-mode
 
