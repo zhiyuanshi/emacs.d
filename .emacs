@@ -184,6 +184,7 @@
   "m" 'imenu-anywhere
   "p" 'projectile-switch-project
   "q" 'delete-window
+  "s" 'sort-lines
   "w" 'save-buffer
   "=" 'align-regexp
   "?" 'git-messenger:popup-message
