@@ -264,8 +264,6 @@
   "/" 'ag-regexp
   "=" 'align-regexp
   "?" 'git-messenger:popup-message
-  "[" 'er/expand-region
-  "]" 'er/contract-region
   )
 
 (global-set-key (kbd "C-=") 'text-scale-increase)
@@ -281,6 +279,9 @@
 
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+
+(global-set-key (kbd "C-'") 'er/expand-region)
+(global-set-key (kbd "C-\"") 'er/contract-region)
 
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
