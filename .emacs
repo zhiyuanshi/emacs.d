@@ -112,7 +112,7 @@
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-15"))
 
-(load-theme 'base16-eighties t)
+(load-theme 'tango t)
 
 (menu-bar-mode 1)
 (tool-bar-mode 0)
@@ -260,9 +260,11 @@
   "q" 'delete-window
   "s" 'sort-lines
   "w" 'save-buffer
+  "/" 'ag-regexp
   "=" 'align-regexp
   "?" 'git-messenger:popup-message
-  "/" 'ag-regexp
+  "[" 'er/expand-region
+  "]" 'er/contract-region
   )
 
 (global-set-key (kbd "C-=") 'text-scale-increase)
@@ -278,8 +280,6 @@
 
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-
-(global-set-key (kbd "C-'") 'er/expand-region)
 
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
