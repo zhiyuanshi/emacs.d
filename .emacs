@@ -26,6 +26,7 @@
     anzu
     discover-my-major
     flx-ido
+    framemove
     grizzl
     popwin
     smex
@@ -313,17 +314,16 @@
 (setq ido-enable-flex-matching t)
 (setq ido-use-faces nil)
 
+;; framemove
+(windmove-default-keybindings 'ctrl)
+(setq framemove-hook-into-windmove t)
+
 ;; popwin
 (require 'popwin)
 (popwin-mode 1)
 
 ;; smooth-scrolling
 (require 'smooth-scrolling)
-
-;; windmove
-(when (fboundp 'windmove-default-keybindings)
-  (windmove-default-keybindings))
-(windmove-default-keybindings 'ctrl)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
