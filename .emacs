@@ -320,6 +320,11 @@
 ;; smooth-scrolling
 (require 'smooth-scrolling)
 
+;; windmove
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
+(windmove-default-keybindings 'ctrl)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;              Text editing
