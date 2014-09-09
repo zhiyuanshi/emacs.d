@@ -111,7 +111,7 @@
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-15"))
 
-(load-theme 'dichromacy t)
+(load-theme 'solarized-light t)
 
 (menu-bar-mode 1)
 (tool-bar-mode 0)
