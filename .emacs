@@ -216,6 +216,8 @@
 (setq make-backup-files nil) ;; don't create backup~ files
 (setq auto-save-default nil) ;; don't create #autosave# files
 
+(global-auto-revert-mode 1)
+
 ;; uniquify
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward)
