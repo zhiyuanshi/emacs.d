@@ -149,6 +149,9 @@
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
 
+;; Use normal tabs in makefiles
+(add-hook 'makefile-mode-hook 'indent-tabs-mode)
+
 ;; Truncate lines and don't use word-wrapping for code, but do the opposites for text.
 (add-hook 'text-mode-hook '(lambda ()
   (setq truncate-lines nil
