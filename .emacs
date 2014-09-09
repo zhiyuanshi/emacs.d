@@ -84,6 +84,7 @@
     js2-mode
     projectile-rails
     rinari
+    rspec-mode
     sass-mode
     web-mode
 
@@ -513,6 +514,10 @@
 
 ;; rinari
 (require 'rinari)
+
+;; rspec-mode
+(eval-after-load 'rspec-mode
+ '(rspec-install-snippets))
 
 ;; web-mode
 
