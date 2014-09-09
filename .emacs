@@ -142,7 +142,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Tabs
-(setq tab-width 2)
+(setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
 
 ;; Truncate lines and don't use word-wrapping for code, but do the opposites for text.
