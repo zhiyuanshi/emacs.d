@@ -137,6 +137,7 @@
 (line-number-mode 1)
 (column-number-mode 1)
 
+;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -217,6 +218,12 @@
            (current-buffer))
     (error (message "Invalid expression")
            (insert (current-kill 0)))))
+
+;; https://github.com/magnars/.emacs.d/blob/master/appearance.el
+(defmacro rename-modeline (package-name mode new-name)
+  `(eval-after-load ,package-name
+     '(defadvice ,mode (after rename-modeline activate)
+        (setq mode-name ,new-name))))
 
 (defun text-scale-reset ()
   "Reset text scale to 0."
