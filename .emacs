@@ -537,6 +537,10 @@
 
 (custom-set-variables
   '(coffee-tab-width 2)
+
+  ;; Treat solarized-light as safe
+  '(custom-safe-themes '("1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" default))
+
   '(haskell-process-suggest-remove-import-lines t)
   '(haskell-process-suggest-hoogle-imports t)
   '(haskell-process-auto-import-loaded-modules t)
