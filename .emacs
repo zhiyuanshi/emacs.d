@@ -254,7 +254,7 @@
   "f" 'projectile-find-file
   "j" 'ace-jump-mode
   "J" 'ace-jump-mode-pop-mark
-  "k" 'kill-buffer-and-window
+  "k" 'kill-this-buffer
   "m" 'imenu-anywhere
   "p" 'projectile-switch-project
   "q" 'delete-window
