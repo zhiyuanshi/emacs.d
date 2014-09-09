@@ -111,7 +111,7 @@
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-15"))
 
-(load-theme 'solarized-light t)
+(load-theme 'base16-eighties t)
 
 (menu-bar-mode 1)
 (tool-bar-mode 0)
@@ -203,6 +203,11 @@
     (error (message "Invalid expression")
            (insert (current-kill 0)))))
 
+(defun text-scale-reset ()
+  "Reset text scale to 0."
+  (interactive)
+  (text-scale-set 0))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;              Misc
@@ -261,6 +266,7 @@
 
 (global-set-key (kbd "C-=") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
+(global-set-key (kbd "C-0") 'text-scale-reset)
 
 (global-set-key (kbd "<C-tab>") 'next-buffer)
 
