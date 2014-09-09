@@ -20,6 +20,7 @@
 
 (package-initialize)
 
+;; Install extensions if they're missing
 (defvar my-packages
   '(
     ;; Sane defaults
@@ -129,6 +130,7 @@
 (setq mouse-wheel-scroll-amount '(3 ((shift) . 40) ((control) . nil)))
 (setq mouse-wheel-progressive-speed nil)
 
+;; No splash screen please ... jeez
 (setq inhibit-startup-screen t)
 
 (global-linum-mode 1)
