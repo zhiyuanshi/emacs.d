@@ -22,7 +22,7 @@
 
 (defvar my-packages
   '(
-    ;; Better defaults
+    ;; Sane defaults
     anzu
     discover-my-major
     flx-ido
@@ -132,6 +132,8 @@
 (setq inhibit-startup-screen t)
 
 (global-linum-mode 1)
+
+;; Always display line and column numbers
 (line-number-mode 1)
 (column-number-mode 1)
 
@@ -156,11 +158,18 @@
   (setq truncate-lines t
         word-wrap nil)))
 
+;; Lines should be 80 characters wide, not 72
 (setq-default fill-column 80)
+
+;; Sentences do not need double spaces to end. Period.
+(set-default 'sentence-end-double-space nil)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (setq mode-require-final-newline nil)
+
+;; Show me empty lines after buffer end
+(set-default 'indicate-empty-lines t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -168,6 +177,7 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; UTF-8 please
 ;; https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdisplaynicely
 (setq locale-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8-unix)
@@ -223,17 +233,29 @@
 (setq make-backup-files nil) ;; don't create backup~ files
 (setq auto-save-default nil) ;; don't create #autosave# files
 
+;; Auto refresh buffers
 (global-auto-revert-mode 1)
 
+;; Also auto refresh dired, but be quiet about it
+(setq global-auto-revert-non-file-buffers t)
+(setq auto-revert-verbose nil)
+
 ;; uniquify
+;; Add parts of each file's directory to the buffer name if not unique
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward)
 
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
+;; Answering just 'y' or 'n' will do
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+;; Don't be so stingy on the memory, we have lots now. It's the distant future.
 (setq gc-cons-threshold 20000000) ;; https://github.com/lewang/flx
+
+;; Nic says eval-expression-print-level needs to be set to nil (turned off) so
+;; that you can always see what's happening.
+(setq eval-expression-print-level nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -297,7 +319,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;;              Better defaults
+;;              Sane defaults
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -324,6 +346,7 @@
 (popwin-mode 1)
 
 ;; smooth-scrolling
+;; Keep cursor away from edges when scrolling up/down
 (require 'smooth-scrolling)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
