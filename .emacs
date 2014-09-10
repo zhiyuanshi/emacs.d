@@ -536,7 +536,7 @@
 (add-hook 'inf-ruby-mode-hook 'ac-inf-ruby-enable)
 
 ;; Trigger auto-complete using TAB in inf-ruby buffers
-(eval-after-load 'inf-ruby '
+(eval-after-load 'inf-ruby
   '(define-key inf-ruby-mode-map (kbd "TAB") 'auto-complete))
 
 ;; robe
