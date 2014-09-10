@@ -332,6 +332,10 @@
   (local-set-key (kbd "C-c C-c") 'inf-ruby-console-auto)
   (local-set-key (kbd "C-c C-h") 'ruby-toggle-hash-syntax)))
 
+;; A remedy for the default keybinding M-. being overwritten by Evil mode
+(after-load 'robe
+  (define-key robe-mode-map (kbd "C-c C-j") 'robe-jump))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;              Sane defaults
@@ -548,10 +552,6 @@
 ;; robe
 (add-hook 'ruby-mode-hook 'robe-mode)
 (add-hook 'robe-mode-hook 'ac-robe-setup)
-
-;; A remedy for the default keybinding M-. being overwritten by Evil mode
-(after-load 'robe
-  (define-key robe-mode-map (kbd "C-c C-j") 'robe-jump))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
