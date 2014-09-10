@@ -80,6 +80,7 @@
     ;; Ruby
     inf-ruby
     robe
+    ruby-hash-syntax
 
     ;; Web
     coffee-mode
@@ -327,7 +328,8 @@
   (define-key shm-map (kbd "C-c C-s") 'shm/case-split))
 
 (add-hook 'ruby-mode-hook (lambda ()
-  (local-set-key (kbd "C-c C-c") 'inf-ruby-console-auto)))
+  (local-set-key (kbd "C-c C-c") 'inf-ruby-console-auto)
+  (local-set-key (kbd "C-c C-h") 'ruby-toggle-hash-syntax)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
