@@ -85,6 +85,7 @@
     coffee-mode
     js2-mode
     projectile-rails
+    rainbow-mode
     rinari
     rspec-mode
     sass-mode
@@ -555,6 +556,9 @@
 
 ;; projectile-rails
 (add-hook 'projectile-mode-hook 'projectile-rails-on)
+
+;; rainbow-mode
+(add-hook 'css-mode-hook 'rainbow-mode)
 
 ;; rinari
 (require 'rinari)
