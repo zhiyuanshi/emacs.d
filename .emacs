@@ -156,11 +156,11 @@
 (add-hook 'makefile-mode-hook 'indent-tabs-mode)
 
 ;; Truncate lines and don't use word-wrapping for code, but do the opposites for text.
-(add-hook 'text-mode-hook '(lambda ()
+(add-hook 'text-mode-hook (lambda ()
   (setq truncate-lines nil
         word-wrap t)))
 
-(add-hook 'prog-mode-hook '(lambda ()
+(add-hook 'prog-mode-hook (lambda ()
   (setq truncate-lines t
         word-wrap nil)))
 
@@ -325,8 +325,7 @@
 (after-load 'shm-case-split
   (define-key shm-map (kbd "C-c C-s") 'shm/case-split))
 
-(add-hook 'ruby-mode-hook
-  (lambda ()
+(add-hook 'ruby-mode-hook (lambda ()
     (local-set-key (kbd "C-c C-c") 'inf-ruby-console-auto)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
