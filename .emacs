@@ -82,6 +82,7 @@
     inf-ruby
     robe
     ruby-hash-syntax
+    yari
 
     ;; Web
     coffee-mode
@@ -330,7 +331,8 @@
 
 (add-hook 'ruby-mode-hook (lambda ()
   (local-set-key (kbd "C-c C-c") 'inf-ruby-console-auto)
-  (local-set-key (kbd "C-c C-h") 'ruby-toggle-hash-syntax)))
+  (local-set-key (kbd "C-c C-h") 'ruby-toggle-hash-syntax)
+  (local-set-key (kbd "C-c C-y") 'yari)))
 
 ;; A remedy for the default keybinding M-. being overwritten by Evil mode
 (after-load 'robe
