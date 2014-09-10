@@ -529,6 +529,12 @@
 (add-to-list 'auto-mode-alist '("Puppetfile\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Berksfile\\'" . ruby-mode))
 
+;; Sane defaults
+;; https://github.com/purcell/emacs.d/blob/master/lisp/init-ruby-mode.el#L12
+(after-load 'ruby-mode
+  (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
+  (define-key ruby-mode-map (kbd "TAB") 'indent-for-tab-command))
+
 ;; ac-inf-ruby provides an inf-ruby-specific completion source, so auto-complete needs
 ;; to be told to use them when inf-ruby-mode is active.
 (eval-after-load 'auto-complete
