@@ -61,10 +61,10 @@ alias s="subl"
 alias code="cd $CODE"
 alias dotfiles="cd $DOTFILES"
 
-alias vimconfig="v $DOTFILES/.vimrc"
-alias emacsconfig="v $DOTFILES/.emacs"
-alias zshconfig="v $DOTFILES/.zshrc"
-alias hgconfig="v $DOTFILES/.hgrc"
+alias config-vim="v $DOTFILES/.vimrc"
+alias config-emacs="v $DOTFILES/.emacs"
+alias config-zsh="v $DOTFILES/.zshrc"
+alias config-hg="v $DOTFILES/.hgrc"
 
 alias hlog="hg log --template '#{rev} {date|isodate} {desc|firstline}\n' | less"
 
