@@ -78,6 +78,7 @@
     idris-mode
 
     ;; Ruby
+    ac-inf-ruby
     inf-ruby
     robe
     ruby-hash-syntax
@@ -527,6 +528,16 @@
 (add-to-list 'auto-mode-alist '("\\.podspec\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Puppetfile\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Berksfile\\'" . ruby-mode))
+
+;; ac-inf-ruby provides an inf-ruby-specific completion source, so auto-complete needs
+;; to be told to use them when inf-ruby-mode is active.
+(eval-after-load 'auto-complete
+  '(add-to-list 'ac-modes 'inf-ruby-mode))
+(add-hook 'inf-ruby-mode-hook 'ac-inf-ruby-enable)
+
+;; Trigger auto-complete using TAB in inf-ruby buffers
+(eval-after-load 'inf-ruby '
+  '(define-key inf-ruby-mode-map (kbd "TAB") 'auto-complete))
 
 ;; robe
 (add-hook 'ruby-mode-hook 'robe-mode)
