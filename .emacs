@@ -506,12 +506,12 @@
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
 
-(customize-set-variable haskell-process-auto-import-loaded-modules t)
-(customize-set-variable haskell-process-log t)
-(customize-set-variable haskell-process-suggest-haskell-docs-imports t)
-(customize-set-variable haskell-process-suggest-hoogle-imports t)
-(customize-set-variable haskell-process-suggest-remove-import-lines t)
-(customize-set-variable haskell-process-type 'cabal-repl)
+(customize-set-variable 'haskell-process-auto-import-loaded-modules t)
+(customize-set-variable 'haskell-process-log t)
+(customize-set-variable 'haskell-process-suggest-haskell-docs-imports t)
+(customize-set-variable 'haskell-process-suggest-hoogle-imports t)
+(customize-set-variable 'haskell-process-suggest-remove-import-lines t)
+(customize-set-variable 'haskell-process-type 'cabal-repl)
 
 ;; flycheck-haskell
 (add-hook 'flycheck-mode-hook #'flycheck-haskell-setup)
@@ -590,7 +590,7 @@
 
 ;; coffee-mode
 (require 'coffee-mode)
-(customize-set-variable coffee-tab-width 2)
+(customize-set-variable 'coffee-tab-width 2)
 
 ;; js-mode
 (setq js-indent-level 2)
