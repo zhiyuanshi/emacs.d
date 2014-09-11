@@ -594,6 +594,7 @@
 
 ;; rinari
 (require 'rinari)
+(global-rinari-mode)
 
 ;; rspec-mode
 (eval-after-load 'rspec-mode
