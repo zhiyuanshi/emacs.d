@@ -472,6 +472,10 @@
 (smartparens-global-mode 1)
 (require 'smartparens-config) ;; the default configuration
 
+;; yasnippet
+(require 'yasnippet)
+(yas-global-mode 1)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;              Git
