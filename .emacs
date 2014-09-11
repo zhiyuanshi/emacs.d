@@ -506,6 +506,13 @@
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
 
+(customize-set-variable haskell-process-auto-import-loaded-modules t)
+(customize-set-variable haskell-process-log t)
+(customize-set-variable haskell-process-suggest-haskell-docs-imports t)
+(customize-set-variable haskell-process-suggest-hoogle-imports t)
+(customize-set-variable haskell-process-suggest-remove-import-lines t)
+(customize-set-variable haskell-process-type 'cabal-repl)
+
 ;; flycheck-haskell
 (add-hook 'flycheck-mode-hook #'flycheck-haskell-setup)
 
@@ -645,13 +652,6 @@
 (custom-set-variables
   ;; Treat solarized-light as safe
   '(custom-safe-themes '("1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" default))
-
-  '(haskell-process-auto-import-loaded-modules t)
-  '(haskell-process-log t)
-  '(haskell-process-suggest-haskell-docs-imports t)
-  '(haskell-process-suggest-hoogle-imports t)
-  '(haskell-process-suggest-remove-import-lines t)
-  '(haskell-process-type 'cabal-repl)
 
   ;; The built-in sh-mode
   ;; Indent shell scripts with 2 spaces, not 4
