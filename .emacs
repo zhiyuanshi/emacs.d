@@ -88,12 +88,14 @@
     ac-js2
     coffee-mode
     js2-mode
+    less-css-mode
     projectile-rails
     rainbow-delimiters
     rainbow-mode
     rinari
     rspec-mode
     sass-mode
+    scss-mode
     web-mode
 
     ;; Markup languages (Markdown, LaTeX, etc.)
