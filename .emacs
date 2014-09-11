@@ -397,6 +397,9 @@
 (setq ace-jump-mode-gray-background nil)
 (setq ace-jump-mode-scope 'window)
 
+;; expand-region
+(require 'expand-region)
+
 ;; multiple-cursors
 (require 'multiple-cursors)
 
