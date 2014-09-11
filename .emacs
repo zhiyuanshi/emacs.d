@@ -643,6 +643,11 @@
   '(haskell-process-suggest-hoogle-imports t)
   '(haskell-process-suggest-remove-import-lines t)
   '(haskell-process-type 'cabal-repl)
+
+  ;; The built-in sh-mode
+  ;; Indent shell scripts with 2 spaces, not 4
+  '(sh-basic-offset 2)
+  '(sh-indentation 2)
   )
 
 (provide '.emacs)
