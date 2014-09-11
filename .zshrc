@@ -47,6 +47,7 @@ fi
 
 export CODE="$HOME/Dropbox/Code"
 export DOTFILES="$CODE/dotfiles"
+export SCRIPTS="$CODE/scripts"
 
 # Aliases
 alias reload=". ~/.zshrc && echo Reloaded .zshrc from ~/.zshrc"
@@ -65,6 +66,8 @@ alias config-vim="v $DOTFILES/.vimrc"
 alias config-emacs="v $DOTFILES/.emacs"
 alias config-zsh="v $DOTFILES/.zshrc"
 alias config-hg="v $DOTFILES/.hgrc"
+
+alias git-pull-all="$SCRIPTS/git-pull-all.sh"
 
 alias hlog="hg log --template '#{rev} {date|isodate} {desc|firstline}\n' | less"
 
