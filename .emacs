@@ -89,6 +89,7 @@
     coffee-mode
     js2-mode
     projectile-rails
+    rainbow-delimiters
     rainbow-mode
     rinari
     rspec-mode
@@ -593,6 +594,11 @@
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
+
+(add-hook 'js2-mode-hook (lambda () (setq mode-name "JS2")))
+(add-hook 'js2-mode-hook 'js2-imenu-extras-mode)
+(add-hook 'js2-mode-hook 'rainbow-delimiters-mode)
+  ;; Javascript nests {} and () a lot, so I find this helpful
 
 ;; projectile-rails
 (add-hook 'projectile-mode-hook 'projectile-rails-on)
