@@ -85,6 +85,7 @@
     yari
 
     ;; Web
+    ac-js2
     coffee-mode
     js2-mode
     projectile-rails
@@ -575,6 +576,9 @@
 ;;              Web
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; ac-js2
+(add-hook 'js2-mode-hook 'ac-js2-mode)
 
 ;; coffee-mode
 (require 'coffee-mode)
