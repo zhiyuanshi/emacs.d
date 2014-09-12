@@ -99,6 +99,7 @@
     web-mode
 
     ;; Markup languages (Markdown, LaTeX, etc.)
+    auctex
     pandoc-mode
     ))
 
