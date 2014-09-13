@@ -33,6 +33,7 @@
     popwin
     smex
     smooth-scrolling
+    winner-mode
 
     ;; Text editing
     ace-jump-mode
@@ -329,6 +330,9 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
+(global-set-key (kbd "C-x 4 u") 'winner-undo)
+(global-set-key (kbd "C-x 4 r") 'winner-redo)
+
 (global-set-key (kbd "C-'") 'er/expand-region)
 (global-set-key (kbd "C-\"") 'er/contract-region)
 
@@ -393,6 +397,9 @@
 ;; smooth-scrolling
 ;; Keep cursor away from edges when scrolling up/down
 (require 'smooth-scrolling)
+
+;;; winner-mode
+(winner-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
