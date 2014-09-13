@@ -96,6 +96,8 @@
     rspec-mode
     sass-mode
     scss-mode
+    slime
+    slime-js
     web-mode
 
     ;; Markup languages (Markdown, LaTeX, etc.)
@@ -599,6 +601,8 @@
 (setq js-indent-level 2)
 
 ;; js2-mode
+;; https://github.com/swank-js/swank-js
+(autoload 'js2-mode "js2-mode" nil t)
 
 ;; https://github.com/lunaryorn/.emacs.d/blob/master/init.el
 (setq-default js2-basic-offset 2)
@@ -624,6 +628,10 @@
 ;; rspec-mode
 (eval-after-load 'rspec-mode
  '(rspec-install-snippets))
+
+;; swank-js
+(add-hook 'js2-mode-hook (lambda ()
+  (slime-js-minor-mode 1)))
 
 ;; web-mode
 
