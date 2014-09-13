@@ -29,6 +29,7 @@
     flx-ido
     framemove
     grizzl
+    helm
     popwin
     smex
     smooth-scrolling
@@ -303,7 +304,7 @@
   "j" 'ace-jump-char-mode
   "J" 'ace-jump-mode-pop-mark
   "k" 'kill-this-buffer
-  "m" 'imenu-anywhere
+  "m" 'helm-imenu
   "p" 'projectile-switch-project
   "q" 'delete-window
   "s" 'sort-lines
