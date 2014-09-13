@@ -490,7 +490,16 @@
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Make yasnippet and autocomplete work together on Emacs
+;; http://truongtx.me/2013/01/06/config-yasnippet-and-autocomplete-on-emacs/
+
+;; yasnippet
+;; should be loaded before auto-complete so that they can work together
+(require 'yasnippet)
+(yas-global-mode 1)
+
 ;; auto-complete
+;; should be loaded after yasnippet so that they can work together
 (require 'auto-complete-config)
 (ac-config-default)
 (setq ac-use-fuzzy t)
@@ -498,10 +507,6 @@
 ;; smartparens
 (smartparens-global-mode 1)
 (require 'smartparens-config) ;; the default configuration
-
-;; yasnippet
-(require 'yasnippet)
-(yas-global-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
