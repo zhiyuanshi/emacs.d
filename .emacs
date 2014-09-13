@@ -89,6 +89,7 @@
     ac-js2
     coffee-mode
     js2-mode
+    js2-refactor
     slime
     slime-js
 
@@ -622,6 +623,10 @@
 (add-hook 'js2-mode-hook 'js2-imenu-extras-mode)
 (add-hook 'js2-mode-hook 'rainbow-delimiters-mode)
   ;; Javascript nests {} and () a lot, so I find this helpful
+
+;; js2-refactor
+(require 'js2-refactor)
+(js2r-add-keybindings-with-prefix "C-c C-m")
 
 ;; swank-js
 (add-hook 'js2-mode-hook (lambda ()
