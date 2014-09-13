@@ -380,6 +380,11 @@
 (windmove-default-keybindings 'ctrl)
 (setq framemove-hook-into-windmove t)
 
+;; helm
+;; http://tuhdo.github.io/helm-intro.html
+(require 'helm-config)
+(helm-mode 1)
+
 ;; popwin
 (require 'popwin)
 (popwin-mode 1)
