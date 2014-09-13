@@ -303,8 +303,6 @@
   "d" 'dired-jump
   "e" 'ido-find-file
   "f" 'projectile-find-file
-  "j" 'ace-jump-char-mode
-  "J" 'ace-jump-mode-pop-mark
   "k" 'kill-this-buffer
   "m" 'helm-imenu
   "p" 'projectile-switch-project
@@ -332,6 +330,12 @@
 
 (global-set-key (kbd "C-x 4 u") 'winner-undo)
 (global-set-key (kbd "C-x 4 r") 'winner-redo)
+
+(define-key evil-normal-state-map (kbd "\\") 'ace-jump-char-mode)
+(define-key evil-visual-state-map (kbd "\\") 'ace-jump-char-mode)
+
+(define-key evil-normal-state-map (kbd "|") 'ace-jump-mode-pop-mark)
+(define-key evil-visual-state-map (kbd "|") 'ace-jump-mode-pop-mark)
 
 (global-set-key (kbd "C-'") 'er/expand-region)
 (global-set-key (kbd "C-\"") 'er/contract-region)
