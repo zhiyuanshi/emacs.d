@@ -84,10 +84,14 @@
     ruby-hash-syntax
     yari
 
-    ;; Web
+    ;; JavaScript
     ac-js2
     coffee-mode
     js2-mode
+    slime
+    slime-js
+
+    ;; Web
     less-css-mode
     projectile-rails
     rainbow-delimiters
@@ -96,8 +100,6 @@
     rspec-mode
     sass-mode
     scss-mode
-    slime
-    slime-js
     web-mode
 
     ;; Markup languages (Markdown, LaTeX, etc.)
@@ -586,7 +588,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-;;              Web
+;;              JavaScript
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -615,6 +617,16 @@
 (add-hook 'js2-mode-hook 'rainbow-delimiters-mode)
   ;; Javascript nests {} and () a lot, so I find this helpful
 
+;; swank-js
+(add-hook 'js2-mode-hook (lambda ()
+  (slime-js-minor-mode 1)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;              Web
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; projectile-rails
 (add-hook 'projectile-mode-hook 'projectile-rails-on)
 
@@ -628,10 +640,6 @@
 ;; rspec-mode
 (eval-after-load 'rspec-mode
  '(rspec-install-snippets))
-
-;; swank-js
-(add-hook 'js2-mode-hook (lambda ()
-  (slime-js-minor-mode 1)))
 
 ;; web-mode
 
