@@ -613,6 +613,9 @@
 ;; https://github.com/swank-js/swank-js
 (autoload 'js2-mode "js2-mode" nil t)
 
+;; http://truongtx.me/2014/02/23/set-up-javascript-development-environment-in-emacs/
+(setq js2-highlight-level 3)
+
 ;; https://github.com/lunaryorn/.emacs.d/blob/master/init.el
 (setq-default js2-basic-offset 2)
 
