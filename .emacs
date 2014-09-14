@@ -33,7 +33,7 @@
     popwin
     smex
     smooth-scrolling
-    winner-mode
+    ;; winner-mode
     zlc ;; Zsh like completion system for Emacs
 
     ;; Text editing
@@ -329,8 +329,8 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-(global-set-key (kbd "C-x 4 u") 'winner-undo)
-(global-set-key (kbd "C-x 4 r") 'winner-redo)
+;; (global-set-key (kbd "C-x 4 u") 'winner-undo)
+;; (global-set-key (kbd "C-x 4 r") 'winner-redo)
 
 (define-key evil-normal-state-map (kbd "\\") 'ace-jump-char-mode)
 (define-key evil-visual-state-map (kbd "\\") 'ace-jump-char-mode)
@@ -403,8 +403,8 @@
 ;; Keep cursor away from edges when scrolling up/down
 (require 'smooth-scrolling)
 
-;;; winner-mode
-(winner-mode 1)
+;; winner-mode
+;; (winner-mode 1)
 
 ;; zlc
 (require 'zlc)
