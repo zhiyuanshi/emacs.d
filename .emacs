@@ -306,8 +306,8 @@
   "d" 'dired-jump
   "e" 'ido-find-file
   "f" 'projectile-find-file
+  "i" 'helm-imenu
   "k" 'kill-this-buffer
-  "m" 'helm-imenu
   "p" 'projectile-switch-project
   "q" 'delete-window
   "s" 'sort-lines
