@@ -28,6 +28,7 @@
     discover-my-major
     flx-ido
     framemove
+    fuzzy
     grizzl
     helm
     popwin
