@@ -94,6 +94,8 @@
     js2-refactor
     slime
     slime-js
+    tern
+    tern-auto-complete
 
     ;; Web
     less-css-mode
@@ -365,6 +367,10 @@
 ;; A remedy for the default keybinding M-. being overwritten by Evil mode
 (after-load 'robe
   (define-key robe-mode-map (kbd "C-c C-j") 'robe-jump))
+
+(after-load 'tern
+  (define-key tern-mode-keymap (kbd "C-c C-j") 'tern-find-definition)
+  (define-key tern-mode-keymap (kbd "C-c C-k") 'tern-pop-find-definition))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -665,6 +671,24 @@
 ;; swank-js
 (add-hook 'js2-mode-hook (lambda ()
   (slime-js-minor-mode 1)))
+
+;; tern
+(add-hook 'js2-mode-hook (lambda ()
+  (tern-mode t)))
+
+(eval-after-load 'tern
+  '(progn
+     (require 'tern-auto-complete)
+     (tern-ac-setup)))
+
+;; Sometimes when you have just added .tern-project file or edit the
+;; file but Tern does not auto reload, you need to manually kill
+;; Tern server. This little piece of code does the trick.
+;;
+;; http://truongtx.me/2014/04/20/emacs-javascript-completion-and-refactoring/
+(defun delete-tern-process ()
+  (interactive)
+  (delete-process "Tern"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
