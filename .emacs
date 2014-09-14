@@ -410,7 +410,7 @@
 (require 'zlc)
 (zlc-mode t)
 
-(let (map minibuffer-local-map)
+(let ((map minibuffer-local-map))
   ;; like menu select
   (define-key map (kbd "<down>")  'zlc-select-next-vertical)
   (define-key map (kbd "<up>")    'zlc-select-previous-vertical)
