@@ -341,8 +341,8 @@
 (define-key evil-normal-state-map (kbd "|") 'ace-jump-mode-pop-mark)
 (define-key evil-visual-state-map (kbd "|") 'ace-jump-mode-pop-mark)
 
-(global-set-key (kbd "C-'") 'er/expand-region)
-(global-set-key (kbd "C-\"") 'er/contract-region)
+(global-set-key (kbd "C-`") 'er/expand-region)
+(global-set-key (kbd "C-~") 'er/contract-region)
 
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
