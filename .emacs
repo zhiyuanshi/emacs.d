@@ -111,6 +111,7 @@
 
     ;; Markup languages (Markdown, LaTeX, etc.)
     auctex
+    auto-complete-auctex
     pandoc-mode
     ))
 
@@ -728,6 +729,11 @@
 ;;              Markup languages (Markdown, LaTeX, etc.)
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; auctex
+(setq-default TeX-PDF-mode t)
+
+(require 'auto-complete-auctex)
 
 ;; pandoc-mode
 (add-hook 'markdown-mode-hook 'turn-on-pandoc)
