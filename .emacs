@@ -173,8 +173,9 @@
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
 
-;; Use normal tabs in makefiles
+;; Use normal tabs and display each tab as 8 spaces in Makefiles
 (add-hook 'makefile-mode-hook 'indent-tabs-mode)
+(add-hook 'makefile-mode-hook (lambda () (setq tab-width 8)))
 
 ;; Truncate lines and don't use word-wrapping for code, but do the opposites for text.
 (add-hook 'text-mode-hook (lambda ()
