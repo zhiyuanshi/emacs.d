@@ -67,6 +67,7 @@
     ;; Color themes
     base16-theme
     color-theme-solarized ;; Replace bbatsov's version due to its unpleasant Ruby syntax highlighting
+    zenburn-theme
 
     ;; Git
     git-messenger
@@ -135,7 +136,7 @@
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-15"))
 
-(load-theme 'tango t)
+(load-theme 'zenburn t)
 
 (menu-bar-mode 1)
 (tool-bar-mode 0)
