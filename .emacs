@@ -136,7 +136,7 @@
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-15"))
 
-(load-theme 'zenburn t)
+(load-theme 'base16-eighties t)
 
 (menu-bar-mode 1)
 (tool-bar-mode 0)
@@ -180,8 +180,7 @@
 
 ;; Truncate lines and don't use word-wrapping for code, but do the opposites for text.
 (add-hook 'text-mode-hook (lambda ()
-  (setq truncate-lines nil
-        word-wrap t)))
+  (visual-line-mode 1)))
 
 (add-hook 'prog-mode-hook (lambda ()
   (setq truncate-lines t
