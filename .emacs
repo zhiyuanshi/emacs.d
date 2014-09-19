@@ -87,6 +87,7 @@
     inf-ruby
     robe
     ruby-hash-syntax
+    yard-mode
     yari
 
     ;; JavaScript
@@ -136,7 +137,7 @@
 (add-to-list 'default-frame-alist '(height . 45))
 (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-15"))
 
-(load-theme 'solarized-light t)
+(load-theme 'tango t)
 
 (menu-bar-mode 1)
 (tool-bar-mode 0)
@@ -632,6 +633,9 @@
 ;; robe
 (add-hook 'ruby-mode-hook 'robe-mode)
 (add-hook 'robe-mode-hook 'ac-robe-setup)
+
+;; yard-mode
+(add-hook 'ruby-mode-hook 'yard-mode)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
