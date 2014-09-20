@@ -25,6 +25,7 @@
   '(
     ;; Sane defaults
     anzu
+    dired-details+
     discover-my-major
     flx-ido
     framemove
@@ -390,6 +391,9 @@
 (require 'anzu)
 (diminish 'anzu-mode)
 (global-anzu-mode +1)
+
+;; dired-details+
+(require 'dired-details+)
 
 ;; flx-ido
 (require 'flx-ido)
