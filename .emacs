@@ -312,7 +312,7 @@
 (evil-leader/set-key
   "a" 'mark-whole-buffer
   "b" 'ido-switch-buffer
-  "d" 'dired-jump
+  "d" 'dired-jump-other-window
   "e" 'ido-find-file
   "f" 'projectile-find-file
   "i" 'imenu-anywhere
