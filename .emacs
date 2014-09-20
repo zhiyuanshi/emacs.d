@@ -312,7 +312,7 @@
   "d" 'dired-jump
   "e" 'ido-find-file
   "f" 'projectile-find-file
-  "i" 'helm-imenu
+  "i" 'imenu-anywhere
   "k" 'kill-this-buffer
   "p" 'projectile-switch-project
   "q" 'delete-window
