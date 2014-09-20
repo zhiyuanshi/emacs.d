@@ -413,6 +413,12 @@
 (require 'ido-ubiquitous)
 (ido-ubiquitous-mode 1)
 
+;; saveplace
+;; Save point position between sessions
+(require 'saveplace)
+(setq-default save-place t)
+(setq save-place-file (expand-file-name ".places" user-emacs-directory))
+
 ;; popwin
 (require 'popwin)
 (popwin-mode 1)
