@@ -74,6 +74,7 @@
     git-messenger
     github-browse-file
     magit
+    monky
 
     ;; Haskell
     flycheck-haskell
