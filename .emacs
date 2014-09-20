@@ -405,7 +405,7 @@
 ;; helm
 ;; http://tuhdo.github.io/helm-intro.html
 (require 'helm-config)
-(helm-mode 1)
+;; (helm-mode 1)
 
 ;; popwin
 (require 'popwin)
