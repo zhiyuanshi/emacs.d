@@ -3,12 +3,6 @@
 	email = zhiyuanshi@users.noreply.github.com
 [credential]
 	helper = cache --timeout=864000
-[giggle]
-	main-window-maximized = true
-	main-window-geometry = 700x550+475+228
-	main-window-view = HistoryView
-	history-view-vpane-position = 607
-	file-view-vpane-position = 975
 [branch]
 	autosetuprebase = always
 [push]
