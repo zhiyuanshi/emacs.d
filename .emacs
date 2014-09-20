@@ -31,6 +31,7 @@
     fuzzy
     grizzl
     helm
+    ido-ubiquitous
     popwin
     smex
     smooth-scrolling
@@ -406,6 +407,10 @@
 ;; http://tuhdo.github.io/helm-intro.html
 (require 'helm-config)
 ;; (helm-mode 1)
+
+;; ido-ubiquitous
+(require 'ido-ubiquitous)
+(ido-ubiquitous-mode 1)
 
 ;; popwin
 (require 'popwin)
