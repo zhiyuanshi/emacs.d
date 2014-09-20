@@ -67,6 +67,7 @@
     ;; Color themes
     base16-theme
     color-theme-solarized ;; Replace bbatsov's version due to its unpleasant Ruby syntax highlighting
+    smart-mode-line
     zenburn-theme
 
     ;; Git
@@ -532,6 +533,16 @@
 ;; smartparens
 (smartparens-global-mode 1)
 (require 'smartparens-config) ;; the default configuration
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;              Color themes
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; smart-mode-line
+(setq sml/no-confirm-load-theme t)
+(sml/setup)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
