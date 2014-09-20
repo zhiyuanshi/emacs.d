@@ -4,8 +4,8 @@
 [credential]
 	helper = cache --timeout=864000
 [branch]
-	autosetuprebase = always
+	autosetuprebase = never
 [push]
 	default = simple
 [core]
-	editor = emacsclient --create-frame --no-wait --alternate-editor=\"\"
+	editor = emacsclient --create-frame --no-wait --alternate-editor=''
