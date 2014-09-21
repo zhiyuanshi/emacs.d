@@ -45,7 +45,8 @@ else
   export EDITOR="$EMACSCLIENT"
 fi
 
-export CODE="$HOME/Dropbox/Code"
+export DROPBOX="$HOME/Dropbox"
+export CODE="$DROPBOX/Code"
 export DOTFILES="$CODE/dotfiles"
 export SCRIPTS="$CODE/scripts"
 
