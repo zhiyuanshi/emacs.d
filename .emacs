@@ -78,6 +78,10 @@
     magit
     monky
 
+    ;; OCaml
+    tuareg
+    utop
+
     ;; Haskell
     flycheck-haskell
     haskell-mode
@@ -569,6 +573,18 @@
 
 ;; git-messenger
 (setq git-messenger:show-detail t) ;; Always show detail message
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;;              OCaml
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; tuareg
+;; https://github.com/diml/utop#integration-with-the-tuaregtyperex-mode
+(autoload 'utop-setup-ocaml-buffer "utop" "Toplevel for OCaml" t)
+(add-hook 'tuareg-mode-hook 'utop-setup-ocaml-buffer)
+(add-hook 'typerex-mode-hook 'utop-setup-ocaml-buffer)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
