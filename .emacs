@@ -321,10 +321,13 @@
   "f" 'projectile-find-file
   "i" 'imenu-anywhere
   "k" 'kill-this-buffer
+  "n" 'make-frame-command
   "p" 'projectile-switch-project
   "q" 'delete-window
-  "s" 'sort-lines
+  "s" 'evil-window-split
+  "v" 'evil-window-vsplit
   "w" 'save-buffer
+  "x" 'delete-frame
   "/" 'ag-regexp
   "=" 'align-regexp
   "?" 'git-messenger:popup-message
