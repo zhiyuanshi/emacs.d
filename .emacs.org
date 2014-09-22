@@ -17,17 +17,6 @@ Common Lisp goodies, e.g., loop
 #+END_SRC
 
 * Packages
-** Set up package manager
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(require 'package)
-
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-
-(package-initialize)
-#+END_SRC
-
 ** Define my packages
 
 #+BEGIN_SRC emacs-lisp :tangle yes
@@ -106,6 +95,16 @@ Common Lisp goodies, e.g., loop
     zenburn-theme
     zlc ;; Zsh like completion system for Emacs
     ))
+#+END_SRC
+** Set up package manager
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(require 'package)
+
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+(package-initialize)
 #+END_SRC
 
 ** Install missing packages

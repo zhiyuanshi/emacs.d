@@ -1,13 +1,6 @@
 
 (require 'cl)
 
-(require 'package)
-
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-
-(package-initialize)
-
 (defvar my-packages
   '(
     ;; winner-mode
@@ -83,6 +76,13 @@
     zenburn-theme
     zlc ;; Zsh like completion system for Emacs
     ))
+
+(require 'package)
+
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+(package-initialize)
 
 (defun my-packages-installed-p ()
   (every #'package-installed-p my-packages))
