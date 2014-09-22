@@ -321,6 +321,7 @@
   "f" 'projectile-find-file
   "i" 'imenu-anywhere
   "k" 'kill-this-buffer
+  "m" 'delete-other-windows
   "n" 'make-frame-command
   "p" 'projectile-switch-project
   "q" 'delete-window
@@ -624,7 +625,7 @@
 (add-hook 'haskell-mode-hook 'structured-haskell-mode)
 (set-face-background 'shm-current-face "#eee8d5")
 (set-face-background 'shm-quarantine-face "lemonchiffon")
-(setq shm-idle-timeout 0)
+;; (setq shm-idle-timeout 0)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
