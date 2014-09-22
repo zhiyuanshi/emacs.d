@@ -10,7 +10,6 @@
 
 (defvar my-packages
   '(
-    ;; Sane defaults
     anzu
     dired-details+
     discover-my-major
@@ -26,68 +25,42 @@
     smooth-scrolling
     ;; winner-mode
     zlc ;; Zsh like completion system for Emacs
-
-    ;; Text editing
     ace-jump-mode
     expand-region
     multiple-cursors
-
-    ;; Evil mode
     evil
     evil-leader
     evil-nerd-commenter
     evil-surround
-
-    ;; File system browser
     dired+
-
-    ;; Go to anything
     ag
     imenu-anywhere
     projectile
-
-    ;; Syntax checking
     flycheck
-
-    ;; Auto-completion & snippets
     auto-complete
     smartparens
     yasnippet
-
-    ;; Color themes
     base16-theme
     color-theme-solarized ;; Replace bbatsov's version due to its unpleasant Ruby syntax highlighting
     smart-mode-line
     zenburn-theme
-
-    ;; Git
     git-messenger
     github-browse-file
     magit
     monky
-
-    ;; OCaml
     tuareg
     utop
-
-    ;; Haskell
     ac-haskell-process
     flycheck-haskell
     haskell-mode
     shm
-
-    ;; Dependently typed functional programming languages
     idris-mode
-
-    ;; Ruby
     ac-inf-ruby
     inf-ruby
     robe
     ruby-hash-syntax
     yard-mode
     yari
-
-    ;; JavaScript
     ac-js2
     coffee-mode
     js2-mode
@@ -96,8 +69,6 @@
     slime-js
     tern
     tern-auto-complete
-
-    ;; Web
     less-css-mode
     projectile-rails
     rainbow-delimiters
@@ -107,8 +78,6 @@
     sass-mode
     scss-mode
     web-mode
-
-    ;; Markup languages (Markdown, LaTeX, etc.)
     auctex
     auto-complete-auctex
     org
