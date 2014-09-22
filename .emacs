@@ -651,6 +651,11 @@
 (set-face-background 'shm-quarantine-face "lemonchiffon")
 ;; (setq shm-idle-timeout 0)
 
+;; From purcell
+(dolist (hook '(haskell-mode-hook inferior-haskell-mode-hook haskell-interactive-mode-hook))
+  (add-hook hook 'turn-on-haskell-doc-mode)
+  (add-hook hook (lambda () (subword-mode +1))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;              Dependently typed functional programming languages
