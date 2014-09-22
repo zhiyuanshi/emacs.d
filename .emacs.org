@@ -249,7 +249,7 @@ https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdispl
 (defun zhiyuan/config-emacs ()
   "Open my .emacs.org."
   (interactive)
-  (find-file "~/Dropbox/Code/dotfiles/.emacs.org"))
+  (find-file (expand-file-name ".emacs.org" (getenv "DOTFILES"))))
 #+END_SRC
 
 ** Misc

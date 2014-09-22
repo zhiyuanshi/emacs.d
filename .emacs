@@ -200,7 +200,7 @@
 (defun zhiyuan/config-emacs ()
   "Open my .emacs.org."
   (interactive)
-  (find-file "~/Dropbox/Code/dotfiles/.emacs.org"))
+  (find-file (expand-file-name ".emacs.org" (getenv "DOTFILES"))))
 
 ;; Save the state of Emacs from one session to another
 ;; http://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Emacs-Sessions.html
