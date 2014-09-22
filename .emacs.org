@@ -1,4 +1,14 @@
+#+BABEL: :cache yes
+
 .emacs
+
+Evaluate the following piece of code every time you've made change to this file.
+
+#+BEGIN_SRC emacs-lisp :tangle no
+(org-babel-tangle)
+(rename-file ".emacs.el" ".emacs" t)
+(copy-file ".emacs" "~/.emacs" t)
+#+END_SRC
 
 Common Lisp goodies, e.g., loop
 

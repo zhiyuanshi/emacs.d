@@ -1,17 +1,5 @@
-;;; .emacs --- an idempotent .emacs for immediate deployment
 
-;;; Commentary:
-
-;;; Code:
-
-;; common Lisp goodies, loop
 (require 'cl)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Packages
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'package)
 
@@ -20,13 +8,13 @@
 
 (package-initialize)
 
-;; Install extensions if they're missing
 (defvar my-packages
   '(
     ;; Sane defaults
     anzu
     dired-details+
     discover-my-major
+    fic-mode
     flx-ido
     framemove
     fuzzy
@@ -123,6 +111,7 @@
     ;; Markup languages (Markdown, LaTeX, etc.)
     auctex
     auto-complete-auctex
+    org
     pandoc-mode
     ))
 
@@ -134,12 +123,6 @@
   (dolist (p my-packages)
     (when (not (package-installed-p p))
       (package-install p))))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Appearance
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Frame-Parameters.html
 (add-to-list 'default-frame-alist '(width  . 100))
@@ -175,12 +158,6 @@
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Text styling
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;; Tabs
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
@@ -210,25 +187,11 @@
 ;; Show me empty lines after buffer end
 (set-default 'indicate-empty-lines t)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Encoding
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; UTF-8 please
-;; https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdisplaynicely
 (setq locale-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8-unix)
 (set-keyboard-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Custom definitions
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
 (defmacro after-load (feature &rest body)
@@ -265,12 +228,6 @@
   (interactive)
   (text-scale-set 0))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Misc
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;; Save the state of Emacs from one session to another
 ;; http://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Emacs-Sessions.html
 (desktop-save-mode 1)
@@ -302,12 +259,6 @@
 ;; that you can always see what's happening.
 (setq eval-expression-print-level nil)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Key bindings
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;; evil-leader
 
 ;; Note: You should enable global-evil-leader-mode before you enable evil-mode,
@@ -327,6 +278,7 @@
   "n" 'make-frame-command
   "p" 'projectile-switch-project
   "q" 'delete-window
+  "r" 'projectile-recentf
   "s" 'evil-window-split
   "v" 'evil-window-vsplit
   "w" 'save-buffer
@@ -389,12 +341,6 @@
   (define-key tern-mode-keymap (kbd "C-c C-j") 'tern-find-definition)
   (define-key tern-mode-keymap (kbd "C-c C-k") 'tern-pop-find-definition))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Sane defaults
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;; anzu
 (require 'anzu)
 (diminish 'anzu-mode)
@@ -405,6 +351,10 @@
 
 ;; dired-details+
 (require 'dired-details+)
+
+;; fic-mode
+(require 'fic-mode)
+(add-hook 'prog-mode-hook 'fic-mode)
 
 ;; flx-ido
 (require 'flx-ido)
@@ -459,12 +409,6 @@
   ;; reset selection
   (define-key map (kbd "C-c") 'zlc-reset))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Text editing
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;; ace-jump-mode
 ;; Enable a more powerful jump back function from ace jump mode
 (autoload
@@ -484,12 +428,6 @@
 ;; multiple-cursors
 (require 'multiple-cursors)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Evil mode
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;; evil
 (require 'evil)
 (evil-mode 1)
@@ -501,21 +439,9 @@
 (require 'evil-surround)
 (global-evil-surround-mode 1)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              File system browser
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;; dired+
 (require 'dired+)
 (diredp-toggle-find-file-reuse-dir 1)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Go to anything
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; ag
 (setq ag-highlight-search t)
@@ -529,20 +455,12 @@
 (projectile-global-mode)
 (setq projectile-completion-system 'grizzl)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Syntax checking
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; recentf
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
 
-;; flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Auto-completion & snippets
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Make yasnippet and autocomplete work together on Emacs
 ;; http://truongtx.me/2013/01/06/config-yasnippet-and-autocomplete-on-emacs/
@@ -562,44 +480,14 @@
 (smartparens-global-mode 1)
 (require 'smartparens-config) ;; the default configuration
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Color themes
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; smart-mode-line
 (setq sml/no-confirm-load-theme t)
 (sml/setup)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Git
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; git-messenger
 (setq git-messenger:show-detail t) ;; Always show detail message
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              OCaml
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; tuareg
-;; https://github.com/diml/utop#integration-with-the-tuaregtyperex-mode
 (autoload 'utop-setup-ocaml-buffer "utop" "Toplevel for OCaml" t)
 (add-hook 'tuareg-mode-hook 'utop-setup-ocaml-buffer)
 (add-hook 'typerex-mode-hook 'utop-setup-ocaml-buffer)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Haskell
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; ac-haskell-process
 
 ;; To enable the completion source this, put the following code in your emacs
 ;; init file:
@@ -622,8 +510,6 @@
 (eval-after-load 'haskell-mode
   '(define-key haskell-mode-map (kbd "C-c C-d") 'ac-haskell-process-popup-doc))
 
-;; haskell-mode
-
 ;; (add-hook 'haskell-mode-hook
 ;;   (lambda () (set-input-method "TeX")))
 
@@ -642,10 +528,8 @@
 (customize-set-variable 'haskell-process-suggest-remove-import-lines t)
 (customize-set-variable 'haskell-process-type 'cabal-repl)
 
-;; flycheck-haskell
 (add-hook 'flycheck-mode-hook #'flycheck-haskell-setup)
 
-;; structured-haskell-mode
 (require 'shm)
 (require 'shm-case-split)
 (add-hook 'haskell-mode-hook 'structured-haskell-mode)
@@ -653,28 +537,10 @@
 (set-face-background 'shm-quarantine-face "lemonchiffon")
 ;; (setq shm-idle-timeout 0)
 
-;; From purcell
 (dolist (hook '(haskell-mode-hook inferior-haskell-mode-hook haskell-interactive-mode-hook))
   (add-hook hook 'turn-on-haskell-doc-mode)
   (add-hook hook (lambda () (subword-mode +1))))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Dependently typed functional programming languages
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; idris-mode
-
-;; proof-general
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Ruby
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; ruby-mode
 ;; Rake files are ruby, too, as are gemspecs, rackup files, and gemfiles.
 (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
@@ -709,30 +575,18 @@
 (eval-after-load 'inf-ruby
   '(define-key inf-ruby-mode-map (kbd "TAB") 'auto-complete))
 
-;; robe
 (add-hook 'ruby-mode-hook 'robe-mode)
 (add-hook 'robe-mode-hook 'ac-robe-setup)
 
-;; yard-mode
 (add-hook 'ruby-mode-hook 'yard-mode)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              JavaScript
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; ac-js2
 (add-hook 'js2-mode-hook 'ac-js2-mode)
 
-;; coffee-mode
 (require 'coffee-mode)
 (customize-set-variable 'coffee-tab-width 2)
 
-;; js-mode
 (setq js-indent-level 2)
 
-;; js2-mode
 ;; https://github.com/swank-js/swank-js
 (autoload 'js2-mode "js2-mode" nil t)
 
@@ -754,11 +608,9 @@
 (require 'js2-refactor)
 (js2r-add-keybindings-with-prefix "C-c C-m")
 
-;; swank-js
 (add-hook 'js2-mode-hook (lambda ()
   (slime-js-minor-mode 1)))
 
-;; tern
 (add-hook 'js2-mode-hook (lambda ()
   (tern-mode t)))
 
@@ -776,27 +628,15 @@
   (interactive)
   (delete-process "Tern"))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Web
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; projectile-rails
 (add-hook 'projectile-mode-hook 'projectile-rails-on)
 
-;; rainbow-mode
 (add-hook 'css-mode-hook 'rainbow-mode)
 
-;; rinari
 (require 'rinari)
 (global-rinari-mode)
 
-;; rspec-mode
 (eval-after-load 'rspec-mode
  '(rspec-install-snippets))
-
-;; web-mode
 
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -808,27 +648,13 @@
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Markup languages (Markdown, LaTeX, etc.)
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 (add-to-list 'auto-mode-alist '("\\.\\(md\\|markdown\\)\\'" . markdown-mode))
 
-;; auctex
 (setq-default TeX-PDF-mode t)
 
 (require 'auto-complete-auctex)
 
-;; pandoc-mode
 (add-hook 'markdown-mode-hook 'turn-on-pandoc)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-;;              Custom-set-variables
-;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (custom-set-variables
   ;; Treat solarized-light as safe
@@ -841,4 +667,3 @@
   )
 
 (provide '.emacs)
-;;; .emacs ends here
