@@ -5,8 +5,10 @@
 Evaluate the following piece of code every time you've made change to this file.
 
 #+BEGIN_SRC emacs-lisp :tangle no
+(save-buffer)
 (org-babel-tangle)
-(rename-file ".emacs.el" ".emacs" t)
+(rename-file ".emacs.el" ".emacs" t) ;; TODO: We could have directly export to .emacs!
+(load-file ".emacs") ;; Load first so that in case the new version is broken, it probably won't be copied to home.
 (copy-file ".emacs" "~/.emacs" t)
 #+END_SRC
 

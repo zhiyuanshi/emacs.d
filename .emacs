@@ -197,6 +197,11 @@
   (interactive)
   (text-scale-set 0))
 
+(defun zhiyuan/config-emacs ()
+  "Open my .emacs.org."
+  (interactive)
+  (find-file "~/Dropbox/Code/dotfiles/.emacs.org"))
+
 ;; Save the state of Emacs from one session to another
 ;; http://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Emacs-Sessions.html
 (desktop-save-mode 1)
@@ -237,6 +242,7 @@
 (evil-leader/set-key
   "a" 'mark-whole-buffer
   "b" 'ido-switch-buffer
+  "c" 'zhiyuan/config-emacs
   "d" 'dired-jump-other-window
   "e" 'ido-find-file
   "f" 'projectile-find-file
