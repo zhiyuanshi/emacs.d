@@ -18,7 +18,7 @@ Common Lisp goodies, e.g., loop
 (package-initialize)
 #+END_SRC
 
-** My packages
+** Define my packages
 
 #+BEGIN_SRC emacs-lisp :tangle yes
 (defvar my-packages
@@ -128,7 +128,7 @@ Common Lisp goodies, e.g., loop
     ))
 #+END_SRC
 
-** Install packages if they're missing
+** Install missing package
 
 #+BEGIN_SRC emacs-lisp :tangle yes
 (defun my-packages-installed-p ()
