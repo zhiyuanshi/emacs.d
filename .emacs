@@ -599,13 +599,15 @@
 
 ;; ac-haskell-process
 
-;; To enable the completion source this, put the following code in your emacs init file:
+;; To enable the completion source this, put the following code in your emacs
+;; init file:
 (add-hook 'interactive-haskell-mode-hook 'ac-haskell-process-setup)
 (add-hook 'haskell-interactive-mode-hook 'ac-haskell-process-setup)
 (eval-after-load "auto-complete"
   '(add-to-list 'ac-modes 'haskell-interactive-mode))
 
-;; If you want to trigger auto-complete using TAB in REPL buffers, you may want to put auto-complete into your completion-at-point-functions:
+;; If you want to trigger auto-complete using TAB in REPL buffers, you may want
+;; to put auto-complete into your completion-at-point-functions:
 (defun set-auto-complete-as-completion-at-point-function ()
   (add-to-list 'completion-at-point-functions 'auto-complete))
 (add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
@@ -613,7 +615,8 @@
 (add-hook 'haskell-interactive-mode-hook 'set-auto-complete-as-completion-at-point-function)
 (add-hook 'haskell-mode-hook 'set-auto-complete-as-completion-at-point-function)
 
-;; You can use ac-haskell-process-popup-doc to pop up documentation for the symbol at point:
+;; You can use ac-haskell-process-popup-doc to pop up documentation for the
+;; symbol at point:
 (eval-after-load 'haskell-mode
   '(define-key haskell-mode-map (kbd "C-c C-d") 'ac-haskell-process-popup-doc))
 
