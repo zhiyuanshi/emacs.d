@@ -128,7 +128,7 @@ Common Lisp goodies, e.g., loop
     ))
 #+END_SRC
 
-** Install missing package
+** Install missing packages
 
 #+BEGIN_SRC emacs-lisp :tangle yes
 (defun my-packages-installed-p ()
@@ -322,6 +322,7 @@ https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdispl
   "n" 'make-frame-command
   "p" 'projectile-switch-project
   "q" 'delete-window
+  "r" 'projectile-recentf
   "s" 'evil-window-split
   "v" 'evil-window-vsplit
   "w" 'save-buffer
@@ -513,6 +514,11 @@ https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdispl
 ;; projectile
 (projectile-global-mode)
 (setq projectile-completion-system 'grizzl)
+
+;; recentf
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
 #+END_SRC
 
 ** Flycheck
