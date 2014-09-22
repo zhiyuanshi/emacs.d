@@ -10,78 +10,78 @@
 
 (defvar my-packages
   '(
+    ;; winner-mode
+    ac-haskell-process
+    ac-inf-ruby
+    ac-js2
+    ace-jump-mode
+    ag
     anzu
+    auctex
+    auto-complete
+    auto-complete-auctex
+    base16-theme
+    coffee-mode
+    color-theme-solarized ;; Replace bbatsov's version due to its unpleasant Ruby syntax highlighting
+    dired+
     dired-details+
     discover-my-major
-    fic-mode
-    flx-ido
-    framemove
-    fuzzy
-    grizzl
-    helm
-    ido-ubiquitous
-    popwin
-    smex
-    smooth-scrolling
-    ;; winner-mode
-    zlc ;; Zsh like completion system for Emacs
-    ace-jump-mode
-    expand-region
-    multiple-cursors
     evil
     evil-leader
     evil-nerd-commenter
     evil-surround
-    dired+
-    ag
-    imenu-anywhere
-    projectile
+    expand-region
+    fic-mode
+    flx-ido
     flycheck
-    auto-complete
-    smartparens
-    yasnippet
-    base16-theme
-    color-theme-solarized ;; Replace bbatsov's version due to its unpleasant Ruby syntax highlighting
-    smart-mode-line
-    zenburn-theme
+    flycheck-haskell
+    framemove
+    fuzzy
     git-messenger
     github-browse-file
-    magit
-    monky
-    tuareg
-    utop
-    ac-haskell-process
-    flycheck-haskell
+    grizzl
     haskell-mode
-    shm
+    helm
+    ido-ubiquitous
     idris-mode
-    ac-inf-ruby
+    imenu-anywhere
     inf-ruby
-    robe
-    ruby-hash-syntax
-    yard-mode
-    yari
-    ac-js2
-    coffee-mode
     js2-mode
     js2-refactor
-    slime
-    slime-js
-    tern
-    tern-auto-complete
     less-css-mode
+    magit
+    monky
+    multiple-cursors
+    org
+    pandoc-mode
+    popwin
+    projectile
     projectile-rails
     rainbow-delimiters
     rainbow-mode
     rinari
+    robe
     rspec-mode
+    ruby-hash-syntax
     sass-mode
     scss-mode
+    shm
+    slime
+    slime-js
+    smart-mode-line
+    smartparens
+    smex
+    smooth-scrolling
+    tern
+    tern-auto-complete
+    tuareg
+    utop
     web-mode
-    auctex
-    auto-complete-auctex
-    org
-    pandoc-mode
+    yard-mode
+    yari
+    yasnippet
+    zenburn-theme
+    zlc ;; Zsh like completion system for Emacs
     ))
 
 (defun my-packages-installed-p ()
