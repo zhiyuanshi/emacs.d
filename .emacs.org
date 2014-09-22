@@ -27,6 +27,7 @@ Common Lisp goodies, e.g., loop
     anzu
     dired-details+
     discover-my-major
+    fic-mode
     flx-ido
     framemove
     fuzzy
@@ -399,6 +400,10 @@ https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdispl
 
 ;; dired-details+
 (require 'dired-details+)
+
+;; fic-mode
+(require 'fic-mode)
+(add-hook 'prog-mode-hook 'fic-mode)
 
 ;; flx-ido
 (require 'flx-ido)
