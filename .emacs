@@ -401,6 +401,9 @@
 (diminish 'anzu-mode)
 (global-anzu-mode +1)
 
+;; dired
+(setq-default dired-dwim-target t)
+
 ;; dired-details+
 (require 'dired-details+)
 
