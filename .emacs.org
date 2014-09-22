@@ -1,22 +1,25 @@
-;;; .emacs --- an idempotent .emacs for immediate deployment
+.emacs
 
-;;; Commentary:
+Common Lisp goodies, e.g., loop
 
-;;; Code:
-
-;; common Lisp goodies, loop
+#+BEGIN_SRC emacs-lisp :tangle yes
 (require 'cl)
+#+END_SRC
 
 * Packages
 
+#+BEGIN_SRC emacs-lisp :tangle yes
 (require 'package)
 
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 (package-initialize)
+#+END_SRC
 
-;; Install extensions if they're missing
+Install extensions if they're missing
+
+#+BEGIN_SRC emacs-lisp :tangle yes
 (defvar my-packages
   '(
     ;; Sane defaults
@@ -131,9 +134,11 @@
   (dolist (p my-packages)
     (when (not (package-installed-p p))
       (package-install p))))
+#+END_SRC
 
 * Appearance
 
+#+BEGIN_SRC emacs-lisp :tangle yes
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Frame-Parameters.html
 (add-to-list 'default-frame-alist '(width  . 100))
 (add-to-list 'default-frame-alist '(height . 45))
@@ -167,9 +172,11 @@
 
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
+#+END_SRC
 
 * Text styling
 
+#+BEGIN_SRC emacs-lisp :tangle yes
 ;; Tabs
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
@@ -198,19 +205,24 @@
 
 ;; Show me empty lines after buffer end
 (set-default 'indicate-empty-lines t)
+#+END_SRC
 
 * Encoding
 
-;; UTF-8 please
-;; https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdisplaynicely
+UTF-8 please
+https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdisplaynicely
+
+#+BEGIN_SRC emacs-lisp :tangle yes
 (setq locale-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8-unix)
 (set-keyboard-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
+#+END_SRC
 
 * Custom definitions
 
+#+BEGIN_SRC emacs-lisp :tangle yes
 ;; https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
 (defmacro after-load (feature &rest body)
   "After FEATURE is loaded, evaluate BODY."
@@ -245,9 +257,11 @@
   "Reset text scale to 0."
   (interactive)
   (text-scale-set 0))
+#+END_SRC
 
 * Misc
 
+#+BEGIN_SRC emacs-lisp :tangle yes
 ;; Save the state of Emacs from one session to another
 ;; http://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Emacs-Sessions.html
 (desktop-save-mode 1)
@@ -278,9 +292,11 @@
 ;; Nic says eval-expression-print-level needs to be set to nil (turned off) so
 ;; that you can always see what's happening.
 (setq eval-expression-print-level nil)
+#+END_SRC
 
 * Key bindings
 
+#+BEGIN_SRC emacs-lisp :tangle yes
 ;; evil-leader
 
 ;; Note: You should enable global-evil-leader-mode before you enable evil-mode,
@@ -361,9 +377,11 @@
 (after-load 'tern
   (define-key tern-mode-keymap (kbd "C-c C-j") 'tern-find-definition)
   (define-key tern-mode-keymap (kbd "C-c C-k") 'tern-pop-find-definition))
+#+END_SRC
 
 * Sane defaults
 
+#+BEGIN_SRC emacs-lisp :tangle yes
 ;; anzu
 (require 'anzu)
 (diminish 'anzu-mode)
@@ -427,9 +445,11 @@
 
   ;; reset selection
   (define-key map (kbd "C-c") 'zlc-reset))
+#+END_SRC
 
 * Text editing
 
+#+BEGIN_SRC emacs-lisp :tangle yes
 ;; ace-jump-mode
 ;; Enable a more powerful jump back function from ace jump mode
 (autoload
@@ -448,9 +468,11 @@
 
 ;; multiple-cursors
 (require 'multiple-cursors)
+#+END_SRC
 
 * Evil mode
 
+#+BEGIN_SRC emacs-lisp :tangle yes
 ;; evil
 (require 'evil)
 (evil-mode 1)
@@ -461,15 +483,19 @@
 ;; evil-surround
 (require 'evil-surround)
 (global-evil-surround-mode 1)
+#+END_SRC
 
-* File system browser
+* Dired and Dired+
 
+#+BEGIN_SRC emacs-lisp :tangle yes
 ;; dired+
 (require 'dired+)
 (diredp-toggle-find-file-reuse-dir 1)
+#+END_SRC
 
 * Go to anything
 
+#+BEGIN_SRC emacs-lisp :tangle yes
 ;; ag
 (setq ag-highlight-search t)
 (setq ag-reuse-buffers t)
@@ -481,14 +507,17 @@
 ;; projectile
 (projectile-global-mode)
 (setq projectile-completion-system 'grizzl)
+#+END_SRC
 
-* Syntax checking
+* Flycheck
 
-;; flycheck
+#+BEGIN_SRC emacs-lisp :tangle yes
 (add-hook 'after-init-hook #'global-flycheck-mode)
+#+END_SRC
 
 * Auto-completion & snippets
 
+#+BEGIN_SRC emacs-lisp :tangle yes
 ;; Make yasnippet and autocomplete work together on Emacs
 ;; http://truongtx.me/2013/01/06/config-yasnippet-and-autocomplete-on-emacs/
 
@@ -506,30 +535,35 @@
 ;; smartparens
 (smartparens-global-mode 1)
 (require 'smartparens-config) ;; the default configuration
+#+END_SRC
 
-* Color themes
+* smart-mode-line
 
-;; smart-mode-line
+#+BEGIN_SRC emacs-lisp :tangle yes
 (setq sml/no-confirm-load-theme t)
 (sml/setup)
+#+END_SRC
 
-* Git
+* git-messenger
 
-;; git-messenger
+#+BEGIN_SRC emacs-lisp :tangle yes
 (setq git-messenger:show-detail t) ;; Always show detail message
+#+END_SRC
 
 * OCaml
 
-;; tuareg
-;; https://github.com/diml/utop#integration-with-the-tuaregtyperex-mode
+https://github.com/diml/utop#integration-with-the-tuaregtyperex-mode
+
+#+BEGIN_SRC emacs-lisp :tangle yes
 (autoload 'utop-setup-ocaml-buffer "utop" "Toplevel for OCaml" t)
 (add-hook 'tuareg-mode-hook 'utop-setup-ocaml-buffer)
 (add-hook 'typerex-mode-hook 'utop-setup-ocaml-buffer)
+#+END_SRC
 
 * Haskell
+** ac-haskell-process
 
-;; ac-haskell-process
-
+#+BEGIN_SRC emacs-lisp :tangle yes
 ;; To enable the completion source this, put the following code in your emacs
 ;; init file:
 (add-hook 'interactive-haskell-mode-hook 'ac-haskell-process-setup)
@@ -550,9 +584,11 @@
 ;; symbol at point:
 (eval-after-load 'haskell-mode
   '(define-key haskell-mode-map (kbd "C-c C-d") 'ac-haskell-process-popup-doc))
+#+END_SRC
 
-;; haskell-mode
+** haskell-mode
 
+#+BEGIN_SRC emacs-lisp :tangle yes
 ;; (add-hook 'haskell-mode-hook
 ;;   (lambda () (set-input-method "TeX")))
 
@@ -570,32 +606,36 @@
 (customize-set-variable 'haskell-process-suggest-hoogle-imports t)
 (customize-set-variable 'haskell-process-suggest-remove-import-lines t)
 (customize-set-variable 'haskell-process-type 'cabal-repl)
+#+END_SRC
 
-;; flycheck-haskell
+** flycheck-haskell
+
+#+BEGIN_SRC emacs-lisp :tangle yes
 (add-hook 'flycheck-mode-hook #'flycheck-haskell-setup)
+#+END_SRC
 
-;; structured-haskell-mode
+** structured-haskell-mode
+
+#+BEGIN_SRC emacs-lisp :tangle yes
 (require 'shm)
 (require 'shm-case-split)
 (add-hook 'haskell-mode-hook 'structured-haskell-mode)
 (set-face-background 'shm-current-face "#eee8d5")
 (set-face-background 'shm-quarantine-face "lemonchiffon")
 ;; (setq shm-idle-timeout 0)
+#+END_SRC
 
-;; From purcell
+** From purcell
+
+#+BEGIN_SRC emacs-lisp :tangle yes
 (dolist (hook '(haskell-mode-hook inferior-haskell-mode-hook haskell-interactive-mode-hook))
   (add-hook hook 'turn-on-haskell-doc-mode)
   (add-hook hook (lambda () (subword-mode +1))))
-
-* Dependently typed functional programming languages
-
-;; idris-mode
-
-;; proof-general
+#+END_SRC
 
 * Ruby
-
-;; ruby-mode
+** ruby-mode
+#+BEGIN_SRC emacs-lisp :tangle yes
 ;; Rake files are ruby, too, as are gemspecs, rackup files, and gemfiles.
 (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
@@ -619,7 +659,11 @@
 (after-load 'ruby-mode
   (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
   (define-key ruby-mode-map (kbd "TAB") 'indent-for-tab-command))
+#+END_SRC
 
+** ac-inf-ruby
+
+#+BEGIN_SRC emacs-lisp :tangle yes
 ;; ac-inf-ruby provides an inf-ruby-specific completion source, so auto-complete needs
 ;; to be told to use them when inf-ruby-mode is active.
 (eval-after-load 'auto-complete
@@ -629,27 +673,43 @@
 ;; Trigger auto-complete using TAB in inf-ruby buffers
 (eval-after-load 'inf-ruby
   '(define-key inf-ruby-mode-map (kbd "TAB") 'auto-complete))
+#+END_SRC
 
-;; robe
+** robe
+
+#+BEGIN_SRC emacs-lisp :tangle yes
 (add-hook 'ruby-mode-hook 'robe-mode)
 (add-hook 'robe-mode-hook 'ac-robe-setup)
+#+END_SRC
 
-;; yard-mode
+** yard-mode
+
+#+BEGIN_SRC emacs-lisp :tangle yes
 (add-hook 'ruby-mode-hook 'yard-mode)
+#+END_SRC
 
 * JavaScript
+** ac-js2
 
-;; ac-js2
+#+BEGIN_SRC emacs-lisp :tangle yes
 (add-hook 'js2-mode-hook 'ac-js2-mode)
+#+END_SRC
 
-;; coffee-mode
+** coffee-mode
+
+#+BEGIN_SRC emacs-lisp :tangle yes
 (require 'coffee-mode)
 (customize-set-variable 'coffee-tab-width 2)
+#+END_SRC
 
-;; js-mode
+** js-mode
+
+#+BEGIN_SRC emacs-lisp :tangle yes
 (setq js-indent-level 2)
+#+END_SRC
 
-;; js2-mode
+** js2-mode
+#+BEGIN_SRC emacs-lisp :tangle yes
 ;; https://github.com/swank-js/swank-js
 (autoload 'js2-mode "js2-mode" nil t)
 
@@ -670,12 +730,18 @@
 ;; js2-refactor
 (require 'js2-refactor)
 (js2r-add-keybindings-with-prefix "C-c C-m")
+#+END_SRC
 
-;; swank-js
+** swank-js
+
+#+BEGIN_SRC emacs-lisp :tangle yes
 (add-hook 'js2-mode-hook (lambda ()
   (slime-js-minor-mode 1)))
+#+END_SRC
 
-;; tern
+** tern
+
+#+BEGIN_SRC emacs-lisp :tangle yes
 (add-hook 'js2-mode-hook (lambda ()
   (tern-mode t)))
 
@@ -692,25 +758,38 @@
 (defun delete-tern-process ()
   (interactive)
   (delete-process "Tern"))
+#+END_SRC
 
 * Web
+** projectile-rails
 
-;; projectile-rails
+#+BEGIN_SRC emacs-lisp :tangle yes
 (add-hook 'projectile-mode-hook 'projectile-rails-on)
+#+END_SRC
 
-;; rainbow-mode
+** rainbow-mode
+
+#+BEGIN_SRC emacs-lisp :tangle yes
 (add-hook 'css-mode-hook 'rainbow-mode)
+#+END_SRC
 
-;; rinari
+** rinari
+
+#+BEGIN_SRC emacs-lisp :tangle yes
 (require 'rinari)
 (global-rinari-mode)
+#+END_SRC
 
-;; rspec-mode
+** rspec-mode
+
+#+BEGIN_SRC emacs-lisp :tangle yes
 (eval-after-load 'rspec-mode
  '(rspec-install-snippets))
+#+END_SRC
 
-;; web-mode
+** web-mode
 
+#+BEGIN_SRC emacs-lisp :tangle yes
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
@@ -720,21 +799,32 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+#+END_SRC
 
-* Markup languages (Markdown, LaTeX, etc.)
+* Markdown
 
+#+BEGIN_SRC emacs-lisp :tangle yes
 (add-to-list 'auto-mode-alist '("\\.\\(md\\|markdown\\)\\'" . markdown-mode))
+#+END_SRC
 
-;; auctex
+* LaTex
+** auctex
+
+#+BEGIN_SRC emacs-lisp :tangle yes
 (setq-default TeX-PDF-mode t)
 
 (require 'auto-complete-auctex)
+#+END_SRC
 
-;; pandoc-mode
+* pandoc-mode
+
+#+BEGIN_SRC emacs-lisp :tangle yes
 (add-hook 'markdown-mode-hook 'turn-on-pandoc)
+#+END_SRC
 
 * Custom-set-variables
 
+#+BEGIN_SRC emacs-lisp :tangle yes
 (custom-set-variables
   ;; Treat solarized-light as safe
   '(custom-safe-themes '("1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" default))
@@ -746,4 +836,4 @@
   )
 
 (provide '.emacs)
-;;; .emacs ends here
+#+END_SRC
