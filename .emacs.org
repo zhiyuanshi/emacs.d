@@ -119,6 +119,7 @@
     ;; Markup languages (Markdown, LaTeX, etc.)
     auctex
     auto-complete-auctex
+    org
     pandoc-mode
     ))
 
