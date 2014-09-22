@@ -320,6 +320,7 @@
   "d" 'dired-jump-other-window
   "e" 'ido-find-file
   "f" 'projectile-find-file
+  "g" 'git-messenger:popup-message
   "i" 'imenu-anywhere
   "k" 'kill-this-buffer
   "m" 'delete-other-windows
@@ -330,9 +331,7 @@
   "v" 'evil-window-vsplit
   "w" 'save-buffer
   "x" 'delete-frame
-  "/" 'ag-regexp
   "=" 'align-regexp
-  "?" 'git-messenger:popup-message
   )
 
 (global-set-key (kbd "C-=") 'text-scale-increase)
