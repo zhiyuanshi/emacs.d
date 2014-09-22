@@ -243,6 +243,11 @@ https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdispl
   "Reset text scale to 0."
   (interactive)
   (text-scale-set 0))
+
+(defun zhiyuan/config-emacs ()
+  "Open my .emacs.org."
+  (interactive)
+  (find-file "~/Dropbox/Code/dotfiles/.emacs.org"))
 #+END_SRC
 
 ** Misc
@@ -292,6 +297,7 @@ https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdispl
 (evil-leader/set-key
   "a" 'mark-whole-buffer
   "b" 'ido-switch-buffer
+  "c" 'zhiyuan/config-emacs
   "d" 'dired-jump-other-window
   "e" 'ido-find-file
   "f" 'projectile-find-file
