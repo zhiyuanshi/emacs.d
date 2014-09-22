@@ -96,6 +96,7 @@ Common Lisp goodies, e.g., loop
     zlc ;; Zsh like completion system for Emacs
     ))
 #+END_SRC
+
 ** Set up package manager
 
 #+BEGIN_SRC emacs-lisp :tangle yes
