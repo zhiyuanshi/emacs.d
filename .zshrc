@@ -45,6 +45,13 @@ alias v="gvim 2> /dev/null"
 alias e="$EMACSCLIENT"
 alias s="subl"
 
+function runjava() {
+  javac $1
+  class_name=${${1}%.java}
+  shift
+  java $class_name $@
+}
+
 alias git-pull-all="$SCRIPTS/git-pull-all.sh"
 
 alias hlog="hg log --template '#{rev} {date|isodate} {desc|firstline}\n' | less"

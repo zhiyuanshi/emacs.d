@@ -124,6 +124,22 @@ alias e="$EMACSCLIENT"
 alias s="subl"
 #+END_SRC
 
+*** Running Java with one command
+
+Something similar to =runhaskell=, why didn't we have one?
+
+Extracted from the following Japanese blog post:
+http://matsu-chara.hatenablog.com/entry/2014/05/17/210000
+
+#+BEGIN_SRC sh :tangle yes
+function runjava() {
+  javac $1
+  class_name=${${1}%.java}
+  shift
+  java $class_name $@
+}
+#+END_SRC
+
 *** Git & Mercurial
 
 #+BEGIN_SRC sh :tangle yes
