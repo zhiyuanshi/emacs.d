@@ -109,7 +109,8 @@ https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
     yari
     yasnippet
     zenburn-theme
-    zlc ;; Zsh like completion system for Emacs))
+    zlc ;; Zsh like completion system for Emacs
+    ))
 #+END_SRC
 
 ** Set up package manager
@@ -573,7 +574,7 @@ http://tuhdo.github.io/helm-intro.html
 (setq git-messenger:show-detail t) ;; Always show detail message
 #+END_SRC
 
-* Language-specific
+* Language/Mode-specific
 ** OCaml
 
 https://github.com/diml/utop#integration-with-the-tuaregtyperex-mode
@@ -864,6 +865,23 @@ Trigger auto-complete using TAB in inf-ruby buffers
 
 #+BEGIN_SRC emacs-lisp :tangle yes
 (add-hook 'markdown-mode-hook 'turn-on-pandoc)
+#+END_SRC
+
+** Org mode
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(setq org-confirm-babel-evaluate nil)
+(setq org-src-tab-acts-natively t)
+
+(org-babel-do-load-languages
+  'org-babel-load-languages
+  '((emacs-lisp . t)
+    (clojure . t)
+    (haskell . t)
+    (scala . t)
+    (python . t)
+    (ruby . t)
+    (sh . t)))
 #+END_SRC
 
 * Custom-set-variables

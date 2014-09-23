@@ -79,7 +79,8 @@
     yari
     yasnippet
     zenburn-theme
-    zlc ;; Zsh like completion system for Emacs))
+    zlc ;; Zsh like completion system for Emacs
+    ))
 
 (require 'package)
 
@@ -317,27 +318,9 @@
 (require 'fic-mode)
 (add-hook 'prog-mode-hook 'fic-mode)
 
-;; flx-ido
-(require 'flx-ido)
-(ido-mode 1)
-(ido-everywhere 1)
-(flx-ido-mode 1)
-;; disable ido faces to see flx highlights.
-(setq ido-enable-flex-matching t)
-(setq ido-use-faces nil)
-
 ;; framemove
 (windmove-default-keybindings 'ctrl)
 (setq framemove-hook-into-windmove t)
-
-;; helm
-;; http://tuhdo.github.io/helm-intro.html
-(require 'helm-config)
-;; (helm-mode 1)
-
-;; ido-ubiquitous
-(require 'ido-ubiquitous)
-(ido-ubiquitous-mode 1)
 
 ;; saveplace
 ;; Save point position between sessions
@@ -399,6 +382,22 @@
 ;; evil-surround
 (require 'evil-surround)
 (global-evil-surround-mode 1)
+
+;; flx-ido
+(require 'flx-ido)
+(ido-mode 1)
+(ido-everywhere 1)
+(flx-ido-mode 1)
+;; disable ido faces to see flx highlights.
+(setq ido-enable-flex-matching t)
+(setq ido-use-faces nil)
+
+;; ido-ubiquitous
+(require 'ido-ubiquitous)
+(ido-ubiquitous-mode 1)
+
+(require 'helm-config)
+;; (helm-mode 1)
 
 (setq-default dired-dwim-target t)
 
@@ -602,6 +601,19 @@
 (require 'auto-complete-auctex)
 
 (add-hook 'markdown-mode-hook 'turn-on-pandoc)
+
+(setq org-confirm-babel-evaluate nil)
+(setq org-src-tab-acts-natively t)
+
+(org-babel-do-load-languages
+  'org-babel-load-languages
+  '((emacs-lisp . t)
+    (clojure . t)
+    (haskell . t)
+    (scala . t)
+    (python . t)
+    (ruby . t)
+    (sh . t)))
 
 (custom-set-variables
   ;; Treat solarized-light as safe
