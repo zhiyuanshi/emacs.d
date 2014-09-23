@@ -440,6 +440,10 @@
 (ac-config-default)
 (setq ac-use-fuzzy t)
 
+;; https://github.com/purcell/ac-haskell-process
+(defun set-auto-complete-as-completion-at-point-function ()
+  (add-to-list 'completion-at-point-functions 'auto-complete))
+
 ;; smartparens
 (smartparens-global-mode 1)
 (require 'smartparens-config) ;; the default configuration
@@ -468,15 +472,13 @@
 
 (add-hook 'interactive-haskell-mode-hook 'ac-haskell-process-setup)
 (add-hook 'haskell-interactive-mode-hook 'ac-haskell-process-setup)
-(eval-after-load "auto-complete"
+
+(eval-after-load 'auto-complete
   '(add-to-list 'ac-modes 'haskell-interactive-mode))
 
-(defun set-auto-complete-as-completion-at-point-function ()
-  (add-to-list 'completion-at-point-functions 'auto-complete))
-(add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
-(add-to-list 'ac-modes 'haskell-interactive-mode)
+(add-hook 'auto-complete-mode-hook       'set-auto-complete-as-completion-at-point-function)
 (add-hook 'haskell-interactive-mode-hook 'set-auto-complete-as-completion-at-point-function)
-(add-hook 'haskell-mode-hook 'set-auto-complete-as-completion-at-point-function)
+(add-hook 'haskell-mode-hook             'set-auto-complete-as-completion-at-point-function)
 
 (eval-after-load 'haskell-mode
   '(define-key haskell-mode-map (kbd "C-c C-d") 'ac-haskell-process-popup-doc))
