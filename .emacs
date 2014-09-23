@@ -464,15 +464,11 @@
 (add-hook 'tuareg-mode-hook 'utop-setup-ocaml-buffer)
 (add-hook 'typerex-mode-hook 'utop-setup-ocaml-buffer)
 
-;; To enable the completion source this, put the following code in your emacs
-;; init file:
 (add-hook 'interactive-haskell-mode-hook 'ac-haskell-process-setup)
 (add-hook 'haskell-interactive-mode-hook 'ac-haskell-process-setup)
 (eval-after-load "auto-complete"
   '(add-to-list 'ac-modes 'haskell-interactive-mode))
 
-;; If you want to trigger auto-complete using TAB in REPL buffers, you may want
-;; to put auto-complete into your completion-at-point-functions:
 (defun set-auto-complete-as-completion-at-point-function ()
   (add-to-list 'completion-at-point-functions 'auto-complete))
 (add-hook 'auto-complete-mode-hook 'set-auto-complete-as-completion-at-point-function)
@@ -480,18 +476,11 @@
 (add-hook 'haskell-interactive-mode-hook 'set-auto-complete-as-completion-at-point-function)
 (add-hook 'haskell-mode-hook 'set-auto-complete-as-completion-at-point-function)
 
-;; You can use ac-haskell-process-popup-doc to pop up documentation for the
-;; symbol at point:
 (eval-after-load 'haskell-mode
   '(define-key haskell-mode-map (kbd "C-c C-d") 'ac-haskell-process-popup-doc))
 
-;; (add-hook 'haskell-mode-hook
-;;   (lambda () (set-input-method "TeX")))
-
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
-;; Choose this one because: C-c C-. => 'haskell-indent-align-guards-and-rhs, nice! :)
-;; Cf. https://github.com/haskell/haskell-mode/wiki/Indentation
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
@@ -516,7 +505,6 @@
   (add-hook hook 'turn-on-haskell-doc-mode)
   (add-hook hook (lambda () (subword-mode +1))))
 
-;; Rake files are ruby, too, as are gemspecs, rackup files, and gemfiles.
 (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
@@ -534,19 +522,14 @@
 (add-to-list 'auto-mode-alist '("Puppetfile\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Berksfile\\'" . ruby-mode))
 
-;; Sane defaults
-;; https://github.com/purcell/emacs.d/blob/master/lisp/init-ruby-mode.el#L12
 (after-load 'ruby-mode
   (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
   (define-key ruby-mode-map (kbd "TAB") 'indent-for-tab-command))
 
-;; ac-inf-ruby provides an inf-ruby-specific completion source, so auto-complete needs
-;; to be told to use them when inf-ruby-mode is active.
 (eval-after-load 'auto-complete
   '(add-to-list 'ac-modes 'inf-ruby-mode))
 (add-hook 'inf-ruby-mode-hook 'ac-inf-ruby-enable)
 
-;; Trigger auto-complete using TAB in inf-ruby buffers
 (eval-after-load 'inf-ruby
   '(define-key inf-ruby-mode-map (kbd "TAB") 'auto-complete))
 
