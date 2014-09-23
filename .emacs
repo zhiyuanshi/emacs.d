@@ -452,6 +452,19 @@
 (add-hook 'tuareg-mode-hook 'utop-setup-ocaml-buffer)
 (add-hook 'typerex-mode-hook 'utop-setup-ocaml-buffer)
 
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+
+(add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
+
+(customize-set-variable 'haskell-process-auto-import-loaded-modules t)
+(customize-set-variable 'haskell-process-log t)
+(customize-set-variable 'haskell-process-suggest-haskell-docs-imports t)
+(customize-set-variable 'haskell-process-suggest-hoogle-imports t)
+(customize-set-variable 'haskell-process-suggest-remove-import-lines t)
+(customize-set-variable 'haskell-process-type 'cabal-repl)
+
 (add-hook 'interactive-haskell-mode-hook 'ac-haskell-process-setup)
 (add-hook 'haskell-interactive-mode-hook 'ac-haskell-process-setup)
 (eval-after-load "auto-complete"
@@ -467,27 +480,14 @@
 (eval-after-load 'haskell-mode
   '(define-key haskell-mode-map (kbd "C-c C-d") 'ac-haskell-process-popup-doc))
 
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-
-(add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
-
-(customize-set-variable 'haskell-process-auto-import-loaded-modules t)
-(customize-set-variable 'haskell-process-log t)
-(customize-set-variable 'haskell-process-suggest-haskell-docs-imports t)
-(customize-set-variable 'haskell-process-suggest-hoogle-imports t)
-(customize-set-variable 'haskell-process-suggest-remove-import-lines t)
-(customize-set-variable 'haskell-process-type 'cabal-repl)
-
-(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup)
-
 (require 'shm)
 (require 'shm-case-split)
 (add-hook 'haskell-mode-hook 'structured-haskell-mode)
 (set-face-background 'shm-current-face "#eee8d5")
 (set-face-background 'shm-quarantine-face "lemonchiffon")
 ;; (setq shm-idle-timeout 0)
+
+(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup)
 
 (dolist (hook '(haskell-mode-hook inferior-haskell-mode-hook haskell-interactive-mode-hook))
   (add-hook hook 'turn-on-haskell-doc-mode)

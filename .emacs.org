@@ -586,7 +586,7 @@ https://github.com/diml/utop#integration-with-the-tuaregtyperex-mode
 #+END_SRC
 
 ** Haskell
-*** haskell-mode
+*** Haskell Mode
 
 #+BEGIN_SRC emacs-lisp :tangle yes
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
