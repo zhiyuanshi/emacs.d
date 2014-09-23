@@ -1,5 +1,4 @@
 #+BABEL: :cache yes
-
 .emacs
 
 Evaluate the following piece of code every time you've made change to this file.
@@ -772,13 +771,6 @@ Trigger auto-complete using TAB in inf-ruby buffers
 ;; js2-refactor
 (require 'js2-refactor)
 (js2r-add-keybindings-with-prefix "C-c C-m")
-#+END_SRC
-
-*** swank-js
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(add-hook 'js2-mode-hook (lambda ()
-  (slime-js-minor-mode 1)))
 #+END_SRC
 
 *** Skewer

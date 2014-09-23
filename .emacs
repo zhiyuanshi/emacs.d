@@ -555,9 +555,6 @@
 (require 'js2-refactor)
 (js2r-add-keybindings-with-prefix "C-c C-m")
 
-(add-hook 'js2-mode-hook (lambda ()
-  (slime-js-minor-mode 1)))
-
 (skewer-setup)
 
 (add-hook 'js2-mode-hook (lambda ()
