@@ -8,8 +8,7 @@
      '(progn ,@body)))
 
 (defvar my-packages
-  '(
-    ;; winner-mode
+  '(;; winner-mode
     ac-haskell-process
     ac-inf-ruby
     ac-js2
@@ -80,8 +79,7 @@
     yari
     yasnippet
     zenburn-theme
-    zlc ;; Zsh like completion system for Emacs
-    ))
+    zlc ;; Zsh like completion system for Emacs))
 
 (require 'package)
 
@@ -120,8 +118,7 @@
   "v" 'evil-window-vsplit
   "w" 'save-buffer
   "x" 'delete-frame
-  "=" 'align-regexp
-  )
+  "=" 'align-regexp)
 
 (global-set-key (kbd "C-=") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)

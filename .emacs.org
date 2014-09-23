@@ -38,8 +38,7 @@ https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
 
 #+BEGIN_SRC emacs-lisp :tangle yes
 (defvar my-packages
-  '(
-    ;; winner-mode
+  '(;; winner-mode
     ac-haskell-process
     ac-inf-ruby
     ac-js2
@@ -110,8 +109,7 @@ https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
     yari
     yasnippet
     zenburn-theme
-    zlc ;; Zsh like completion system for Emacs
-    ))
+    zlc ;; Zsh like completion system for Emacs))
 #+END_SRC
 
 ** Set up package manager
@@ -167,8 +165,7 @@ otherwise evil-leader won’t be enabled in initial buffers (*scratch*,
   "v" 'evil-window-vsplit
   "w" 'save-buffer
   "x" 'delete-frame
-  "=" 'align-regexp
-  )
+  "=" 'align-regexp)
 #+END_SRC
 
 ** Global - The rest
