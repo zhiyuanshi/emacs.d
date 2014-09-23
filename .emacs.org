@@ -289,11 +289,11 @@ https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdispl
 
 ** Key bindings
 
-#+BEGIN_SRC emacs-lisp :tangle yes
-;; evil-leader
+Note: You should enable global-evil-leader-mode before you enable evil-mode,
+otherwise evil-leader won’t be enabled in initial buffers (*scratch*,
+*Messages*, …).
 
-;; Note: You should enable global-evil-leader-mode before you enable evil-mode,
-;; otherwise evil-leader won’t be enabled in initial buffers (*scratch*, *Messages*, …).
+#+BEGIN_SRC emacs-lisp :tangle yes
 (global-evil-leader-mode)
 (evil-leader/set-leader "SPC")
 (evil-leader/set-key
