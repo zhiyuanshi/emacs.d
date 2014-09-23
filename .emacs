@@ -313,12 +313,6 @@
 (diminish 'anzu-mode)
 (global-anzu-mode +1)
 
-;; dired
-(setq-default dired-dwim-target t)
-
-;; dired-details+
-(require 'dired-details+)
-
 ;; fic-mode
 (require 'fic-mode)
 (add-hook 'prog-mode-hook 'fic-mode)
@@ -406,9 +400,12 @@
 (require 'evil-surround)
 (global-evil-surround-mode 1)
 
-;; dired+
+(setq-default dired-dwim-target t)
+
 (require 'dired+)
 (diredp-toggle-find-file-reuse-dir 1)
+
+(require 'dired-details+)
 
 ;; ag
 (setq ag-highlight-search t)

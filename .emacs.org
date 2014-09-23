@@ -396,12 +396,6 @@ https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdispl
 (diminish 'anzu-mode)
 (global-anzu-mode +1)
 
-;; dired
-(setq-default dired-dwim-target t)
-
-;; dired-details+
-(require 'dired-details+)
-
 ;; fic-mode
 (require 'fic-mode)
 (add-hook 'prog-mode-hook 'fic-mode)
@@ -498,12 +492,15 @@ https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdispl
 (global-evil-surround-mode 1)
 #+END_SRC
 
-** Dired and Dired+
+** Dired, Dired+, DiredDetails+
 
 #+BEGIN_SRC emacs-lisp :tangle yes
-;; dired+
+(setq-default dired-dwim-target t)
+
 (require 'dired+)
 (diredp-toggle-find-file-reuse-dir 1)
+
+(require 'dired-details+)
 #+END_SRC
 
 ** Go to anything
