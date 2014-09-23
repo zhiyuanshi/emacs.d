@@ -734,12 +734,6 @@ Trigger auto-complete using TAB in inf-ruby buffers
 #+END_SRC
 
 ** JavaScript
-*** ac-js2
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(add-hook 'js2-mode-hook 'ac-js2-mode)
-#+END_SRC
-
 *** coffee-mode
 
 #+BEGIN_SRC emacs-lisp :tangle yes
@@ -771,6 +765,8 @@ Trigger auto-complete using TAB in inf-ruby buffers
 (add-hook 'js2-mode-hook 'js2-imenu-extras-mode)
 (add-hook 'js2-mode-hook 'rainbow-delimiters-mode)
   ;; Javascript nests {} and () a lot, so I find this helpful
+
+(add-hook 'js2-mode-hook 'ac-js2-mode)
 
 ;; js2-refactor
 (require 'js2-refactor)
