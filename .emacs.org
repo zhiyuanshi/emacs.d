@@ -404,11 +404,6 @@ https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdispl
 (windmove-default-keybindings 'ctrl)
 (setq framemove-hook-into-windmove t)
 
-;; helm
-;; http://tuhdo.github.io/helm-intro.html
-(require 'helm-config)
-;; (helm-mode 1)
-
 ;; saveplace
 ;; Save point position between sessions
 (require 'saveplace)
@@ -494,6 +489,15 @@ https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdispl
 ;; ido-ubiquitous
 (require 'ido-ubiquitous)
 (ido-ubiquitous-mode 1)
+#+END_SRC
+
+** Helm
+
+http://tuhdo.github.io/helm-intro.html
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(require 'helm-config)
+;; (helm-mode 1)
 #+END_SRC
 
 ** Dired, Dired+, DiredDetails+
