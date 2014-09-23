@@ -93,6 +93,85 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
+(global-evil-leader-mode)
+(evil-leader/set-leader "SPC")
+(evil-leader/set-key
+  "a" 'mark-whole-buffer
+  "b" 'ido-switch-buffer
+  "c" 'zhiyuan/config-emacs
+  "d" 'dired-jump-other-window
+  "e" 'ido-find-file
+  "f" 'projectile-find-file
+  "g" 'git-messenger:popup-message
+  "i" 'imenu-anywhere
+  "k" 'kill-this-buffer
+  "m" 'delete-other-windows
+  "n" 'make-frame-command
+  "p" 'projectile-switch-project
+  "q" 'delete-window
+  "r" 'projectile-recentf
+  "s" 'evil-window-split
+  "v" 'evil-window-vsplit
+  "w" 'save-buffer
+  "x" 'delete-frame
+  "=" 'align-regexp
+  )
+
+(global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+(global-set-key (kbd "C-0") 'text-scale-reset)
+
+(global-set-key (kbd "<C-tab>") 'next-buffer)
+
+;; https://github.com/magnars/.emacs.d/blob/master/key-bindings.el
+(global-set-key (kbd "C-c C-e") 'eval-and-replace)
+
+(define-key 'help-command (kbd "C-m") 'discover-my-major)
+
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+
+;; (global-set-key (kbd "C-x 4 u") 'winner-undo)
+;; (global-set-key (kbd "C-x 4 r") 'winner-redo)
+
+(define-key evil-normal-state-map (kbd "\\") 'ace-jump-char-mode)
+(define-key evil-visual-state-map (kbd "\\") 'ace-jump-char-mode)
+
+(define-key evil-normal-state-map (kbd "|") 'ace-jump-mode-pop-mark)
+(define-key evil-visual-state-map (kbd "|") 'ace-jump-mode-pop-mark)
+
+(global-set-key (kbd "C-`") 'er/expand-region)
+(global-set-key (kbd "C-~") 'er/contract-region)
+
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+(after-load 'shm-case-split
+  (define-key shm-map (kbd "C-c C-s") 'shm/case-split))
+
+(add-hook 'ruby-mode-hook (lambda ()
+  ;; LeWang:
+  ;;
+  ;;      I think `er/ruby-backward-up' and `er/ruby-forward-up' are nifty
+  ;;      functions in their own right.
+  ;;
+  ;;      I would bind them to C-M-u and C-M-d respectively.
+  (local-set-key (kbd "C-M-u") 'er/ruby-backward-up)
+  (local-set-key (kbd "C-M-d") 'er/ruby-forward-up)
+  (local-set-key (kbd "C-c C-c") 'inf-ruby-console-auto)
+  (local-set-key (kbd "C-c C-h") 'ruby-toggle-hash-syntax)
+  (local-set-key (kbd "C-c C-y") 'yari)))
+
+;; A remedy for the default keybinding M-. being overwritten by Evil mode
+(after-load 'robe
+  (define-key robe-mode-map (kbd "C-c C-j") 'robe-jump))
+
+(after-load 'tern
+  (define-key tern-mode-keymap (kbd "C-c C-j") 'tern-find-definition)
+  (define-key tern-mode-keymap (kbd "C-c C-k") 'tern-pop-find-definition))
+
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Frame-Parameters.html
 (add-to-list 'default-frame-alist '(width  . 100))
 (add-to-list 'default-frame-alist '(height . 45))
@@ -232,89 +311,6 @@
 ;; Nic says eval-expression-print-level needs to be set to nil (turned off) so
 ;; that you can always see what's happening.
 (setq eval-expression-print-level nil)
-
-;; evil-leader
-
-;; Note: You should enable global-evil-leader-mode before you enable evil-mode,
-;; otherwise evil-leader won’t be enabled in initial buffers (*scratch*, *Messages*, …).
-(global-evil-leader-mode)
-(evil-leader/set-leader "SPC")
-(evil-leader/set-key
-  "a" 'mark-whole-buffer
-  "b" 'ido-switch-buffer
-  "c" 'zhiyuan/config-emacs
-  "d" 'dired-jump-other-window
-  "e" 'ido-find-file
-  "f" 'projectile-find-file
-  "g" 'git-messenger:popup-message
-  "i" 'imenu-anywhere
-  "k" 'kill-this-buffer
-  "m" 'delete-other-windows
-  "n" 'make-frame-command
-  "p" 'projectile-switch-project
-  "q" 'delete-window
-  "r" 'projectile-recentf
-  "s" 'evil-window-split
-  "v" 'evil-window-vsplit
-  "w" 'save-buffer
-  "x" 'delete-frame
-  "=" 'align-regexp
-  )
-
-(global-set-key (kbd "C-=") 'text-scale-increase)
-(global-set-key (kbd "C--") 'text-scale-decrease)
-(global-set-key (kbd "C-0") 'text-scale-reset)
-
-(global-set-key (kbd "<C-tab>") 'next-buffer)
-
-;; https://github.com/magnars/.emacs.d/blob/master/key-bindings.el
-(global-set-key (kbd "C-c C-e") 'eval-and-replace)
-
-(define-key 'help-command (kbd "C-m") 'discover-my-major)
-
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-
-;; (global-set-key (kbd "C-x 4 u") 'winner-undo)
-;; (global-set-key (kbd "C-x 4 r") 'winner-redo)
-
-(define-key evil-normal-state-map (kbd "\\") 'ace-jump-char-mode)
-(define-key evil-visual-state-map (kbd "\\") 'ace-jump-char-mode)
-
-(define-key evil-normal-state-map (kbd "|") 'ace-jump-mode-pop-mark)
-(define-key evil-visual-state-map (kbd "|") 'ace-jump-mode-pop-mark)
-
-(global-set-key (kbd "C-`") 'er/expand-region)
-(global-set-key (kbd "C-~") 'er/contract-region)
-
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
-(after-load 'shm-case-split
-  (define-key shm-map (kbd "C-c C-s") 'shm/case-split))
-
-(add-hook 'ruby-mode-hook (lambda ()
-  ;; LeWang:
-  ;;
-  ;;      I think `er/ruby-backward-up' and `er/ruby-forward-up' are nifty
-  ;;      functions in their own right.
-  ;;
-  ;;      I would bind them to C-M-u and C-M-d respectively.
-  (local-set-key (kbd "C-M-u") 'er/ruby-backward-up)
-  (local-set-key (kbd "C-M-d") 'er/ruby-forward-up)
-  (local-set-key (kbd "C-c C-c") 'inf-ruby-console-auto)
-  (local-set-key (kbd "C-c C-h") 'ruby-toggle-hash-syntax)
-  (local-set-key (kbd "C-c C-y") 'yari)))
-
-;; A remedy for the default keybinding M-. being overwritten by Evil mode
-(after-load 'robe
-  (define-key robe-mode-map (kbd "C-c C-j") 'robe-jump))
-
-(after-load 'tern
-  (define-key tern-mode-keymap (kbd "C-c C-j") 'tern-find-definition)
-  (define-key tern-mode-keymap (kbd "C-c C-k") 'tern-pop-find-definition))
 
 ;; anzu
 (require 'anzu)
