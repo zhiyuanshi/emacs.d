@@ -586,6 +586,32 @@ https://github.com/diml/utop#integration-with-the-tuaregtyperex-mode
 #+END_SRC
 
 ** Haskell
+*** haskell-mode
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+#+END_SRC
+
+Choose =haskell-indent= because: C-c C-. => 'haskell-indent-align-guards-and-rhs, nice! :)
+Cf. https://github.com/haskell/haskell-mode/wiki/Indentation
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(customize-set-variable 'haskell-process-auto-import-loaded-modules t)
+(customize-set-variable 'haskell-process-log t)
+(customize-set-variable 'haskell-process-suggest-haskell-docs-imports t)
+(customize-set-variable 'haskell-process-suggest-hoogle-imports t)
+(customize-set-variable 'haskell-process-suggest-remove-import-lines t)
+(customize-set-variable 'haskell-process-type 'cabal-repl)
+#+END_SRC
+
 *** ac-haskell-process
 
 To enable the completion source this, put the following code in your emacs init
@@ -616,32 +642,6 @@ at point:
 #+BEGIN_SRC emacs-lisp :tangle yes
 (eval-after-load 'haskell-mode
   '(define-key haskell-mode-map (kbd "C-c C-d") 'ac-haskell-process-popup-doc))
-#+END_SRC
-
-*** haskell-mode
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-#+END_SRC
-
-Choose =haskell-indent= because: C-c C-. => 'haskell-indent-align-guards-and-rhs, nice! :)
-Cf. https://github.com/haskell/haskell-mode/wiki/Indentation
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(customize-set-variable 'haskell-process-auto-import-loaded-modules t)
-(customize-set-variable 'haskell-process-log t)
-(customize-set-variable 'haskell-process-suggest-haskell-docs-imports t)
-(customize-set-variable 'haskell-process-suggest-hoogle-imports t)
-(customize-set-variable 'haskell-process-suggest-remove-import-lines t)
-(customize-set-variable 'haskell-process-type 'cabal-repl)
 #+END_SRC
 
 *** flycheck-haskell
