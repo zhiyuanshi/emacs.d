@@ -94,6 +94,7 @@ https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
     sass-mode
     scss-mode
     shm
+    skewer-mode
     slime
     slime-js
     smart-mode-line
@@ -778,6 +779,12 @@ Trigger auto-complete using TAB in inf-ruby buffers
 #+BEGIN_SRC emacs-lisp :tangle yes
 (add-hook 'js2-mode-hook (lambda ()
   (slime-js-minor-mode 1)))
+#+END_SRC
+
+*** Skewer
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(skewer-setup)
 #+END_SRC
 
 *** tern

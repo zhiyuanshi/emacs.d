@@ -64,6 +64,7 @@
     sass-mode
     scss-mode
     shm
+    skewer-mode
     slime
     slime-js
     smart-mode-line
@@ -526,8 +527,6 @@
 
 (add-hook 'ruby-mode-hook 'yard-mode)
 
-(add-hook 'js2-mode-hook 'ac-js2-mode)
-
 (require 'coffee-mode)
 (customize-set-variable 'coffee-tab-width 2)
 
@@ -550,12 +549,16 @@
 (add-hook 'js2-mode-hook 'rainbow-delimiters-mode)
   ;; Javascript nests {} and () a lot, so I find this helpful
 
+(add-hook 'js2-mode-hook 'ac-js2-mode)
+
 ;; js2-refactor
 (require 'js2-refactor)
 (js2r-add-keybindings-with-prefix "C-c C-m")
 
 (add-hook 'js2-mode-hook (lambda ()
   (slime-js-minor-mode 1)))
+
+(skewer-setup)
 
 (add-hook 'js2-mode-hook (lambda ()
   (tern-mode t)))
