@@ -1,6 +1,12 @@
 
 (require 'cl)
 
+(defmacro after-load (feature &rest body)
+  "After FEATURE is loaded, evaluate BODY."
+  (declare (indent defun))
+  `(eval-after-load ,feature
+     '(progn ,@body)))
+
 (defvar my-packages
   '(
     ;; winner-mode
@@ -240,13 +246,6 @@
 (set-keyboard-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
-
-;; https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
-(defmacro after-load (feature &rest body)
-  "After FEATURE is loaded, evaluate BODY."
-  (declare (indent defun))
-  `(eval-after-load ,feature
-     '(progn ,@body)))
 
 ;; https://ghc.haskell.org/trac/ghc/wiki/Emacs#Untabifyingabuffer
 (defun untabify-current-buffer ()

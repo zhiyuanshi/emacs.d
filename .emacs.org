@@ -12,10 +12,25 @@ Evaluate the following piece of code every time you've made change to this file.
 (copy-file ".emacs" "~/.emacs" t)
 #+END_SRC
 
-Common Lisp goodies, e.g., loop
+* Prerequisites
+** Common Lisp goodies
 
 #+BEGIN_SRC emacs-lisp :tangle yes
 (require 'cl)
+#+END_SRC
+
+** The `after-load' macro
+
+Put this before the `Key bindings' section because it's going to be used.
+
+https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(defmacro after-load (feature &rest body)
+  "After FEATURE is loaded, evaluate BODY."
+  (declare (indent defun))
+  `(eval-after-load ,feature
+     '(progn ,@body)))
 #+END_SRC
 
 * Packages
@@ -124,6 +139,7 @@ Common Lisp goodies, e.g., loop
 #+END_SRC
 
 * Key bindings
+** Global - Evil leader
 
 Note: You should enable global-evil-leader-mode before you enable evil-mode,
 otherwise evil-leader won’t be enabled in initial buffers (*scratch*,
@@ -153,7 +169,11 @@ otherwise evil-leader won’t be enabled in initial buffers (*scratch*,
   "x" 'delete-frame
   "=" 'align-regexp
   )
+#+END_SRC
 
+** Global - The rest
+
+#+BEGIN_SRC emacs-lisp :tangle yes
 (global-set-key (kbd "C-=") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 (global-set-key (kbd "C-0") 'text-scale-reset)
@@ -184,7 +204,11 @@ otherwise evil-leader won’t be enabled in initial buffers (*scratch*,
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+#+END_SRC
 
+** Mode-specific
+
+#+BEGIN_SRC emacs-lisp :tangle yes
 (after-load 'shm-case-split
   (define-key shm-map (kbd "C-c C-s") 'shm/case-split))
 
@@ -298,13 +322,6 @@ https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdispl
 ** Custom definitions
 
 #+BEGIN_SRC emacs-lisp :tangle yes
-;; https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
-(defmacro after-load (feature &rest body)
-  "After FEATURE is loaded, evaluate BODY."
-  (declare (indent defun))
-  `(eval-after-load ,feature
-     '(progn ,@body)))
-
 ;; https://ghc.haskell.org/trac/ghc/wiki/Emacs#Untabifyingabuffer
 (defun untabify-current-buffer ()
   "Untabify current buffer."
