@@ -644,12 +644,6 @@ at point:
   '(define-key haskell-mode-map (kbd "C-c C-d") 'ac-haskell-process-popup-doc))
 #+END_SRC
 
-*** flycheck-haskell
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup)
-#+END_SRC
-
 *** structured-haskell-mode
 
 #+BEGIN_SRC emacs-lisp :tangle yes
@@ -659,6 +653,12 @@ at point:
 (set-face-background 'shm-current-face "#eee8d5")
 (set-face-background 'shm-quarantine-face "lemonchiffon")
 ;; (setq shm-idle-timeout 0)
+#+END_SRC
+
+*** flycheck-haskell
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup)
 #+END_SRC
 
 *** From purcell
