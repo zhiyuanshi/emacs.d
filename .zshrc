@@ -1,43 +1,28 @@
-# Path to your oh-my-zsh installation.
+
 export ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 ZSH_THEME="mgutz"
 
-# Automatically update zsh itself without prompting me.
 DISABLE_UPDATE_PROMPT="true"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 plugins=(bundler cabal gem git heroku mercurial rails rake rbenv ruby sbt scala)
 
+source $ZSH/oh-my-zsh.sh        # Required
+
 # PROMPT="
 # %c%# "
 
-source $ZSH/oh-my-zsh.sh        # Required
-
-# User configuration
-
-# Clear "Recently Used"
 echo > "$HOME/.local/share/recently-used.xbel"
 touch  "$HOME/.local/share/recently-used.xbel"
 echo "gtk-recent-files-max-age=0" > "$HOME/.gtkrc-2.0"
 
-# Disable ThinkPad TrackPoint
 xinput -set-prop "TPPS/2 IBM TrackPoint" "Device Enabled" 0
 
-# Invert behavior of Fn key on Apple keyboard
-# https://help.ubuntu.com/community/AppleKeyboard#Change_Function_Key_behavior
 # echo 2 > /sys/module/hid_apple/parameters/fnmode
 
-# Preferred editor for local and remote sessions
-EMACSCLIENT="emacsclient --create-frame --no-wait --alternate-editor=''"
+export EMACSCLIENT="emacsclient --create-frame --no-wait --alternate-editor=''"
 
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR="vim"
@@ -45,13 +30,13 @@ else
   export EDITOR="$EMACSCLIENT"
 fi
 
-export DROPBOX="$HOME/Dropbox"
-export CODE="$DROPBOX/Code"
-export DOTFILES="$CODE/dotfiles"
-export SCRIPTS="$CODE/scripts"
+function reload() {
+  cp $DOTFILES/.zshrc ~
+  echo "Copied $DOTFILES/.zshrc to ~"
 
-# Aliases
-alias reload=". ~/.zshrc && echo Reloaded .zshrc from ~/.zshrc"
+  . ~/.zshrc
+  echo "Reloaded .zshrc from ~"
+}
 
 alias cl="clear"
 alias open="xdg-open"
@@ -60,28 +45,24 @@ alias v="gvim 2> /dev/null"
 alias e="$EMACSCLIENT"
 alias s="subl"
 
-alias code="cd $CODE"
-alias dotfiles="cd $DOTFILES"
-
-alias config-vim="v $DOTFILES/.vimrc"
-alias config-emacs="v $DOTFILES/.emacs"
-alias config-zsh="v $DOTFILES/.zshrc"
-alias config-hg="v $DOTFILES/.hgrc"
-
 alias git-pull-all="$SCRIPTS/git-pull-all.sh"
 
 alias hlog="hg log --template '#{rev} {date|isodate} {desc|firstline}\n' | less"
 
-# The default PATH defined in /etc/environment
+export DROPBOX="$HOME/Dropbox"
+export CODE="$DROPBOX/Code"
+export DOTFILES="$CODE/dotfiles"
+export SCRIPTS="$CODE/scripts"
+
+alias code="cd $CODE"
+alias dotfiles="cd $DOTFILES"
+
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
-# opam
 export PATH="$HOME/.opam/4.01.0/bin:$PATH"
 eval `opam config env`
 
-# rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-# cabal
 export PATH="$HOME/.cabal/bin:$PATH"

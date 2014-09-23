@@ -1,87 +1,174 @@
-# Path to your oh-my-zsh installation.
+#+BABEL: :cache yes
+.zshrc
+
+Evaluate the following piece of code every time you've made change to this file.
+
+#+BEGIN_SRC emacs-lisp :tangle no
+(save-buffer)
+(org-babel-tangle)
+(rename-file ".zshrc.sh" ".zshrc" t) ;; TODO: We could have directly export to .zshrc!
+(copy-file ".zshrc" "~/.zshrc" t)
+#+END_SRC
+
+* Provided by oh-my-zsh
+
+Path to your oh-my-zsh installation.
+
+#+BEGIN_SRC sh :tangle yes
 export ZSH=$HOME/.oh-my-zsh
+#+END_SRC
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
+Set name of the theme to load.
+Look in ~/.oh-my-zsh/themes/
+Optionally, if you set this to "random", it'll load a random theme each
+time that oh-my-zsh is loaded.
+
+#+BEGIN_SRC sh :tangle yes
 ZSH_THEME="mgutz"
+#+END_SRC
 
-# Automatically update zsh itself without prompting me.
+Automatically update zsh itself without prompting me.
+
+#+BEGIN_SRC sh :tangle yes
 DISABLE_UPDATE_PROMPT="true"
+#+END_SRC
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
+Uncomment the following line if you want to disable marking untracked files
+under VCS as dirty. This makes repository status check for large repositories
+much, much faster.
+
+#+BEGIN_SRC sh :tangle yes
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
+#+END_SRC
 
+* Plugins
+
+#+BEGIN_SRC sh :tangle yes
 plugins=(bundler cabal gem git heroku mercurial rails rake rbenv ruby sbt scala)
+#+END_SRC
 
+* Source oh-my-zsh.sh
+
+#+BEGIN_SRC sh :tangle yes
+source $ZSH/oh-my-zsh.sh        # Required
+#+END_SRC
+
+* User configuration
+** Prompt
+
+#+BEGIN_SRC sh :tangle yes
 # PROMPT="
 # %c%# "
+#+END_SRC
 
-source $ZSH/oh-my-zsh.sh        # Required
+** Tasks on Zsh start-up
+*** Clear "Recently Used"
 
-# User configuration
-
-# Clear "Recently Used"
+#+BEGIN_SRC sh :tangle yes
 echo > "$HOME/.local/share/recently-used.xbel"
 touch  "$HOME/.local/share/recently-used.xbel"
 echo "gtk-recent-files-max-age=0" > "$HOME/.gtkrc-2.0"
+#+END_SRC
 
-# Disable ThinkPad TrackPoint
+*** Disable ThinkPad TrackPoint
+
+#+BEGIN_SRC sh :tangle yes
 xinput -set-prop "TPPS/2 IBM TrackPoint" "Device Enabled" 0
+#+END_SRC
 
-# Invert behavior of Fn key on Apple keyboard
-# https://help.ubuntu.com/community/AppleKeyboard#Change_Function_Key_behavior
+*** Invert behavior of Fn key on Apple keyboard
+
+https://help.ubuntu.com/community/AppleKeyboard#Change_Function_Key_behavior
+
+#+BEGIN_SRC sh :tangle yes
 # echo 2 > /sys/module/hid_apple/parameters/fnmode
+#+END_SRC
 
-# Preferred editor for local and remote sessions
-EMACSCLIENT="emacsclient --create-frame --no-wait --alternate-editor=''"
+** Preferred editor for local and remote sessions
+
+#+BEGIN_SRC sh :tangle yes
+export EMACSCLIENT="emacsclient --create-frame --no-wait --alternate-editor=''"
 
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR="vim"
 else
   export EDITOR="$EMACSCLIENT"
 fi
+#+END_SRC
 
+** Reload function
+
+#+BEGIN_SRC sh :tangle yes
+function reload() {
+  cp $DOTFILES/.zshrc ~
+  echo "Copied $DOTFILES/.zshrc to ~"
+
+  . ~/.zshrc
+  echo "Reloaded .zshrc from ~"
+}
+#+END_SRC
+
+** Aliases
+*** General
+
+#+BEGIN_SRC sh :tangle yes
+alias cl="clear"
+alias open="xdg-open"
+#+END_SRC
+
+*** Text editors
+
+#+BEGIN_SRC sh :tangle yes
+alias v="gvim 2> /dev/null"
+alias e="$EMACSCLIENT"
+alias s="subl"
+#+END_SRC
+
+*** Git & Mercurial
+
+#+BEGIN_SRC sh :tangle yes
+alias git-pull-all="$SCRIPTS/git-pull-all.sh"
+
+alias hlog="hg log --template '#{rev} {date|isodate} {desc|firstline}\n' | less"
+#+END_SRC
+
+** Shortcuts to directories
+
+#+BEGIN_SRC sh :tangle yes
 export DROPBOX="$HOME/Dropbox"
 export CODE="$DROPBOX/Code"
 export DOTFILES="$CODE/dotfiles"
 export SCRIPTS="$CODE/scripts"
 
-# Aliases
-alias reload=". ~/.zshrc && echo Reloaded .zshrc from ~/.zshrc"
-
-alias cl="clear"
-alias open="xdg-open"
-
-alias v="gvim 2> /dev/null"
-alias e="$EMACSCLIENT"
-alias s="subl"
-
 alias code="cd $CODE"
 alias dotfiles="cd $DOTFILES"
+#+END_SRC
 
-alias config-vim="v $DOTFILES/.vimrc"
-alias config-emacs="v $DOTFILES/.emacs"
-alias config-zsh="v $DOTFILES/.zshrc"
-alias config-hg="v $DOTFILES/.hgrc"
+** The PATH environment variable
+*** The default
 
-alias git-pull-all="$SCRIPTS/git-pull-all.sh"
+Defined in =/etc/environment=
 
-alias hlog="hg log --template '#{rev} {date|isodate} {desc|firstline}\n' | less"
-
-# The default PATH defined in /etc/environment
+#+BEGIN_SRC sh :tangle yes
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+#+END_SRC
 
-# opam
+*** OPAM
+
+#+BEGIN_SRC sh :tangle yes
 export PATH="$HOME/.opam/4.01.0/bin:$PATH"
 eval `opam config env`
+#+END_SRC
 
-# rbenv
+*** rbenv
+
+#+BEGIN_SRC sh :tangle yes
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+#+END_SRC
 
-# cabal
+*** Cabal
+
+#+BEGIN_SRC sh :tangle yes
 export PATH="$HOME/.cabal/bin:$PATH"
+#+END_SRC
