@@ -50,6 +50,7 @@ function runjava() {
   class_name=${${1}%.java}
   shift
   java $class_name $@
+  rm $class_name.class
 }
 
 alias git-pull-all="$SCRIPTS/git-pull-all.sh"
