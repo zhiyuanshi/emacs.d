@@ -620,7 +620,7 @@ file:
 #+BEGIN_SRC emacs-lisp :tangle yes
 (add-hook 'interactive-haskell-mode-hook 'ac-haskell-process-setup)
 (add-hook 'haskell-interactive-mode-hook 'ac-haskell-process-setup)
-(eval-after-load "auto-complete"
+(eval-after-load 'auto-complete
   '(add-to-list 'ac-modes 'haskell-interactive-mode))
 #+END_SRC
 
