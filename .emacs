@@ -122,9 +122,25 @@
   "x" 'delete-frame
   "=" 'align-regexp)
 
+(defun text-scale-reset ()
+  "Reset text scale to 0."
+  (interactive)
+  (text-scale-set 0))
+
+;; http://stackoverflow.com/questions/18783227/emacs-zoom-in-out-globally
+(defadvice text-scale-increase (around all-buffers (arg) activate)
+  (dolist (buffer (buffer-list))
+    (with-current-buffer buffer
+      ad-do-it)))
+
 (global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key [C-mouse-4] 'text-scale-increase)
+
 (global-set-key (kbd "C--") 'text-scale-decrease)
+(global-set-key [C-mouse-5] 'text-scale-decrease)
+
 (global-set-key (kbd "C-0") 'text-scale-reset)
+
 
 (global-set-key (kbd "<C-tab>") 'next-buffer)
 
@@ -268,11 +284,6 @@
   `(eval-after-load ,package-name
      '(defadvice ,mode (after rename-modeline activate)
         (setq mode-name ,new-name))))
-
-(defun text-scale-reset ()
-  "Reset text scale to 0."
-  (interactive)
-  (text-scale-set 0))
 
 (defun zhiyuan/config-emacs ()
   "Open my .emacs.org."
