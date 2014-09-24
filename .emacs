@@ -128,6 +128,7 @@
   (text-scale-set 0))
 
 ;; http://stackoverflow.com/questions/18783227/emacs-zoom-in-out-globally
+;; http://www.emacswiki.org/emacs/GlobalTextScaleMode
 (defadvice text-scale-increase (around all-buffers (arg) activate)
   (dolist (buffer (buffer-list))
     (with-current-buffer buffer
