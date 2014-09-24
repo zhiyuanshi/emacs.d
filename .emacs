@@ -24,6 +24,7 @@
     dired+
     dired-details+
     discover-my-major
+    ensime
     evil
     evil-leader
     evil-nerd-commenter
@@ -62,8 +63,10 @@
     rspec-mode
     ruby-hash-syntax
     sass-mode
+    scala-mode2
     scss-mode
     shm
+    sbt-mode
     skewer-mode
     slime
     slime-js
@@ -507,6 +510,9 @@
 (dolist (hook '(haskell-mode-hook inferior-haskell-mode-hook haskell-interactive-mode-hook))
   (add-hook hook 'turn-on-haskell-doc-mode)
   (add-hook hook (lambda () (subword-mode +1))))
+
+(require 'ensime)
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))

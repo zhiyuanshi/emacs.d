@@ -53,6 +53,7 @@ https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
     dired+
     dired-details+
     discover-my-major
+    ensime
     evil
     evil-leader
     evil-nerd-commenter
@@ -91,8 +92,10 @@ https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
     rspec-mode
     ruby-hash-syntax
     sass-mode
+    scala-mode2
     scss-mode
     shm
+    sbt-mode
     skewer-mode
     slime
     slime-js
@@ -684,6 +687,14 @@ at point:
 (dolist (hook '(haskell-mode-hook inferior-haskell-mode-hook haskell-interactive-mode-hook))
   (add-hook hook 'turn-on-haskell-doc-mode)
   (add-hook hook (lambda () (subword-mode +1))))
+#+END_SRC
+
+** Scala
+*** ENSIME
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(require 'ensime)
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 #+END_SRC
 
 ** Ruby
