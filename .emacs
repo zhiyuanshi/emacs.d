@@ -622,6 +622,9 @@
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
+(setq css-indent-offset 2)
+(setq scss-compile-at-save nil)
+
 (add-to-list 'auto-mode-alist '("\\.\\(md\\|markdown\\)\\'" . markdown-mode))
 
 (setq-default TeX-PDF-mode t)

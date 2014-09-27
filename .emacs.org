@@ -877,6 +877,11 @@ Trigger auto-complete using TAB in inf-ruby buffers
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 #+END_SRC
 
+** CSS
+
+(setq css-indent-offset 2)
+(setq scss-compile-at-save nil)
+
 ** Markdown
 
 #+BEGIN_SRC emacs-lisp :tangle yes
