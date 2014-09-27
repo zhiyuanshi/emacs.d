@@ -133,10 +133,10 @@
 
 ;; http://stackoverflow.com/questions/18783227/emacs-zoom-in-out-globally
 ;; http://www.emacswiki.org/emacs/GlobalTextScaleMode
-(defadvice text-scale-increase (around all-buffers (arg) activate)
-  (dolist (buffer (buffer-list))
-    (with-current-buffer buffer
-      ad-do-it)))
+;; (defadvice text-scale-increase (around all-buffers (arg) activate)
+;;   (dolist (buffer (buffer-list))
+;;     (with-current-buffer buffer
+;;       ad-do-it)))
 
 (global-set-key (kbd "C-=") 'text-scale-increase)
 (global-set-key [C-mouse-4] 'text-scale-increase)
@@ -168,10 +168,8 @@
 ;; (global-set-key (kbd "C-x 4 r") 'winner-redo)
 
 (define-key evil-normal-state-map (kbd "\\") 'ace-jump-char-mode)
-(define-key evil-visual-state-map (kbd "\\") 'ace-jump-char-mode)
 
 (define-key evil-normal-state-map (kbd "|") 'ace-jump-mode-pop-mark)
-(define-key evil-visual-state-map (kbd "|") 'ace-jump-mode-pop-mark)
 
 (global-set-key (kbd "C-`") 'er/expand-region)
 (global-set-key (kbd "C-~") 'er/contract-region)
@@ -440,7 +438,7 @@
 
 ;; projectile
 (projectile-global-mode)
-(setq projectile-completion-system 'grizzl)
+;; (setq projectile-completion-system 'grizzl)
 
 ;; recentf
 (require 'recentf)
@@ -486,6 +484,7 @@
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
 
+(customize-set-variable 'haskell-interactive-popup-errors nil)
 (customize-set-variable 'haskell-process-auto-import-loaded-modules t)
 (customize-set-variable 'haskell-process-log t)
 (customize-set-variable 'haskell-process-suggest-haskell-docs-imports t)
