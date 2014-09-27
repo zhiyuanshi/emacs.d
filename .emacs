@@ -19,6 +19,7 @@
     auto-complete
     auto-complete-auctex
     base16-theme
+    bundler
     coffee-mode
     color-theme-solarized ;; Replace bbatsov's version due to its unpleasant Ruby syntax highlighting
     dired+
