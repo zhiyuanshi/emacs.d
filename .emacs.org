@@ -879,8 +879,10 @@ Trigger auto-complete using TAB in inf-ruby buffers
 
 ** CSS
 
+#+BEGIN_SRC emacs-lisp :tangle yes
 (setq css-indent-offset 2)
 (setq scss-compile-at-save nil)
+#+END_SRC
 
 ** Markdown
 
