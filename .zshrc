@@ -30,6 +30,14 @@ else
   export EDITOR="$EMACSCLIENT"
 fi
 
+export DROPBOX="$HOME/Dropbox"
+export CODE="$DROPBOX/Code"
+export DOTFILES="$CODE/dotfiles"
+export SCRIPTS="$CODE/scripts"
+
+alias code="cd $CODE"
+alias dotfiles="cd $DOTFILES"
+
 function reload() {
   cp $DOTFILES/.zshrc ~
   echo "Copied $DOTFILES/.zshrc to ~"
@@ -56,14 +64,6 @@ function runjava() {
 alias git-pull-all="$SCRIPTS/git-pull-all.sh"
 
 alias hlog="hg log --template '#{rev} {date|isodate} {desc|firstline}\n' | less"
-
-export DROPBOX="$HOME/Dropbox"
-export CODE="$DROPBOX/Code"
-export DOTFILES="$CODE/dotfiles"
-export SCRIPTS="$CODE/scripts"
-
-alias code="cd $CODE"
-alias dotfiles="cd $DOTFILES"
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 

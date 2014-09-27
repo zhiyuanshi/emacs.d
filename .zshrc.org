@@ -96,6 +96,18 @@ else
 fi
 #+END_SRC
 
+** Shortcuts to directories
+
+#+BEGIN_SRC sh :tangle yes
+export DROPBOX="$HOME/Dropbox"
+export CODE="$DROPBOX/Code"
+export DOTFILES="$CODE/dotfiles"
+export SCRIPTS="$CODE/scripts"
+
+alias code="cd $CODE"
+alias dotfiles="cd $DOTFILES"
+#+END_SRC
+
 ** Reload function
 
 #+BEGIN_SRC sh :tangle yes
@@ -150,18 +162,6 @@ function runjava() {
 alias git-pull-all="$SCRIPTS/git-pull-all.sh"
 
 alias hlog="hg log --template '#{rev} {date|isodate} {desc|firstline}\n' | less"
-#+END_SRC
-
-** Shortcuts to directories
-
-#+BEGIN_SRC sh :tangle yes
-export DROPBOX="$HOME/Dropbox"
-export CODE="$DROPBOX/Code"
-export DOTFILES="$CODE/dotfiles"
-export SCRIPTS="$CODE/scripts"
-
-alias code="cd $CODE"
-alias dotfiles="cd $DOTFILES"
 #+END_SRC
 
 ** The PATH environment variable
