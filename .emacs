@@ -120,8 +120,8 @@
   "p" 'projectile-switch-project
   "q" 'delete-window
   "r" 'projectile-recentf
-  "s" 'evil-window-split
-  "v" 'evil-window-vsplit
+  ;; "s" 'evil-window-split
+  ;; "v" 'evil-window-vsplit
   "w" 'save-buffer
   "x" 'delete-frame
   "=" 'align-regexp)
