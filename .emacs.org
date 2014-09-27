@@ -75,6 +75,7 @@ https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
     idris-mode
     imenu-anywhere
     inf-ruby
+    jquery-doc
     js2-mode
     js2-refactor
     less-css-mode
@@ -834,6 +835,13 @@ Trigger auto-complete using TAB in inf-ruby buffers
 (defun delete-tern-process ()
   (interactive)
   (delete-process "Tern"))
+#+END_SRC
+
+*** jQuery doc
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(require 'jquery-doc)
+(add-hook 'js2-mode-hook 'jquery-doc-setup)
 #+END_SRC
 
 ** Web
