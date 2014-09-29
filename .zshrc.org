@@ -164,6 +164,17 @@ alias git-pull-all="$SCRIPTS/git-pull-all.sh"
 alias hlog="hg log --template '#{rev} {date|isodate} {desc|firstline}\n' | less"
 #+END_SRC
 
+** PostgreSQL
+
+https://devcenter.heroku.com/articles/heroku-postgresql#local-setup
+Once Postgres is installed and you can connect, you'll need to export the
+DATABASE_URL environment variable for your app to connect to it when running
+locally. E.g.:
+
+#+BEGIN_SRC sh :tangle yes
+export DATABASE_URL=postgres:///$(whoami)
+#+END_SRC
+
 ** The PATH environment variable
 *** The default
 
