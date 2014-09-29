@@ -115,7 +115,7 @@ function reload() {
   cp $DOTFILES/.zshrc ~
   echo "Copied $DOTFILES/.zshrc to ~"
 
-  . ~/.zshrc
+  source ~/.zshrc
   echo "Reloaded .zshrc from ~"
 }
 #+END_SRC
