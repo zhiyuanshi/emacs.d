@@ -203,3 +203,16 @@ eval "$(rbenv init -)"
 #+BEGIN_SRC sh :tangle yes
 export PATH="$HOME/.cabal/bin:$PATH"
 #+END_SRC
+
+** fzf
+
+fzf is a general-purpose fuzzy finder for your shell.
+https://github.com/junegunn/fzf
+
+#+BEGIN_SRC sh :tangle yes
+if [ -f ~/.fzf.zsh ]; then
+  source ~/.fzf.zsh
+else
+  echo '~/.fzf.zsh not found'
+fi
+#+END_SRC
