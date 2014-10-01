@@ -855,12 +855,6 @@ Trigger auto-complete using TAB in inf-ruby buffers
 (add-hook 'projectile-mode-hook 'projectile-rails-on)
 #+END_SRC
 
-*** rainbow-mode
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(add-hook 'css-mode-hook 'rainbow-mode)
-#+END_SRC
-
 *** rinari
 
 #+BEGIN_SRC emacs-lisp :tangle yes
@@ -894,6 +888,12 @@ Trigger auto-complete using TAB in inf-ruby buffers
 #+BEGIN_SRC emacs-lisp :tangle yes
 (setq css-indent-offset 2)
 (setq scss-compile-at-save nil)
+#+END_SRC
+
+Colorize color names in CSS files.
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(add-hook 'css-mode-hook 'rainbow-mode)
 #+END_SRC
 
 ** Markdown
