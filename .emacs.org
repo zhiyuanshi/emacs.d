@@ -291,7 +291,7 @@ otherwise evil-leader won’t be enabled in initial buffers (*scratch*,
 (setq inhibit-startup-screen t)
 
 ;; Display of line numbers in the left margin
-;; (global-linum-mode 1)
+(global-linum-mode 1)
 
 ;; Always display line and column numbers
 (line-number-mode 1)
@@ -415,6 +415,10 @@ https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdispl
 #+END_SRC
 
 ** Sane defaults
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(global-set-key (kbd "RET") 'newline-and-indent)
+#+END_SRC
 
 #+BEGIN_SRC emacs-lisp :tangle yes
 ;; anzu
@@ -633,6 +637,7 @@ Cf. https://github.com/haskell/haskell-mode/wiki/Indentation
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp :tangle yes
+(customize-set-variable 'haskell-interactive-popup-errors nil)
 (customize-set-variable 'haskell-process-auto-import-loaded-modules t)
 (customize-set-variable 'haskell-process-log t)
 (customize-set-variable 'haskell-process-suggest-haskell-docs-imports t)
