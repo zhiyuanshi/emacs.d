@@ -182,8 +182,7 @@ locally. E.g.:
 export DATABASE_URL=postgres:///$(whoami)
 #+END_SRC
 
-** The PATH environment variable
-*** The default
+** Set PATH to the default
 
 Defined in =/etc/environment=
 
@@ -191,21 +190,21 @@ Defined in =/etc/environment=
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 #+END_SRC
 
-*** OPAM
+** OPAM
 
 #+BEGIN_SRC sh :tangle yes
 export PATH="$HOME/.opam/4.01.0/bin:$PATH"
 eval `opam config env`
 #+END_SRC
 
-*** rbenv
+** rbenv
 
 #+BEGIN_SRC sh :tangle yes
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 #+END_SRC
 
-*** Cabal
+** Cabal
 
 #+BEGIN_SRC sh :tangle yes
 export PATH="$HOME/.cabal/bin:$PATH"
