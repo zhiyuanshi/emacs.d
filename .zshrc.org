@@ -190,6 +190,18 @@ locally. E.g.:
 export DATABASE_URL=postgres:///$(whoami)
 #+END_SRC
 
+** nginx
+
+http://railscasts.com/episodes/357-adding-ssl
+
+#+BEGIN_SRC sh :tangle yes
+nginx-load-conf-and-restart() {
+  sudo cp $DOTFILES/nginx.conf /etc/nginx/nginx.conf
+  sudo nginx -t
+  sudo service nginx restart
+}
+#+END_SRC
+
 ** Set PATH to the default
 
 Defined in =/etc/environment=
