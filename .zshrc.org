@@ -164,6 +164,14 @@ alias git-pull-all="$SCRIPTS/git-pull-all.sh"
 alias hlog="hg log --template '#{rev} {date|isodate} {desc|firstline}\n' | less"
 #+END_SRC
 
+*** Utils
+
+https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-14-04-lts
+
+#+BEGIN_SRC sh :tangle yes
+alias find-my-ip="ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'"
+#+END_SRC
+
 ** nvm (Node Version Manager)
 
 #+BEGIN_SRC sh :tangle yes
