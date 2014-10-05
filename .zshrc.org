@@ -164,6 +164,13 @@ alias git-pull-all="$SCRIPTS/git-pull-all.sh"
 alias hlog="hg log --template '#{rev} {date|isodate} {desc|firstline}\n' | less"
 #+END_SRC
 
+** nvm (Node Version Manager)
+
+#+BEGIN_SRC sh :tangle yes
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+#+END_SRC
+
 ** PostgreSQL
 
 https://devcenter.heroku.com/articles/heroku-postgresql#local-setup
