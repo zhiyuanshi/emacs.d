@@ -736,6 +736,12 @@ Rake files are ruby, too, as are gemspecs, rackup files, and gemfiles.
 (add-to-list 'auto-mode-alist '("Berksfile\\'" . ruby-mode))
 #+END_SRC
 
+Avoid ridiculous Ruby indentation
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(setq ruby-deep-indent-paren nil)
+#+END_SRC
+
 Sane defaults
 https://github.com/purcell/emacs.d/blob/master/lisp/init-ruby-mode.el#L12
 
