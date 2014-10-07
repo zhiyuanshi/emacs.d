@@ -31,7 +31,6 @@
     evil-nerd-commenter
     evil-surround
     expand-region
-    fic-mode
     flx-ido
     flycheck
     flycheck-haskell
@@ -341,10 +340,6 @@
 (require 'anzu)
 (diminish 'anzu-mode)
 (global-anzu-mode +1)
-
-;; fic-mode
-(require 'fic-mode)
-(add-hook 'prog-mode-hook 'fic-mode)
 
 ;; framemove
 (windmove-default-keybindings 'ctrl)
