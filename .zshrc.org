@@ -7,7 +7,6 @@ Evaluate the following piece of code every time you've made change to this file.
 (save-buffer)
 (org-babel-tangle)
 (rename-file ".zshrc.sh" ".zshrc" t) ;; TODO: We could have directly export to .zshrc!
-(copy-file ".zshrc" "~/.zshrc" t)
 #+END_SRC
 
 * Provided by oh-my-zsh

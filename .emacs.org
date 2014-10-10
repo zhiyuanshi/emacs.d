@@ -8,7 +8,6 @@ Evaluate the following piece of code every time you've made change to this file.
 (org-babel-tangle)
 (rename-file ".emacs.el" ".emacs" t) ;; TODO: We could have directly export to .emacs!
 (load-file ".emacs") ;; Load first so that in case the new version is broken, it probably won't be copied to home.
-(copy-file ".emacs" "~/.emacs" t)
 #+END_SRC
 
 * Prerequisites
@@ -805,6 +804,9 @@ Trigger auto-complete using TAB in inf-ruby buffers
 
 ;; https://github.com/lunaryorn/.emacs.d/blob/master/init.el
 (setq-default js2-basic-offset 2)
+
+(setq-default js2-mode-show-parse-errors nil
+              js2-mode-show-strict-warnings nil)
 
 ;; A list of any extern names you'd like to consider always declared
 ;; http://howardabrams.com/projects/dot-files/emacs-javascript.html
