@@ -7,7 +7,7 @@ DISABLE_UPDATE_PROMPT="true"
 
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(bundler cabal gem git heroku mercurial rails rake rbenv ruby sbt scala)
+plugins=(bundler cabal capistrano gem git heroku mercurial rails rake rbenv ruby sbt scala)
 
 source $ZSH/oh-my-zsh.sh        # Required
 

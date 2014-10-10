@@ -44,7 +44,7 @@ much, much faster.
 * Plugins
 
 #+BEGIN_SRC sh :tangle yes
-plugins=(bundler cabal gem git heroku mercurial rails rake rbenv ruby sbt scala)
+plugins=(bundler cabal capistrano gem git heroku mercurial rails rake rbenv ruby sbt scala)
 #+END_SRC
 
 * Source oh-my-zsh.sh
