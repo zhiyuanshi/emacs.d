@@ -77,7 +77,11 @@
     smooth-scrolling
     tern
     tern-auto-complete
-    tuareg
+
+    ;; If we include this, automatic package installation process will hang.
+    ;; Install tuareg-mode manually.
+    ;; tuareg
+
     utop
     web-mode
     yard-mode
