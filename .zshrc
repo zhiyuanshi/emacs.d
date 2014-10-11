@@ -14,11 +14,16 @@ source $ZSH/oh-my-zsh.sh        # Required
 # PROMPT="
 # %c%# "
 
-echo > "$HOME/.local/share/recently-used.xbel"
-touch  "$HOME/.local/share/recently-used.xbel"
+if [ -e "$HOME/.local/share/recently-used.xbel" ]; then
+  echo > "$HOME/.local/share/recently-used.xbel"
+  touch  "$HOME/.local/share/recently-used.xbel"
+fi
+
 echo "gtk-recent-files-max-age=0" > "$HOME/.gtkrc-2.0"
 
-xinput -set-prop "TPPS/2 IBM TrackPoint" "Device Enabled" 0
+if which xinput &>/dev/null; then
+  xinput -set-prop "TPPS/2 IBM TrackPoint" "Device Enabled" 0
+fi
 
 # echo 2 > /sys/module/hid_apple/parameters/fnmode
 
@@ -80,8 +85,10 @@ nginx-load-conf-and-restart() {
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
-export PATH="$HOME/.opam/4.01.0/bin:$PATH"
-eval `opam config env`
+if which opam &>/dev/null ; then
+  export PATH="$HOME/.opam/4.01.0/bin:$PATH"
+  eval `opam config env`
+fi
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
