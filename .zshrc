@@ -97,9 +97,6 @@ eval "$(rbenv init -)"
 
 export PATH="$HOME/.cabal/bin:$PATH"
 
-if [ -f ~/.fzf.zsh ]; then
-  source ~/.fzf.zsh
-else
-  git clone https://github.com/junegunn/fzf.git ~/.fzf
-  ~/.fzf/install
-fi
+function defined { command -v $1 &>/dev/null }
+
+source "components/fzf.sh" # A general-purpose fuzzy finder for your shell
