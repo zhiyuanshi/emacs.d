@@ -100,5 +100,6 @@ export PATH="$HOME/.cabal/bin:$PATH"
 if [ -f ~/.fzf.zsh ]; then
   source ~/.fzf.zsh
 else
-  echo '~/.fzf.zsh not found'
+  git clone https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install
 fi
