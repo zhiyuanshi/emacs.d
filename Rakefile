@@ -11,7 +11,7 @@ RULES = {
 }
 
 desc "Setup dotfiles by creating symlinks"
-task :setup do
+task :up do
   RULES.each do |f, target_dir|
     local_path  = File.join(File.expand_path(File.dirname(__FILE__)), f)
     remote_path = File.join(File.expand_path(target_dir), f)

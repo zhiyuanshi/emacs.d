@@ -12,8 +12,8 @@ Set Zsh as your login shell:
 
     git clone https://github.com/zhiyuanshi/dotfiles.git
     cd dotfiles
-    rake setup
+    rake up
 
-You can safely run `rake setup` multiple times to update:
+You can safely run `rake up` multiple times to update:
 
-    rake setup
+    rake up
