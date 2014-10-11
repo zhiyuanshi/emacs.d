@@ -9,6 +9,12 @@ Evaluate the following piece of code every time you've made change to this file.
 (rename-file ".zshrc.sh" ".zshrc" t) ;; TODO: We could have directly export to .zshrc!
 #+END_SRC
 
+* Make sure oh-my-zsh is installed
+
+#+BEGIN_SRC sh :tangle yes
+[ -d ~/.oh-my-zsh ] || curl -L http://install.ohmyz.sh | sh
+#+END_SRC
+
 * Provided by oh-my-zsh
 
 Path to your oh-my-zsh installation.

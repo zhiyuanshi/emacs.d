@@ -1,4 +1,6 @@
 
+[ -d ~/.oh-my-zsh ] || curl -L http://install.ohmyz.sh | sh
+
 export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="mgutz"
