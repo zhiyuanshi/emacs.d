@@ -37,9 +37,10 @@ else
   export EDITOR="$EMACSCLIENT"
 fi
 
+export DOTFILES=$(dirname $(readlink -f $0))
+
 export DROPBOX="$HOME/Dropbox"
 export CODE="$DROPBOX/Code"
-export DOTFILES="$CODE/dotfiles"
 export SCRIPTS="$CODE/scripts"
 
 alias code="cd $CODE"
