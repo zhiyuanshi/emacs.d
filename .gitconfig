@@ -9,3 +9,5 @@
 	default = simple
 [core]
 	editor = emacsclient --create-frame --no-wait --alternate-editor=''
+[diff]
+	algorithm = patience
