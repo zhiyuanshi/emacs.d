@@ -88,7 +88,7 @@ fi
 export PATH="$HOME/.cabal/bin:$PATH"
 
 function defined { command -v $1 &>/dev/null }
-function require_component { source "$DOTFILES/components/$1.sh" }
+function require { source "$DOTFILES/$1.sh" }
 
-require_component rbenv
-require_component fzf # A general-purpose fuzzy finder for your shell
+require "components/rbenv"
+require "components/fzf" # A general-purpose fuzzy finder for your shell
