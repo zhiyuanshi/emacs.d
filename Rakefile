@@ -12,6 +12,12 @@ RULES = {
 
 desc "Setup dotfiles by creating symlinks"
 task :up do
+  # Ruby uses the system() C function, which uses /bin/sh, which is a symlink to
+  # /bin/dash on Ubuntu by default. Ugh!
+  #
+  # http://stackoverflow.com/questions/1239510/how-do-i-specify-the-shell-to-use-for-a-ruby-system-call
+  system("sudo ln -s --force $(which zsh) /bin/sh")
+
   RULES.each do |f, target_dir|
     local_path  = File.join(File.expand_path(File.dirname(__FILE__)), f)
     remote_path = File.join(File.expand_path(target_dir), f)
