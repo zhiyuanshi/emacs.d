@@ -46,14 +46,6 @@ export SCRIPTS="$CODE/scripts"
 alias code="cd $CODE"
 alias dotfiles="cd $DOTFILES"
 
-function reload() {
-  cp $DOTFILES/.zshrc ~
-  echo "Copied $DOTFILES/.zshrc to ~"
-
-  source ~/.zshrc
-  echo "Reloaded .zshrc from ~"
-}
-
 alias cl="clear"
 alias open="xdg-open"
 

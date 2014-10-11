@@ -119,18 +119,6 @@ alias code="cd $CODE"
 alias dotfiles="cd $DOTFILES"
 #+END_SRC
 
-** Reload function
-
-#+BEGIN_SRC sh :tangle yes
-function reload() {
-  cp $DOTFILES/.zshrc ~
-  echo "Copied $DOTFILES/.zshrc to ~"
-
-  source ~/.zshrc
-  echo "Reloaded .zshrc from ~"
-}
-#+END_SRC
-
 ** Aliases
 *** General
 
