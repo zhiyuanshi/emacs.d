@@ -15,7 +15,7 @@ task :up do
   RULES.each do |f, target_dir|
     local_path  = File.join(File.expand_path(File.dirname(__FILE__)), f)
     remote_path = File.join(File.expand_path(target_dir), f)
-    system("ln -s --verbose --force #{local_path} #{remote_path}")
+    system("ln -s --force #{local_path} #{remote_path}")
   end
 end
 
