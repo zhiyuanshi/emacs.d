@@ -85,10 +85,12 @@ if which opam &>/dev/null ; then
   eval `opam config env`
 fi
 
-export PATH="$HOME/.cabal/bin:$PATH"
-
 function defined { command -v $1 &>/dev/null }
 function require { source "$DOTFILES/$1.sh" }
 
 require "components/rbenv"
+
+# Depends on Ruby
 require "components/fzf" # A general-purpose fuzzy finder for your shell
+
+require "components/cabal"
