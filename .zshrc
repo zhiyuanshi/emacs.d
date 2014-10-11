@@ -92,11 +92,9 @@ if which opam &>/dev/null ; then
   eval `opam config env`
 fi
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
 export PATH="$HOME/.cabal/bin:$PATH"
 
 function defined { command -v $1 &>/dev/null }
 
 source "components/fzf.sh" # A general-purpose fuzzy finder for your shell
+source "components/rbenv.sh"
