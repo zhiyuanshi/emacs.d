@@ -96,5 +96,5 @@ export PATH="$HOME/.cabal/bin:$PATH"
 
 function defined { command -v $1 &>/dev/null }
 
-source "components/fzf.sh" # A general-purpose fuzzy finder for your shell
 source "components/rbenv.sh"
+source "components/fzf.sh" # A general-purpose fuzzy finder for your shell
