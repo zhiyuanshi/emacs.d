@@ -4,7 +4,9 @@
 
 Set Zsh as your login shell:
 
-    sudo apt-get update && sudo apt-get install zsh
+    if ! command -v zsh >/dev/null; then
+      sudo apt-get update && sudo apt-get install zsh
+    fi
     chsh -s $(which zsh)
 
 ## Set up
