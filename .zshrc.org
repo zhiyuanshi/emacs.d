@@ -75,7 +75,7 @@ if [ -e "~/.local/share/recently-used.xbel" ]; then
   touch  "~/.local/share/recently-used.xbel"
 fi
 
-echo "gtk-recent-files-max-age=0" > "~/.gtkrc-2.0"
+[ -f ~/.gtkrc-2.0 ] && echo "gtk-recent-files-max-age=0" > ~/.gtkrc-2.0
 #+END_SRC
 
 *** Disable ThinkPad TrackPoint

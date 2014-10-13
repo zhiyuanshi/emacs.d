@@ -21,7 +21,7 @@ if [ -e "~/.local/share/recently-used.xbel" ]; then
   touch  "~/.local/share/recently-used.xbel"
 fi
 
-echo "gtk-recent-files-max-age=0" > "~/.gtkrc-2.0"
+[ -f ~/.gtkrc-2.0 ] && echo "gtk-recent-files-max-age=0" > ~/.gtkrc-2.0
 
 if which xinput &>/dev/null; then
   xinput -set-prop "TPPS/2 IBM TrackPoint" "Device Enabled" 0
