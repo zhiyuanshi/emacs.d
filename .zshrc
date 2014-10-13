@@ -1,7 +1,7 @@
 
 [ -d ~/.oh-my-zsh ] || curl -L http://install.ohmyz.sh | sh
 
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 ZSH_THEME="mgutz"
 
@@ -16,12 +16,12 @@ source $ZSH/oh-my-zsh.sh        # Required
 # PROMPT="
 # %c%# "
 
-if [ -e "$HOME/.local/share/recently-used.xbel" ]; then
-  echo > "$HOME/.local/share/recently-used.xbel"
-  touch  "$HOME/.local/share/recently-used.xbel"
+if [ -e "~/.local/share/recently-used.xbel" ]; then
+  echo > "~/.local/share/recently-used.xbel"
+  touch  "~/.local/share/recently-used.xbel"
 fi
 
-echo "gtk-recent-files-max-age=0" > "$HOME/.gtkrc-2.0"
+echo "gtk-recent-files-max-age=0" > "~/.gtkrc-2.0"
 
 if which xinput &>/dev/null; then
   xinput -set-prop "TPPS/2 IBM TrackPoint" "Device Enabled" 0
@@ -39,7 +39,7 @@ fi
 
 export DOTFILES=$(dirname $(readlink -f $0))
 
-export DROPBOX="$HOME/Dropbox"
+export DROPBOX="~/Dropbox"
 export CODE="$DROPBOX/Code"
 export SCRIPTS="$CODE/scripts"
 
@@ -67,7 +67,7 @@ alias hlog="hg log --template '#{rev} {date|isodate} {desc|firstline}\n' | less"
 
 alias find-my-ip="ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'"
 
-export NVM_DIR="$HOME/.nvm"
+export NVM_DIR="~/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export DATABASE_URL=postgres:///$(whoami)
@@ -81,7 +81,7 @@ nginx-load-conf-and-restart() {
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 if which opam &>/dev/null ; then
-  export PATH="$HOME/.opam/4.01.0/bin:$PATH"
+  export PATH="~/.opam/4.01.0/bin:$PATH"
   eval `opam config env`
 fi
 
