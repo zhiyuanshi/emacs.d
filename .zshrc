@@ -37,7 +37,9 @@ else
   export EDITOR="$EMACSCLIENT"
 fi
 
-export DOTFILES=$(dirname $(readlink -f $0))
+# http://stackoverflow.com/questions/9901210/bash-source0-equivalent-in-zsh
+export ZSHRC=${(%):-%N}
+export DOTFILES=$(dirname $(readlink -f $ZSHRC))
 
 export DROPBOX="~/Dropbox"
 export CODE="$DROPBOX/Code"
