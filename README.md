@@ -1,5 +1,7 @@
 # dotfiles
 
+My personal Emacs, Vim, Zsh (and etc.) configuration primarily intended for Haskell and Ruby development.
+
 # Prerequisites
 
 Set Zsh as your login shell:
@@ -9,7 +11,7 @@ Set Zsh as your login shell:
     fi
     chsh -s $(which zsh)
 
-## Set up
+# Set up
 
     git clone https://github.com/zhiyuanshi/dotfiles.git
     cd dotfiles
