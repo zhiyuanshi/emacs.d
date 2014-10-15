@@ -15,6 +15,7 @@ Set Zsh as your login shell:
 
     git clone https://github.com/zhiyuanshi/dotfiles.git
     cd dotfiles
+    source .zshrc
     rake up
 
 You can safely run `rake up` multiple times to update:
