@@ -16,9 +16,9 @@ source $ZSH/oh-my-zsh.sh        # Required
 # PROMPT="
 # %c%# "
 
-if [ -e "~/.local/share/recently-used.xbel" ]; then
-  echo > "~/.local/share/recently-used.xbel"
-  touch  "~/.local/share/recently-used.xbel"
+if [ -e ~/.local/share/recently-used.xbel ]; then
+  echo > ~/.local/share/recently-used.xbel
+  touch  ~/.local/share/recently-used.xbel
 fi
 
 [ -f ~/.gtkrc-2.0 ] && echo "gtk-recent-files-max-age=0" > ~/.gtkrc-2.0
