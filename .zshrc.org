@@ -216,6 +216,7 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 #+BEGIN_SRC sh :tangle yes
 if which opam &>/dev/null ; then
   export PATH="~/.opam/4.01.0/bin:$PATH"
+  source ~/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
   eval `opam config env`
 fi
 #+END_SRC
