@@ -269,7 +269,7 @@
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(setq mode-require-final-newline nil)
+;; (setq mode-require-final-newline nil)
 
 ;; Show me empty lines after buffer end
 (set-default 'indicate-empty-lines t)
