@@ -93,7 +93,8 @@ function require { source "$DOTFILES/$1.sh" }
 
 require "components/rbenv"
 
-# Depends on Ruby
-require "components/fzf" # A general-purpose fuzzy finder for your shell
+# fzf, depends on Ruby
+# A general-purpose fuzzy finder for your shell
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 require "components/cabal"
