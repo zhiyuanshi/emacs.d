@@ -22,6 +22,7 @@
     bundler
     coffee-mode
     color-theme-solarized ;; Replace bbatsov's version due to its unpleasant Ruby syntax highlighting
+    diminish
     dired+
     dired-details+
     discover-my-major
