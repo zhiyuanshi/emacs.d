@@ -16,6 +16,10 @@ ruby "$DOTFILES/copy_dotfiles.rb"
 vim +PluginInstall +qall # Must be terminal Vim, so that the next command won't be run until this finishes.
 
 # Build YouCompleteMe:
+
+# CMake is required to build YouCompleteMe.
+sudo apt-get -y install cmake
+
 cd ~/.vim/bundle/YouCompleteMe && ./install.sh --clang-completer
 
 # Build vimproc.vim:
