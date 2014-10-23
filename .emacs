@@ -444,7 +444,7 @@
 
 ;; projectile
 (projectile-global-mode)
-(setq projectile-completion-system 'grizzl)
+;; (setq projectile-completion-system 'grizzl)
 
 ;; recentf
 (require 'recentf)
