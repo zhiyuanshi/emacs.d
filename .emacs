@@ -381,6 +381,10 @@
   ;; reset selection
   (define-key map (kbd "C-c") 'zlc-reset))
 
+(setq scroll-step 1)
+(setq scroll-conservatively 10000)
+(setq auto-window-vscroll nil)
+
 ;; ace-jump-mode
 ;; Enable a more powerful jump back function from ace jump mode
 (autoload
