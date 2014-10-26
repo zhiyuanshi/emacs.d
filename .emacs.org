@@ -64,6 +64,7 @@ https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
     flycheck
     flycheck-haskell
     framemove
+    fsharp-mode
     fuzzy
     git-messenger
     github-browse-file

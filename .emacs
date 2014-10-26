@@ -36,6 +36,7 @@
     flycheck
     flycheck-haskell
     framemove
+    fsharp-mode
     fuzzy
     git-messenger
     github-browse-file
