@@ -248,7 +248,7 @@ filetype plugin indent on    " Required
 
 syntax on
 set t_Co=256
-set guifont=Ubuntu\ Mono\ 13
+set guifont=Ubuntu\ Mono\ 15
 " set guifont=DejaVu\ Sans\ Mono\ 11
 set background=light
 colorscheme base16-solarized
