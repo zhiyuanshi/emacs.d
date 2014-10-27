@@ -69,6 +69,10 @@ alias hlog="hg log --template '#{rev} {date|isodate} {desc|firstline}\n' | less"
 
 alias find-my-ip="ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'"
 
+disable-post-installation-script() {
+  sudo mv "/var/lib/dpkg/info/$1.postinst" "/var/lib/dpkg/info/$1.postinst.original"
+}
+
 export NVM_DIR="~/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 

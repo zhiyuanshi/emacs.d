@@ -173,6 +173,12 @@ https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-
 alias find-my-ip="ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'"
 #+END_SRC
 
+** Functions
+#+BEGIN_SRC sh :tangle yes
+disable-post-installation-script() {
+  sudo mv "/var/lib/dpkg/info/$1.postinst" "/var/lib/dpkg/info/$1.postinst.original"
+}
+#+END_SRC
 ** nvm (Node Version Manager)
 
 #+BEGIN_SRC sh :tangle yes
