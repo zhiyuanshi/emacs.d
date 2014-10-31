@@ -63,6 +63,7 @@ https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
     flx-ido
     flycheck
     flycheck-haskell
+    flycheck-rust
     framemove
     fsharp-mode
     fuzzy
@@ -93,6 +94,7 @@ https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
     robe
     rspec-mode
     ruby-hash-syntax
+    rust-mode
     sass-mode
     scala-mode2
     scss-mode

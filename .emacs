@@ -35,6 +35,7 @@
     flx-ido
     flycheck
     flycheck-haskell
+    flycheck-rust
     framemove
     fsharp-mode
     fuzzy
@@ -65,6 +66,7 @@
     robe
     rspec-mode
     ruby-hash-syntax
+    rust-mode
     sass-mode
     scala-mode2
     scss-mode
