@@ -157,7 +157,7 @@
 (global-set-key (kbd "C-0") 'text-scale-reset)
 
 
-(global-set-key (kbd "<C-tab>") 'other-frame)
+(global-set-key (kbd "<C-tab>") 'elscreen-next)
 
 ;; If we don't this, <C-tab> wll get overridden in Org mode.
 ;; http://stackoverflow.com/questions/683425/globally-override-key-binding-in-emacs
@@ -483,6 +483,9 @@
 ;; smartparens
 (smartparens-global-mode 1)
 (require 'smartparens-config) ;; the default configuration
+
+(elscreen-start)
+(elscreen-set-prefix-key "\C-l")
 
 (setq sml/no-confirm-load-theme t)
 (sml/setup)
