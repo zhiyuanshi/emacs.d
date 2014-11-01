@@ -5,6 +5,7 @@ RULES = {
   "Preferences.sublime-settings" => "~/.config/sublime-text-3/Packages/User",
   ".gitconfig" => "~",
   ".hgrc" => "~",
+  ".ghci" => "~",
   ".irbrc" => "~",
   ".gemrc" => "~",
   ".railsrc" => "~",
