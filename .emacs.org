@@ -539,7 +539,7 @@ http://tuhdo.github.io/helm-intro.html
 
 #+BEGIN_SRC emacs-lisp :tangle yes
 (require 'helm-config)
-(helm-mode 1)
+;; (helm-mode 1)
 #+END_SRC
 
 ** Dired, Dired+, DiredDetails+

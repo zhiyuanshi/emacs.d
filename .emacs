@@ -432,7 +432,7 @@
 (ido-ubiquitous-mode 1)
 
 (require 'helm-config)
-(helm-mode 1)
+;; (helm-mode 1)
 
 (setq-default dired-dwim-target t)
 
