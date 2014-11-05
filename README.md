@@ -20,7 +20,6 @@ My personal Emacs, Vim, Zsh (and etc.) configuration primarily intended for Hask
 ```
 git clone https://github.com/zhiyuanshi/dotfiles.git
 cd dotfiles
-source .zshrc
 rake up
 ```
 
