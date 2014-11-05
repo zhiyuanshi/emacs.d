@@ -1,5 +1,7 @@
 [extensions]
 shelve =
+hgext.bookmarks =
+hggit =
 
 [ui]
 username = Zhiyuan Shi <zhiyuan.shi@gmail.com>
