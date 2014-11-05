@@ -95,10 +95,13 @@ fi
 function defined { command -v $1 &>/dev/null }
 function require { source "$DOTFILES/$1.sh" }
 
-require "components/rbenv"
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 # fzf, depends on Ruby
 # A general-purpose fuzzy finder for your shell
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-require "components/cabal"
+# cabal
+export PATH="$HOME/.cabal/bin:$PATH"
