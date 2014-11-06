@@ -26,6 +26,7 @@
     dired+
     dired-details+
     discover-my-major
+    elscreen
     ensime
     evil
     evil-leader
