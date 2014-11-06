@@ -17,7 +17,7 @@ task :up do
   # /bin/dash on Ubuntu by default. Ugh!
   #
   # http://stackoverflow.com/questions/1239510/how-do-i-specify-the-shell-to-use-for-a-ruby-system-call
-  system("sudo ln -s --force $(which zsh) /bin/sh")
+  system("sudo ln -s --force $(which bash) /bin/sh")
 
   RULES.each do |f, target_dir|
     local_path  = File.join(File.expand_path(File.dirname(__FILE__)), f)
