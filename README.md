@@ -13,7 +13,7 @@ My personal Emacs, Vim, Zsh (and etc.) configuration primarily intended for Hask
   chsh -s $(which zsh)
   ```
 
-2. [Ruby](https://www.ruby-lang.org/)
+2. [Rake](https://github.com/ruby/rake)
 
 # Set up
 
