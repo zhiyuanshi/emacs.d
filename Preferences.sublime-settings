@@ -1,5 +1,6 @@
 {
 	"color_scheme": "Packages/Color Scheme - Default/Slush & Poppies.tmTheme",
 	"font_face": "Ubuntu Mono",
-	"font_size": 15
+	"font_size": 15,
+	"trim_trailing_white_space_on_save": true
 }
