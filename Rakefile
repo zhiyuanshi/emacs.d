@@ -25,7 +25,7 @@ task :up do
     system("ln -s --force #{local_path} #{remote_path}")
 
     # Handle ".ghci is writable by someone else, IGNORING!"
-    system("chmod g-w #{File.join(File.expand_path('~', '.ghci'))}")
+    system("chmod g-w #{File.expand_path('~/.ghci')}")
     system("chmod g-w #{File.expand_path(File.dirname(__FILE__))}")
   end
 end
