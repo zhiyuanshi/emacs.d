@@ -27,6 +27,9 @@ task :up do
     # Handle ".ghci is writable by someone else, IGNORING!"
     system("chmod g-w #{File.expand_path('~/.ghci')}")
     system("chmod g-w #{File.expand_path(File.dirname(__FILE__))}")
+
+    # Reverse copy my public SSH key
+    system("cp ~/.ssh/id_rsa.pub #{File.expand_path(File.dirname(__FILE__))}")
   end
 end
 
