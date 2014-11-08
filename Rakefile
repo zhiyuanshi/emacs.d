@@ -19,17 +19,19 @@ task :up do
   # http://stackoverflow.com/questions/1239510/how-do-i-specify-the-shell-to-use-for-a-ruby-system-call
   system("sudo ln -s --force $(which bash) /bin/sh")
 
+  dotfiles_dir = File.expand_path(File.dirname(__FILE__))
+
   RULES.each do |f, target_dir|
-    local_path  = File.join(File.expand_path(File.dirname(__FILE__)), f)
+    local_path  = File.join(dotfiles_dir, f)
     remote_path = File.join(File.expand_path(target_dir), f)
     system("ln -s --force #{local_path} #{remote_path}")
 
     # Handle ".ghci is writable by someone else, IGNORING!"
     system("chmod g-w #{File.expand_path('~/.ghci')}")
-    system("chmod g-w #{File.expand_path(File.dirname(__FILE__))}")
+    system("chmod g-w #{dotfiles_dir}")
 
     # Reverse copy my public SSH key
-    system("cp ~/.ssh/id_rsa.pub #{File.expand_path(File.dirname(__FILE__))}")
+    system("cp ~/.ssh/id_rsa.pub #{dotfiles_dir}")
   end
 end
 
