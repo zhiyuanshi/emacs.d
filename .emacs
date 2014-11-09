@@ -601,7 +601,7 @@
 
 (add-hook 'js2-mode-hook (lambda () (setq mode-name "JS2")))
 (add-hook 'js2-mode-hook 'js2-imenu-extras-mode)
-(add-hook 'js2-mode-hook 'rainbow-delimiters-mode)
+;; (add-hook 'js2-mode-hook 'rainbow-delimiters-mode)
   ;; Javascript nests {} and () a lot, so I find this helpful
 
 (add-hook 'js2-mode-hook 'ac-js2-mode)
