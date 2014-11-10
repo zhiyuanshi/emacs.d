@@ -54,6 +54,7 @@ alias open="xdg-open"
 alias v="gvim 2> /dev/null"
 alias e="$EMACSCLIENT"
 alias s="subl"
+alias a="atom"
 
 function runjava() {
   javac $1
@@ -93,6 +94,7 @@ if which opam &>/dev/null ; then
 fi
 
 function defined { command -v $1 &>/dev/null }
+function require { source "$DOTFILES/$1.sh" }
 
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
