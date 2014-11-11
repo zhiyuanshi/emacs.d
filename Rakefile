@@ -30,6 +30,12 @@ task :up do
     system("chmod g-w #{File.expand_path('~/.ghci')}")
     system("chmod g-w #{dotfiles_dir}")
 
+    # if [[ -n $SSH_CONNECTION ]]; then
+    #   export EDITOR="vim"
+    # else
+    #   export EDITOR="$EMACSCLIENT"
+    # fi
+
     # Reverse copy my public SSH key
     system("cp ~/.ssh/id_rsa.pub #{dotfiles_dir}")
   end
