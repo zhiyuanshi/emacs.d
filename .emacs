@@ -117,7 +117,7 @@
 (evil-leader/set-leader "SPC")
 (evil-leader/set-key
   "a" 'mark-whole-buffer
-  "b" 'ido-switch-buffer
+  "b" 'helm-buffers-list
   "c" 'zhiyuan/config-emacs
   "d" 'dired-jump-other-window
   "e" 'ido-find-file
