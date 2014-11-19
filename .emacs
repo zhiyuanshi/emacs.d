@@ -120,7 +120,7 @@
   "b" 'helm-buffers-list
   "c" 'zhiyuan/config-emacs
   "d" 'dired-jump-other-window
-  "e" 'ido-find-file
+  "e" 'helm-find-files
   "f" 'projectile-find-file
   "g" 'git-messenger:popup-message
   "i" 'imenu-anywhere
