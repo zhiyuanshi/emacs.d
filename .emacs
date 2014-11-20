@@ -222,7 +222,7 @@
 (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-15"))
 ;; (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-11"))
 
-(load-theme 'tango t)
+(load-theme 'base16-railscasts t)
 
 (menu-bar-mode 1)
 (tool-bar-mode 0)
@@ -677,8 +677,10 @@
     (sh . t)))
 
 (custom-set-variables
-  ;; Treat solarized-light as safe
-  '(custom-safe-themes '("1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" default))
+  '(custom-safe-themes '(
+    "f41fd682a3cd1e16796068a2ca96e82cfd274e58b978156da0acce4d56f2b0d5" ;; base16-railscasts
+    "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" ;; solarized-light
+    default))
 
   ;; The built-in sh-mode
   ;; Indent shell scripts with 2 spaces, not 4
