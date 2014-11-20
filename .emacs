@@ -454,7 +454,7 @@
 
 ;; projectile
 (projectile-global-mode)
-(setq projectile-completion-system 'grizzl)
+(setq projectile-completion-system 'helm)
 
 ;; recentf
 (require 'recentf)
@@ -677,13 +677,26 @@
     (sh . t)))
 
 (custom-set-variables
-  ;; Treat solarized-light as safe
-  '(custom-safe-themes '("1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" default))
-
-  ;; The built-in sh-mode
-  ;; Indent shell scripts with 2 spaces, not 4
-  '(sh-basic-offset 2)
-  '(sh-indentation 2)
-  )
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(coffee-tab-width 2)
+ '(custom-safe-themes (quote ("f41fd682a3cd1e16796068a2ca96e82cfd274e58b978156da0acce4d56f2b0d5" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" default)))
+ '(haskell-interactive-popup-errors nil t)
+ '(haskell-process-auto-import-loaded-modules t)
+ '(haskell-process-log t)
+ '(haskell-process-suggest-haskell-docs-imports t)
+ '(haskell-process-suggest-hoogle-imports t)
+ '(haskell-process-suggest-remove-import-lines t)
+ '(haskell-process-type (quote cabal-repl))
+ '(sh-basic-offset 2)
+ '(sh-indentation 2))
 
 (provide '.emacs)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
