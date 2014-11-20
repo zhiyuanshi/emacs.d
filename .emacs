@@ -158,7 +158,7 @@
 (global-set-key (kbd "C-0") 'text-scale-reset)
 
 
-;; (global-set-key (kbd "<C-tab>") 'elscreen-next)
+(global-set-key (kbd "<C-tab>") 'other-frame)
 
 ;; If we don't this, <C-tab> wll get overridden in Org mode.
 ;; http://stackoverflow.com/questions/683425/globally-override-key-binding-in-emacs
