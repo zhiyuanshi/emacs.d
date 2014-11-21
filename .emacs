@@ -435,7 +435,10 @@
 (ido-ubiquitous-mode 1)
 
 (require 'helm-config)
-;; (helm-mode 1)
+
+(setq helm-buffers-fuzzy-matching t)
+
+(helm-mode 1)
 
 (setq-default dired-dwim-target t)
 
