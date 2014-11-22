@@ -130,7 +130,6 @@
   "p" 'projectile-switch-project
   "q" 'delete-window
   "r" 'projectile-recentf
-  "s" 'helm-google-suggest
   "t" 'neotree-toggle
   "w" 'save-buffer
   "x" 'delete-frame
@@ -434,9 +433,6 @@
 (ido-ubiquitous-mode 1)
 
 (require 'helm-config)
-
-(when (executable-find "curl")
-    (setq helm-google-suggest-use-curl-p t))
 
 (setq helm-buffers-fuzzy-matching t)
 (setq helm-move-to-line-cycle-in-source t)
