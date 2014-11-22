@@ -118,6 +118,7 @@ https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
 
     utop
     web-mode
+    yaml-mode
     yard-mode
     yari
     yasnippet

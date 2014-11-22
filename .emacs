@@ -90,6 +90,7 @@
 
     utop
     web-mode
+    yaml-mode
     yard-mode
     yari
     yasnippet
