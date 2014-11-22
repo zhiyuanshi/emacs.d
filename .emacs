@@ -437,6 +437,7 @@
 (require 'helm-config)
 
 (setq helm-buffers-fuzzy-matching t)
+(setq helm-move-to-line-cycle-in-source t)
 
 (helm-mode 1)
 
