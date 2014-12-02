@@ -272,6 +272,7 @@
 ;; Sentences do not need double spaces to end. Period.
 (set-default 'sentence-end-double-space nil)
 
+(add-hook 'before-save-hook 'untabify-current-buffer)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; (setq mode-require-final-newline nil)
