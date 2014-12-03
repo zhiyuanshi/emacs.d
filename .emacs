@@ -52,6 +52,7 @@
     jquery-doc
     js2-mode
     js2-refactor
+    latex-preview-pane
     less-css-mode
     magit
     monky
@@ -664,6 +665,8 @@
 (setq-default TeX-PDF-mode t)
 
 (require 'auto-complete-auctex)
+
+(latex-preview-pane-enable)
 
 (add-hook 'markdown-mode-hook 'turn-on-pandoc)
 

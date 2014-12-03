@@ -80,6 +80,7 @@ https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
     jquery-doc
     js2-mode
     js2-refactor
+    latex-preview-pane
     less-css-mode
     magit
     monky
@@ -945,12 +946,13 @@ Colorize color names in CSS files.
 #+END_SRC
 
 ** LaTex
-*** auctex
 
 #+BEGIN_SRC emacs-lisp :tangle yes
 (setq-default TeX-PDF-mode t)
 
 (require 'auto-complete-auctex)
+
+(latex-preview-pane-enable)
 #+END_SRC
 
 ** pandoc-mode
