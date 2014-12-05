@@ -953,6 +953,8 @@ Colorize color names in CSS files.
 (require 'auto-complete-auctex)
 
 (add-hook 'LaTeX-mode-hook 'latex-preview-pane-mode)
+
+(setq doc-view-continuous t)
 #+END_SRC
 
 ** pandoc-mode

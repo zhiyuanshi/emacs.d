@@ -668,6 +668,8 @@
 
 (add-hook 'LaTeX-mode-hook 'latex-preview-pane-mode)
 
+(setq doc-view-continuous t)
+
 (add-hook 'markdown-mode-hook 'turn-on-pandoc)
 
 (setq org-confirm-babel-evaluate nil)
