@@ -666,7 +666,7 @@
 
 (require 'auto-complete-auctex)
 
-(latex-preview-pane-enable)
+(add-hook 'LaTeX-mode-hook 'latex-preview-pane-mode)
 
 (add-hook 'markdown-mode-hook 'turn-on-pandoc)
 
