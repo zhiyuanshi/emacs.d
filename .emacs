@@ -666,7 +666,7 @@
 
 (require 'auto-complete-auctex)
 
-(add-hook 'LaTeX-mode-hook 'latex-preview-pane-mode)
+(latex-preview-pane-enable)
 
 (setq doc-view-continuous t)
 
