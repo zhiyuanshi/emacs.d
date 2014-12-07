@@ -77,8 +77,6 @@ disable-post-installation-script() {
 export NVM_DIR="~/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-export DATABASE_URL=postgres:///$(whoami)
-
 nginx-load-conf-and-restart() {
   sudo cp $DOTFILES/nginx.conf /etc/nginx/nginx.conf
   sudo nginx -t
