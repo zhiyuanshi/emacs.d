@@ -185,9 +185,6 @@ disable-post-installation-script() {
 #+BEGIN_SRC sh :tangle yes
 export NVM_DIR="~/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# Make `node` and `npm` exist in new shells
-nvm use stable
 #+END_SRC
 
 ** PostgreSQL
