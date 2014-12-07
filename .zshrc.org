@@ -197,7 +197,7 @@ Once Postgres is installed and you can connect, you'll need to export the
 DATABASE_URL environment variable for your app to connect to it when running
 locally. E.g.:
 
-#+BEGIN_SRC sh :tangle yes
+#+BEGIN_SRC sh :tangle no
 export DATABASE_URL=postgres:///$(whoami)
 #+END_SRC
 

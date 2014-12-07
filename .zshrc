@@ -80,8 +80,6 @@ export NVM_DIR="~/.nvm"
 # Make `node` and `npm` exist in new shells
 nvm use stable
 
-export DATABASE_URL=postgres:///$(whoami)
-
 nginx-load-conf-and-restart() {
   sudo cp $DOTFILES/nginx.conf /etc/nginx/nginx.conf
   sudo nginx -t
