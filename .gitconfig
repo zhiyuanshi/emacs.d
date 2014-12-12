@@ -11,5 +11,3 @@
 	editor = emacsclient --create-frame --no-wait --alternate-editor=''
 [diff]
 	algorithm = patience
-[merge]
-	ff = no
