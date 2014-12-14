@@ -482,6 +482,8 @@ http://www.emacswiki.org/emacs/SmoothScrolling
 (setq auto-window-vscroll nil)
 #+END_SRC
 
+Sanity restored.
+
 ** Text editing
 
 #+BEGIN_SRC emacs-lisp :tangle yes
