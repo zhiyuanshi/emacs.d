@@ -242,7 +242,7 @@
 (setq inhibit-startup-screen t)
 
 ;; Display of line numbers in the left margin
-(global-linum-mode 1)
+;; (global-linum-mode 1)
 
 ;; Always display line and column numbers
 (line-number-mode 1)
