@@ -222,7 +222,7 @@
 (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-15"))
 ;; (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-11"))
 
-(load-theme 'tango t)
+(load-theme 'zenburn t)
 
 (menu-bar-mode 1)
 (tool-bar-mode 0)
