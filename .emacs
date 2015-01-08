@@ -45,6 +45,7 @@
     grizzl
     haskell-mode
     helm
+    helm-swoop
     ido-ubiquitous
     idris-mode
     imenu-anywhere
