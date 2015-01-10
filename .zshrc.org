@@ -237,5 +237,12 @@ eval "$(rbenv init -)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # cabal
-export PATH="$HOME/.cabal/bin:$PATH"
+export PATH=~/.cabal/bin:$PATH
+#+END_SRC
+
+Activator is the command-line tool for the Play Framework.
+https://www.playframework.com/documentation/2.3.x/Installing
+
+#+BEGIN_SRC sh :tangle yes
+export PATH=$PATH:~/.activator
 #+END_SRC

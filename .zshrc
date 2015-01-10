@@ -103,4 +103,6 @@ eval "$(rbenv init -)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # cabal
-export PATH="$HOME/.cabal/bin:$PATH"
+export PATH=~/.cabal/bin:$PATH
+
+export PATH=$PATH:~/.activator
