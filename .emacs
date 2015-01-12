@@ -690,6 +690,9 @@
     (ruby . t)
     (sh . t)))
 
+(add-to-list 'load-path "~/Code/f2j-mode")
+(require 'f2j-mode)
+
 (custom-set-variables
   '(custom-safe-themes '(
     "f41fd682a3cd1e16796068a2ca96e82cfd274e58b978156da0acce4d56f2b0d5" ;; base16-railscasts
