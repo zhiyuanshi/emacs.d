@@ -64,6 +64,7 @@
     popwin
     projectile
     projectile-rails
+    quickrun
     rainbow-delimiters
     rainbow-mode
     rinari
