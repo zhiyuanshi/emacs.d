@@ -994,6 +994,7 @@ Colorize color names in CSS files.
 #+BEGIN_SRC emacs-lisp :tangle yes
 (add-to-list 'load-path "~/Code/f2j-mode")
 (require 'f2j-mode)
+(require 'quickrun)
 #+END_SRC
 
 * Custom-set-variables
