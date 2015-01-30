@@ -245,5 +245,5 @@ Activator is the command-line tool for the Play Framework.
 https://www.playframework.com/documentation/2.3.x/Installing
 
 #+BEGIN_SRC sh :tangle yes
-export PATH=$PATH:~/.activator
+export PATH=$PATH:~/activator-1.2.12-minimal
 #+END_SRC
