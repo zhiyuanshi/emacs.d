@@ -129,7 +129,7 @@
   "g" 'git-messenger:popup-message
   "i" 'imenu-anywhere
   "k" 'kill-this-buffer
-  "m" 'delete-other-windows
+  "m" 'magit-blame-mode
   "n" 'make-frame-command
   "p" 'projectile-switch-project
   "q" 'delete-window
