@@ -69,6 +69,7 @@ alias git-pull-all="$SCRIPTS/git-pull-all.sh"
 alias hlog="hg log --template '#{rev} {date|isodate} {desc|firstline}\n' | less"
 
 alias find-my-ip="ip addr show eth0 | grep inet | awk '{ print $2; }' | sed 's/\/.*$//'"
+alias upgrade-system="sudo apt-get update && sudo apt-get -y dist-upgrade"
 
 disable-post-installation-script() {
   sudo mv "/var/lib/dpkg/info/$1.postinst" "/var/lib/dpkg/info/$1.postinst.original"
