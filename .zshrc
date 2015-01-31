@@ -145,6 +145,9 @@ eval "$(rbenv init -)"
 # cabal
 export PATH=~/.cabal/bin:$PATH
 
-# Activator is the command-line tool for the Play Framework.
+# Activator for the Play Framework
 # https://www.playframework.com/documentation/2.3.x/Installing
 export PATH=$PATH:~/Applications/activator-1.2.12-minimal
+
+# IntelliJ IDEA
+export PATH=$PATH:~/Applications/idea-IU-139.1117.1/bin
