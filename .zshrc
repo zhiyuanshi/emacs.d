@@ -106,4 +106,4 @@ eval "$(rbenv init -)"
 # cabal
 export PATH=~/.cabal/bin:$PATH
 
-export PATH=$PATH:~/activator-1.2.12-minimal
+export PATH=$PATH:~/Applications/activator-1.2.12-minimal
