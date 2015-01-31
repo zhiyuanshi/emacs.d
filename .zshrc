@@ -151,6 +151,3 @@ export PATH=$PATH:~/Applications/activator-1.2.12-minimal
 
 # IntelliJ IDEA
 export PATH=$PATH:~/Applications/idea-IU-139.1117.1/bin
-
-# RubyMine
-export PATH=$PATH:~/Applications/RubyMine-7.0.3/bin
