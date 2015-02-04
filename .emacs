@@ -225,7 +225,7 @@
 ;; (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-11"))
 ;; (add-to-list 'default-frame-alist '(font . "Monospace-11"))
 
-(load-theme 'dichromacy t)
+(load-theme 'tango t)
 
 (menu-bar-mode 1)
 (tool-bar-mode 0)
