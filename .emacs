@@ -549,6 +549,8 @@
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
+(add-to-list 'auto-mode-alist '("\\.sbt\\'" . sbt-mode))
+
 (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
