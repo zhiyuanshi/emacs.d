@@ -532,6 +532,13 @@
 (eval-after-load 'haskell-mode
   '(define-key haskell-mode-map (kbd "C-c C-d") 'ac-haskell-process-popup-doc))
 
+(require 'shm)
+(require 'shm-case-split)
+(add-hook 'haskell-mode-hook 'structured-haskell-mode)
+(set-face-background 'shm-current-face "#eee8d5")
+(set-face-background 'shm-quarantine-face "lemonchiffon")
+;; (setq shm-idle-timeout 0)
+
 (add-hook 'flycheck-mode-hook #'flycheck-haskell-setup)
 
 (dolist (hook '(haskell-mode-hook inferior-haskell-mode-hook haskell-interactive-mode-hook))

@@ -714,7 +714,7 @@ at point:
 
 *** structured-haskell-mode
 
-#+BEGIN_SRC emacs-lisp :tangle no
+#+BEGIN_SRC emacs-lisp :tangle yes
 (require 'shm)
 (require 'shm-case-split)
 (add-hook 'haskell-mode-hook 'structured-haskell-mode)
