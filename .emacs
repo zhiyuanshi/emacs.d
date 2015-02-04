@@ -127,9 +127,10 @@
   "e" 'helm-find-files
   "f" 'projectile-find-file
   "g" 'git-messenger:popup-message
+  "h" 'github-browse-file
   "i" 'imenu-anywhere
   "k" 'kill-this-buffer
-  "m" 'github-browse-file
+  "m" 'delete-other-windows
   "n" 'make-frame-command
   "p" 'projectile-switch-project
   "q" 'delete-window
