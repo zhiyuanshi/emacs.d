@@ -656,7 +656,13 @@
 
 (add-hook 'css-mode-hook 'rainbow-mode)
 
+;; Save yourself some M-q please!
+(add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
+
 (add-to-list 'auto-mode-alist '("\\.\\(md\\|markdown\\)\\'" . markdown-mode))
+
+;; Save yourself some M-q please!
+(add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
 
 (setq-default TeX-PDF-mode t)
 

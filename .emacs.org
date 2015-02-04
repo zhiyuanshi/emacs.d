@@ -947,12 +947,18 @@ Colorize color names in CSS files.
 ** Markdown
 
 #+BEGIN_SRC emacs-lisp :tangle yes
+;; Save yourself some M-q please!
+(add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
+
 (add-to-list 'auto-mode-alist '("\\.\\(md\\|markdown\\)\\'" . markdown-mode))
 #+END_SRC
 
 ** LaTex
 
 #+BEGIN_SRC emacs-lisp :tangle yes
+;; Save yourself some M-q please!
+(add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
+
 (setq-default TeX-PDF-mode t)
 
 ;; Decrease font size of section titles
