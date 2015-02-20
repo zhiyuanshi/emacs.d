@@ -92,6 +92,7 @@
     ;; Install tuareg-mode manually.
     ;; tuareg
 
+    unicode-fonts
     utop
     web-mode
     yaml-mode
@@ -350,6 +351,8 @@
 ;; Nic says eval-expression-print-level needs to be set to nil (turned off) so
 ;; that you can always see what's happening.
 (setq eval-expression-print-level nil)
+
+(require 'unicode-fonts)
 
 (global-set-key (kbd "RET") 'newline-and-indent)
 

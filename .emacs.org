@@ -120,6 +120,7 @@ https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
     ;; Install tuareg-mode manually.
     ;; tuareg
 
+    unicode-fonts
     utop
     web-mode
     yaml-mode
@@ -430,6 +431,10 @@ https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdispl
 #+END_SRC
 
 ** Sane defaults
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(require 'unicode-fonts)
+#+END_SRC
 
 #+BEGIN_SRC emacs-lisp :tangle yes
 (global-set-key (kbd "RET") 'newline-and-indent)
