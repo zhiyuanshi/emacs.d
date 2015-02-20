@@ -4,17 +4,18 @@ My Emacs configurations
 
 # Prerequisites
 
-* [Rake](https://github.com/ruby/rake)
+[Rake](https://github.com/ruby/rake)
 
-# Set up
+# Set Up
+
+**Warning:** This will remove your `~/emacs`, `~/.emacs.el`, and `~/.emacs.d`,
+if any, and symlink `~/emacs.d` to the directory you just cloned.
 
 ```
 git clone https://github.com/zhiyuanshi/emacs.d.git
 cd emacs.d
 rake up
 ```
-
-This will symlink `~/emacs.d` to the directory you just cloned.
 
 You may safely run `rake up` multiple times to update:
 

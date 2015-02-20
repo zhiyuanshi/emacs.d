@@ -11,7 +11,7 @@ task :up do
   if remote_points_to == local
     puts "Remote already points to local, do nothing"
   else
-    system("ln -s --verbose #{local} #{remote}")
+    system("rm -rf #{remote} && ln -s --verbose #{local} #{remote}")
   end
 
   # *After* the symlink has been successfully established, prevent
