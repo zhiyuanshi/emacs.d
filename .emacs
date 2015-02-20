@@ -134,6 +134,7 @@
   "k" 'kill-this-buffer
   "m" 'delete-other-windows
   "n" 'make-frame-command
+  "o" 'other-frame
   "p" 'projectile-switch-project
   "q" 'delete-window
   "r" 'projectile-recentf
@@ -228,7 +229,7 @@
 ;; (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-11"))
 ;; (add-to-list 'default-frame-alist '(font . "Monospace-11"))
 
-(load-theme 'light-blue t)
+(load-theme 'solarized-light t)
 
 (menu-bar-mode 1)
 (tool-bar-mode 0)
@@ -267,6 +268,7 @@
 
 ;; Truncate lines and don't use word-wrapping for code, but do the opposites for text.
 (add-hook 'text-mode-hook (lambda ()
+  (turn-on-auto-fill)
   (visual-line-mode 1)))
 
 (add-hook 'prog-mode-hook (lambda ()
@@ -550,6 +552,7 @@
   (add-hook hook 'turn-on-haskell-doc-mode)
   (add-hook hook (lambda () (subword-mode +1))))
 
+(setenv "PATH" (concat "/usr/bin/sbt:" (getenv "PATH")))
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
@@ -670,13 +673,7 @@
 
 (add-hook 'css-mode-hook 'rainbow-mode)
 
-;; Save yourself some M-q please!
-(add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
-
 (add-to-list 'auto-mode-alist '("\\.\\(md\\|markdown\\)\\'" . markdown-mode))
-
-;; Save yourself some M-q please!
-(add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
 
 (setq-default TeX-PDF-mode t)
 

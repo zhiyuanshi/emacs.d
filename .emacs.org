@@ -179,6 +179,7 @@ otherwise evil-leader won’t be enabled in initial buffers (*scratch*,
   "k" 'kill-this-buffer
   "m" 'delete-other-windows
   "n" 'make-frame-command
+  "o" 'other-frame
   "p" 'projectile-switch-project
   "q" 'delete-window
   "r" 'projectile-recentf
@@ -286,7 +287,7 @@ otherwise evil-leader won’t be enabled in initial buffers (*scratch*,
 ;; (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-11"))
 ;; (add-to-list 'default-frame-alist '(font . "Monospace-11"))
 
-(load-theme 'light-blue t)
+(load-theme 'solarized-light t)
 
 (menu-bar-mode 1)
 (tool-bar-mode 0)
@@ -329,6 +330,7 @@ otherwise evil-leader won’t be enabled in initial buffers (*scratch*,
 
 ;; Truncate lines and don't use word-wrapping for code, but do the opposites for text.
 (add-hook 'text-mode-hook (lambda ()
+  (turn-on-auto-fill)
   (visual-line-mode 1)))
 
 (add-hook 'prog-mode-hook (lambda ()
@@ -746,7 +748,10 @@ at point:
 
 ** Scala
 
+ENSIME
+Quick Start Guide: https://github.com/ensime/ensime-server/wiki/Quick-Start-Guide
 #+BEGIN_SRC emacs-lisp :tangle yes
+(setenv "PATH" (concat "/usr/bin/sbt:" (getenv "PATH")))
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 #+END_SRC
@@ -960,18 +965,12 @@ Colorize color names in CSS files.
 ** Markdown
 
 #+BEGIN_SRC emacs-lisp :tangle yes
-;; Save yourself some M-q please!
-(add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
-
 (add-to-list 'auto-mode-alist '("\\.\\(md\\|markdown\\)\\'" . markdown-mode))
 #+END_SRC
 
 ** LaTex
 
 #+BEGIN_SRC emacs-lisp :tangle yes
-;; Save yourself some M-q please!
-(add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
-
 (setq-default TeX-PDF-mode t)
 
 ;; Decrease font size of section titles
