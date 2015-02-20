@@ -1,1 +1,11 @@
+### Files and directories generated inside ~/.emacs.d ###
+/.places
+/ac-comphist.dat
+/auto-save-list/
+/elpa/
+/projectile-bookmarks.eld
+/smex-items
+
+
+### Emacs temp files ###
 .\#*

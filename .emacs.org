@@ -6,8 +6,8 @@ Evaluate the following piece of code every time you've made change to this file.
 #+BEGIN_SRC emacs-lisp :tangle no
 (save-buffer)
 (org-babel-tangle)
-(rename-file ".emacs.el" ".emacs" t) ;; TODO: We could have directly export to .emacs!
-(load-file ".emacs") ;; Load first so that in case the new version is broken, it probably won't be copied to home.
+(rename-file ".emacs.el" "init.el" t) ;; TODO: We could have directly export to init.el!
+(load-file "init.el") ;; Load first so that in case the new version is broken, it probably won't be copied to home.
 #+END_SRC
 
 * Prerequisites
@@ -394,7 +394,7 @@ https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdispl
 (defun zhiyuan/config-emacs ()
   "Open my .emacs.org."
   (interactive)
-  (find-file (expand-file-name ".emacs.org" (getenv "DOTFILES"))))
+  (find-file (expand-file-name ".emacs.org" (getenv "EMACSD"))))
 #+END_SRC
 
 ** Misc

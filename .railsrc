@@ -1,7 +1,0 @@
-# I would like:
-#   PostgreSQL  instead of MySQL
-#   RSpec       instead of Test::Unit
-#   Haml        instead of ERB
-#   FactoryGirl instead of fixtures
-
--d postgresql --skip-test-unit

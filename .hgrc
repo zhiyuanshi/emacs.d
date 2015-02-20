@@ -1,8 +1,0 @@
-[extensions]
-shelve =
-hgext.bookmarks =
-hggit =
-
-[ui]
-username = Zhiyuan Shi <zhiyuan.shi@gmail.com>
-ssh = ssh -i ~/.ssh/id_rsa -o IdentitiesOnly=yes
