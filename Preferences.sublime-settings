@@ -1,6 +1,6 @@
 {
-  "color_scheme": "Packages/Color Scheme - Default/Slush & Poppies.tmTheme",
-  "font_face": "DejaVu Sans Mono",
-  "font_size": 11,
-  "trim_trailing_white_space_on_save": true
+	"color_scheme": "Packages/Color Scheme - Default/Slush & Poppies.tmTheme",
+	"font_face": "Ubuntu Mono",
+	"font_size": 14,
+	"trim_trailing_white_space_on_save": true
 }
