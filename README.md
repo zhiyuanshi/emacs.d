@@ -4,7 +4,9 @@ My Emacs configurations
 
 # Prerequisites
 
-[Rake](https://github.com/ruby/rake)
+[Ruby](https://www.ruby-lang.org/)
+
+On Mac OS X, Ruby should already come pre-installed.
 
 # Set Up
 
