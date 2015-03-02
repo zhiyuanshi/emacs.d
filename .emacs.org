@@ -723,7 +723,7 @@ at point:
 
 *** structured-haskell-mode
 
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle no
 (require 'shm)
 (require 'shm-case-split)
 (add-hook 'haskell-mode-hook 'structured-haskell-mode)
@@ -987,7 +987,9 @@ Colorize color names in CSS files.
 ** pandoc-mode
 
 #+BEGIN_SRC emacs-lisp :tangle yes
+(require 'pandoc-mode)
 (add-hook 'markdown-mode-hook 'turn-on-pandoc)
+(add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
 #+END_SRC
 
 ** Org mode
