@@ -500,9 +500,6 @@
 (smartparens-global-mode 1)
 (require 'smartparens-config) ;; the default configuration
 
-(elscreen-start)
-(elscreen-set-prefix-key "\C-l")
-
 (setq sml/no-confirm-load-theme t)
 (sml/setup)
 

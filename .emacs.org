@@ -631,7 +631,7 @@ http://tuhdo.github.io/helm-intro.html
 ** ElScreen
 ;; http://wikemacs.org/wiki/Elscreen
 
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle no
 (elscreen-start)
 (elscreen-set-prefix-key "\C-l")
 #+END_SRC
