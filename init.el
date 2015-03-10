@@ -1,6 +1,9 @@
 
 (require 'cl)
 
+;; Add directories to Emacs's `load-path'
+(add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
+
 (defmacro after-load (feature &rest body)
   "After FEATURE is loaded, evaluate BODY."
   (declare (indent defun))
@@ -663,7 +666,7 @@
 
 (add-hook 'css-mode-hook 'rainbow-mode)
 
-(add-to-list 'auto-mode-alist '("\\.\\(md\\|markdown\\)\\'" . markdown-mode))
+(require 'init-markdown)
 
 (setq-default TeX-PDF-mode t)
 

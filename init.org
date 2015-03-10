@@ -6,7 +6,7 @@ Evaluate the following piece of code every time you've made change to this file.
 #+BEGIN_SRC emacs-lisp :tangle no
 (save-buffer)
 (org-babel-tangle)
-(rename-file ".emacs.el" "init.el" t) ;; TODO: We could have directly export to init.el!
+;; (rename-file ".emacs.el" "init.el" t) ;; TODO: We could have directly export to init.el!
 (load-file "init.el") ;; Load first so that in case the new version is broken, it probably won't be copied to home.
 #+END_SRC
 
@@ -15,6 +15,11 @@ Evaluate the following piece of code every time you've made change to this file.
 
 #+BEGIN_SRC emacs-lisp :tangle yes
 (require 'cl)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+;; Add directories to Emacs's `load-path'
+(add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
 #+END_SRC
 
 ** The `after-load' macro
@@ -962,10 +967,8 @@ Colorize color names in CSS files.
 (add-hook 'css-mode-hook 'rainbow-mode)
 #+END_SRC
 
-** Markdown
-
 #+BEGIN_SRC emacs-lisp :tangle yes
-(add-to-list 'auto-mode-alist '("\\.\\(md\\|markdown\\)\\'" . markdown-mode))
+(require 'init-markdown)
 #+END_SRC
 
 ** LaTex
