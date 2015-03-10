@@ -751,7 +751,9 @@ at point:
   (add-hook hook (lambda () (subword-mode +1))))
 #+END_SRC
 
+#+BEGIN_SRC emacs-lisp :tangle yes
 (require 'init-scala)
+#+END_SRC
 
 ** Ruby
 *** ruby-mode
