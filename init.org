@@ -958,20 +958,8 @@ Colorize color names in CSS files.
 (require 'init-markdown)
 #+END_SRC
 
-** LaTex
-
 #+BEGIN_SRC emacs-lisp :tangle yes
-(setq-default TeX-PDF-mode t)
-
-;; Decrease font size of section titles
-;; The default factor is 1.1.
-(setq font-latex-fontify-sectioning 1)
-
-(require 'auto-complete-auctex)
-
-(latex-preview-pane-enable)
-
-(setq doc-view-continuous t)
+(require 'init-latex)
 #+END_SRC
 
 ** pandoc-mode
