@@ -545,12 +545,6 @@
   (add-hook hook 'turn-on-haskell-doc-mode)
   (add-hook hook (lambda () (subword-mode +1))))
 
-(setenv "PATH" (concat "/usr/bin/sbt:" (getenv "PATH")))
-(require 'ensime)
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-
-(add-to-list 'auto-mode-alist '("\\.sbt\\'" . sbt-mode))
-
 (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
