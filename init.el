@@ -322,9 +322,9 @@
         (setq mode-name ,new-name))))
 
 (defun zhiyuan/config-emacs ()
-  "Open my .emacs.org."
+  "Open my init.org."
   (interactive)
-  (find-file (expand-file-name ".emacs.org" (getenv "EMACSD"))))
+  (find-file (expand-file-name "init.org" (getenv "EMACSD"))))
 
 ;; Save the state of Emacs from one session to another
 ;; http://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Emacs-Sessions.html
