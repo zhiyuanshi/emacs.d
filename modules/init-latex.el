@@ -1,4 +1,8 @@
+ ;; AUCTeX configuration
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
 (setq-default TeX-PDF-mode t)
+(setq-default TeX-master nil)
 
 ;; Decrease font size of section titles
 ;; The default factor is 1.1.
