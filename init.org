@@ -655,6 +655,14 @@ http://tuhdo.github.io/helm-intro.html
 #+END_SRC
 
 * Language/Mode-specific
+
+#+BEGIN_SRC emacs-lisp :tangle yes
+(require 'init-haskell)
+(require 'init-latex)
+(require 'init-markdown)
+(require 'init-scala)
+#+END_SRC
+
 ** OCaml
 
 https://github.com/diml/utop#integration-with-the-tuaregtyperex-mode
@@ -663,96 +671,6 @@ https://github.com/diml/utop#integration-with-the-tuaregtyperex-mode
 (autoload 'utop-setup-ocaml-buffer "utop" "Toplevel for OCaml" t)
 (add-hook 'tuareg-mode-hook 'utop-setup-ocaml-buffer)
 (add-hook 'typerex-mode-hook 'utop-setup-ocaml-buffer)
-#+END_SRC
-
-** Haskell
-*** Haskell Mode
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-#+END_SRC
-
-Choose =haskell-indent= because: C-c C-. => 'haskell-indent-align-guards-and-rhs, nice! :)
-Cf. https://github.com/haskell/haskell-mode/wiki/Indentation
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(customize-set-variable 'haskell-interactive-popup-errors nil)
-(customize-set-variable 'haskell-process-auto-import-loaded-modules t)
-(customize-set-variable 'haskell-process-log t)
-(customize-set-variable 'haskell-process-suggest-haskell-docs-imports t)
-(customize-set-variable 'haskell-process-suggest-hoogle-imports t)
-(customize-set-variable 'haskell-process-suggest-remove-import-lines t)
-(customize-set-variable 'haskell-process-type 'cabal-repl)
-#+END_SRC
-
-*** ac-haskell-process
-
-Enable Haskell completion source
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(add-hook 'interactive-haskell-mode-hook 'ac-haskell-process-setup)
-(add-hook 'haskell-interactive-mode-hook 'ac-haskell-process-setup)
-#+END_SRC
-
-Enable auto-complete in haskell-interactive-mode
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(eval-after-load 'auto-complete
-  '(add-to-list 'ac-modes 'haskell-interactive-mode))
-#+END_SRC
-
-If you want to trigger auto-complete using TAB in REPL buffers, you may want to
-put auto-complete into your completion-at-point-functions:
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(add-hook 'auto-complete-mode-hook       'set-auto-complete-as-completion-at-point-function)
-(add-hook 'haskell-interactive-mode-hook 'set-auto-complete-as-completion-at-point-function)
-(add-hook 'haskell-mode-hook             'set-auto-complete-as-completion-at-point-function)
-#+END_SRC
-
-You can use ac-haskell-process-popup-doc to pop up documentation for the symbol
-at point:
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(eval-after-load 'haskell-mode
-  '(define-key haskell-mode-map (kbd "C-c C-d") 'ac-haskell-process-popup-doc))
-#+END_SRC
-
-*** structured-haskell-mode
-
-#+BEGIN_SRC emacs-lisp :tangle no
-(require 'shm)
-(require 'shm-case-split)
-(add-hook 'haskell-mode-hook 'structured-haskell-mode)
-(set-face-background 'shm-current-face "#eee8d5")
-(set-face-background 'shm-quarantine-face "lemonchiffon")
-;; (setq shm-idle-timeout 0)
-#+END_SRC
-
-*** flycheck-haskell
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup)
-#+END_SRC
-
-*** From purcell
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(dolist (hook '(haskell-mode-hook inferior-haskell-mode-hook haskell-interactive-mode-hook))
-  (add-hook hook 'turn-on-haskell-doc-mode)
-  (add-hook hook (lambda () (subword-mode +1))))
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(require 'init-scala)
 #+END_SRC
 
 ** Ruby
@@ -952,14 +870,6 @@ Colorize color names in CSS files.
 
 #+BEGIN_SRC emacs-lisp :tangle yes
 (add-hook 'css-mode-hook 'rainbow-mode)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(require 'init-markdown)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(require 'init-latex)
 #+END_SRC
 
 ** pandoc-mode

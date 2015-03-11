@@ -508,44 +508,14 @@
 
 (setq git-messenger:show-detail t) ;; Always show detail message
 
+(require 'init-haskell)
+(require 'init-latex)
+(require 'init-markdown)
+(require 'init-scala)
+
 (autoload 'utop-setup-ocaml-buffer "utop" "Toplevel for OCaml" t)
 (add-hook 'tuareg-mode-hook 'utop-setup-ocaml-buffer)
 (add-hook 'typerex-mode-hook 'utop-setup-ocaml-buffer)
-
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-
-(add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
-
-(customize-set-variable 'haskell-interactive-popup-errors nil)
-(customize-set-variable 'haskell-process-auto-import-loaded-modules t)
-(customize-set-variable 'haskell-process-log t)
-(customize-set-variable 'haskell-process-suggest-haskell-docs-imports t)
-(customize-set-variable 'haskell-process-suggest-hoogle-imports t)
-(customize-set-variable 'haskell-process-suggest-remove-import-lines t)
-(customize-set-variable 'haskell-process-type 'cabal-repl)
-
-(add-hook 'interactive-haskell-mode-hook 'ac-haskell-process-setup)
-(add-hook 'haskell-interactive-mode-hook 'ac-haskell-process-setup)
-
-(eval-after-load 'auto-complete
-  '(add-to-list 'ac-modes 'haskell-interactive-mode))
-
-(add-hook 'auto-complete-mode-hook       'set-auto-complete-as-completion-at-point-function)
-(add-hook 'haskell-interactive-mode-hook 'set-auto-complete-as-completion-at-point-function)
-(add-hook 'haskell-mode-hook             'set-auto-complete-as-completion-at-point-function)
-
-(eval-after-load 'haskell-mode
-  '(define-key haskell-mode-map (kbd "C-c C-d") 'ac-haskell-process-popup-doc))
-
-(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup)
-
-(dolist (hook '(haskell-mode-hook inferior-haskell-mode-hook haskell-interactive-mode-hook))
-  (add-hook hook 'turn-on-haskell-doc-mode)
-  (add-hook hook (lambda () (subword-mode +1))))
-
-(require 'init-scala)
 
 (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
@@ -661,10 +631,6 @@
 (setq scss-compile-at-save nil)
 
 (add-hook 'css-mode-hook 'rainbow-mode)
-
-(require 'init-markdown)
-
-(require 'init-latex)
 
 (require 'pandoc-mode)
 (add-hook 'markdown-mode-hook 'turn-on-pandoc)
