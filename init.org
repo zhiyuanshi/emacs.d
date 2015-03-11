@@ -657,6 +657,7 @@ http://tuhdo.github.io/helm-intro.html
 * Language/Mode-specific
 
 #+BEGIN_SRC emacs-lisp :tangle yes
+(require 'init-f2j)
 (require 'init-haskell)
 (require 'init-latex)
 (require 'init-markdown)
@@ -895,14 +896,6 @@ Colorize color names in CSS files.
     (python . t)
     (ruby . t)
     (sh . t)))
-#+END_SRC
-
-** F2J
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(add-to-list 'load-path "~/Code/f2j-mode")
-(require 'f2j-mode)
-(require 'quickrun)
 #+END_SRC
 
 * Custom-set-variables

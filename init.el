@@ -508,6 +508,7 @@
 
 (setq git-messenger:show-detail t) ;; Always show detail message
 
+(require 'init-f2j)
 (require 'init-haskell)
 (require 'init-latex)
 (require 'init-markdown)
@@ -648,10 +649,6 @@
     (python . t)
     (ruby . t)
     (sh . t)))
-
-(add-to-list 'load-path "~/Code/f2j-mode")
-(require 'f2j-mode)
-(require 'quickrun)
 
 (custom-set-variables
   '(custom-safe-themes '(
