@@ -48,6 +48,8 @@
     grizzl
     haskell-mode
     helm
+    helm-ag
+    helm-projectile
     helm-swoop
     ido-ubiquitous
     idris-mode

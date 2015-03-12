@@ -78,6 +78,8 @@ https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
     grizzl
     haskell-mode
     helm
+    helm-ag
+    helm-projectile
     helm-swoop
     ido-ubiquitous
     idris-mode
