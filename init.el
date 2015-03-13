@@ -133,7 +133,7 @@
   "d" 'dired-jump-other-window
   "e" 'helm-find-files
   "f" 'projectile-find-file
-  "g" 'git-messenger:popup-message
+  "g" 'helm-projectile-ag
   "h" 'github-browse-file
   "i" 'imenu-anywhere
   "k" 'kill-this-buffer
@@ -142,7 +142,7 @@
   "o" 'other-frame
   "p" 'projectile-switch-project
   "q" 'delete-window
-  "r" 'projectile-recentf
+  "r" 'projectile-replace
   "t" 'neotree-toggle
   "w" 'save-buffer
   "x" 'delete-frame
