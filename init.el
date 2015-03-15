@@ -273,7 +273,7 @@
 
 ;; Truncate lines and don't use word-wrapping for code, but do the opposites for text.
 (add-hook 'text-mode-hook (lambda ()
-  (turn-on-auto-fill)
+  ; (turn-on-auto-fill)
   (visual-line-mode 1)))
 
 (add-hook 'prog-mode-hook (lambda ()
