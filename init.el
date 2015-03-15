@@ -143,6 +143,7 @@
   "p" 'projectile-switch-project
   "q" 'delete-window
   "r" 'projectile-replace
+  "s" 'helm-swoop
   "t" 'neotree-toggle
   "w" 'save-buffer
   "x" 'delete-frame
