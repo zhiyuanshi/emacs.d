@@ -230,12 +230,12 @@
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Frame-Parameters.html
 (add-to-list 'default-frame-alist '(width  . 100))
-(add-to-list 'default-frame-alist '(height . 45))
+(add-to-list 'default-frame-alist '(height . 60))
 (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-15"))
 ;; (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-11"))
 ;; (add-to-list 'default-frame-alist '(font . "Monospace-11"))
 
-(load-theme 'solarized-light t)
+(load-theme 'tango t)
 
 (menu-bar-mode 1)
 (tool-bar-mode 0)
