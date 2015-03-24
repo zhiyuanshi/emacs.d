@@ -274,6 +274,7 @@
 
 ;; Truncate lines and don't use word-wrapping for code, but do the opposites for text.
 (add-hook 'text-mode-hook (lambda ()
+  flyspell-mode
   ; (turn-on-auto-fill)
   (visual-line-mode 1)))
 
