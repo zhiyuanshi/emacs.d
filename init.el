@@ -289,7 +289,13 @@
 (set-default 'sentence-end-double-space nil)
 
 (add-hook 'before-save-hook 'untabify-current-buffer)
+
+;; This setting can be too aggresive.
 ;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; https://ghc.haskell.org/trac/ghc/wiki/Emacs#Highlighttrailingwhitespaces
+(setq-default show-trailing-whitespace t)
+(setq-default indicate-empty-lines t)
 
 ;; (setq mode-require-final-newline nil)
 
