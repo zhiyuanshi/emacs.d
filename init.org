@@ -667,6 +667,7 @@ http://tuhdo.github.io/helm-intro.html
 * Language/Mode-specific
 
 #+BEGIN_SRC emacs-lisp :tangle yes
+(require 'init-agda)
 (require 'init-f2j)
 (require 'init-haskell)
 (require 'init-latex)
