@@ -522,6 +522,7 @@
 (setq git-messenger:show-detail t) ;; Always show detail message
 
 (require 'init-agda)
+(require 'init-coq)
 (require 'init-f2j)
 (require 'init-haskell)
 (require 'init-latex)
