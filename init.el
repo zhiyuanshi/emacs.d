@@ -71,6 +71,7 @@
     projectile
     projectile-rails
     quickrun
+    racket-mode
     rainbow-delimiters
     rainbow-mode
     rinari
@@ -527,6 +528,7 @@
 (require 'init-haskell)
 (require 'init-latex)
 (require 'init-markdown)
+(require 'init-racket)
 (require 'init-scala)
 
 (autoload 'utop-setup-ocaml-buffer "utop" "Toplevel for OCaml" t)
