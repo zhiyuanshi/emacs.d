@@ -10,7 +10,7 @@ On Mac OS X, Ruby should already come pre-installed.
 
 # Set Up
 
-**Warning:** This will remove your `~/emacs`, `~/.emacs.el`, and `~/.emacs.d`,
+**Warning:** This will remove your `~/.emacs`, `~/.emacs.el`, and `~/.emacs.d`,
 if any, and symlink `~/emacs.d` to the directory you just cloned.
 
 ```
