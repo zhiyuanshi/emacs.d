@@ -100,6 +100,7 @@
 
     unicode-fonts
     utop
+    wc-mode
     web-mode
     yaml-mode
     yard-mode
@@ -128,9 +129,12 @@
 (global-evil-leader-mode)
 (evil-leader/set-leader "SPC")
 (evil-leader/set-key
+  "SPC" 'ace-jump-char-mode'
+  "," 'zhiyuan/config-emacs
+  "=" 'align-regexp
   "a" 'mark-whole-buffer
   "b" 'helm-buffers-list
-  "c" 'zhiyuan/config-emacs
+  "c" 'wc-mode
   "d" 'dired-jump-other-window
   "e" 'helm-find-files
   "f" 'projectile-find-file
@@ -147,8 +151,7 @@
   "s" 'helm-swoop
   "t" 'neotree-toggle
   "w" 'save-buffer
-  "x" 'delete-frame
-  "=" 'align-regexp)
+  "x" 'delete-frame)
 
 (defun text-scale-reset ()
   "Reset text scale to 0."
@@ -277,10 +280,12 @@
 (add-hook 'makefile-mode-hook (lambda () (setq tab-width 8)))
 
 ;; Truncate lines and don't use word-wrapping for code, but do the opposites for text.
+(require 'wc-mode)
 (add-hook 'text-mode-hook (lambda ()
   flyspell-mode
   ; (turn-on-auto-fill)
-  (visual-line-mode 1)))
+  (visual-line-mode 1)
+  wc-mode))
 
 (add-hook 'prog-mode-hook (lambda ()
   (setq truncate-lines t
