@@ -18,6 +18,9 @@
 (add-hook 'LaTeX-mode-hook 'flyspell-mode)
 (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
 
+;; https://github.com/Malabarba/latex-extra
+(add-hook 'LaTeX-mode-hook #'latex-extra-mode)
+
 ;; RefTeX mode
 ;; http://www.stefanom.org/setting-up-a-nice-auctex-environment-on-mac-os-x/
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)

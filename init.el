@@ -58,6 +58,7 @@
     jquery-doc
     js2-mode
     js2-refactor
+    latex-extra
     latex-preview-pane
     less-css-mode
     markdown-mode
