@@ -6,6 +6,7 @@
 (setq TeX-parse-self t)
 (setq-default TeX-master nil)
 
+;; Use pdflatex by default
 (setq-default TeX-PDF-mode t)
 
 ;; Decrease font size of section titles
@@ -48,5 +49,12 @@
 (setq TeX-view-program-selection '((output-pdf "PDF Viewer")))
 (setq TeX-view-program-list
      '(("PDF Viewer" "/Applications/Skim.app/Contents/SharedSupport/displayline -b -g %n %o %b")))
+
+;; Add more environment options to C-c C-e
+;; http://superuser.com/questions/122410/adding-autocomplete-options-to-auctex-c-c-c-e
+;; http://www.gnu.org/software/auctex/manual/auctex/Adding-Environments.html
+(add-hook 'LaTeX-mode-hook (lambda ()
+  (LaTeX-add-environments
+    '("lstlisting" LaTeX-env-label))))
 
 (provide 'init-latex)
