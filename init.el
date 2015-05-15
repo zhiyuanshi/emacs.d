@@ -303,9 +303,14 @@
 ;; This setting can be too aggresive.
 ;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; Show trailing whitespace and empty lines, but not in help buffers
 ;; https://ghc.haskell.org/trac/ghc/wiki/Emacs#Highlighttrailingwhitespaces
 (setq-default show-trailing-whitespace t)
 (setq-default indicate-empty-lines t)
+
+(add-hook 'special-mode-hook (lambda ()
+  (setq show-trailing-whitespace nil)
+  (setq indicate-empty-lines nil)))
 
 ;; (setq mode-require-final-newline nil)
 
