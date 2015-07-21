@@ -55,6 +55,8 @@
 ;; http://www.gnu.org/software/auctex/manual/auctex/Adding-Environments.html
 (add-hook 'LaTeX-mode-hook (lambda ()
   (LaTeX-add-environments
-    '("lstlisting" LaTeX-env-label))))
+   '("lstlisting" LaTeX-env-label)
+   '("mathpar" LaTeX-env-label)
+   )))
 
 (provide 'init-latex)
