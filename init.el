@@ -301,7 +301,7 @@
 (add-hook 'before-save-hook 'untabify-current-buffer)
 
 ;; This setting can be too aggresive.
-;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Show trailing whitespace and empty lines, but not in help buffers
 ;; https://ghc.haskell.org/trac/ghc/wiki/Emacs#Highlighttrailingwhitespaces
@@ -470,6 +470,10 @@
 (setq ido-use-faces nil)
 
 ;; ido-ubiquitous
+;; Inhibit "Warning: reference to free variable `ido-ubiquitous-debug-mode'"
+;; https://github.com/DarwinAwardWinner/ido-ubiquitous/issues/35
+;; (defvar ido-ubiquitous-debug-mode nil)
+;; (defvar ido-context-switch-command nil)
 (require 'ido-ubiquitous)
 (ido-ubiquitous-mode 1)
 
@@ -512,6 +516,9 @@
 ;; yasnippet
 ;; should be loaded before auto-complete so that they can work together
 (require 'yasnippet)
+;; Reduce console messages at start-up
+;; "Log level for `yas--message' 4 means trace most anything, 0 means nothing."
+(setq yas-verbosity 1)
 (yas-global-mode 1)
 
 ;; auto-complete
