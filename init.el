@@ -62,8 +62,6 @@
     latex-preview-pane
     less-css-mode
     markdown-mode
-    magit
-    monky
     multiple-cursors
     neotree
     org

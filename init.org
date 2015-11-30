@@ -92,8 +92,6 @@ https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
     latex-preview-pane
     less-css-mode
     markdown-mode
-    magit
-    monky
     multiple-cursors
     neotree
     org
