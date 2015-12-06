@@ -13,8 +13,6 @@
 ;; The default factor is 1.1.
 ;; (setq font-latex-fontify-sectioning 1)
 
-(require 'auto-complete-auctex)
-
 (add-hook 'LaTeX-mode-hook 'visual-line-mode)
 (add-hook 'LaTeX-mode-hook 'flyspell-mode)
 (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)

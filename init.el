@@ -10,21 +10,22 @@
   `(eval-after-load ,feature
      '(progn ,@body)))
 
-(defvar my-packages
+(defvar user-packages
   '(;; winner-mode
-    ac-haskell-process
-    ac-inf-ruby
-    ac-js2
     ace-jump-mode
     ag
     anzu
     auctex
-    auto-complete
-    auto-complete-auctex
     base16-theme
     bundler
     coffee-mode
     color-theme-solarized ;; Replace bbatsov's version due to its unpleasant Ruby syntax highlighting
+    company
+    company-coq
+    company-flx
+    company-ghc
+    company-math
+    dash ;; Included in https://github.com/chrisdone/emacs-haskell-config/blob/stack-mode/init.el
     diminish
     dired+
     dired-details+
@@ -41,7 +42,6 @@
     flycheck-haskell
     flycheck-rust
     framemove
-    fsharp-mode
     fuzzy
     git-messenger
     github-browse-file
@@ -81,7 +81,7 @@
     sass-mode
     scala-mode2
     scss-mode
-    shm
+    ;; shm
     sbt-mode
     skewer-mode
     slime
@@ -91,7 +91,6 @@
     smex
     smooth-scrolling
     tern
-    tern-auto-complete
 
     ;; If we include this, automatic package installation process will hang.
     ;; Install tuareg-mode manually.
@@ -116,12 +115,12 @@
 
 (package-initialize)
 
-(defun my-packages-installed-p ()
-  (every #'package-installed-p my-packages))
+(defun user-packages-installed-p ()
+  (every #'package-installed-p user-packages))
 
-(unless (my-packages-installed-p)
+(unless (user-packages-installed-p)
   (package-refresh-contents)
-  (dolist (p my-packages)
+  (dolist (p user-packages)
     (when (not (package-installed-p p))
       (package-install p))))
 
@@ -129,7 +128,7 @@
 (evil-leader/set-leader "SPC")
 (evil-leader/set-key
   "SPC" 'ace-jump-char-mode'
-  "," 'zhiyuan/config-emacs
+  "," 'user/config-emacs
   "=" 'align-regexp
   "a" 'mark-whole-buffer
   "b" 'helm-buffers-list
@@ -236,12 +235,12 @@
 (add-to-list 'default-frame-alist '(height . 60))
 ;; (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-15"))
 (if (eq system-type 'darwin)
-  (add-to-list 'default-frame-alist '(font . "Menlo-14"))
+  (add-to-list 'default-frame-alist '(font . "Monaco-14"))
   (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-11")))
 
 ;; (add-to-list 'default-frame-alist '(font . "Monospace-11"))
 
-(load-theme 'tango t)
+;; (load-theme 'tango t)
 
 (menu-bar-mode 1)
 (tool-bar-mode 0)
@@ -261,7 +260,7 @@
 (setq inhibit-startup-screen t)
 
 ;; Display of line numbers in the left margin
-;; (global-linum-mode 1)
+(global-linum-mode 1)
 
 ;; Always display line and column numbers
 (line-number-mode 1)
@@ -296,14 +295,14 @@
 ;; Sentences do not need double spaces to end. Period.
 (set-default 'sentence-end-double-space nil)
 
-(add-hook 'before-save-hook 'untabify-current-buffer)
+;; (add-hook 'before-save-hook 'untabify-current-buffer)
 
 ;; This setting can be too aggresive.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Show trailing whitespace and empty lines, but not in help buffers
 ;; https://ghc.haskell.org/trac/ghc/wiki/Emacs#Highlighttrailingwhitespaces
-(setq-default show-trailing-whitespace t)
+(setq-default show-trailing-whitespace nil)
 (setq-default indicate-empty-lines t)
 
 (add-hook 'special-mode-hook (lambda ()
@@ -344,7 +343,7 @@
      '(defadvice ,mode (after rename-modeline activate)
         (setq mode-name ,new-name))))
 
-(defun zhiyuan/config-emacs ()
+(defun user/config-emacs ()
   "Open my init.org."
   (interactive)
   (find-file (expand-file-name "init.org" (getenv "EMACSD"))))
@@ -508,26 +507,15 @@
 
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-;; Make yasnippet and autocomplete work together on Emacs
-;; http://truongtx.me/2013/01/06/config-yasnippet-and-autocomplete-on-emacs/
+;; company-mode
+(add-hook 'after-init-hook 'global-company-mode)
 
 ;; yasnippet
-;; should be loaded before auto-complete so that they can work together
 (require 'yasnippet)
 ;; Reduce console messages at start-up
 ;; "Log level for `yas--message' 4 means trace most anything, 0 means nothing."
 (setq yas-verbosity 1)
 (yas-global-mode 1)
-
-;; auto-complete
-;; should be loaded after yasnippet so that they can work together
-(require 'auto-complete-config)
-(ac-config-default)
-(setq ac-use-fuzzy t)
-
-;; https://github.com/purcell/ac-haskell-process
-(defun set-auto-complete-as-completion-at-point-function ()
-  (add-to-list 'completion-at-point-functions 'auto-complete))
 
 ;; smartparens
 (smartparens-global-mode 1)
@@ -538,14 +526,14 @@
 
 (setq git-messenger:show-detail t) ;; Always show detail message
 
-(require 'init-agda)
+;; (require 'init-agda)
 (require 'init-coq)
 (require 'init-f2j)
 (require 'init-haskell)
 (require 'init-latex)
 (require 'init-markdown)
 (require 'init-racket)
-(require 'init-scala)
+;; (require 'init-scala)
 
 (autoload 'utop-setup-ocaml-buffer "utop" "Toplevel for OCaml" t)
 (add-hook 'tuareg-mode-hook 'utop-setup-ocaml-buffer)
@@ -574,15 +562,7 @@
   (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
   (define-key ruby-mode-map (kbd "TAB") 'indent-for-tab-command))
 
-(eval-after-load 'auto-complete
-  '(add-to-list 'ac-modes 'inf-ruby-mode))
-(add-hook 'inf-ruby-mode-hook 'ac-inf-ruby-enable)
-
-(eval-after-load 'inf-ruby
-  '(define-key inf-ruby-mode-map (kbd "TAB") 'auto-complete))
-
 (add-hook 'ruby-mode-hook 'robe-mode)
-(add-hook 'robe-mode-hook 'ac-robe-setup)
 
 (add-hook 'ruby-mode-hook 'yard-mode)
 
@@ -615,8 +595,6 @@
 ;; (add-hook 'js2-mode-hook 'rainbow-delimiters-mode)
   ;; Javascript nests {} and () a lot, so I find this helpful
 
-(add-hook 'js2-mode-hook 'ac-js2-mode)
-
 ;; js2-refactor
 (require 'js2-refactor)
 (js2r-add-keybindings-with-prefix "C-c C-m")
@@ -625,11 +603,6 @@
 
 (add-hook 'js2-mode-hook (lambda ()
   (tern-mode t)))
-
-(eval-after-load 'tern
-  '(progn
-     (require 'tern-auto-complete)
-     (tern-ac-setup)))
 
 ;; Sometimes when you have just added .tern-project file or edit the
 ;; file but Tern does not auto reload, you need to manually kill

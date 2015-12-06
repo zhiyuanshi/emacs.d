@@ -17,6 +17,10 @@
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
 
+;; 5 Unicode support
+;; (add-hook 'haskell-mode-hook 'turn-on-haskell-unicode-input-method)
+
+
 ;; 6 Indentation
 ;; Choose =haskell-indent= because: C-c C-. => 'haskell-indent-align-guards-and-rhs, nice! :)
 ;; Cf. https://github.com/haskell/haskell-mode/wiki/Indentation
@@ -55,8 +59,6 @@
     (define-key haskell-mode-map (kbd "C-c M-.") nil)
     (define-key haskell-mode-map (kbd "C-c C-d") nil)))
 
-
-;; (add-hook 'haskell-mode-hook 'turn-on-haskell-unicode-input-method)
 
 (custom-set-variables
   '(haskell-compile-cabal-build-command "stack build")

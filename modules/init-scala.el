@@ -2,7 +2,7 @@
 
 ;; ENSIME
 ;; Quick Start Guide: https://github.com/ensime/ensime-server/wiki/Quick-Start-Guide
-(setenv "PATH" (concat "/usr/bin/sbt:" (getenv "PATH")))
+(setenv "PATH" (concat "/usr/local/bin/sbt:" (getenv "PATH")))
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
