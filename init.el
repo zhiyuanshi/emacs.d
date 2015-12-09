@@ -272,6 +272,14 @@
 (show-paren-mode 1)
 
 
+;;;;;;;;;;
+;; NeoTree
+;;;;;;;;;;
+
+;; http://www.emacswiki.org/emacs/NeoTree#toc8
+(setq projectile-switch-project-action 'neotree-projectile-action)
+
+
 ;;;;;;;;;;;;;;;;;;
 ;; Smart Mode Line
 ;;;;;;;;;;;;;;;;;;
