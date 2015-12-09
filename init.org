@@ -120,6 +120,7 @@ https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
     smartparens
     smex
     smooth-scrolling
+    spaceline
     tern
 
     ;; If we include this, automatic package installation process will hang.
@@ -300,7 +301,7 @@ otherwise evil-leader won’t be enabled in initial buffers (*scratch*,
 
 ;; (add-to-list 'default-frame-alist '(font . "Monospace-11"))
 
-;; (load-theme 'tango t)
+;; (load-theme 'solarized t)
 
 (menu-bar-mode 1)
 (tool-bar-mode 0)
@@ -328,6 +329,16 @@ otherwise evil-leader won’t be enabled in initial buffers (*scratch*,
 
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
+
+
+;;;;;;;;;;;;
+;; Spaceline
+;;;;;;;;;;;;
+
+(require 'spaceline-config)
+(spaceline-spacemacs-theme)
+(spaceline-helm-mode)
+
 #+END_SRC
 
 ** Text styling

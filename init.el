@@ -90,6 +90,7 @@
     smartparens
     smex
     smooth-scrolling
+    spaceline
     tern
 
     ;; If we include this, automatic package installation process will hang.
@@ -240,7 +241,7 @@
 
 ;; (add-to-list 'default-frame-alist '(font . "Monospace-11"))
 
-;; (load-theme 'tango t)
+;; (load-theme 'solarized t)
 
 (menu-bar-mode 1)
 (tool-bar-mode 0)
@@ -268,6 +269,15 @@
 
 ;; Highlight matching parentheses when the point is on them.
 (show-paren-mode 1)
+
+
+;;;;;;;;;;;;
+;; Spaceline
+;;;;;;;;;;;;
+
+(require 'spaceline-config)
+(spaceline-spacemacs-theme)
+(spaceline-helm-mode)
 
 ;; Tabs
 (setq-default tab-width 2)
