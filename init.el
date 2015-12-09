@@ -271,6 +271,14 @@
 (show-paren-mode 1)
 
 
+;;;;;;;;;;;;;;;;;;
+;; Smart Mode Line
+;;;;;;;;;;;;;;;;;;
+
+(setq sml/no-confirm-load-theme t)
+(sml/setup)
+
+
 ;;;;;;;;;;;;
 ;; Spaceline
 ;;;;;;;;;;;;
@@ -530,9 +538,6 @@
 ;; smartparens
 (smartparens-global-mode 1)
 (require 'smartparens-config) ;; the default configuration
-
-(setq sml/no-confirm-load-theme t)
-(sml/setup)
 
 (setq git-messenger:show-detail t) ;; Always show detail message
 

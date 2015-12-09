@@ -331,6 +331,14 @@ otherwise evil-leader won’t be enabled in initial buffers (*scratch*,
 (show-paren-mode 1)
 
 
+;;;;;;;;;;;;;;;;;;
+;; Smart Mode Line
+;;;;;;;;;;;;;;;;;;
+
+(setq sml/no-confirm-load-theme t)
+(sml/setup)
+
+
 ;;;;;;;;;;;;
 ;; Spaceline
 ;;;;;;;;;;;;
@@ -668,13 +676,6 @@ http://tuhdo.github.io/helm-intro.html
 #+BEGIN_SRC emacs-lisp :tangle no
 (elscreen-start)
 (elscreen-set-prefix-key "\C-l")
-#+END_SRC
-
-** smart-mode-line
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(setq sml/no-confirm-load-theme t)
-(sml/setup)
 #+END_SRC
 
 ** git-messenger
