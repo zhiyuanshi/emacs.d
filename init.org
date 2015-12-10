@@ -703,7 +703,7 @@ http://tuhdo.github.io/helm-intro.html
 (require 'init-latex)
 (require 'init-markdown)
 (require 'init-racket)
-;; (require 'init-scala)
+(require 'init-scala)
 #+END_SRC
 
 ** OCaml

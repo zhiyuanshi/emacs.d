@@ -1,3 +1,9 @@
+;;; package --- Summary
+
+;;; Commentary:
+
+;;; Code:
+
 (require 'scala-mode2)
 
 ;; ENSIME
@@ -12,3 +18,5 @@
 (add-to-list 'auto-mode-alist '("\\.sbt\\'" . sbt-mode))
 
 (provide 'init-scala)
+
+;;; init-scala.el ends here
