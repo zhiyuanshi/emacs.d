@@ -147,7 +147,7 @@ https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
 (require 'package)
 
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 
 (package-initialize)
 #+END_SRC
@@ -696,7 +696,7 @@ http://tuhdo.github.io/helm-intro.html
 * Language/Mode-specific
 
 #+BEGIN_SRC emacs-lisp :tangle yes
-;; (require 'init-agda)
+(require 'init-agda)
 (require 'init-coq)
 (require 'init-f2j)
 (require 'init-haskell)

@@ -2,6 +2,10 @@
 
 ;;; Commentary:
 
+;; Programs expected to be available at command line:
+;; * hoogle
+;; * haskell-docs
+
 ;;; Code:
 
 (require 'haskell-mode)
@@ -15,6 +19,7 @@
 ;;;;;;;;;;;;;;;
 
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+(add-hook 'haskell-mode-hook 'haskell-auto-insert-module-template)
 
 
 ;; 5 Unicode support
