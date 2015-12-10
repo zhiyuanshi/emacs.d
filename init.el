@@ -32,7 +32,6 @@
     discover-my-major
     elscreen
     ensime
-    ess
     evil
     evil-leader
     evil-nerd-commenter

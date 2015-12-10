@@ -62,7 +62,6 @@ https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
     discover-my-major
     elscreen
     ensime
-    ess
     evil
     evil-leader
     evil-nerd-commenter
