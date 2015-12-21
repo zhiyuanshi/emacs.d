@@ -62,7 +62,8 @@
     (define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
     (define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
     (define-key haskell-mode-map (kbd "C-c M-.") nil)
-    (define-key haskell-mode-map (kbd "C-c C-d") nil)))
+    (define-key haskell-mode-map (kbd "C-c C-d") nil)
+    (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)))
 
 
 (custom-set-variables
