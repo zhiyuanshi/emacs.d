@@ -556,6 +556,7 @@
 (require 'init-haskell)
 (require 'init-latex)
 (require 'init-markdown)
+(require 'init-r)
 (require 'init-racket)
 (require 'init-scala)
 
