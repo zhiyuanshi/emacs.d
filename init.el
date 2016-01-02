@@ -30,6 +30,7 @@
     dired+
     dired-details+
     discover-my-major
+    elpy
     elscreen
     ensime
     ess

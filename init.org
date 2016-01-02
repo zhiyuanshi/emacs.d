@@ -60,6 +60,7 @@ https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
     dired+
     dired-details+
     discover-my-major
+    elpy
     elscreen
     ensime
     ess
