@@ -1,4 +1,4 @@
-(add-to-list 'load-path "~/VersionControlled/f2j-mode")
+(add-to-list 'load-path "~/repos/f2j-mode")
 (require 'f2j-mode)
 (require 'quickrun)
 
