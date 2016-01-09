@@ -236,12 +236,10 @@
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Frame-Parameters.html
 (add-to-list 'default-frame-alist '(width  . 100))
 (add-to-list 'default-frame-alist '(height . 60))
-;; (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-15"))
-(if (eq system-type 'darwin)
-  (add-to-list 'default-frame-alist '(font . "Monaco-14"))
-  (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-11")))
 
-;; (add-to-list 'default-frame-alist '(font . "Monospace-11"))
+(if (eq system-type 'darwin)
+  (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-18"))
+  (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-14")))
 
 ;; (load-theme 'solarized t)
 
