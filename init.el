@@ -238,7 +238,7 @@
 (add-to-list 'default-frame-alist '(height . 60))
 
 (if (eq system-type 'darwin)
-  (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-18"))
+  (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-16"))
   (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-14")))
 
 ;; (load-theme 'solarized t)
