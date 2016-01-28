@@ -15,16 +15,10 @@
     ace-jump-mode
     ag
     anzu
-    auctex
     base16-theme
-    bundler
-    coffee-mode
     color-theme-solarized ;; Replace bbatsov's version due to its unpleasant Ruby syntax highlighting
     company
-    company-coq
     company-flx
-    company-ghc
-    company-math
     dash ;; Included in https://github.com/chrisdone/emacs-haskell-config/blob/stack-mode/init.el
     diminish
     dired+
@@ -32,7 +26,6 @@
     discover-my-major
     elpy
     elscreen
-    ensime
     ess
     evil
     evil-leader
@@ -41,71 +34,39 @@
     expand-region
     flx-ido
     flycheck
-    flycheck-haskell
-    flycheck-rust
     framemove
     fuzzy
     git-messenger
     github-browse-file
     grizzl
-    haskell-mode
     helm
     helm-ag
     helm-projectile
     helm-swoop
     ido-ubiquitous
-    idris-mode
     imenu-anywhere
-    inf-ruby
-    jquery-doc
-    js2-mode
-    js2-refactor
-    latex-extra
-    latex-preview-pane
-    less-css-mode
-    markdown-mode
     multiple-cursors
     neotree
     org
-    pandoc-mode
     popwin
     projectile
-    projectile-rails
     quickrun
-    racket-mode
     rainbow-delimiters
     rainbow-mode
-    rinari
-    robe
-    rspec-mode
-    ruby-hash-syntax
-    rust-mode
-    sass-mode
-    scala-mode2
-    scss-mode
-    ;; shm
-    sbt-mode
     skewer-mode
     slime
-    slime-js
     smart-mode-line
     smartparens
     smex
     smooth-scrolling
     spaceline
-    tern
 
     ;; If we include this, automatic package installation process will hang.
     ;; Install tuareg-mode manually.
     ;; tuareg
 
     unicode-fonts
-    utop
     wc-mode
-    web-mode
-    yaml-mode
-    yard-mode
-    yari
     yasnippet
     zenburn-theme
     zlc ;; Zsh like completion system for Emacs
@@ -208,30 +169,6 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
-(after-load 'shm-case-split
-  (define-key shm-map (kbd "C-c C-s") 'shm/case-split))
-
-(add-hook 'ruby-mode-hook (lambda ()
-  ;; LeWang:
-  ;;
-  ;;      I think `er/ruby-backward-up' and `er/ruby-forward-up' are nifty
-  ;;      functions in their own right.
-  ;;
-  ;;      I would bind them to C-M-u and C-M-d respectively.
-  (local-set-key (kbd "C-M-u") 'er/ruby-backward-up)
-  (local-set-key (kbd "C-M-d") 'er/ruby-forward-up)
-  (local-set-key (kbd "C-c C-c") 'inf-ruby-console-auto)
-  (local-set-key (kbd "C-c C-h") 'ruby-toggle-hash-syntax)
-  (local-set-key (kbd "C-c C-y") 'yari)))
-
-;; A remedy for the default keybinding M-. being overwritten by Evil mode
-(after-load 'robe
-  (define-key robe-mode-map (kbd "C-c C-j") 'robe-jump))
-
-(after-load 'tern
-  (define-key tern-mode-keymap (kbd "C-c C-j") 'tern-find-definition)
-  (define-key tern-mode-keymap (kbd "C-c C-k") 'tern-pop-find-definition))
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Frame-Parameters.html
 (add-to-list 'default-frame-alist '(width  . 100))
@@ -519,7 +456,6 @@
 (setq ag-reuse-buffers t)
 
 ;; imenu
-(add-hook 'ruby-mode-hook 'imenu-add-menubar-index)
 (setq imenu-auto-rescan t)
 
 ;; projectile
@@ -549,123 +485,7 @@
 
 (setq git-messenger:show-detail t) ;; Always show detail message
 
-;; (require 'init-agda)
-(require 'init-coq)
-(require 'init-f2j)
-(require 'init-haskell)
-(require 'init-latex)
-(require 'init-markdown)
 (require 'init-r)
-(require 'init-racket)
-(require 'init-scala)
-
-(autoload 'utop-setup-ocaml-buffer "utop" "Toplevel for OCaml" t)
-(add-hook 'tuareg-mode-hook 'utop-setup-ocaml-buffer)
-(add-hook 'typerex-mode-hook 'utop-setup-ocaml-buffer)
-
-(add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Gemfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Guardfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Capfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.thor\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rabl\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Thorfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Vagrantfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.jbuilder\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Podfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.podspec\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Puppetfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Berksfile\\'" . ruby-mode))
-
-(setq ruby-deep-indent-paren nil)
-
-(after-load 'ruby-mode
-  (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
-  (define-key ruby-mode-map (kbd "TAB") 'indent-for-tab-command))
-
-(add-hook 'ruby-mode-hook 'robe-mode)
-
-(add-hook 'ruby-mode-hook 'yard-mode)
-
-(require 'coffee-mode)
-(customize-set-variable 'coffee-tab-width 2)
-
-(setq js-indent-level 2)
-
-;; https://github.com/swank-js/swank-js
-(autoload 'js2-mode "js2-mode" nil t)
-
-;; http://truongtx.me/2014/02/23/set-up-javascript-development-environment-in-emacs/
-(setq js2-highlight-level 3)
-
-;; https://github.com/lunaryorn/.emacs.d/blob/master/init.el
-(setq-default js2-basic-offset 2)
-
-(setq-default js2-mode-show-parse-errors nil
-              js2-mode-show-strict-warnings nil)
-
-;; A list of any extern names you'd like to consider always declared
-;; http://howardabrams.com/projects/dot-files/emacs-javascript.html
-(setq js2-global-externs '("module" "require" "buster" "sinon" "assert" "refute" "setTimeout" "clearTimeout" "setInterval" "clearInterval" "location" "__dirname" "console" "JSON"))
-
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
-
-(add-hook 'js2-mode-hook (lambda () (setq mode-name "JS2")))
-(add-hook 'js2-mode-hook 'js2-imenu-extras-mode)
-;; (add-hook 'js2-mode-hook 'rainbow-delimiters-mode)
-  ;; Javascript nests {} and () a lot, so I find this helpful
-
-;; js2-refactor
-(require 'js2-refactor)
-(js2r-add-keybindings-with-prefix "C-c C-m")
-
-(skewer-setup)
-
-(add-hook 'js2-mode-hook (lambda ()
-  (tern-mode t)))
-
-;; Sometimes when you have just added .tern-project file or edit the
-;; file but Tern does not auto reload, you need to manually kill
-;; Tern server. This little piece of code does the trick.
-;;
-;; http://truongtx.me/2014/04/20/emacs-javascript-completion-and-refactoring/
-(defun delete-tern-process ()
-  (interactive)
-  (delete-process "Tern"))
-
-(require 'jquery-doc)
-(add-hook 'js2-mode-hook 'jquery-doc-setup)
-
-(add-hook 'projectile-mode-hook 'projectile-rails-on)
-
-(require 'rinari)
-(global-rinari-mode)
-
-(eval-after-load 'rspec-mode
- '(rspec-install-snippets))
-
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[gj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-
-(setq css-indent-offset 2)
-(setq scss-compile-at-save nil)
-
-(add-hook 'css-mode-hook 'rainbow-mode)
-
-(require 'pandoc-mode)
-(add-hook 'markdown-mode-hook 'turn-on-pandoc)
-(add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
 
 (setq org-confirm-babel-evaluate nil)
 (setq org-src-tab-acts-natively t)
@@ -673,11 +493,7 @@
 (org-babel-do-load-languages
   'org-babel-load-languages
   '((emacs-lisp . t)
-    (clojure . t)
-    (haskell . t)
-    (scala . t)
     (python . t)
-    (ruby . t)
     (sh . t)))
 
 (custom-set-variables
