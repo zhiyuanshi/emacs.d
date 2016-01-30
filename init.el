@@ -555,117 +555,17 @@
 (require 'init-haskell)
 (require 'init-latex)
 (require 'init-markdown)
+(require 'init-ocaml)
 (require 'init-r)
 (require 'init-racket)
+(require 'init-ruby)
 (require 'init-scala)
+(require 'init-web)
+(require 'init-pandoc)
 
-(autoload 'utop-setup-ocaml-buffer "utop" "Toplevel for OCaml" t)
-(add-hook 'tuareg-mode-hook 'utop-setup-ocaml-buffer)
-(add-hook 'typerex-mode-hook 'utop-setup-ocaml-buffer)
-
-(add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Rakefile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.gemspec\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Gemfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Guardfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Capfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.thor\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rabl\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Thorfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Vagrantfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.jbuilder\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Podfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.podspec\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Puppetfile\\'" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Berksfile\\'" . ruby-mode))
-
-(setq ruby-deep-indent-paren nil)
-
-(after-load 'ruby-mode
-  (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
-  (define-key ruby-mode-map (kbd "TAB") 'indent-for-tab-command))
-
-(add-hook 'ruby-mode-hook 'robe-mode)
-
-(add-hook 'ruby-mode-hook 'yard-mode)
-
-(require 'coffee-mode)
-(customize-set-variable 'coffee-tab-width 2)
-
-(setq js-indent-level 2)
-
-;; https://github.com/swank-js/swank-js
-(autoload 'js2-mode "js2-mode" nil t)
-
-;; http://truongtx.me/2014/02/23/set-up-javascript-development-environment-in-emacs/
-(setq js2-highlight-level 3)
-
-;; https://github.com/lunaryorn/.emacs.d/blob/master/init.el
-(setq-default js2-basic-offset 2)
-
-(setq-default js2-mode-show-parse-errors nil
-              js2-mode-show-strict-warnings nil)
-
-;; A list of any extern names you'd like to consider always declared
-;; http://howardabrams.com/projects/dot-files/emacs-javascript.html
-(setq js2-global-externs '("module" "require" "buster" "sinon" "assert" "refute" "setTimeout" "clearTimeout" "setInterval" "clearInterval" "location" "__dirname" "console" "JSON"))
-
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-to-list 'interpreter-mode-alist '("node" . js2-mode))
-
-(add-hook 'js2-mode-hook (lambda () (setq mode-name "JS2")))
-(add-hook 'js2-mode-hook 'js2-imenu-extras-mode)
-;; (add-hook 'js2-mode-hook 'rainbow-delimiters-mode)
-  ;; Javascript nests {} and () a lot, so I find this helpful
-
-;; js2-refactor
-(require 'js2-refactor)
-(js2r-add-keybindings-with-prefix "C-c C-m")
-
-(skewer-setup)
-
-(add-hook 'js2-mode-hook (lambda ()
-  (tern-mode t)))
-
-;; Sometimes when you have just added .tern-project file or edit the
-;; file but Tern does not auto reload, you need to manually kill
-;; Tern server. This little piece of code does the trick.
-;;
-;; http://truongtx.me/2014/04/20/emacs-javascript-completion-and-refactoring/
-(defun delete-tern-process ()
-  (interactive)
-  (delete-process "Tern"))
-
-(require 'jquery-doc)
-(add-hook 'js2-mode-hook 'jquery-doc-setup)
-
-(add-hook 'projectile-mode-hook 'projectile-rails-on)
-
-(require 'rinari)
-(global-rinari-mode)
-
-(eval-after-load 'rspec-mode
- '(rspec-install-snippets))
-
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[gj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-
-(setq css-indent-offset 2)
-(setq scss-compile-at-save nil)
-
-(add-hook 'css-mode-hook 'rainbow-mode)
-
-(require 'pandoc-mode)
-(add-hook 'markdown-mode-hook 'turn-on-pandoc)
-(add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
+;;;;;;;;;;;
+;; Org mode
+;;;;;;;;;;;
 
 (setq org-confirm-babel-evaluate nil)
 (setq org-src-tab-acts-natively t)
