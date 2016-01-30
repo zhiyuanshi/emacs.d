@@ -39,12 +39,29 @@
   (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent)
   (define-key ruby-mode-map (kbd "TAB") 'indent-for-tab-command))
 
+(add-hook 'ruby-mode-hook (lambda ()
+  ;; LeWang:
+  ;;
+  ;;      I think `er/ruby-backward-up' and `er/ruby-forward-up' are nifty
+  ;;      functions in their own right.
+  ;;
+  ;;      I would bind them to C-M-u and C-M-d respectively.
+  (local-set-key (kbd "C-M-u") 'er/ruby-backward-up)
+  (local-set-key (kbd "C-M-d") 'er/ruby-forward-up)
+  (local-set-key (kbd "C-c C-c") 'inf-ruby-console-auto)
+  (local-set-key (kbd "C-c C-h") 'ruby-toggle-hash-syntax)
+  (local-set-key (kbd "C-c C-y") 'yari)))
+
 
 ;;;;;;;
 ;; robe
 ;;;;;;;
 
 (add-hook 'ruby-mode-hook 'robe-mode)
+
+;; A remedy for the default keybinding M-. being overwritten by Evil mode
+(after-load 'robe
+  (define-key robe-mode-map (kbd "C-c C-j") 'robe-jump))
 
 
 ;;;;;;;;;;;;

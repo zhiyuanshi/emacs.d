@@ -104,6 +104,8 @@
 ;; (set-face-background 'shm-quarantine-face "lemonchiffon")
 ;; (setq shm-idle-timeout 0)
 
+;; (after-load 'shm-case-split
+;;   (define-key shm-map (kbd "C-c C-s") 'shm/case-split))
 
 ;;;;;;;;;;;;;;;
 ;; From purcell

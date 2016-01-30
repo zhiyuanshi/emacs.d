@@ -77,6 +77,10 @@
   (interactive)
   (delete-process "Tern"))
 
+(after-load 'tern
+  (define-key tern-mode-keymap (kbd "C-c C-j") 'tern-find-definition)
+  (define-key tern-mode-keymap (kbd "C-c C-k") 'tern-pop-find-definition))
+
 
 ;;;;;;;;;;;;;
 ;; jQuery doc

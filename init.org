@@ -10,36 +10,33 @@
 (load-file "init.el") ;; Load first so that in case the new version is broken, it probably won't be copied to home.
 #+END_SRC
 
-* Prerequisites
-** Common Lisp goodies
-
 #+BEGIN_SRC emacs-lisp :tangle yes
+;; Common Lisp goodies
 (require 'cl)
-#+END_SRC
 
-#+BEGIN_SRC emacs-lisp :tangle yes
-;; Add directories to Emacs's `load-path'
-(add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
-#+END_SRC
+;; The `after-load' macro
 
-** The `after-load' macro
+;; Put this before the `Key bindings' section because it's going to be used.
 
-Put this before the `Key bindings' section because it's going to be used.
+;; https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
 
-https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
-
-#+BEGIN_SRC emacs-lisp :tangle yes
 (defmacro after-load (feature &rest body)
   "After FEATURE is loaded, evaluate BODY."
   (declare (indent defun))
   `(eval-after-load ,feature
      '(progn ,@body)))
-#+END_SRC
 
-* Packages
-** Define my packages
 
-#+BEGIN_SRC emacs-lisp :tangle yes
+;; Packages
+
+(require 'package)
+
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+
+(package-initialize)
+
+
 (defvar user-packages
   '(;; winner-mode
     ace-jump-mode
@@ -140,22 +137,9 @@ https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
     zenburn-theme
     zlc ;; Zsh like completion system for Emacs
     ))
-#+END_SRC
 
-** Set up package manager
 
-#+BEGIN_SRC emacs-lisp :tangle yes
-(require 'package)
-
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-
-(package-initialize)
-#+END_SRC
-
-** Install missing packages
-
-#+BEGIN_SRC emacs-lisp :tangle yes
+;; Install missing packages
 (defun user-packages-installed-p ()
   (every #'package-installed-p user-packages))
 
@@ -164,16 +148,13 @@ https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
   (dolist (p user-packages)
     (when (not (package-installed-p p))
       (package-install p))))
-#+END_SRC
 
-* Key bindings
-** Global - Evil leader
+;; Key bindings
 
-Note: You should enable global-evil-leader-mode before you enable evil-mode,
-otherwise evil-leader won’t be enabled in initial buffers (*scratch*,
-*Messages*, …).
+;; Note: You should enable global-evil-leader-mode before you enable evil-mode,
+;; otherwise evil-leader won’t be enabled in initial buffers (*scratch*,
+;; *Messages*, …).
 
-#+BEGIN_SRC emacs-lisp :tangle yes
 (global-evil-leader-mode)
 (evil-leader/set-leader "SPC")
 (evil-leader/set-key
@@ -200,11 +181,8 @@ otherwise evil-leader won’t be enabled in initial buffers (*scratch*,
   "t" 'neotree-toggle
   "w" 'save-buffer
   "x" 'delete-frame)
-#+END_SRC
 
-** Global - The rest
 
-#+BEGIN_SRC emacs-lisp :tangle yes
 (defun text-scale-reset ()
   "Reset text scale to 0."
   (interactive)
@@ -261,76 +239,15 @@ otherwise evil-leader won’t be enabled in initial buffers (*scratch*,
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 #+END_SRC
 
-** Mode-specific
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(after-load 'shm-case-split
-  (define-key shm-map (kbd "C-c C-s") 'shm/case-split))
-
-(add-hook 'ruby-mode-hook (lambda ()
-  ;; LeWang:
-  ;;
-  ;;      I think `er/ruby-backward-up' and `er/ruby-forward-up' are nifty
-  ;;      functions in their own right.
-  ;;
-  ;;      I would bind them to C-M-u and C-M-d respectively.
-  (local-set-key (kbd "C-M-u") 'er/ruby-backward-up)
-  (local-set-key (kbd "C-M-d") 'er/ruby-forward-up)
-  (local-set-key (kbd "C-c C-c") 'inf-ruby-console-auto)
-  (local-set-key (kbd "C-c C-h") 'ruby-toggle-hash-syntax)
-  (local-set-key (kbd "C-c C-y") 'yari)))
-
-;; A remedy for the default keybinding M-. being overwritten by Evil mode
-(after-load 'robe
-  (define-key robe-mode-map (kbd "C-c C-j") 'robe-jump))
-
-(after-load 'tern
-  (define-key tern-mode-keymap (kbd "C-c C-j") 'tern-find-definition)
-  (define-key tern-mode-keymap (kbd "C-c C-k") 'tern-pop-find-definition))
-#+END_SRC
-
 * General
 ** Appearance
 
 #+BEGIN_SRC emacs-lisp :tangle yes
-;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Frame-Parameters.html
-(add-to-list 'default-frame-alist '(width  . 100))
-(add-to-list 'default-frame-alist '(height . 60))
-
 (if (eq system-type 'darwin)
   (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-16"))
   (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-14")))
 
 ;; (load-theme 'solarized t)
-
-(menu-bar-mode 1)
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
-
-(setq frame-title-format
-  '("" (:eval (if (buffer-file-name)
-                  (abbreviate-file-name (buffer-file-name))
-                  "%b")) " - Emacs"))
-
-;; http://stackoverflow.com/questions/445873/how-can-i-make-emacs-mouse-scrolling-slower-and-smoother
-;; http://www.emacswiki.org/emacs/SmoothScrolling
-(setq mouse-wheel-scroll-amount '(3 ((shift) . 40) ((control) . nil)))
-(setq mouse-wheel-progressive-speed nil)
-
-;; No splash screen please ... jeez
-(setq inhibit-startup-screen t)
-
-;; Display of line numbers in the left margin
-(global-linum-mode 1)
-
-;; Always display line and column numbers
-(line-number-mode 1)
-(column-number-mode 1)
-
-;; Highlight matching parentheses when the point is on them.
-(show-paren-mode 1)
-
-
 ;;;;;;;;;;
 ;; NeoTree
 ;;;;;;;;;;
@@ -380,16 +297,10 @@ otherwise evil-leader won’t be enabled in initial buffers (*scratch*,
   (setq truncate-lines t
         word-wrap nil)))
 
-;; Lines should be 80 characters wide, not 72
-(setq-default fill-column 80)
-
-;; Sentences do not need double spaces to end. Period.
-(set-default 'sentence-end-double-space nil)
-
 ;; (add-hook 'before-save-hook 'untabify-current-buffer)
 
 ;; This setting can be too aggresive.
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Show trailing whitespace and empty lines, but not in help buffers
 ;; https://ghc.haskell.org/trac/ghc/wiki/Emacs#Highlighttrailingwhitespaces
@@ -406,18 +317,6 @@ otherwise evil-leader won’t be enabled in initial buffers (*scratch*,
 (set-default 'indicate-empty-lines t)
 #+END_SRC
 
-** Encoding
-
-UTF-8 please
-https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdisplaynicely
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(setq locale-coding-system 'utf-8)
-(set-terminal-coding-system 'utf-8-unix)
-(set-keyboard-coding-system 'utf-8)
-(set-selection-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
-#+END_SRC
 
 ** Custom definitions
 
@@ -449,24 +348,15 @@ https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdispl
   "Open my init.org."
   (interactive)
   (find-file (expand-file-name "init.org" (getenv "EMACSD"))))
-#+END_SRC
 
-** Misc
 
-#+BEGIN_SRC emacs-lisp :tangle yes
+(add-to-list 'load-path user-emacs-directory)
+(require 'sane-defaults)
+
 ;; Save the state of Emacs from one session to another
 ;; http://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Emacs-Sessions.html
 ;; (desktop-save-mode 1)
 
-(setq make-backup-files nil) ;; don't create backup~ files
-(setq auto-save-default nil) ;; don't create #autosave# files
-
-;; Auto refresh buffers
-(global-auto-revert-mode 1)
-
-;; Also auto refresh dired, but be quiet about it
-(setq global-auto-revert-non-file-buffers t)
-(setq auto-revert-verbose nil)
 
 ;; uniquify
 ;; Add parts of each file's directory to the buffer name if not unique
@@ -475,80 +365,10 @@ https://ghc.haskell.org/trac/ghc/wiki/Emacs#MakethequotesinGHCerrormessagesdispl
 
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
-;; Answering just 'y' or 'n' will do
-(defalias 'yes-or-no-p 'y-or-n-p)
-
-;; Don't be so stingy on the memory, we have lots now. It's the distant future.
-(setq gc-cons-threshold 20000000) ;; https://github.com/lewang/flx
-
 ;; Nic says eval-expression-print-level needs to be set to nil (turned off) so
 ;; that you can always see what's happening.
 (setq eval-expression-print-level nil)
 #+END_SRC
-
-** Sane defaults
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(require 'unicode-fonts)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(global-set-key (kbd "RET") 'newline-and-indent)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-;; anzu
-(require 'anzu)
-(diminish 'anzu-mode)
-(global-anzu-mode +1)
-
-;; framemove
-(windmove-default-keybindings 'ctrl)
-(setq framemove-hook-into-windmove t)
-
-;; saveplace
-;; Save point position between sessions
-(require 'saveplace)
-(setq-default save-place t)
-(setq save-place-file (expand-file-name ".places" user-emacs-directory))
-
-;; popwin
-(require 'popwin)
-(popwin-mode 1)
-
-;; smooth-scrolling
-;; Keep cursor away from edges when scrolling up/down
-(require 'smooth-scrolling)
-
-;; winner-mode
-;; (winner-mode 1)
-
-;; zlc
-(require 'zlc)
-(zlc-mode t)
-
-(let ((map minibuffer-local-map))
-  ;; like menu select
-  (define-key map (kbd "<down>")  'zlc-select-next-vertical)
-  (define-key map (kbd "<up>")    'zlc-select-previous-vertical)
-  (define-key map (kbd "<right>") 'zlc-select-next)
-  (define-key map (kbd "<left>")  'zlc-select-previous)
-
-  ;; reset selection
-  (define-key map (kbd "C-c") 'zlc-reset))
-#+END_SRC
-
-Why anyone thinks that auto-vscrolling should be on by default is beyond me.
-http://stackoverflow.com/questions/18386824/emacs-how-do-you-disable-auto-recentering
-http://www.emacswiki.org/emacs/SmoothScrolling
-
-#+BEGIN_SRC emacs-lisp :tangle yes
-(setq scroll-step 1)
-(setq scroll-conservatively 10000)
-(setq auto-window-vscroll nil)
-#+END_SRC
-
-Sanity restored.
 
 ** Text editing
 
@@ -694,6 +514,9 @@ http://tuhdo.github.io/helm-intro.html
 
 
 #+BEGIN_SRC emacs-lisp :tangle yes
+;; Add directories to Emacs's `load-path'
+(add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
+
 ;; (require 'init-agda)
 (require 'init-coq)
 (require 'init-f2j)

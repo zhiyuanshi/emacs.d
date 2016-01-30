@@ -1,14 +1,31 @@
 
+;; Common Lisp goodies
 (require 'cl)
 
-;; Add directories to Emacs's `load-path'
-(add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
+;; The `after-load' macro
+
+;; Put this before the `Key bindings' section because it's going to be used.
+
+;; https://github.com/purcell/emacs.d/blob/master/lisp/init-utils.el
 
 (defmacro after-load (feature &rest body)
   "After FEATURE is loaded, evaluate BODY."
   (declare (indent defun))
   `(eval-after-load ,feature
      '(progn ,@body)))
+
+
+(add-to-list 'load-path user-emacs-directory)
+
+;; Packages
+
+(require 'package)
+
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+
+(package-initialize)
+
 
 (defvar user-packages
   '(;; winner-mode
@@ -111,13 +128,8 @@
     zlc ;; Zsh like completion system for Emacs
     ))
 
-(require 'package)
 
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-
-(package-initialize)
-
+;; Install missing packages
 (defun user-packages-installed-p ()
   (every #'package-installed-p user-packages))
 
@@ -126,6 +138,12 @@
   (dolist (p user-packages)
     (when (not (package-installed-p p))
       (package-install p))))
+
+;; Key bindings
+
+;; Note: You should enable global-evil-leader-mode before you enable evil-mode,
+;; otherwise evil-leader won’t be enabled in initial buffers (*scratch*,
+;; *Messages*, …).
 
 (global-evil-leader-mode)
 (evil-leader/set-leader "SPC")
@@ -153,6 +171,7 @@
   "t" 'neotree-toggle
   "w" 'save-buffer
   "x" 'delete-frame)
+
 
 (defun text-scale-reset ()
   "Reset text scale to 0."
@@ -208,30 +227,6 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
-(after-load 'shm-case-split
-  (define-key shm-map (kbd "C-c C-s") 'shm/case-split))
-
-(add-hook 'ruby-mode-hook (lambda ()
-  ;; LeWang:
-  ;;
-  ;;      I think `er/ruby-backward-up' and `er/ruby-forward-up' are nifty
-  ;;      functions in their own right.
-  ;;
-  ;;      I would bind them to C-M-u and C-M-d respectively.
-  (local-set-key (kbd "C-M-u") 'er/ruby-backward-up)
-  (local-set-key (kbd "C-M-d") 'er/ruby-forward-up)
-  (local-set-key (kbd "C-c C-c") 'inf-ruby-console-auto)
-  (local-set-key (kbd "C-c C-h") 'ruby-toggle-hash-syntax)
-  (local-set-key (kbd "C-c C-y") 'yari)))
-
-;; A remedy for the default keybinding M-. being overwritten by Evil mode
-(after-load 'robe
-  (define-key robe-mode-map (kbd "C-c C-j") 'robe-jump))
-
-(after-load 'tern
-  (define-key tern-mode-keymap (kbd "C-c C-j") 'tern-find-definition)
-  (define-key tern-mode-keymap (kbd "C-c C-k") 'tern-pop-find-definition))
 
 ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Frame-Parameters.html
 (add-to-list 'default-frame-alist '(width  . 100))
@@ -374,6 +369,8 @@
   (interactive)
   (find-file (expand-file-name "init.org" (getenv "EMACSD"))))
 
+(require 'sane-defaults)
+
 ;; Save the state of Emacs from one session to another
 ;; http://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Emacs-Sessions.html
 ;; (desktop-save-mode 1)
@@ -404,54 +401,6 @@
 ;; Nic says eval-expression-print-level needs to be set to nil (turned off) so
 ;; that you can always see what's happening.
 (setq eval-expression-print-level nil)
-
-(require 'unicode-fonts)
-
-(global-set-key (kbd "RET") 'newline-and-indent)
-
-;; anzu
-(require 'anzu)
-(diminish 'anzu-mode)
-(global-anzu-mode +1)
-
-;; framemove
-(windmove-default-keybindings 'ctrl)
-(setq framemove-hook-into-windmove t)
-
-;; saveplace
-;; Save point position between sessions
-(require 'saveplace)
-(setq-default save-place t)
-(setq save-place-file (expand-file-name ".places" user-emacs-directory))
-
-;; popwin
-(require 'popwin)
-(popwin-mode 1)
-
-;; smooth-scrolling
-;; Keep cursor away from edges when scrolling up/down
-(require 'smooth-scrolling)
-
-;; winner-mode
-;; (winner-mode 1)
-
-;; zlc
-(require 'zlc)
-(zlc-mode t)
-
-(let ((map minibuffer-local-map))
-  ;; like menu select
-  (define-key map (kbd "<down>")  'zlc-select-next-vertical)
-  (define-key map (kbd "<up>")    'zlc-select-previous-vertical)
-  (define-key map (kbd "<right>") 'zlc-select-next)
-  (define-key map (kbd "<left>")  'zlc-select-previous)
-
-  ;; reset selection
-  (define-key map (kbd "C-c") 'zlc-reset))
-
-(setq scroll-step 1)
-(setq scroll-conservatively 10000)
-(setq auto-window-vscroll nil)
 
 ;; ace-jump-mode
 ;; Enable a more powerful jump back function from ace jump mode
@@ -548,6 +497,9 @@
 (require 'smartparens-config) ;; the default configuration
 
 (setq git-messenger:show-detail t) ;; Always show detail message
+
+;; Add directories to Emacs's `load-path'
+(add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
 
 ;; (require 'init-agda)
 (require 'init-coq)
